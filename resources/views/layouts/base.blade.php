@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@yield('titulo-pagina')</title>
+</head>
+<body>
+	<header>
+		@yield('header')
+	</header>
+	<section>
+		@yield('section')
+	</section>
+	<aside>
+		@yield('aside')
+	</aside>
+	<footer>
+		@yield('footer')
+	</footer>
+</body>
+</html>

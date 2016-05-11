@@ -11,6 +11,25 @@
 |
 */
 
+
+/*
 Route::get('/', function () {
     return view('welcome');
+});
+*/
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('publicaciones', function(){
+	return view('publicaciones');
+});
+
+Route::get('publicaciones/{id}', function($id){
+	return view('publicaciones')->with('id', $id);
+});
+
+Route::get('ingreso', function(){
+	return view('ingreso');
 });
