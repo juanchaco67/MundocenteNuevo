@@ -1,5 +1,19 @@
 @extends('layouts.base')
 
+<?php
+	$mensaje = Session::get('mensaje') 
+?>
+
+@if($mensaje == 'store')
+	<div class="alert alert-success alert-dismissible" role="alert">
+	  <strong>Usuario registrado!</strong> You successfully read this important alert message.
+	</div>
+@endif
+
+@section('titulo-pagina')
+	Mostrar
+@stop
+
 @section('contenido')
 	<table class="table">
 		<thead>
@@ -7,10 +21,11 @@
 			<th>Correo</th>
 			<th>Operación</th>
 		</thead>
-		<tbody>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tbody>
+		@foreach($users as $user)
+			<tbody>
+				<th>{{ $user->name }}</th>
+				<th>{{ $user->email }}</th>
+			</tbody>
+		@endforeach
 	</table>
 @stop

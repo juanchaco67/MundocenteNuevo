@@ -12,8 +12,9 @@ class UsuarioController extends Controller
     //
     public function index(){
     	//return "index de usuario";
-    	//$users
-    	return view('usuario.index');
+    	$users = User::all();
+
+    	return view('usuario.index', compact('users'));
     }
 
     public function create(){
@@ -27,7 +28,8 @@ class UsuarioController extends Controller
     		'password' => bcrypt($request['contrasena']),
 		]);
     	//return "store";
-    	return "Usuario registrado";
+    	//return "Usuario registrado";
+    	return redirect('usuario')->with('mensaje', 'store');
     }
 
     public function show($id){
