@@ -24,15 +24,16 @@ Route::get('publicaciones', function(){
 });
 */
 
+//Route::post('listar', 'PublicacionesController@listar');
+
 Route::get('/', 'FrontController@index'); 
-Route::get('/contacto', 'FrontController@contacto');
-Route::get('/reviews', 'FrontController@reviews');
+Route::get('contacto', 'FrontController@contacto');
+Route::get('reviews', 'FrontController@reviews');
 
 Route::resource('login', 'LoginController');
 Route::get('logout', 'LoginController@logout');
 
 Route::resource('publicaciones', 'PublicacionesController');
-
 Route::resource('usuario', 'UsuarioController');
 
 /*
@@ -40,7 +41,3 @@ Route::get('publicaciones/{id}', function($id){
 	return view('publicaciones')->with('id', $id);
 });
 */
-
-Route::get('ingreso', function(){
-	return view('ingreso');
-});

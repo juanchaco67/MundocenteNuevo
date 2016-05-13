@@ -4,9 +4,18 @@
 	Publicaciones
 @stop
 
-@section('header')
+@section('contenido')
 	<h3>Resultados</h3>
-	@if(isset($id))
-		<p>Consultar {{ $id }}</p>
+	@if(isset($publicaciones))
+		
+		<ul>
+			@foreach($publicaciones as $publicacion)
+				<li>
+					<p>{{ $publicacion->nombre }}</p>
+					<p>{{ $publicacion->descripcion }}</p>
+				</li>
+			@endforeach
+		</ul>
+
 	@endif
 @stop
