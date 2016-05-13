@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use Session;
+use Redirect;
 
 class UsuarioController extends Controller
 {
@@ -23,13 +25,15 @@ class UsuarioController extends Controller
 
     public function store(Request $request){
     	User::create([
-    		'name' => $request['nombre'],
-    		'email' => $request['correo'],
-    		'password' => $request['contrasena'],
+    		'name' => $request['name'],
+    		'email' => $request['email'],
+    		'password' => $request['password'],
 		]);
     	//return "store";
     	//return "Usuario registrado";
-    	return redirect('usuario')->with('mensaje', 'store');
+    	//return redirect('usuario')->with('mensaje', 'Usuario creado');
+        Session::flash('mensaje', 'Usuario creado');
+        return redirect('usuario');
     }
 
     public function show($id){
@@ -45,6 +49,16 @@ class UsuarioController extends Controller
     public function update($id, Request $request){
         $user = User::find($id);
         $user->fill($request->all());
-        $user->save;
+        $user->save();
+
+        Session::flash('mensaje', 'Usuario Editado');
+        return Redirect::to('usuario');
+    }
+
+    public function destroy($id){
+        User::destroy($id);
+
+        Session::flash('mensaje', 'Usuario Eliminado');
+        return Redirect::to('usuario');
     }
 }
