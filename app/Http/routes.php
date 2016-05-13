@@ -18,15 +18,15 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 /*
 Route::get('publicaciones', function(){
 	return view('publicaciones');
 });
 */
+
+Route::get('/', 'FrontController@index'); 
+Route::get('/contacto', 'FrontController@contacto');
+Route::get('/reviews', 'FrontController@reviews');
 
 Route::resource('publicaciones', 'PublicacionesController');
 

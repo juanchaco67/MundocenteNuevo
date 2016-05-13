@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 
 @section('titulo-pagina')
 	Editar
