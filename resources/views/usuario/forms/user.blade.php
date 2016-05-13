@@ -13,10 +13,10 @@
 <div class="form-group">
 	<legend>Areas de interés</legend>
 	<fieldset>
-		@if(isset($intereses))
-			@foreach($intereses as $interes)
+		@if(isset($areas))
+			@foreach($areas as $area)
 				<div class="form-group">
-					<input id="interes{{ $interes->id }}" type="checkbox" name="intereses" value="{{ $interes->id }}" checked><label for="interes{{ $interes->id }}">{{ $interes->nombre }}</label></input>
+					<input id="area{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" checked><label for="area{{ $area->nombre }}">{{ $area->nombre }}</label></input>
 				</div>
 			@endforeach
 		@endif

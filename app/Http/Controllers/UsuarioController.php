@@ -10,6 +10,7 @@ use Session;
 use Redirect;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Area;
 use App\Interes;
 
 class UsuarioController extends Controller
@@ -22,21 +23,35 @@ class UsuarioController extends Controller
     }
 
     public function create(){
-        $intereses = Interes::all();
-    	return view('usuario.create')->with('intereses', $intereses);
+        $areas = Area::all();
+    	return view('usuario.create')->with('areas', $areas);
     }
 
     public function store(UserCreateRequest $request){
-    	User::create([
+    	$usuario = User::create([
     		'name' => $request['name'],
     		'email' => $request['email'],
     		'password' => $request['password'],
 		]);
+
+        $areas = $request['areas'];
+        foreach ($areas as $area) {
+            echo "ES: " .$area ."\n";
+            Interes::create([
+                'user_id' => $usuario->id,
+                'area_id' => $area,
+            ]);
+        }
+
+        
+        //return $areas;
+        //return $request['areas'];
+
     	//return "store";
     	//return "Usuario registrado";
     	//return redirect('usuario')->with('mensaje', 'Usuario creado');
-        Session::flash('mensaje', 'Usuario creado');
-        return redirect('usuario');
+        //Session::flash('mensaje', 'Usuario creado');
+        //return redirect('usuario');
     }
 
     public function show($id){

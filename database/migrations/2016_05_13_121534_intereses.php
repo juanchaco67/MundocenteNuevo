@@ -14,10 +14,19 @@ class Intereses extends Migration
     {
         //
         Schema::create('intereses', function(Blueprint $table){
-            $table->increments('id');
-            $table->string('nombre');
-            //$table->string('descripcion');
+            $table->integer('area_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('area_id')
+                ->references('id')
+                ->on('areas')->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
+
+            $table->primary(array('area_id', 'user_id'));
+            $table->unique(array('area_id', 'user_id'));
         });
     }
 
