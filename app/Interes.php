@@ -15,6 +15,6 @@ class Interes extends Model
     }
 
     public function area(){
-    	return $this->belongsTo('App\Areas');
+    	return $this->belongsTo('App\Area');
     }
 }
