@@ -1,3 +1,69 @@
+commit bbf44809267d7ef1261b4b2f5ecce2ed54f0dc4e
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 21:58:11 2016 -0500
+
+    Agrego vistas al template
+
+commit 0d37fde5b79dc65adef93879f16030de2cc0d225
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 21:44:06 2016 -0500
+
+    Agrego validaciones
+
+commit d0e808b5e5aa4a07d08059a1c5504fe87f684561
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 21:27:51 2016 -0500
+
+    Termino crud de usuario
+
+commit 7048f3f9e386ed4c1d6937e3ada41bca26fd08cd
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 21:23:21 2016 -0500
+
+    Agrego funcionalidad de borrado
+
+commit a828f34c5dc577291e07eada75f2387ef8c4f6ff
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:52:23 2016 -0500
+
+    Cambio mensaje alerta
+
+commit 7ea588b175f3da1ddebfe1c65032c4d3b2d6ac0a
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:48:41 2016 -0500
+
+    Agrego funcionalidad actualizar
+
+commit fd9b825e0dad719707d1b126c7b202ea1cc6812a
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:42:43 2016 -0500
+
+    Agrego subvista user
+
+commit 2e597248df1d3715cfb752c8012839411a939d94
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:30:49 2016 -0500
+
+    Cambio formulario a collective
+
+commit 6d2cf020e902a5760e0c473b8e5179f1ae44e179
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:22:19 2016 -0500
+
+    Agrego laravel collective
+
+commit 41b2866e2509816c1f5be22aee630945648f1ac9
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 20:05:04 2016 -0500
+
+    Agrego funcion leer usuarios
+
+commit fedc83310008fcf6709c7dd4ed2a06dae47b4c38
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 19:53:16 2016 -0500
+
+    Agrego funcion crear usuario
+
 commit eec2fa2bf2772b3670bf4da8101255ffb3078829
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Wed May 11 16:52:42 2016 -0500
