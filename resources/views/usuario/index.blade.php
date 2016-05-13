@@ -26,7 +26,7 @@
 				<th>{{ $user->name }}</th>
 				<th>{{ $user->email }}</th>
 				<th>
-					{{!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $user->id, $atrributes = ['class' => 'btn btn-primary'])!!}}
+					{!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $user->id, $atrributes = ['class' => 'btn btn-primary'])!!}
 				</th>
 			</tbody>
 		@endforeach
