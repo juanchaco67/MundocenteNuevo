@@ -18,6 +18,12 @@
 	{!!Html::style('js/bootstrap.min.js')!!}
 	{!!Html::style('js/main.js')!!}
 
+	<form class="form-group">
+		<label>Buscar</label>
+		<input class="form-control"type="text"></input>
+	</form>
+	<input class="btn btn-primary" type="button" value="Buscar"></input>
+
 	<!--
 	<script type="text/javascript" src="{{ URL::asset('js/jquery-1.12.3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>

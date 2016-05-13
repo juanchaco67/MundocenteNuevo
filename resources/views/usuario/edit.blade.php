@@ -5,6 +5,7 @@
 @stop
 
 @section('contenido')
+	@include('alerts.request')
 	<h1>Editar</h1>
 	{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put'])!!}
 		@include('usuario.forms.user')

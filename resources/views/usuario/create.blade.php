@@ -5,6 +5,7 @@
 @stop
 
 @section('contenido')
+	@include('alerts.request')
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
 		@include('usuario.forms.user')
 	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}

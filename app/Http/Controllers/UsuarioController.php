@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\User;
 use Session;
 use Redirect;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UsuarioController extends Controller
 {
@@ -23,7 +25,7 @@ class UsuarioController extends Controller
     	return view('usuario.create');
     }
 
-    public function store(Request $request){
+    public function store(UserCreateRequest $request){
     	User::create([
     		'name' => $request['name'],
     		'email' => $request['email'],
@@ -46,7 +48,7 @@ class UsuarioController extends Controller
         return view('usuario.edit', ['user' => $user]);
     }
 
-    public function update($id, Request $request){
+    public function update($id, UserUpdateRequest $request){
         $user = User::find($id);
         $user->fill($request->all());
         $user->save();
