@@ -11,6 +11,19 @@
 	{!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Ingresa la contraseña'])!!}
 </div>
 <div class="form-group">
+	{!!Form::label('Recibir notifaciones')!!}
+	@if(isset($user))
+		@if($user->notificar === 0)
+			{!!Form::checkbox('notificar', '1', true)!!}
+		@else
+			{!!Form::checkbox('notificar', '1', false)!!}
+		@endif
+	@else
+		{!!Form::checkbox('notificar', '0', true)!!}
+	@endif
+</div>
+
+<div class="form-group">
 	<legend>Areas de interés</legend>
 	<fieldset>
 		@if(!isset($areas_usuario))

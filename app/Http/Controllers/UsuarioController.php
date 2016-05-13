@@ -29,22 +29,39 @@ class UsuarioController extends Controller
     }
 
     public function store(UserCreateRequest $request){
+        $notificar = $request['notificar'];
+        //echo "notificar vale: " .$notificar;
+        if ($notificar === NULL) {
+            //echo "if ".$notificar;
+            $notificar = 1;
+        } else{
+            //echo "else ".$notificar;
+            $notificar = 0;
+        }
+        
+        //echo "3 " .$notificar;
+
     	$usuario = User::create([
     		'name' => $request['name'],
     		'email' => $request['email'],
     		'password' => $request['password'],
+            'notificar' => $notificar,
 		]);
-        crear_areas($request);
-        
+        $this->crear_areas($usuario, $request);
+
+        Session::flash('mensaje', 'Usuario creado');
+        return Redirect::to('usuario');        
     }
 
     public function crear_areas($usuario, Request $request){
         $areas = $request['areas'];
-        foreach ($areas as $area) {
-            Interes::create([
-                'user_id' => $usuario->id,
-                'area_id' => $area,
-            ]);
+        if(!empty($areas)){
+            foreach ($areas as $area) {
+                Interes::create([
+                    'user_id' => $usuario->id,
+                    'area_id' => $area,
+                ]);
+            }            
         }
     }
 
@@ -61,13 +78,6 @@ class UsuarioController extends Controller
         foreach ($intereses as $interes) {
             $areas_usuario[] = $interes->area_id;
         }
-        //$intereses = $user->interes;
-
-        /*foreach ($intereses as $interes) {
-            echo $interes->area->nombre;
-        }
-        */
-
         return view('usuario.edit', [
             'user' => $user,
             'areas' => $areas,
@@ -77,9 +87,17 @@ class UsuarioController extends Controller
 
     public function update($id, UserUpdateRequest $request){
         //echo $request;
+        $notificar = $request['notificar'];
+        if ($notificar === NULL) {
+            $notificar = 1;
+        } else{
+            $notificar = 0;
+        }
         $user = User::find($id);
         $user->fill($request->all());
+        $user->notificar = $notificar;
         $user->save();
+
 
         $areas = Interes::where('user_id', $id)->delete();
         $this->crear_areas($user, $request);
