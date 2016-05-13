@@ -1,3 +1,21 @@
+commit 49f4a0dbf55b24ed43e603b39e58a09106a9d4d9
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 14:44:50 2016 -0500
+
+    Agrego notificación al usuario
+
+commit bff483c4c22b4343d14511ec5613521723ef30a4
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 10:10:49 2016 -0500
+
+    Agrego funcionalidad actualizar areas de interes
+
+commit 400214a6820f8f58953405a7e237ef83ce7d25fd
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 08:37:34 2016 -0500
+
+    Salvo commits
+
 commit c6f843be39ee58e74e7b9a1035d8747583da0c28
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Fri May 13 08:01:14 2016 -0500
