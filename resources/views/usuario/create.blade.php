@@ -6,20 +6,8 @@
 
 @section('contenido')
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
-		<div class="form-group">
-			{!!Form::label('Nombre')!!}
-			{!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
-		</div>
-		<div class="form-group">
-			{!!Form::label('Correo')!!}
-			{!!Form::text('correo', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el correo'])!!}
-		</div>
-		<div class="form-group">
-			{!!Form::label('Contraseña')!!}
-			{!!Form::password('contrasena', ['class'=>'form-control', 'placeholder'=>'Ingresa la contraseña'])!!}
-		</div>
-		{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
-	{!!Form::close()!!}
+		@include('usuario.forms.user')
+	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
 
 	<!--
 	<form action="{{ route('usuario.store') }}" method="post">
