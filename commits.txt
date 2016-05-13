@@ -1,3 +1,21 @@
+commit e3dcbda63cd11a543c2a612dbe41d9fcff768292
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 00:24:36 2016 -0500
+
+    Agrego búsqueda de publicaciones
+
+commit ba0d354fbcbe2f335ea4dfd5cc71394c346140d5
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 23:29:09 2016 -0500
+
+    Agrego funcionalidad de autenticación
+
+commit c3af2bf385458ef495bffef04e30e385ac170b9b
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Thu May 12 22:01:08 2016 -0500
+
+    Salvo commits
+
 commit bbf44809267d7ef1261b4b2f5ecce2ed54f0dc4e
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Thu May 12 21:58:11 2016 -0500

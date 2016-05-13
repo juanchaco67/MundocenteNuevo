@@ -10,6 +10,7 @@ use Session;
 use Redirect;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Interes;
 
 class UsuarioController extends Controller
 {
@@ -17,12 +18,12 @@ class UsuarioController extends Controller
     public function index(){
     	//return "index de usuario";
     	$users = User::all();
-
     	return view('usuario.index', compact('users'));
     }
 
     public function create(){
-    	return view('usuario.create');
+        $intereses = Interes::all();
+    	return view('usuario.create')->with('intereses', $intereses);
     }
 
     public function store(UserCreateRequest $request){
