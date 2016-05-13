@@ -1,12 +1,9 @@
 @extends('layouts.base')
 
-<?php
-	$mensaje = Session::get('mensaje') 
-?>
-
-@if($mensaje == 'store')
+@if(Session::has('mensaje'))
 	<div class="alert alert-success alert-dismissible" role="alert">
-	  <strong>Usuario registrado!</strong> You successfully read this important alert message.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  	{{ Session::get('mensaje') }}
 	</div>
 @endif
 
