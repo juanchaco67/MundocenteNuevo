@@ -1,0 +1,11 @@
+commit eec2fa2bf2772b3670bf4da8101255ffb3078829
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Wed May 11 16:52:42 2016 -0500
+
+    Creo vistas basicas
+
+commit 6a8c23fbc949a235f90985b545fe36d1a9653475
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Wed May 11 16:25:23 2016 -0500
+
+    Empiezo desarrollo

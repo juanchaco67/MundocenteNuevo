@@ -22,13 +22,21 @@ Route::get('/', function () {
     return view('index');
 });
 
+/*
 Route::get('publicaciones', function(){
 	return view('publicaciones');
 });
+*/
 
+Route::resource('publicaciones', 'PublicacionesController');
+
+Route::resource('usuario', 'UsuarioController');
+
+/*
 Route::get('publicaciones/{id}', function($id){
 	return view('publicaciones')->with('id', $id);
 });
+*/
 
 Route::get('ingreso', function(){
 	return view('ingreso');

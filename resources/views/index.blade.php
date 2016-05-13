@@ -4,18 +4,6 @@
 	Inicio
 @stop
 
-@section('header')
-	<p>Hola mundo</p>
-@stop
-
-@section('section')
-	<p>Hola mundo</p>
-@stop
-
-@section('aside')
-	<p>Hola mundo</p>
-@stop
-
-@section('footer')
-	<p>Hola mundo</p>
+@section('contenido')
+	<h1>Vista Index</h1>
 @stop
