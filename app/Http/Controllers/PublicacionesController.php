@@ -21,7 +21,7 @@ class PublicacionesController extends Controller
 
     public function store(Request $request){
         //return "store";
-        App\Publicacion:create([
+        Publicacion::create([
             'nombre' => $request['nombre'];
             'descripcion' => $request['descripcion'],
         ]);
