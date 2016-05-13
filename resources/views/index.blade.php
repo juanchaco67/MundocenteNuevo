@@ -26,7 +26,7 @@
   </form>
 
 
-	<form action="{{ route('publicaciones.index') }}" method="get">
+	<form action="{{ route('publicacion.index') }}" method="get">
     {{ csrf_field() }}
     <div class="form-group">
       <label>Buscar</label>

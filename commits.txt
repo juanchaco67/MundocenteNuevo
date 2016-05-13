@@ -1,3 +1,15 @@
+commit 0d5e7a6d7a9493e9be78ee8405b9f49dd4ecc5c0
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 17:35:18 2016 -0500
+
+    Modifico crud publicaciones
+
+commit 8c55c672a31915ba15b3685b7adabd6a2393afb2
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 17:06:08 2016 -0500
+
+    Salvo commits
+
 commit 49f4a0dbf55b24ed43e603b39e58a09106a9d4d9
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Fri May 13 14:44:50 2016 -0500
