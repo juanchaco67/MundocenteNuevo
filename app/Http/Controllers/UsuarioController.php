@@ -25,7 +25,7 @@ class UsuarioController extends Controller
     	User::create([
     		'name' => $request['nombre'],
     		'email' => $request['correo'],
-    		'password' => bcrypt($request['contrasena']),
+    		'password' => $request['contrasena'],
 		]);
     	//return "store";
     	//return "Usuario registrado";
@@ -40,5 +40,11 @@ class UsuarioController extends Controller
     	//return "edit usuario" .$id;
         $user = User::find($id);
         return view('usuario.edit', ['user' => $user]);
+    }
+
+    public function update($id, Request $request){
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save;
     }
 }
