@@ -20,7 +20,6 @@ class Docentes extends Migration
                 ->on('users')
                 ->onDelete('cascade');
             $table->boolean('notificar')->default(1);
-            $table->string('apellido')->nullable();
         });
     }
 

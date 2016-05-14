@@ -23,7 +23,6 @@ class Funcionarios extends Migration
                 ->references('id')
                 ->on('establecimientos')
                 ->onDelete('cascade');
-            $table->string('apellido')->nullable();
             $table->string('telefono')->nullable();
         });
     }

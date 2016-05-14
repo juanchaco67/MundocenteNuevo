@@ -33,6 +33,8 @@ Route::get('reviews', 'FrontController@reviews');
 Route::resource('login', 'LoginController');
 Route::get('logout', 'LoginController@logout');
 
+Route::get('/busqueda', 'BuscadorController@index');
+
 Route::resource('publicacion', 'PublicacionController');
 Route::resource('usuario', 'UsuarioController');
 

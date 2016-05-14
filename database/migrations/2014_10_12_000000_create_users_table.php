@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
 //          $table->boolean('notificar')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->string('apellido')->nullable();
         });
     }
 

@@ -16,6 +16,12 @@ class LoginController extends Controller
 
     public function store(LoginRequest $request){
     	//return $request['email'] . " " .$request['password'];
+        //echo "ROL: " .$request['rol'];
+        if ($request['rol'] === "Docente") {
+            //echo "Hola docente";
+        } elseif ($request['rol'] === "Funcionario") {
+            //echo "Hola funcionario";
+        }
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
     		return Redirect::to('/usuario');

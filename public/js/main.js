@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	//alert('hola');
-	var posicion = $('.panel-izquierdo').offset().top;
+	/*
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+    */
+	var posicion = $('.panel-izquierdo').offset().top();
 	var ancho = $('.panel-izquierdo').width();
 	$(window).scroll(function(){
 		var posScroll = $(window).scrollTop();
