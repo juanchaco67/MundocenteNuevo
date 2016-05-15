@@ -22,11 +22,13 @@
   <form action="{{ route('login.store') }}" method="post" class="form-signin">
     {{ csrf_field() }}
     <h2 class="form-signin-heading">Ingresar</h2>
+    <!--
     <label for="rol">Soy</label>
     <select name="rol" class="form-control">
       <option>Docente</option>
       <option>Funcionario</option>
     </select>
+    -->
     <label for="email" class="sr-only">Correo</label>
     <input id="email" name="email" class="form-control" placeholder="Email address"  autofocus="">
     <label for="password" class="sr-only">Contraseña</label>

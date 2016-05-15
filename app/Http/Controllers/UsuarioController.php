@@ -50,6 +50,7 @@ class UsuarioController extends Controller
                 'email' => $request['email'],
                 'password' => $request['password'],
                 'idrol' => 1,
+                'estado' => 'activo',
             ]);
             Docente::create([
                 'user_id' => $usuario->id,
@@ -64,6 +65,7 @@ class UsuarioController extends Controller
                 'email' => $request['email'],
                 'password' => $request['password'],
                 'idrol' => 2,
+                'estado' => 'inactivo',
             ]);
             Funcionario::create([
                 'user_id' => $usuario->id,
@@ -151,6 +153,12 @@ class UsuarioController extends Controller
 
         $user->fill($request->all());
         $user->save();
+
+        if ($request['desactivar']) {
+            $user->update(['estado' => 'inactivo']);
+        } else {
+            $user->update(['estado' => 'activo']);
+        }
 
         Session::flash('mensaje', 'Usuario Editado');
         return Redirect::to('usuario');

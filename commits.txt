@@ -1,4 +1,10 @@
-commit 92953ea4bcd0a34b6b427c30c7d2a8bf46e6f512
+commit 771532b9b06511a20a6451e867a665a17264ede0
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Sat May 14 23:02:11 2016 -0500
+
+    Agrego funcionalidad activar e inactivar usuarios
+
+commit b3a89c8a8b32c2d8a8a4ae102d42883fe0674643
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Sat May 14 19:20:19 2016 -0500
 

@@ -42,3 +42,13 @@
 			@endif
 		</fieldset>
 	</div>
+@if(isset($user))
+	<div class="form-group">
+		<label for="desactivar">Desactivar esta cuenta</label>
+		@if($user->estado === 'inactivo')
+			<input name="desactivar" value="desactivar" type="checkbox" checked></input>
+		@else
+			<input name="desactivar" value="desactivar" type="checkbox"></input>
+		@endif
+	</div>
+@endif
