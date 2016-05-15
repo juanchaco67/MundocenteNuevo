@@ -14,12 +14,13 @@ class Docentes extends Migration
     {
         //
         Schema::create('docentes', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->foreign('id')
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
             $table->boolean('notificar')->default(1);
+            $table->timestamps();
         });
     }
 

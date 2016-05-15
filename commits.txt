@@ -1,3 +1,21 @@
+commit 92953ea4bcd0a34b6b427c30c7d2a8bf46e6f512
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Sat May 14 19:20:19 2016 -0500
+
+    Configuro tablas usuarios y funcionarios con vista
+
+commit 0ebc16d7f5caff52eb99a6442ec484e2bf52fff0
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Sat May 14 17:08:22 2016 -0500
+
+    Modifico formularios de registro
+
+commit 5396f4f2b068df2f78c50bc9fdd13833f49ddfab
+Author: Sergio <sepi_147@hotmail.com>
+Date:   Fri May 13 17:59:10 2016 -0500
+
+    Agrego migraciones y modelos de usuarios
+
 commit 44e3c6aa3d26427cee35574f56c04a3d7291715f
 Author: Sergio <sepi_147@hotmail.com>
 Date:   Fri May 13 17:35:18 2016 -0500

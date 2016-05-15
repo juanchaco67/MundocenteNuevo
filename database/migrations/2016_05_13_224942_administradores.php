@@ -19,6 +19,7 @@ class Administradores extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->timestamps();
         });        
     }
 

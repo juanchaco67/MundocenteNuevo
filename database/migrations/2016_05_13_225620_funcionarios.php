@@ -13,8 +13,8 @@ class Funcionarios extends Migration
      * @return void
      */
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->foreign('id')
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
@@ -24,6 +24,7 @@ class Funcionarios extends Migration
                 ->on('establecimientos')
                 ->onDelete('cascade');
             $table->string('telefono')->nullable();
+            $table->timestamps();
         });
     }
     /**

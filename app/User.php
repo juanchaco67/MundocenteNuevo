@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'estado', 'notificar',
+        'name', 'email', 'password', 'idrol', 'estado', 'apellido',
     ];
 
     /**
@@ -26,6 +26,14 @@ class User extends Authenticatable
 
     public function interes(){
         return $this->hasMany('App\Interes');
+    }
+
+    public function docente(){
+        return $this->hasOne('App\Docente');
+    }
+
+    public function funcionario(){
+        return $this->hasOne('App\Funcionario');
     }
 
     public function setPasswordAttribute($valor){

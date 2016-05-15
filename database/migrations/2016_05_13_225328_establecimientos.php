@@ -16,6 +16,7 @@ class Establecimientos extends Migration
         Schema::create('establecimientos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->timestamps();
         });
     }
 

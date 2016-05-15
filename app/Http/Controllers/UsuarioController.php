@@ -13,6 +13,9 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Area;
 use App\Interes;
 use Illuminate\Support\Facades\Input;
+use App\Establecimiento;
+use App\Docente;
+use App\Funcionario;
 
 class UsuarioController extends Controller
 {
@@ -25,35 +28,55 @@ class UsuarioController extends Controller
 
     public function create(){
         $areas = Area::all();
-    	return view('usuario.create')->with('areas', $areas);
+        $establecimientos = Establecimiento::all();
+    	return view('usuario.create')->with([
+            'areas'=> $areas,
+            'establecimientos'=> $establecimientos,
+        ]);
     }
 
     public function store(UserCreateRequest $request){
-        $notificar = $request['notificar'];
-        //echo "notificar vale: " .$notificar;
-        if ($notificar === NULL) {
-            //echo "if ".$notificar;
-            $notificar = 1;
-        } else{
-            //echo "else ".$notificar;
-            $notificar = 0;
+        //return "Establecimiento " .$request['establecimiento'];
+        $rol = $request['rol'];
+        if($rol === "docente"){
+            $notificar = $request['notificar'];
+            if ($notificar === NULL) {
+                $notificar = 1;
+            } else{
+                $notificar = 0;
+            }        
+            $usuario = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => $request['password'],
+                'idrol' => 1,
+            ]);
+            Docente::create([
+                'user_id' => $usuario->id,
+                'notificar' => $notificar,
+            ]);
+            $this->crear_interes($usuario, $request);
+        } elseif($rol == "funcionario") {
+            //return "EStaba " .$request['establecimiento'];
+            $establecimientos = Establecimiento::all();
+            $usuario = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => $request['password'],
+                'idrol' => 2,
+            ]);
+            Funcionario::create([
+                'user_id' => $usuario->id,
+                'establecimiento_id' => $request['establecimiento'],
+            ]);
         }
-        
-        //echo "3 " .$notificar;
-
-    	$usuario = User::create([
-    		'name' => $request['name'],
-    		'email' => $request['email'],
-    		'password' => $request['password'],
-            'notificar' => $notificar,
-		]);
-        $this->crear_areas($usuario, $request);
 
         Session::flash('mensaje', 'Usuario creado');
         return Redirect::to('usuario');        
+        
     }
 
-    public function crear_areas($usuario, Request $request){
+    public function crear_interes($usuario, Request $request){
         $areas = $request['areas'];
         if(!empty($areas)){
             foreach ($areas as $area) {
@@ -72,63 +95,78 @@ class UsuarioController extends Controller
     public function edit($id){
     	//return "edit usuario" .$id;
         $user = User::find($id);
-        $areas = Area::all();
-        $intereses = Interes::where('user_id', $id)->get();
-        $areas_usuario = array();
-        foreach ($intereses as $interes) {
-            $areas_usuario[] = $interes->area_id;
+        //return $user;
+        if($user->idrol === 1){
+            //return "editar " .$user;
+            $areas = Area::all();
+            $intereses = Interes::where('user_id', $id)->get();
+            $areas_usuario = array();
+            foreach ($intereses as $interes) {
+                $areas_usuario[] = $interes->area_id;
+            }
+
+            //$user->docente->notificar = $notificar;
+
+            return view('usuario.edit', [
+                'user' => $user,
+                'areas' => $areas,
+                'areas_usuario' => $areas_usuario,
+            ]);        
+        } elseif($user->idrol === 2){
+            //return "editar " .$user;
+            $establecimientos = Establecimiento::all();
+            return view('usuario.edit', [
+                'user' => $user,
+                'establecimientos' => $establecimientos,
+            ]);        
         }
-        return view('usuario.edit', [
-            'user' => $user,
-            'areas' => $areas,
-            'areas_usuario' => $areas_usuario,
-        ]);        
+
     }
 
     public function update($id, UserUpdateRequest $request){
         //echo $request;
-        $notificar = $request['notificar'];
-        if ($notificar === NULL) {
-            $notificar = 1;
-        } else{
-            $notificar = 0;
-        }
+
         $user = User::find($id);
-        $user->fill($request->all());
-        $user->notificar = $notificar;
-        $user->save();
-
-
-        $areas = Interes::where('user_id', $id)->delete();
-        $this->crear_areas($user, $request);
-
-        /*
-        $areas = $request['areas'];
-
-
-        $inter = array();
-        foreach ($user->interes as $interes) {
-            $inter[] = $interes->area_id;
-        }
-
-        foreach ($areas as $area) {
-            if(!in_array($area, $inter)){
-                //echo "NO: " .$area;
-                Interes::create([
-                    'user_id' => $id,
-                    'area_id' => $area,
-                ]);
-            } else {
-                //echo "SI: " .$area;
+        if ($user->idrol === 1) {
+            $notificar = $request['notificar'];
+            if ($notificar === NULL) {
+                $notificar = 1;
+            } else{
+                $notificar = 0;
             }
+
+            $areas = Interes::where('user_id', $id)->delete();
+            $this->crear_interes($user, $request); 
+
+            $docente = Docente::where('user_id', $id);
+            $docente->update([
+                'notificar' => $notificar,
+            ]);
+        } elseif ($user->idrol === 2) {
+            $funcionario = Funcionario::where('user_id', $id);
+            $funcionario->update([
+                'establecimiento_id' => $request['establecimiento'],
+            ]);
         }
-        */
+
+        $user->fill($request->all());
+        $user->save();
 
         Session::flash('mensaje', 'Usuario Editado');
         return Redirect::to('usuario');
     }
 
     public function destroy($id){
+        $usuario = User::find($id);
+        if ($usuario->rol == 1) {
+            //echo "Destruir docente";
+            Docente::destroy($id);
+            Interes::where('user_id', $id)->delete();
+        } elseif($usuario->rol == 2){
+            //echo "Destruir funcionario";
+            Funcionario::destroy($id);
+        }
+
         User::destroy($id);
 
         Session::flash('mensaje', 'Usuario Eliminado');

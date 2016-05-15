@@ -5,10 +5,13 @@
 @stop
 
 @section('contenido')
-	@include('alerts.request')
+<!--	@include('alerts.request') -->
+	@include('usuario.forms.user')
+	<!-- 
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
 		@include('usuario.forms.user')
 	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+	 -->
 
 	<!--
 	<form action="{{ route('usuario.store') }}" method="post">

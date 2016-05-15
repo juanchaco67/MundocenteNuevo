@@ -8,5 +8,5 @@ class Establecimiento extends Model
 {
     //
     protected $table = 'establecimientos';
-    protected $fillable = ['nombre'];
+    protected $fillable = ['id', 'nombre'];
 }
