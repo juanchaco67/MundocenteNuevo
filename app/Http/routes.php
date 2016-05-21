@@ -38,6 +38,7 @@ Route::get('/busqueda', 'BuscadorController@index');
 Route::resource('publicacion', 'PublicacionController');
 Route::resource('usuario', 'UsuarioController');
 
+
 /*
 Route::get('publicaciones/{id}', function($id){
 	return view('publicaciones')->with('id', $id);

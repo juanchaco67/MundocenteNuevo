@@ -11,7 +11,9 @@
 	<title>Mundocente | @yield('titulo-pagina')</title>
 </head>
 <body>
+	@yield('superior')
 	@yield('contenido')
+	@yield('pie')
 
 
 <!--

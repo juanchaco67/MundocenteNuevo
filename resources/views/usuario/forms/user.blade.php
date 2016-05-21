@@ -1,5 +1,5 @@
-<div class="container">
-  	<h2>Registro</h2>
+<div class="">
+  	<!-- <h2>Registro</h2> -->
   	<ul class="nav nav-tabs">
 	    <li class="active"><a data-toggle="tab" href="#docentes">Docentes</a></li>
     	<li><a data-toggle="tab" href="#funcionarios">Publicadores</a></li>

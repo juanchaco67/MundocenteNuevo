@@ -4,7 +4,7 @@
 	Inicio
 @stop
 
-@section('contenido')
+@section('contenido2')
 	<h1>Vista Index</h1>
 
 	 @include('alerts.errors')
@@ -62,7 +62,7 @@
 
 
 
-
+@section('superior')
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -103,7 +103,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="/miarea">Mi área</a></li>
                   <li><a href="/configuracion">Configuración</a></li>
-                  <li><a href="/salir">Cerrar sesión</a></li>
+                  <li><a href="/logout">Cerrar sesión</a></li>
                 </ul>
               </div>
             </li>
@@ -116,7 +116,9 @@
     </nav>
 
   </header>
+@stop
 
+@section('contenido')
 
 <!-- Trigger the modal with a button -->
   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
@@ -134,18 +136,19 @@
 
         
 
-        <form role="form" action="registro" method="post">
+       <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
+            
             @include('usuario.forms.user')
 
           </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Registrar</button>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
         </div>
-      </form>
+      <!-- </form> -->
 
     </div>
   </div>
@@ -164,7 +167,7 @@
           <!-- </div> -->
         </div>
         <div class="banner-side col-xs-12 col-sm-12 col-md-4 col-lg-3">
-          <form action="/ingreso" method="post" class="ingreso form-horizonal">
+          <form action="{{ route('login.store') }}" method="post" class="ingreso form-horizonal">
             <!-- <fieldset> -->
 
             <!-- Form Name -->
@@ -371,12 +374,14 @@
 
 
 
-
-
         </div>
       </div>
     </div>
   </div>
+@stop
+
+
+@section('pie')
   <footer>
     <div class="container">
       <div class="bottom-footer">
@@ -395,48 +400,4 @@
   </footer>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@section('superior')
-  
-@stop
-
-@section('contenido')
-  
-@stop
-
-@section('inferior')
-  
 @stop
