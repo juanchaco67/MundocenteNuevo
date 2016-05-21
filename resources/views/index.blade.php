@@ -131,70 +131,14 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="text-center modal-title">Registrate en Mundocente</h4>
         </div>
+
+        
+
         <form role="form" action="registro" method="post">
           <div class="modal-body">
-              <legend><p>Ingresa los siguiente datos</p></legend>
-          {{ csrf_field() }}
+            @include('usuario.forms.user')
 
-          <div class="form-group">
-            <label class="text-right col-md-4 control-label" for="idrol">Soy</label>
-            <div class="col-md-8">
-              <select id="idrol" name="idrol" class="form-control">
-                <option value="1">Docente</option>
-                <option value="2">Funcionario</option>
-              </select>
-            </div>
           </div>
-
-          <!-- 
-          <div class="form-group">
-              <label for="idrol">Correo</label>
-              <input name="idrol" type="idrol" class="form-control" id="idrol" placeholder="Introduce tu nombre">
-            </div> -->
-
-            <div class="form-group">
-              <label for="email">Correo</label>
-              <input name="email" type="email" class="form-control" id="email" placeholder="Introduce tu correo">
-            </div>
-            <div class="form-group">
-              <label for="password">Contraseña</label>
-              <input name="password_confirmation" type="password" class="form-control" id="password" placeholder="Contraseña">
-          </div>
-          <div class="form-group">
-              <label for="password">Confirmar Contraseña</label>
-              <input name="password" type="password" class="form-control" id="password" placeholder="Contraseña">
-          </div>
-          <div class="checkbox">
-              <label>
-                <input type="checkbox" checked>Recibir notificaciones por correo
-              </label>
-            </div>
-
-            <hr />
-
-            <div class="form-group">
-            <label class="control-label">Me interesan</label>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" checked class="listarIntereses">Todos
-                  <span class="small"> - Puedes cambiarlos despúes</span>
-                </label>
-
-              </div>
-            <div class="intereses">
-              <ul class="list-group">
-                <li class="list-group-item"><label><input type="checkbox">Idiomas</label></li>
-                <li class="list-group-item"><label><input type="checkbox">Diseño y artes</label></li>
-              <li class="list-group-item"><label><input type="checkbox">Ingeniería</label></li>
-              <li class="list-group-item"><label><input type="checkbox">Sociales</label></li>
-              <li class="list-group-item"><label><input type="checkbox">Cultura</label></li>
-              <li class="list-group-item"><label><input type="checkbox">Deporte</label></li>
-            </ul>
-            </div>
-          </div>
-
-
-        </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
