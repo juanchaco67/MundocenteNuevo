@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+class EstablecimientoController extends Controller
+{
+    //
+     public function index(){
+        $publicaciones = Publicacion::all();
+        return view('publicacion.index', compact('publicaciones'));
+
+        /*
+        $publicaciones = Publicacion::where('nombre', 'like', '%'.$valor.'%')
+          ->orwhere('descripcion', 'like', '%'.$valor.'%')->get();
+        return view('publicacion.index')->with('publicaciones', $publicaciones);
+        return $valor;
+        */
+    }
+
+    public function create(){
+        //return "create";
+        return view('publicacion.create');
+        //return "index";
+    }
+
+    public function store(Request $request){
+        //return "store";
+        Publicacion::create([
+            'nombre' => $request['nombre'],
+            'descripcion' => $request['descripcion'],
+        ]);
+
+        Session::flash('mensaje', 'Publicacion creada');
+        return Redirect::to('publicacion');        
+    }
+
+    public function show($id){
+        return "show";
+        //$publicaciones = Publicacion::find($id);
+        //return view('index')->with('publicaciones', $publicaciones);
+    }
+
+    public function edit($id){
+        //return "edit";
+        $publicacion = publicacion::find($id);
+        return view('publicacion.edit', [
+            'publicacion' => $publicacion,
+        ]);        
+    }
+
+    public function update($id, PublicacionUpdateRequest $request){
+        //return "update";
+        $publicacion = Publicacion::find($id);
+        $publicacion->fill($request->all());
+        $publicacion->save();
+
+        Session::flash('mensaje', 'Publicacion Editada');
+        return Redirect::to('publicacion');
+    }
+
+    public function destroy($id){
+    	//return "destroy";
+        Publicacion::destroy($id);
+
+        Session::flash('mensaje', 'Publicacion Eliminada');
+        return Redirect::to('publicacion');
+    }
+}
