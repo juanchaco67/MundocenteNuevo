@@ -5,20 +5,24 @@
     	<li><a data-toggle="tab" href="#funcionarios">Publicadores</a></li>
   	</ul>
 
-  	<div class="tab-content">
-    	<div id="docentes" class="tab-pane fade in active">
-    		@include('alerts.request')
-    		{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
-      			@include('usuario.forms.docente')
-      		<input type="button" value="Registrar" onclick="registrarDocente(this);" />
-      		{!!Form::close()!!}
-    	</div>
-	    <div id="funcionarios" class="tab-pane fade">
-	    	@include('alerts.request')
-	    	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
-	    		@include('usuario.forms.funcionario')
-	    	  <input type="button" value="Registrar" onclick="registrarPublicador(this);" />
-	    	{!!Form::close()!!}
-	    </div>
-  	</div>
+ 
+    <div class="tab-content">
+      <div id="docentes" class="tab-pane fade in active">
+
+        @include('alerts.request')
+        <!-- {!!Form::open(['method'=>'post','onSubmit'=>'enviarDatos();return false;'])!!} -->
+          <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+          @include('usuario.forms.docente')
+          {!!Form::submit('Registrar', ['class'=>'btn btn-primary','id'=>'registrar_docente'])!!}
+          <!-- {!!Form::close()!!} -->
+      </div>
+      <div id="funcionarios" class="tab-pane fade">
+        @include('alerts.request')
+       <!--  {!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!} -->
+          @include('usuario.forms.funcionario')
+        {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+        <!-- {!!Form::close()!!} -->
+      </div>
+
+    </div>
 </div>

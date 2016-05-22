@@ -5,32 +5,58 @@
 
 	{!!Html::style('css/bootstrap.min.css')!!}
 	{!!Html::style('css/estilos.css')!!}
-
+<script src="../js/jquery-1.12.3.min.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo.css') }}"> -->
 	<title>Mundocente | @yield('titulo-pagina')</title>
-	<script type="text/javascript">
-	
-		function registrarDocente(formulario){			
-			var campos=document.getElementsByClassName("form-control");		
-			if(campos[0].value!="" && campos[1].value!="" && campos[2].value!="")
-				formulario.form.submit();
-			else
-				//alert("no se puede enviar cabron");
+<script type="text/javascript">
+
+
+window.onload=function(){
+
+document.getElementById('registrar_docente').onclick=function(){				
+			var campos=document.getElementsByClassName('form-control');
+			var check=document.getElementsByClassName('campo_checkbox');	
+			var rol=document.getElementsByName('rol')[0];		
+			
+				var dato=new FormData();
+				dato.append('name',campos[0].value);
+				dato.append('email',campos[1].value);
+				dato.append('password',campos[2].value);
+				dato.append('notificar',check[0].value);
+				dato.append('rol',rol.value);
+				//var ajax=new Ajax();
+				//ajax.inicializar();
+				//ajax.enviar(dato,"http://localhost:8000/pudrete");
+				//ajax.muestraContenido();
+				var route="http://localhost:8000/usuario";
+  				var valor=document.getElementById('token').value;
+				$.ajax({
+					url:route,
+					headers:{"X-CSRF-TOKEN":valor},
+					type:'POST',	
+					dataType: "html",			
+					data:dato,
+					cache: false,
+   					contentType: false,
+    				processData: false,
+    				success:function(){
+    				 window.location="http://localhost:8000/usuario";
+    				},
+					error:function(error){
+						$("#msj").html($.parseJSON(error.responseText).email+" "+$.parseJSON(error.responseText).password);
+						$("#msj-error").fadeIn();
+					}
+				});
+			
 			
 		}
+	}
 
-		function registrarPublicador(formulario){
-			var campos=document.getElementsByClassName("form-control");		
-			if(campos[0].value!="" && campos[1].value!="" && campos[2].value!="")
-				formulario.form.submit();
-			else
-				//alert("no se puede enviar cabron");
-		}
-	
-	</script>
+</script>
 </head>
 <body>
+
 	@yield('superior')
 	@yield('contenido')
 	@yield('pie')

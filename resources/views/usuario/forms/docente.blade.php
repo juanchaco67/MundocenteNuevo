@@ -1,17 +1,17 @@
 <h3>Registro de Docentes</h3>
-<input name="rol" value="docente" hidden></input>
+<input name="rol" value="docente" id="rol" hidden></input>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 @include('usuario.forms.registro')
-	<div class="form-group">
+<div class="form-group">
 		{!!Form::label('Recibir notifaciones')!!}
 		@if(isset($user))
 			@if($user->docente->notificar === 0)
-				{!!Form::checkbox('notificar', '1', true)!!}
+				{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox'))!!}
 			@else
-				{!!Form::checkbox('notificar', '1', false)!!}
+				{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox'))!!}
 			@endif
 		@else
-			{!!Form::checkbox('notificar', '0', true)!!}
+			{!!Form::checkbox('notificar', '0', true,array('class'=>'campo_checkbox'))!!}
 		@endif
 	</div>
  	<div class="form-group">
