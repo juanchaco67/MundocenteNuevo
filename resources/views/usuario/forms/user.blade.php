@@ -10,14 +10,14 @@
     		@include('alerts.request')
     		{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
       			@include('usuario.forms.docente')
-      		{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+      		<input type="button" value="Registrar" onclick="registrarDocente(this);" />
       		{!!Form::close()!!}
     	</div>
 	    <div id="funcionarios" class="tab-pane fade">
 	    	@include('alerts.request')
 	    	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
 	    		@include('usuario.forms.funcionario')
-	    	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+	    	  <input type="button" value="Registrar" onclick="registrarPublicador(this);" />
 	    	{!!Form::close()!!}
 	    </div>
   	</div>
