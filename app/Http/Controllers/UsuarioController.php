@@ -134,7 +134,7 @@ class UsuarioController extends Controller
         //echo $request;
 
         $user = User::find($id);
-        if ($user->idrol === 1) {
+        if ($user->idrol ==1) {
             $notificar = $request['notificar'];
             if ($notificar === NULL) {
                 $notificar = 1;
@@ -149,7 +149,7 @@ class UsuarioController extends Controller
             $docente->update([
                 'notificar' => $notificar,
             ]);
-        } elseif ($user->idrol === 2) {
+        } elseif ($user->idrol == 2) {
             $funcionario = Funcionario::where('user_id', $id);
             $funcionario->update([
                 'establecimiento_id' => $request['establecimiento'],
@@ -166,7 +166,7 @@ class UsuarioController extends Controller
         }
 
         Session::flash('mensaje', 'Usuario Editado');
-        return Redirect::to('usuario');
+        return $user;
     }
 
     public function destroy($id){

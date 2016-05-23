@@ -46,6 +46,38 @@ document.getElementById('registrar_docente').onclick=function(){
 			
 			
 		}
+
+	$("#formulario").submit(function(){
+ 
+			var campos=document.getElementsByClassName('form-control');
+			var check=document.getElementsByClassName('campo_checkbox');	
+			var rol=document.getElementsByName('rol')[0];		
+				var dato=new FormData();
+				dato.append('name',campos[0].value);
+				dato.append('email',campos[1].value);
+				dato.append('password',campos[2].value);
+				dato.append('notificar',check[0].value);
+				dato.append('rol',rol.value);			
+				var route={{route('usuario.update')}};
+				alert("ruta "+route);
+  				var valor=document.getElementById('token').value;
+				$.ajax({
+					url:route,
+					headers:{"X-CSRF-TOKEN":valor},
+					type:'POST',	
+					dataType: "html",			
+					data:dato,
+					cache: false,
+   					contentType: false,
+    				processData: false,
+    				success:function(resp){
+    				 	campos[0].value=$.parseJSON(resp).name;
+    				 	campos[0].value=$.parseJSON(resp).email;
+    				 	campos[0].value=$.parseJSON(resp).password;
+    				}					
+				});
+		  return false;
+ 		 });
 	}
 
 </script>
