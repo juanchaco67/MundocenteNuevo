@@ -17,11 +17,13 @@
 		<fieldset>
 			@if(!isset($areas_usuario))
 				@if(isset($areas))
+				<div class="form-group" style="overflow-y: scroll; width:100%; height: 30%;">
 					@foreach($areas as $area)				
-						<div class="form-group">
-							<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
-						</div>
+						
+							<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
+					
 					@endforeach
+						</div>
 				@endif
 			@else
 				@if(isset($areas))

@@ -10,18 +10,19 @@
       <div id="docentes" class="tab-pane fade in active">
 
         @include('alerts.request')
-         {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente'])!!}  
+         {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
           <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
           @include('usuario.forms.docente')
-          {!!Form::submit('Registrar', ['class'=>'btn btn-primary','id'=>'registrar_docente'])!!}
+          {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
           {!!Form::close()!!}
       </div>
       <div id="funcionarios" class="tab-pane fade">
         @include('alerts.request')
-       <!--  {!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!} -->
+       {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioFuncionario'])!!} 
+       <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
           @include('usuario.forms.funcionario')
         {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
-        <!-- {!!Form::close()!!} -->
+        {!!Form::close()!!}
       </div>
 
     </div>

@@ -15,6 +15,7 @@ class FrontController extends Controller
     public function index(){
     	//return view('index');
         $areas = Area::all();
+       
         $establecimientos = Establecimiento::all();
         if(Auth::check())
             return view('index')->with([

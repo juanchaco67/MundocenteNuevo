@@ -97,7 +97,7 @@
               @if( Auth::check() )
                 <li>
                   <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="btn-correo">
                 {{ Auth::user()->email }}
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
