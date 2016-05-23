@@ -123,6 +123,7 @@
 <!-- Trigger the modal with a button -->
   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 
+@if(!Auth::check())
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -152,6 +153,8 @@
 
     </div>
   </div>
+
+ @endif
 
 <!-- Modal -->
   <div id="myModalConfiguracion" class="modal fade" role="dialog">

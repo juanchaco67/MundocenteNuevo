@@ -9,6 +9,9 @@ use App\Http\Requests\LoginRequest;
 use Auth;
 use Session;
 use Redirect;
+use App\User;
+use App\Establecimiento;
+use App\Area;
 
 class LoginController extends Controller
 {
@@ -24,7 +27,21 @@ class LoginController extends Controller
         }
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
-    		return Redirect::to('/');
+            $areas = Area::all();       
+            $establecimientos = Establecimiento::all();
+            if(Auth::check()){
+
+                    
+                $user = User::find(Auth::user()->id);
+                return Redirect::to('/usuario');
+            } else {
+                return "no check";
+                return view('index')->with([
+                'areas'=> $areas,
+                'establecimientos'=> $establecimientos,
+                ]);
+            }
+    		//return Redirect::to('/');
     	}
 
     	Session::flash('mensaje-error', 'Datos incorrectos');
