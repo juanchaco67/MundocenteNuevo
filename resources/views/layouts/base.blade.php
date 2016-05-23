@@ -18,17 +18,12 @@ document.getElementById('registrar_docente').onclick=function(){
 			var campos=document.getElementsByClassName('form-control');
 			var check=document.getElementsByClassName('campo_checkbox');	
 			var rol=document.getElementsByName('rol')[0];		
-			
 				var dato=new FormData();
 				dato.append('name',campos[0].value);
 				dato.append('email',campos[1].value);
 				dato.append('password',campos[2].value);
 				dato.append('notificar',check[0].value);
-				dato.append('rol',rol.value);
-				//var ajax=new Ajax();
-				//ajax.inicializar();
-				//ajax.enviar(dato,"http://localhost:8000/pudrete");
-				//ajax.muestraContenido();
+				dato.append('rol',rol.value);			
 				var route="http://localhost:8000/usuario";
   				var valor=document.getElementById('token').value;
 				$.ajax({

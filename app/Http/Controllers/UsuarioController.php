@@ -23,6 +23,7 @@ class UsuarioController extends Controller
     public function index(){
     	//return "index de usuario";
     	$users = User::all();
+        echo "entro";
     	return view('usuario.index', compact('users'));
     }
 
@@ -96,10 +97,13 @@ class UsuarioController extends Controller
 
     public function edit($id){
     	//return "edit usuario" .$id;
+
         $user = User::find($id);
         //return $user;
-        if($user->idrol === 1){
+      
+        if($user->idrol == 1){
             //return "editar " .$user;
+       
             $areas = Area::all();
             $intereses = Interes::where('user_id', $id)->get();
             $areas_usuario = array();
@@ -113,7 +117,8 @@ class UsuarioController extends Controller
                 'user' => $user,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
-            ]);        
+            ]);   
+             echo $user;     
         } elseif($user->idrol === 2){
             //return "editar " .$user;
             $establecimientos = Establecimiento::all();

@@ -1,6 +1,4 @@
 <input name="rol" value="funcionario" hidden></input>
-<h3>Registro de Publicadores</h3>
-<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 @include('usuario.forms.registro')
 	@if(isset($establecimientos))
 		<legend>Universidad/Entidad</legend>

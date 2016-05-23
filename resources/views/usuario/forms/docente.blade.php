@@ -1,6 +1,4 @@
-<h3>Registro de Docentes</h3>
 <input name="rol" value="docente" id="rol" hidden></input>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 @include('usuario.forms.registro')
 <div class="form-group">
 		{!!Form::label('Recibir notifaciones')!!}
