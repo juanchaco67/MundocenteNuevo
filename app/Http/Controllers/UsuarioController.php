@@ -132,7 +132,7 @@ class UsuarioController extends Controller
 
     public function update($id, UserUpdateRequest $request){
         //echo $request;
-
+           
         $user = User::find($id);
         if ($user->idrol ==1) {
             $notificar = $request['notificar'];

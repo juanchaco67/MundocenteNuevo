@@ -1,15 +1,15 @@
-<input name="rol" value="docente" id="rol" hidden></input>
+<input name="rol" value="docente" id="rol"  hidden></input>
 @include('usuario.forms.registro')
 <div class="form-group">
 		{!!Form::label('Recibir notifaciones')!!}
 		@if(isset($user))
 			@if($user->docente->notificar === 0)
-				{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox'))!!}
+				{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
 			@else
-				{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox'))!!}
+				{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
 			@endif
 		@else
-			{!!Form::checkbox('notificar', '0', true,array('class'=>'campo_checkbox'))!!}
+			{!!Form::checkbox('notificar', '0', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
 		@endif
 	</div>
  	<div class="form-group">
