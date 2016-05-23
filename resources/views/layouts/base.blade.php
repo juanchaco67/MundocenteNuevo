@@ -22,7 +22,7 @@ window.onload=function(){
 				dato.append('rol',document.formularioFuncionario.rol.value);
 				dato.append('establecimiento',document.formularioFuncionario.establecimiento.value)			
 				var route=$('#formularioFuncionario').attr('action');
-  				var valor=document.getElementById('token').value;
+  				var valor=document.getElementById('toke').value;
 				$.ajax({
 					url:route,
 					headers:{"X-CSRF-TOKEN":valor},
