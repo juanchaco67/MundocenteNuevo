@@ -35,10 +35,22 @@ class BuscadorController extends Controller
                     //echo $publicacion;
                 }
                 */
-
+                /*
+                $valor = DB::table('docentes')
+                    ->where('user_id', Auth::user()->id)
+                    ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
+                    ->join('areas', 'areas.id', '=', 'intereses.area_id')
+                    ->join('grupos', 'grupos.area_id', '=', 'areas.id')
+                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
+                    ->select('publicaciones.nombre', 'publicaciones.descripcion')
+                    ->distinct()
+                    ->get();
+                return $valor;
+                */
 
 
                 $mezcla = DB::table('docentes')
+                    ->where('user_id', Auth::user()->id)
                     ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
                     ->join('areas', 'areas.id', '=', 'intereses.area_id')
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')

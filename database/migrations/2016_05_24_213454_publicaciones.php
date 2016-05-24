@@ -15,10 +15,11 @@ class Publicaciones extends Migration
         //
         Schema::create('publicaciones', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('funcionario_id');
+            $table->integer('funcionario_id')->unsigned();
             $table->foreign('funcionario_id')
                 ->references('id')
-                ->on('funcionarios');
+                ->on('funcionarios')
+                ->onDelete('cascade');
             $table->string('nombre');
             $table->string('descripcion');
             $table->timestamps();
