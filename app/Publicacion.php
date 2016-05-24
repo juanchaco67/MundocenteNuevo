@@ -9,4 +9,8 @@ class Publicacion extends Model
     //
     protected $table = "publicaciones";
     protected $fillable = ['nombre', 'descripcion'];
+
+    public function grupo(){
+    	return $this->hasMany('App\Grupo');
+    }
 }

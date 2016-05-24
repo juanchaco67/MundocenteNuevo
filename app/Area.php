@@ -13,4 +13,8 @@ class Area extends Model
     public function interes(){
     	return $this->hasMany('App\Interes');
     }
+
+    public function grupo(){
+    	return $this->hasMany('App\Grupo');
+    }
 }

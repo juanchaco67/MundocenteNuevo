@@ -27,21 +27,7 @@ class LoginController extends Controller
         }
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
-            $areas = Area::all();       
-            $establecimientos = Establecimiento::all();
-            if(Auth::check()){
-
-                    
-                $user = User::find(Auth::user()->id);
-                return Redirect::to('/usuario');
-            } else {
-                return "no check";
-                return view('index')->with([
-                'areas'=> $areas,
-                'establecimientos'=> $establecimientos,
-                ]);
-            }
-    		//return Redirect::to('/');
+    		return Redirect::to('/');
     	}
 
     	Session::flash('mensaje-error', 'Datos incorrectos');
