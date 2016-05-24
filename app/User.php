@@ -24,10 +24,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function interes(){
-        return $this->hasMany('App\Interes');
-    }
-
     public function docente(){
         return $this->hasOne('App\Docente');
     }

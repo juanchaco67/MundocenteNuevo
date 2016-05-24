@@ -15,18 +15,17 @@ class Intereses extends Migration
         //
         Schema::create('intereses', function(Blueprint $table){
             $table->integer('area_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->timestamps();
-
+            $table->integer('docente_id')->unsigned();
             $table->foreign('area_id')
                 ->references('id')
                 ->on('areas')->onDelete('cascade');
-            $table->foreign('user_id')
+            $table->foreign('docente_id')
                 ->references('id')
-                ->on('users')->onDelete('cascade');
+                ->on('docentes')->onDelete('cascade');
 
-            $table->primary(array('area_id', 'user_id'));
-            $table->unique(array('area_id', 'user_id'));
+            $table->primary(array('area_id', 'docente_id'));
+            $table->unique(array('area_id', 'docente_id'));
+            $table->timestamps();
         });
     }
 

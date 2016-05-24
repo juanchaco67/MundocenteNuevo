@@ -8,10 +8,10 @@ class Interes extends Model
 {
     //
     protected $table = "intereses";
-    protected $fillable = ['area_id', 'user_id'];
+    protected $fillable = ['area_id', 'docente_id'];
 
-    public function user(){
-    	return $this->belongsTo('App\User');
+    public function docente(){
+    	return $this->belongsTo('App\Docente');
     }
 
     public function area(){

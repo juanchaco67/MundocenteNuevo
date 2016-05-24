@@ -13,4 +13,8 @@ class Docente extends Model
     public function user(){
     	return $this->belongsTo('App\User');
     }
+
+    public function interes(){
+        return $this->hasMany('App\Interes');
+    }
 }
