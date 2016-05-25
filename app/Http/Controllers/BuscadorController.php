@@ -56,6 +56,7 @@ class BuscadorController extends Controller
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
                     ->select('publicaciones.nombre', 'publicaciones.descripcion')
+                    ->orderBy('fecha_publicacion', 'DESC')
                     ->distinct()
                     ->get();
                 //$areas = Area::find();
@@ -99,5 +100,31 @@ class BuscadorController extends Controller
         //return "create";
         return view('publicacion.create');
         //return "index";
+    }
+
+    public function store(Request $request){
+        //echo "Buscar ".$request['valor'];
+        if(!empty($request['campo'])){
+            $publicaciones = Publicacion::where('nombre', 'like', '%'.$request['campo'].'%')
+            ->orwhere('descripcion', 'like', '%'.$request['campo'].'%')
+            ->orderBy('fecha_publicacion', 'DESC')
+            ->get();            
+        } else {
+            $publicaciones = Publicacion::orderBy('fecha_publicacion', 'DESC')
+                ->get();
+        }
+        return view('index')->with([
+                'publicaciones' => $publicaciones,
+        ]);        
+    }
+
+    public function show($tipo){
+        $publicaciones = Publicacion::where('tipo', '=', $tipo)
+            ->orderBy('fecha_publicacion', 'DESC')
+            ->get();
+        //return $publicaciones->get();
+        return view('index')->with([
+                'publicaciones' => $publicaciones,
+        ]); 
     }
 }

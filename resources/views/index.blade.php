@@ -86,7 +86,7 @@
 
               <li @yield('inicio')><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
               @if( Auth::check() )
-                <li @yield('miarea')><a href="/miarea">Mi área</a></li>
+                <li @yield('miarea')><a href="/busqueda">Mi área</a></li>
               @endif
               <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
               @if( !Auth::check() )
@@ -101,7 +101,7 @@
                 {{ Auth::user()->email }}
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="/miarea">Mi área</a></li>                 
+                  <li><a href="/busqueda">Mi área</a></li>                 
                   <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
                   <li><a href="/logout">Cerrar sesión</a></li>
                 </ul>
@@ -265,8 +265,9 @@
           <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
-                <form action="buscar" method="get" class="" role="search">
+                <form action="busqueda" method="post" class="" role="search">
                   <!-- {{ csrf_field() }} -->
+                      {{ csrf_field() }}  
                       <div class="form-group">
                         <!-- <label for="buscador">Búsqueda</label> -->
                           <input id="buscador" name="campo" type="text" class="form-control" placeholder="Ej: Docente, Inglés, Sociales...">
@@ -338,7 +339,7 @@
             <div class="row">     
               <div class="servicios">
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/buscar/revista">
+                  <a href="/busqueda/revista">
                     <div id="revistas" class="text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/signature.png') }}">
                       <h3>Revistas Científicas</h3>
@@ -347,7 +348,7 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/buscar/empleo">
+                  <a href="/busqueda/convocatoria">
                     <div id="convocatorias" class="text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/business.png') }}">
                       <h3>Convocatorias Docentes</h3>
@@ -356,7 +357,7 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/buscar/evento">
+                  <a href="/busqueda/evento">
                     <div id="eventos" class="text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/time.png') }}">
                       <h3>Eventos Académicos</h3>
@@ -377,16 +378,19 @@
                       @foreach($publicaciones as $publicacion)
 
                       <article class="publicacion">            
-                        <div id="contenido-publicacion" class="">
+                        <div id="contenido-publicacion" class="">                             
                                   <h3>
                                     <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}</a>
                                   </h3>
+                                  {{--     
                                   <span>
                                     <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
                                   </span>
                                   <p>{{ $publicacion->nombre }}</p>
+                                  -->
 
                               </div>
+                            
                               <div id="fecha-publicacion" class="">                   
                                 <div class="list-group">
                               <div>Fecha publicación: <span class="small">{{ $publicacion->fecha_publicacion }}</span></div>
@@ -395,6 +399,8 @@
                           </div>
 
                         </div>
+
+                        --}}
                   
                         </article>
                         <div class="espacio">
