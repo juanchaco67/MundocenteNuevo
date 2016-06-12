@@ -20,14 +20,19 @@ class LoginController extends Controller
     public function store(LoginRequest $request){
     	//return $request['email'] . " " .$request['password'];
         //echo "ROL: " .$request['rol'];
-        if ($request['rol'] === "Docente") {
-            //echo "Hola docente";
-        } elseif ($request['rol'] === "Funcionario") {
+        if ($request['rol'] === "docente") {
+            //return "Hola docente";
+        } elseif ($request['rol'] === "funcionario") {
             //echo "Hola funcionario";
         }
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
-    		return Redirect::to('/');
+    		//return Redirect::to('/');
+            if (Auth::user()->idrol === 1) {
+                return Redirect::to('/busqueda');
+            } elseif (Auth::user()->idrol === 2) {
+                return Redirect::to('/');
+            }
     	}
 
     	Session::flash('mensaje-error', 'Datos incorrectos');

@@ -179,23 +179,25 @@
             @section('contenido')
                 <h1 class="text-center">Resultados de búsqueda</h1>
                 <div class="lista">
-
-                      @foreach($publicaciones as $publicacion)
+                  @foreach($publicaciones as $publicacion)
 
                       <article class="publicacion">            
                         <div id="contenido-publicacion" class="">                             
                                   <h3>
-                                    <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}</a>
+                                    <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}
+                                    </a>
                                   </h3>
                                   {{--     
                                   <span>
                                     <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
                                   </span>
                                   <p>{{ $publicacion->nombre }}</p>
-                                  -->
+                                  --}}
+                                  <p>{{ $publicacion->descripcion }}</p>
 
                               </div>
                             
+                            {{--
                               <div id="fecha-publicacion" class="">                   
                                 <div class="list-group">
                               <div>Fecha publicación: <span class="small">{{ $publicacion->fecha_publicacion }}</span></div>
