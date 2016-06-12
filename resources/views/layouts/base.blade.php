@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<meta charset="utf-8" />
-
 	{!!Html::style('css/bootstrap.min.css')!!}
 	{!!Html::style('css/estilos.css')!!}
 	<script src="../js/jquery-1.12.3.min.js"></script>
-	<!-- <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo.css') }}"> -->
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilos.css') }}">
+
 	<title>Mundocente | @yield('titulo-pagina')</title>
 </head>
 <body>
@@ -134,7 +133,9 @@
 
 
 
-  	@yield('superior')
+ 	<div class="row">
+		@yield('superior')
+	</div>
 
 <div class="row">
     <div class="paneles container">
@@ -147,7 +148,7 @@
           <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
-                <form action="busqueda" method="post" class="" role="search">
+                <form action="{{ route('busqueda.store') }}" method="post" class="" role="search">
                   <!-- {{ csrf_field() }} -->
                       {{ csrf_field() }}  
                       <div class="form-group">
@@ -169,20 +170,20 @@
           </div>
         </div>  
 
-        <div class="">
-          <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
-            <h3>Filtrar búsqueda</h3>
-          </div>
-          <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12">
-                <h3>Revistas</h3>
-                <h3>Convocatorias</h3>
-                <h3>Eventos</h3>
-                </div>
-              </div>
-          </div>
-        </div>  
+            <div class="">            
+	          <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
+	            <h3>Filtrar búsqueda</h3>
+	          </div>
+	          <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
+	            <div class="row">
+	              <div class="col-xs-12 col-sm-12 col-md-12">
+	                <h3><a href="/busqueda/revista">Revistas</a></h3>
+	                <h3><a href="/busqueda/convocatoria">Convocatorias</a></h3>
+	                <h3><a href="/busqueda/evento">Eventos</a></h3>
+	                </div>
+	              </div>
+	          </div>			
+	        </div>  
 
         @if( Auth::check() )
           <div class="">
@@ -212,13 +213,33 @@
         @endif
       </div>
 
-	@yield('contenido')
+	    <div class="principal col-xs-12 col-sm-12 col-md-9">
+			<div class="">
+				
+				@yield('contenido')
+				@yield('pie')
+				
+			</div>
+		</div>
+	</div>
+</div>
 
-
-
-	@yield('pie')
-
-
+<footer>
+<div class="container">
+  <div class="bottom-footer">
+    <h3>Desarrollo:</h3>
+    <ul>
+      <li>Deybi Pulido - <span class="small"> Back-End</span></li>
+      <li>Sergio Piña - <span class="small"> Front-End</span></li>
+      <li>Juan Rogriguez - <span class="small"> Aseguramiento de Calidad </span></li>
+      <li>Sebastian Sarmiento - <span class="small"> Aseguramiento de Calidad</span></li>
+    </ul>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      
+    </div>
+  </div>
+</div>
+</footer>
 
 <!--
 	{!!Html::style('js/jquery-1.12.3.min.js')!!}

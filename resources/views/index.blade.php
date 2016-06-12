@@ -134,9 +134,10 @@
 @section('contenido')
 
 <!-- Trigger the modal with a button -->
-  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> 
       <div class="principal col-xs-12 col-sm-12 col-md-9">
         <div class="">
+        -->
           
           
           <div class="contenido">
@@ -219,33 +220,9 @@
                   </div>
             @overwrite
           @endif
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
 @stop
 
 
 @section('pie')
-  <footer>
-    <div class="container">
-      <div class="bottom-footer">
-        <h3>Desarrollo:</h3>
-        <ul>
-          <li>Deybi Pulido - <span class="small"> Back-End</span></li>
-          <li>Sergio Piña - <span class="small"> Front-End</span></li>
-          <li>Juan Rogriguez - <span class="small"> Aseguramiento de Calidad </span></li>
-          <li>Sebastian Sarmiento - <span class="small"> Aseguramiento de Calidad</span></li>
-        </ul>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          
-        </div>
-      </div>
-    </div>
-  </footer>
-
 
 @stop
