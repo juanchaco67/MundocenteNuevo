@@ -12,6 +12,7 @@ use App\Interes;
 use App\Grupo;
 use App\Area;
 use App\Docente;
+use App\Establecimiento;
 use DB;
 
 class BuscadorController extends Controller
@@ -24,31 +25,6 @@ class BuscadorController extends Controller
         if(Auth::check()){
             if(Auth::user()->idrol == 1){
                 $docente = Docente::where('user_id', Auth::user()->id)->first();
-                //$intereses = Interes::where('docente_id', $docente->id)->get();
-                //$grupos = "";
-                /*
-                foreach ($intereses as $interes) {
-                    $grupos = Grupo::where('area_id', $interes->area_id)->first();
-                    //echo $grupos;
-                    $publicacion = Publicacion::find($grupos->publicacion_id)->first();
-
-                    //echo $publicacion;
-                }
-                */
-                /*
-                $valor = DB::table('docentes')
-                    ->where('user_id', Auth::user()->id)
-                    ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
-                    ->join('areas', 'areas.id', '=', 'intereses.area_id')
-                    ->join('grupos', 'grupos.area_id', '=', 'areas.id')
-                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
-                    ->select('publicaciones.nombre', 'publicaciones.descripcion')
-                    ->distinct()
-                    ->get();
-                return $valor;
-                */
-
-
                 $mezcla = DB::table('docentes')
                     ->where('user_id', Auth::user()->id)
                     ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
@@ -59,19 +35,15 @@ class BuscadorController extends Controller
                     ->orderBy('fecha_publicacion', 'DESC')
                     ->distinct()
                     ->get();
-                //$areas = Area::find();
-                //$interes = $user->interes;
-                ///$docente = Docente::first();
-                /*
-                foreach ($mezcla as $publicacion) {
-                    echo $publicacion->nombre;
-                }
-                */
+                $areas = Area::all();
+                $establecimientos = Establecimiento::all();
 
-                //return $mezcla;
+                return $this->cargar_preferencias($areas, $establecimientos, $mezcla);
+                /*
                 return view('docente.index')->with([
                     'publicaciones' => $mezcla,
                 ]);
+                */
                 
                 /*
                 foreach ($mezcla as $mez) {
@@ -113,9 +85,35 @@ class BuscadorController extends Controller
             $publicaciones = Publicacion::orderBy('fecha_publicacion', 'DESC')
                 ->get();
         }
-        return view('index')->with([
+        /*return view('index')->with([
                 'publicaciones' => $publicaciones,
-        ]);        
+        ]);
+        */        
+
+        $areas = Area::all();       
+        $establecimientos = Establecimiento::all();
+        if(Auth::check()){
+//            echo "hola";
+            return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+
+
+            /*
+            return view('index')->with([
+            'areas'=> $areas,
+            'establecimientos'=> $establecimientos,
+            'user'=>$user,
+            'publicaciones' => $publicaciones,
+            ]);
+            */
+        } else {
+            return view('index')->with([
+            'areas'=> $areas,
+            'establecimientos'=> $establecimientos,
+            'publicaciones' => $publicaciones,
+            ]);
+        }
+
+
     }
 
     public function show($tipo){
@@ -123,8 +121,66 @@ class BuscadorController extends Controller
             ->orderBy('fecha_publicacion', 'DESC')
             ->get();
         //return $publicaciones->get();
+
+            /*
         return view('index')->with([
                 'publicaciones' => $publicaciones,
         ]); 
+        */
+
+        $areas = Area::all();       
+        $establecimientos = Establecimiento::all();
+        if(Auth::check()){
+            return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+            /*
+            $user = User::find(Auth::user()->id);
+            return view('index')->with([
+            'areas'=> $areas,
+            'establecimientos'=> $establecimientos,
+            'user'=>$user,
+            'publicaciones' => $publicaciones,
+            ]);
+            */
+        } else {
+            return view('index')->with([
+            'areas'=> $areas,
+            'establecimientos'=> $establecimientos,
+            'publicaciones' => $publicaciones,
+            ]);
+        }
+    }
+
+    public function cargar_preferencias($areas, $establecimientos, $publicaciones){
+        //return "hohohoh";
+            $user = User::find(Auth::user()->id);
+            //return $user;
+            if($user->idrol == 1){ 
+                $areas = Area::all();
+                $intereses = Interes::where('docente_id', $user->id)->get();
+                $areas_usuario = array();
+                foreach ($intereses as $interes) {
+                    $areas_usuario[] = $interes->area_id;
+                }
+
+                //$user->docente->notificar = $notificar;
+
+                return view('index', [
+                    'areas'=> $areas,
+                    'establecimientos'=> $establecimientos,
+                    'user'=>$user,
+                    'publicaciones' => $publicaciones,
+                    'areas_usuario' => $areas_usuario,
+                ]);   
+             //echo $user;     
+            } elseif($user->idrol === 2){
+                //return "editar " .$user;
+                $establecimientos = Establecimiento::all();
+                return view('index', [
+                    'areas'=> $areas,
+                    'establecimientos'=> $establecimientos,
+                    'user'=>$user,
+                    'publicaciones' => $publicaciones,
+                ]);        
+            }
     }
 }

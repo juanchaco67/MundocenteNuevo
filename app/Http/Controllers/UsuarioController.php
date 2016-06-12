@@ -23,7 +23,7 @@ class UsuarioController extends Controller
     public function index(){
     	//return "index de usuario";
     	$users = User::all();
-        echo "entro";
+        //echo "entro";
     	return view('usuario.index', compact('users'));
     }
 
@@ -84,7 +84,7 @@ class UsuarioController extends Controller
         if(!empty($areas)){
             foreach ($areas as $area) {
                 Interes::create([
-                    'user_id' => $usuario->id,
+                    'docente_id' => $usuario->id,
                     'area_id' => $area,
                 ]);
             }            
@@ -105,7 +105,7 @@ class UsuarioController extends Controller
             //return "editar " .$user;
        
             $areas = Area::all();
-            $intereses = Interes::where('user_id', $id)->get();
+            $intereses = Interes::where('docente_id', $id)->get();
             $areas_usuario = array();
             foreach ($intereses as $interes) {
                 $areas_usuario[] = $interes->area_id;
@@ -142,7 +142,7 @@ class UsuarioController extends Controller
                 $notificar = 0;
             }
 
-            $areas = Interes::where('user_id', $id)->delete();
+            $areas = Interes::where('docente_id', $id)->delete();
             $this->crear_interes($user, $request); 
 
             $docente = Docente::where('user_id', $id);

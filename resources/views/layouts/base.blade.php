@@ -100,6 +100,8 @@
 
  @endif
 
+ @if( Auth::check() )
+
 <!-- Modal -->
   <div id="myModalConfiguracion" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -129,7 +131,7 @@
 
     </div>
   </div>
-
+@endif
 
 
 
@@ -319,9 +321,31 @@
 					  return false;
 		 		 });
 
-			$("#formulario").submit(function(){ 								
+			$("#actualizarDocente").submit(function(){ 								
 						var dato={'name':document.fo.name.value,'email':document.fo.email.value,'password':document.fo.password.value,'notificar':document.fo.notificar.value,'rol':document.fo.rol.value};					
-						var route=$('#formulario').attr('action');
+						var route=$('#actualizarDocente').attr('action');
+						var persona={'nombre':'camilo'}			
+		  				var valor=document.getElementById('tokenn').value;
+						$.ajax({
+							url:route,
+							headers:{"X-CSRF-TOKEN":valor},
+							type:'PUT',	
+							dataType: "html",			
+							data:dato,		
+						
+		    				success:function(resp){
+		    					document.getElementById('btn-correo').innerHTML=$.parseJSON(resp).email;
+		    				 	campos[0].value=$.parseJSON(resp).name;
+		    				 	campos[0].value=$.parseJSON(resp).email;
+		    				 	campos[0].value=$.parseJSON(resp).password;
+		    				}					
+						});
+				  return false;
+		 		 });
+
+			$("#actualizarFuncionario").submit(function(){ 								
+						var dato={'name':document.fo.name.value,'email':document.fo.email.value,'password':document.fo.password.value,'notificar':document.fo.notificar.value,'rol':document.fo.rol.value};					
+						var route=$('#actualizarFuncionario').attr('action');
 						var persona={'nombre':'camilo'}			
 		  				var valor=document.getElementById('tokenn').value;
 						$.ajax({

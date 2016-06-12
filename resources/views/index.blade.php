@@ -63,6 +63,10 @@
 
 
 @section('superior')
+
+   @include('alerts.errors')
+   @include('alerts.request')
+   
   <div class="row">
     
     <div class="superior container">
