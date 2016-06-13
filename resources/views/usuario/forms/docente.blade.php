@@ -19,8 +19,9 @@
 				@if(isset($areas))
 				<div class="form-group" style="overflow-y: scroll; width:100%; height: 30%;">
 					@foreach($areas as $area)				
-						
-							<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
+							<div class="form-group">
+								<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
+							</div>
 					
 					@endforeach
 						</div>

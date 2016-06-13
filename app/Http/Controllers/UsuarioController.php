@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 use App\Establecimiento;
 use App\Docente;
 use App\Funcionario;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -75,7 +76,17 @@ class UsuarioController extends Controller
         }
 
         Session::flash('mensaje', 'Usuario creado');
-        return Redirect::to('usuario');        
+
+        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
+            //return Redirect::to('/');
+            if (Auth::user()->idrol === 1) {
+                return Redirect::to('/busqueda');
+            } elseif (Auth::user()->idrol === 2) {
+                return Redirect::to('/');
+            }
+        }
+        Session::flash('mensaje-error', 'Datos incorrectos');
+        return Redirect::to('/');        
         
     }
 

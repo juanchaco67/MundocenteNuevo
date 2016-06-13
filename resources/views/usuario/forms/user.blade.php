@@ -10,19 +10,42 @@
       <div id="docentes" class="tab-pane fade in active">
 
         @include('alerts.request')
-         {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
-          <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
-          @include('usuario.forms.docente')
-          {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
-          {!!Form::close()!!}
+          <!--{!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
+          -->
+          <form action="{{ route('usuario.store') }}" method="post" id="formularioDocente" name="formularioDocente">
+            <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+            @include('usuario.forms.docente')
+
+            <div class="modal-footer">
+              <!-- {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+              {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
+              -->           
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" name="Registrar" class="btn btn-primary">Registrar</button>
+            </div>
+            <!--{!!Form::close()!!} -->
+          </form>
       </div>
       <div id="funcionarios" class="tab-pane fade">
         @include('alerts.request')
+        <!--
        {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioFuncionario'])!!} 
-       <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke"/>
+       -->
+       <form action="{{ route('usuario.store') }}" method="post" id="formularioDocente" name="formularioDocente">
+        <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke"/>
           @include('usuario.forms.funcionario')
-        {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
-        {!!Form::close()!!}
+
+          <div class="modal-footer">
+            <!--
+            {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+            {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
+            -->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" name="Registrar" class="btn btn-primary">Registrar</button>
+            <!-- {!!Form::close()!!} -->
+          </div>
+        </form>
       </div>
 
     </div>
