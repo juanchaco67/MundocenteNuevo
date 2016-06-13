@@ -1,6 +1,6 @@
 <div class="form-group">
 	{!!Form::label('Nombre')!!}
-	{!!Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario','name'=>'name'])!!}
+	{!!Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario','name'=>'name', 'autofocus'=>'true'])!!}
 </div>
 <div class="form-group">
 	{!!Form::label('Correo')!!}

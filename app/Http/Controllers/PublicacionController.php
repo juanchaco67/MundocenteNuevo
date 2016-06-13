@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use Redirect;
 use App\Http\Requests\PublicacionUpdateRequest;
+use Auth;
 
 class PublicacionController extends Controller
 {
@@ -38,9 +39,13 @@ class PublicacionController extends Controller
 
     public function store(Request $request){
         //return "store";
+        //return $request['tipo'] ." ". $request['fecha_cierre'];
         Publicacion::create([
+            'funcionario_id' => Auth::user()->funcionario->id,
             'nombre' => $request['nombre'],
             'descripcion' => $request['descripcion'],
+            'tipo' => $request['tipo'],
+            'fecha_cierre' => $request['fecha_cierre'],
         ]);
 
         Session::flash('mensaje', 'Publicacion creada');

@@ -37,7 +37,7 @@
 	              	@if( Auth::user()->idrol === 1 )
 	                	<li @yield('miarea')><a href="/busqueda">Mi área</a></li>
 	                @elseif( Auth::user()->idrol === 2)
-	                	<li @yield('publicacion')><a href="#">Mis Publicaciones</a></li>
+	                	<li @yield('publicacion')><a href="/publicacion">Mis publicaciones</a></li>
 	                @endif
 	              @endif
 	              <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
@@ -56,7 +56,7 @@
 		                @if( Auth::user()->idrol === 1 )
 		                	<li><a href="/busqueda">Mi área</a></li>
 		                @elseif( Auth::user()->idrol === 2)
-		                	<li><a href="#">Mis Publicaciones</a></li>
+		                	<li><a href="#">Mis publicaciones</a></li>
 		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>
@@ -151,82 +151,14 @@
 	</div>
 
 <div class="row">
-    <div class="paneles container">
 
-      <div class="panel-izquierdo col-xs-12 col-sm-12 col-md-3">
-        <div class="">
-          <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
-            <h3>Realiza una búsqueda</h3>
-          </div>
-          <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12">
-                <form action="{{ route('busqueda.store') }}" method="post" class="" role="search">
-                  <!-- {{ csrf_field() }} -->
-                      {{ csrf_field() }}  
-                      <div class="form-group">
-                        <!-- <label for="buscador">Búsqueda</label> -->
-                          <input id="buscador" name="campo" type="text" class="form-control" placeholder="Ej: Docente, Inglés, Sociales...">
-                          <!-- <h4><span class="small">Ej: Docente, Inglés, Sociales, Matemáticas</span></h4> -->
-                          <!-- <button type="submit" class="btn btn-primary">Buscar</button> -->
-                      </div>
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                      </div>
-                  </form>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="resultados">
-                </div>
-              </div>
-              </div>
-          </div>
-        </div>  
+	<div class="paneles container">
+		<div class="panel-izquierdo col-xs-12 col-sm-12 col-md-3">
 
-            <div class="">            
-	          <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
-	            <h3>Filtrar búsqueda</h3>
-	          </div>
-	          <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
-	            <div class="row">
-	              <div class="col-xs-12 col-sm-12 col-md-12">
-	                <h3><a href="/busqueda/revista">Revistas</a></h3>
-	                <h3><a href="/busqueda/convocatoria">Convocatorias</a></h3>
-	                <h3><a href="/busqueda/evento">Eventos</a></h3>
-	                </div>
-	              </div>
-	          </div>			
-	        </div>  
+		    @yield('panel')
 
-        @if( Auth::check() )
-          <div class="">
-            <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
-              <h3>Filtra la búsqueda</h3>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <form action="buscar" method="post" class="" role="search">
-                    {{ csrf_field() }}
-                        <div class="form-group">
-                          <!-- <label for="buscador">Búsqueda</label> -->
-                            <input id="buscador" name="campo" type="text" class="form-control" placeholder="Busca oportunidades...">
-                            <h4><span class="small">Ej: Docente, Inglés, Sociales, Matemáticas</span></h4>
-                            <!-- <button type="submit" class="btn btn-primary">Buscar</button> -->
-                        </div>
-                    </form>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                  <div class="resultados">
-                  </div>
-                </div>
-                </div>
-            </div>
-          </div>  
-        @endif
-      </div>
-
-	    <div class="principal col-xs-12 col-sm-12 col-md-9">
+		</div>		
+	  	<div class="principal col-xs-12 col-sm-12 col-md-9">
 			<div class="">
 				
 				@yield('contenido')

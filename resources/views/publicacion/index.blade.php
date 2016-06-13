@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.panelpublicaciones')
 
 @if(Session::has('mensaje'))
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -18,12 +18,17 @@
 		<thead>
 			<th>Nombre</th>
 			<th>Descripción</th>
-			<th>Operación</th>
+			<th>Tipo</th>
+			<th>Fecha publicado</th>
+			<th>Fecha cierre</th>
 		</thead>
 		@foreach($publicaciones as $publicacion)
 			<tbody>
 				<th>{{ $publicacion->nombre }}</th>
 				<th>{{ $publicacion->descripcion }}</th>
+				<th>{{ $publicacion->tipo }}</th>
+				<th>{{ $publicacion->created_at }}</th>
+				<th>{{ $publicacion->fecha_cierre }}</th>
 				<th>
 					{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary'])!!}
 				</th>

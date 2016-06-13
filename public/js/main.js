@@ -1,3 +1,10 @@
+$('.modal').on('shown.bs.modal', function() {
+  $(this).find('[autofocus]').focus();
+});
+$('.modal').on('hidden.bs.modal', function() {
+	return "nada";
+  $(this).find('[autofocus]').focus();
+});
 $(document).ready(function(){
 	//alert('hola');
 	var posicion = $('.panel-izquierdo').offset().top;

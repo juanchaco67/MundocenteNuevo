@@ -1,6 +1,7 @@
-@extends('layouts.funcionario')
+@extends('layouts.panelpublicaciones')
 
 @section('titulo-pagina')
+	Mis publicaciones
 @stop
 
 @section('contenido')

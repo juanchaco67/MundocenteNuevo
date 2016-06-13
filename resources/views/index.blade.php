@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.panelbusqueda')
 
 @section('titulo-pagina')
 	Inicio
@@ -40,8 +40,6 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
   </form>
-
-
 
 @stop
 
@@ -184,7 +182,7 @@
             @section('contenido')
                 <h2 class="text-center">Resultados de búsqueda</h2>
                 <div class="lista">
-                  @if($publicaciones === true)
+                  @if($publicaciones)
                     @foreach($publicaciones as $publicacion)
 
                         <article class="publicacion">            

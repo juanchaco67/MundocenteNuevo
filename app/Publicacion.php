@@ -8,7 +8,7 @@ class Publicacion extends Model
 {
     //
     protected $table = "publicaciones";
-    protected $fillable = ['nombre', 'descripcion', 'fecha_publicacion'];
+    protected $fillable = ['id', 'funcionario_id', 'nombre', 'descripcion', 'tipo', 'fecha_publicacion', 'fecha_cierre'];
 
     public function grupo(){
     	return $this->hasMany('App\Grupo');

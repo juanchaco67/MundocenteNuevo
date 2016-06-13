@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.panelbusqueda')
 
 @section('titulo-pagina')
 	Reviews

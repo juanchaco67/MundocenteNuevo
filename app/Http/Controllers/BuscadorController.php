@@ -70,7 +70,7 @@ class BuscadorController extends Controller
 
     public function create(){
         //return "create";
-        return view('publicacion.create');
+        //return view('publicacion.create');
         //return "index";
     }
 
@@ -107,9 +107,9 @@ class BuscadorController extends Controller
             */
         } else {
             return view('index')->with([
-            'areas'=> $areas,
-            'establecimientos'=> $establecimientos,
-            'publicaciones' => $publicaciones,
+                'areas'=> $areas,
+                'establecimientos'=> $establecimientos,
+                'publicaciones' => $publicaciones,
             ]);
         }
 
@@ -119,7 +119,8 @@ class BuscadorController extends Controller
     public function show($tipo){
         $publicaciones = Publicacion::where('tipo', '=', $tipo)
             ->orderBy('fecha_publicacion', 'DESC')
-            ->get();
+            ->get()
+            ->all();
         //return $publicaciones->get();
 
             /*
@@ -143,9 +144,9 @@ class BuscadorController extends Controller
             */
         } else {
             return view('index')->with([
-            'areas'=> $areas,
-            'establecimientos'=> $establecimientos,
-            'publicaciones' => $publicaciones,
+                'areas'=> $areas,
+                'establecimientos'=> $establecimientos,
+                'publicaciones' => $publicaciones,
             ]);
         }
     }
@@ -154,7 +155,8 @@ class BuscadorController extends Controller
         //return "hohohoh";
             $user = User::find(Auth::user()->id);
             //return $user;
-            if($user->idrol == 1){ 
+            //return $publicaciones;
+            if($user->idrol === 1){ 
                 $areas = Area::all();
                 $intereses = Interes::where('docente_id', $user->id)->get();
                 $areas_usuario = array();
@@ -174,6 +176,7 @@ class BuscadorController extends Controller
              //echo $user;     
             } elseif($user->idrol === 2){
                 //return "editar " .$user;
+
                 $establecimientos = Establecimiento::all();
                 return view('index', [
                     'areas'=> $areas,

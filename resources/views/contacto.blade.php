@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.panelbusqueda')
 
 @section('titulo-pagina')
 	Contacto
@@ -16,7 +16,7 @@
 				  	<h4>Dejanos tu sugerencia</h4>
 				  	<div class="form-group">
 					    <label for="name">Nombre</label>
-					    <input name="name" type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
+					    <input name="name" type="text" class="form-control" id="name" placeholder="Ingresa tu nombre" autofocus="autofocus">
 					  </div>
 				  	<div class="form-group">
 					    <label for="email">Correo</label>
