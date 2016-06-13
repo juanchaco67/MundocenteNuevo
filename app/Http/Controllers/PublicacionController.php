@@ -78,6 +78,7 @@ class PublicacionController extends Controller
 
     public function destroy($id){
     	//return "destroy";
+
         Publicacion::destroy($id);
 
         Session::flash('mensaje', 'Publicacion Eliminada');
