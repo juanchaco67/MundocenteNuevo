@@ -182,44 +182,48 @@
 
           @if(isset($publicaciones))
             @section('contenido')
-                <h1 class="text-center">Resultados de búsqueda</h1>
+                <h2 class="text-center">Resultados de búsqueda</h2>
                 <div class="lista">
-                  @foreach($publicaciones as $publicacion)
+                  @if($publicaciones === true)
+                    @foreach($publicaciones as $publicacion)
 
-                      <article class="publicacion">            
-                        <div id="contenido-publicacion" class="">                             
-                                  <h3>
-                                    <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}
-                                    </a>
-                                  </h3>
-                                  {{--     
-                                  <span>
-                                    <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
-                                  </span>
-                                  <p>{{ $publicacion->nombre }}</p>
-                                  --}}
-                                  <p>{{ $publicacion->descripcion }}</p>
+                        <article class="publicacion">            
+                          <div id="contenido-publicacion" class="">                             
+                                    <h3>
+                                      <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}
+                                      </a>
+                                    </h3>
+                                    {{--     
+                                    <span>
+                                      <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
+                                    </span>
+                                    <p>{{ $publicacion->nombre }}</p>
+                                    --}}
+                                    <p>{{ $publicacion->descripcion }}</p>
 
-                              </div>
-                            
-                            {{--
-                              <div id="fecha-publicacion" class="">                   
-                                <div class="list-group">
-                              <div>Fecha publicación: <span class="small">{{ $publicacion->fecha_publicacion }}</span></div>
-                              <div>Lugar: <span class="small">{{ $publicacion->lugar->nombre }}</span></div>
-                              <div>Tipo publicación: <span class="small">{{ $publicacion->type }}</span></div>      
+                                </div>
+                              
+                              {{--
+                                <div id="fecha-publicacion" class="">                   
+                                  <div class="list-group">
+                                <div>Fecha publicación: <span class="small">{{ $publicacion->fecha_publicacion }}</span></div>
+                                <div>Lugar: <span class="small">{{ $publicacion->lugar->nombre }}</span></div>
+                                <div>Tipo publicación: <span class="small">{{ $publicacion->type }}</span></div>      
+                            </div>
+
                           </div>
 
-                        </div>
+                          --}}
+                    
+                          </article>
+                          <div class="espacio">
+                          
+                          </div>
 
-                        --}}
-                  
-                        </article>
-                        <div class="espacio">
-                        
-                        </div>
-
-                      @endforeach
+                        @endforeach
+                      @else
+                        <h2 class="text-center"><span class="small">No se encontraron publicaciones</span></h2>
+                      @endif
                     
                   </div>
             @overwrite

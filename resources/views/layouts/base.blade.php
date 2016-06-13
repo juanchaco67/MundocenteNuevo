@@ -34,7 +34,11 @@
 
 	              <li @yield('inicio')><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
 	              @if( Auth::check() )
-	                <li @yield('miarea')><a href="/busqueda">Mi área</a></li>
+	              	@if( Auth::user()->idrol === 1 )
+	                	<li @yield('miarea')><a href="/busqueda">Mi área</a></li>
+	                @elseif( Auth::user()->idrol === 2)
+	                	<li @yield('publicacion')><a href="#">Mis Publicaciones</a></li>
+	                @endif
 	              @endif
 	              <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
 	              @if( !Auth::check() )
@@ -49,7 +53,11 @@
 	                {{ Auth::user()->email }}
 	                <span class="caret"></span></button>
 	                <ul class="dropdown-menu">
-	                  <li><a href="/busqueda">Mi área</a></li>                 
+		                @if( Auth::user()->idrol === 1 )
+		                	<li><a href="/busqueda">Mi área</a></li>
+		                @elseif( Auth::user()->idrol === 2)
+		                	<li><a href="#">Mis Publicaciones</a></li>
+		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>
 	                </ul>

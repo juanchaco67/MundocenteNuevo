@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var ancho = $('.panel-izquierdo').width();
 	$(window).scroll(function(){
 		var posScroll = $(window).scrollTop();
-		if (posScroll > posicion) {
+		if (posScroll + 50 > posicion) {
 			//alert('menor');
 			$('.panel-izquierdo').addClass('fijar-panel');
 			//$('.panel-izquierdo').attr('width', posicion);					

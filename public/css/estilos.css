@@ -6,6 +6,7 @@ nav .container {
 	//margin: 0px;
 }
 
+
 .navbar {
 	//border-bottom: 1px solid gray;
 	//border-bottom: 3px solid #e5e5e5;
@@ -255,9 +256,22 @@ footer {
 		text-decoration: none;
 	}
 
+@media all and (max-width: 1300px) {
+   	#contacto-izquierdo, #contacto-derecho {
+    	//width: 100%;
+    	//background-color: black;
+    }
+    body{
+    	//background-color: black;
+    }
+}
+
 @media all and (max-width: 1200px) {
    	#contacto-izquierdo, #contacto-derecho {
     	//width: 100%;
+    	//background-color: black;
+    }
+    body{
     	//background-color: black;
     }
 }
