@@ -82,7 +82,7 @@ class UsuarioController extends Controller
             if (Auth::user()->idrol === 1) {
                 return Redirect::to('/busqueda');
             } elseif (Auth::user()->idrol === 2) {
-                return Redirect::to('/');
+                return Redirect::to('/publicacion');
             }
         }
         Session::flash('mensaje-error', 'Datos incorrectos');
