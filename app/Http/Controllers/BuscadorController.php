@@ -31,7 +31,7 @@ class BuscadorController extends Controller
                     ->join('areas', 'areas.id', '=', 'intereses.area_id')
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
-                    ->select('publicaciones.nombre', 'publicaciones.descripcion')
+                    ->select('publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.created_at')
                     ->orderBy('created_at', 'DESC')
                     ->distinct()
                     ->get();
@@ -84,7 +84,7 @@ class BuscadorController extends Controller
             ->get();            
         } else {
             $publicaciones = Publicacion::orderBy('created_at', 'DESC')
-                ->get();
+               ->get();
         }
         /*return view('index')->with([
                 'publicaciones' => $publicaciones,

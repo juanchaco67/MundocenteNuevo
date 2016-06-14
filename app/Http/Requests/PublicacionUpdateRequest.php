@@ -26,7 +26,7 @@ class PublicacionUpdateRequest extends Request
         return [
             //
             'nombre' => 'required|max:80',
-            'resumen' => 'required|max:120',
+            'resumen' => 'required|max:180',
         ];
     }
 }
