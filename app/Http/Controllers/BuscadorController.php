@@ -32,7 +32,7 @@ class BuscadorController extends Controller
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
                     ->select('publicaciones.nombre', 'publicaciones.descripcion')
-                    ->orderBy('fecha_publicacion', 'DESC')
+                    ->orderBy('created_at', 'DESC')
                     ->distinct()
                     ->get();
                 $areas = Area::all();
@@ -78,11 +78,12 @@ class BuscadorController extends Controller
         //echo "Buscar ".$request['valor'];
         if(!empty($request['campo'])){
             $publicaciones = Publicacion::where('nombre', 'like', '%'.$request['campo'].'%')
+            ->orwhere('resumen', 'like', '%'.$request['campo'].'%')
             ->orwhere('descripcion', 'like', '%'.$request['campo'].'%')
-            ->orderBy('fecha_publicacion', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();            
         } else {
-            $publicaciones = Publicacion::orderBy('fecha_publicacion', 'DESC')
+            $publicaciones = Publicacion::orderBy('created_at', 'DESC')
                 ->get();
         }
         /*return view('index')->with([
@@ -118,7 +119,7 @@ class BuscadorController extends Controller
 
     public function show($tipo){
         $publicaciones = Publicacion::where('tipo', '=', $tipo)
-            ->orderBy('fecha_publicacion', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get()
             ->all();
         //return $publicaciones->get();

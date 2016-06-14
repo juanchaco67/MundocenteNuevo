@@ -19,7 +19,7 @@
 			<table class="table">
 				<thead>
 					<th>Nombre</th>
-					<th>Descripción</th>
+					<th>Resumen</th>
 					<th>Tipo</th>
 					<th>Fecha publicado</th>
 					<th>Fecha cierre</th>
@@ -28,7 +28,7 @@
 					@foreach($publicaciones as $publicacion)
 						<tbody>
 							<th>{{ $publicacion->nombre }}</th>
-							<th>{{ $publicacion->descripcion }}</th>
+							<th>{{ $publicacion->resumen }}</th>
 							<th>{{ $publicacion->tipo }}</th>
 							<th>{{ $publicacion->created_at }}</th>
 							<th>{{ $publicacion->fecha_cierre }}</th>
@@ -42,12 +42,13 @@
 								        <div class="modal-content">
 								            <div class="modal-header">
 								            	<button type="button" class="close" data-dismiss="modal">&times;</button>
-								                <h4 class="text-center modal-title">Borrar {{ $publicacion->nombre }}</h4>
+								                <h4 class="text-center modal-title">Borrar publicación</h4>
 								            </div>
 								            <div class="modal-body">
 								                <p>¿Seguro que desea eliminar la siguiente publicación?</p>
 								                <ul>
 								                	<li><h4>Nombre </h4>{{ $publicacion->nombre }}</li>
+								                	<li><h4>Resumen </h4>{{ $publicacion->resumen }}</li>
 								                	<li><h4>Descripción </h4>{{ $publicacion->descripcion }}</li>
 								                </ul>
 								            </div>

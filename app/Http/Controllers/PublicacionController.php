@@ -68,12 +68,13 @@ class PublicacionController extends Controller
         //return "index";
     }
 
-    public function store(Request $request){
+    public function store(PublicacionUpdateRequest $request){
         //return "store";
         //return $request['tipo'] ." ". $request['fecha_cierre'];
         $publicacion = Publicacion::create([
             'funcionario_id' => Auth::user()->funcionario->id,
             'nombre' => $request['nombre'],
+            'resumen' => $request['resumen'],
             'descripcion' => $request['descripcion'],
             'tipo' => $request['tipo'],
             'fecha_cierre' => $request['fecha_cierre'],
@@ -85,7 +86,7 @@ class PublicacionController extends Controller
         return Redirect::to('publicacion');        
     }
 
-    public function crear_grupos($publicacion, Request $request){
+    public function crear_grupos($publicacion, PublicacionUpdateRequest $request){
         $areas = $request['areas'];
         if(!empty($areas)){
             foreach ($areas as $area) {

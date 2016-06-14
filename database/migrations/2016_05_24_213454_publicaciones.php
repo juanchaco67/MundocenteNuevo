@@ -21,6 +21,7 @@ class Publicaciones extends Migration
                 ->on('funcionarios')
                 ->onDelete('cascade');
             $table->string('nombre');
+            $table->string('resumen');
             $table->string('descripcion');
             $table->enum('tipo', ['revista', 'convocatoria', 'evento']);
             $table->date('fecha_publicacion');
