@@ -45,12 +45,22 @@
 								                <h4 class="text-center modal-title">Borrar publicación</h4>
 								            </div>
 								            <div class="modal-body">
-								                <p>¿Seguro que desea eliminar la siguiente publicación?</p>
-								                <ul>
-								                	<li><h4>Nombre </h4>{{ $publicacion->nombre }}</li>
-								                	<li><h4>Resumen </h4>{{ $publicacion->resumen }}</li>
-								                	<li><h4>Descripción </h4>{{ $publicacion->descripcion }}</li>
-								                </ul>
+								            	<div>
+									                <p>¿Seguro que desea eliminar la siguiente publicación?</p>
+									                <ul>
+									                	<li>
+									                		<h4>Nombre </h4>
+									                			<p>{{ $publicacion->nombre }}</p>
+									                		</li>
+									                	<li>
+									                		<h4>Resumen </h4>
+									                			<p>{{ $publicacion->resumen }}</p></li>
+									                	<li>
+									                		<h4>Descripción </h4>
+									                		<p>{{ $publicacion->descripcion }}</p>
+									                	</li>
+									                </ul>
+									            </div>
 								            </div>
 								            <div class="modal-footer">
 								                {!!Form::open(['route'=>['publicacion.destroy', $publicacion->id], 'method'=>'delete'])!!}

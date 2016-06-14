@@ -9,7 +9,7 @@
     <div class="tab-content">
       <div id="docentes" class="tab-pane fade in active">
 
-        @include('alerts.request')
+        {{-- @include('alerts.request') --}}
           <!--{!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
           -->
           <form action="{{ route('usuario.store') }}" method="post" id="formularioDocente" name="formularioDocente">
@@ -28,7 +28,7 @@
           </form>
       </div>
       <div id="funcionarios" class="tab-pane fade">
-        @include('alerts.request')
+        {{-- @include('alerts.request') --}}
         <!--
        {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioFuncionario'])!!} 
        -->

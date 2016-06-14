@@ -64,7 +64,7 @@
 
 @section('superior')
 
-    @include('alerts.request')
+    {{--@include('alerts.request')--}}
     @include('alerts.success')
    
   <div class="row">
@@ -204,7 +204,7 @@
                           </div>
                               
                               
-                          <div id="fecha-publicacion" class="">                   
+                          <div id="fecha-publicacion" class="{{ $publicacion->tipo }}">                   
                             <div class="list-group">
                               <div>Fecha publicación: 
                                 <span class="small">{{ $publicacion->created_at }}</span>

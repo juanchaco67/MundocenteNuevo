@@ -22,6 +22,7 @@ class BuscadorController extends Controller
         //$publicaciones = Publicacion::all();
         //return view('publicacion.index', compact('publicaciones'));
         //$user = User::where('id', Auth::user()->id);
+        $filtrar = true;
         if(Auth::check()){
             if(Auth::user()->idrol == 1){
                 $docente = Docente::where('user_id', Auth::user()->id)->first();
@@ -58,12 +59,16 @@ class BuscadorController extends Controller
                 //$publicaciones = Publicacion::where('');
                 //return $intereses;
             } else {
-                return redirect()->to('/');            
+                //return  "funcio";
+               return view('index', [
+                    'filtrar' => true,
+                ]);              
             }
-            
 
         } else {
-            return redirect()->to('/');            
+            return redirect()->to('/')->with([
+                'filtrar' => true,
+            ]);            
         }
 
     }
@@ -111,6 +116,7 @@ class BuscadorController extends Controller
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
                 'publicaciones' => $publicaciones,
+                'filtrar' => true,
             ]);
         }
 
@@ -148,6 +154,7 @@ class BuscadorController extends Controller
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
                 'publicaciones' => $publicaciones,
+                'filtrar' => true,
             ]);
         }
     }
@@ -173,6 +180,7 @@ class BuscadorController extends Controller
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
                     'areas_usuario' => $areas_usuario,
+                    'filtrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -184,6 +192,7 @@ class BuscadorController extends Controller
                     'establecimientos'=> $establecimientos,
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
+                    'filtrar' => true,
                 ]);        
             }
     }

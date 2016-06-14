@@ -91,7 +91,7 @@
 
        <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
-            
+            @include('alerts.request')
             @include('usuario.forms.user')
 
           </div>
@@ -126,7 +126,7 @@
 
        <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
-            
+            @include('alerts.request')
             @include('usuario.forms.editar')
 
           </div>

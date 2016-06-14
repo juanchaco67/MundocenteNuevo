@@ -2,6 +2,10 @@
 
 }
 
+ul {
+	list-style: none;
+}
+
 nav .container {
 	//margin: 0px;
 }
@@ -207,13 +211,26 @@ body {
 		.publicacion #fecha-publicacion{
 			color: black;
 			//background-color: green;
+			border: 2px solid rgba(0, 0, 0, 0.1);
 			padding-left: 10px;
 			padding-right: 10px;
-			background: #ddd;
+			//background: #ddd;
 			border-left: 1px dashed #ccd; 
 			display: table-cell;
 			width: 25%;
 		}
+
+			.publicacion .revista {
+				background-color: rgba(172, 222, 180, 0.15);
+			}
+
+			.publicacion .convocatoria {
+				background-color: rgba(242, 229, 254, 0.68);
+			}
+
+			.publicacion .evento {
+				background-color: rgba(249, 236, 228, 0.58);
+			}
 
 	.espacio {
 		height: 20px;
