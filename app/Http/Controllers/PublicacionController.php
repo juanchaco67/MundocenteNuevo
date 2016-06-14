@@ -11,6 +11,9 @@ use Session;
 use Redirect;
 use App\Http\Requests\PublicacionUpdateRequest;
 use Auth;
+use App\User;
+use App\Area;
+use App\Establecimiento;
 
 class PublicacionController extends Controller
 {
@@ -19,9 +22,24 @@ class PublicacionController extends Controller
         //return "index";
         //return view('publicacion.index');
         //$valor = Input::get('valor');
-
         $publicaciones = Publicacion::all();
-        return view('publicacion.index', compact('publicaciones'));
+        if( Auth::check() ){
+            $user = User::find(Auth::user()->id);
+            $establecimientos = Establecimiento::all();
+            if ( $user->idrol === 2) {                
+                $publicaciones = $user->funcionario->publicacion->all();
+                //return $publicaciones;
+                //return $funcionario->publicacion;
+                //$publicaciones = $funcionario->publicaciones;
+                //return $publicaciones;
+            }
+            return view('publicacion.index', [
+                'user' => Auth::user(),
+                'publicaciones' => $publicaciones,
+                'establecimientos' => $establecimientos,
+            ]);
+        }
+        return redirect()->to('/');
 
         /*
         $publicaciones = Publicacion::where('nombre', 'like', '%'.$valor.'%')

@@ -56,7 +56,7 @@
 		                @if( Auth::user()->idrol === 1 )
 		                	<li><a href="/busqueda">Mi área</a></li>
 		                @elseif( Auth::user()->idrol === 2)
-		                	<li><a href="#">Mis publicaciones</a></li>
+		                	<li><a href="/publicacion">Mis publicaciones</a></li>
 		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>

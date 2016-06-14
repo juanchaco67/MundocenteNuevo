@@ -9,6 +9,8 @@
 
 	 @include('alerts.errors')
    @include('alerts.request')
+   @include('alerts.success')
+
 
 	<form action="{{ route('publicacion.index') }}" method="get">
     {{ csrf_field() }}
@@ -62,8 +64,9 @@
 
 @section('superior')
 
-   @include('alerts.errors')
-   @include('alerts.request')
+    @include('alerts.errors')
+    @include('alerts.request')
+    @include('alerts.success')
    
   <div class="row">
     

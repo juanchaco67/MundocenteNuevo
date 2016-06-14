@@ -103,7 +103,8 @@ class UsuarioController extends Controller
     }
 
     public function show($id){
-    	return "show usuario" .$id;
+    	//return "show usuario" .$id;
+        return Redirect::to('/');
     }
 
     public function edit($id){
@@ -129,7 +130,7 @@ class UsuarioController extends Controller
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
             ]);   
-             echo $user;     
+             //echo $user;     
         } elseif($user->idrol === 2){
             //return "editar " .$user;
             $establecimientos = Establecimiento::all();
@@ -177,7 +178,8 @@ class UsuarioController extends Controller
         }
 
         Session::flash('mensaje', 'Usuario Editado');
-        return $user;
+        return Redirect::to('/publicacion');
+        //return Redirect::to('/');
     }
 
     public function destroy($id){

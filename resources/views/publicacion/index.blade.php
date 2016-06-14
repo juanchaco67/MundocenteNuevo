@@ -10,54 +10,67 @@
 @endif
 
 @section('titulo-pagina')
-	Mostrar
+	Listar
 @stop
 
 @section('contenido')
-	<table class="table">
-		<thead>
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Tipo</th>
-			<th>Fecha publicado</th>
-			<th>Fecha cierre</th>
-			<th>Acciones</th>
-		</thead>
-		@foreach($publicaciones as $publicacion)
-			<tbody>
-				<th>{{ $publicacion->nombre }}</th>
-				<th>{{ $publicacion->descripcion }}</th>
-				<th>{{ $publicacion->tipo }}</th>
-				<th>{{ $publicacion->created_at }}</th>
-				<th>{{ $publicacion->fecha_cierre }}</th>
-				<th>
-					{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary'])!!}
-					<button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">
-					    ¿Borrar?
-					</button>
-					<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				    <div class="modal-dialog">
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                Borrar publicación
-				            </div>
-				            <div class="modal-body">
-				                <p>¿Seguro que desea eliminar la siguiente publicación?</p>
-				                <ul>
-				                	<li><h4>Nombre </h4>{{ $publicacion->nombre }}</li>
-				                </ul>
-				            </div>
-				            <div class="modal-footer">
-					            <button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">
-						    		Cancelar
+	@if(isset($publicaciones))
+		@if($publicaciones)
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Tipo</th>
+					<th>Fecha publicado</th>
+					<th>Fecha cierre</th>
+					<th>Acciones</th>
+				</thead>
+					@foreach($publicaciones as $publicacion)
+						<tbody>
+							<th>{{ $publicacion->nombre }}</th>
+							<th>{{ $publicacion->descripcion }}</th>
+							<th>{{ $publicacion->tipo }}</th>
+							<th>{{ $publicacion->created_at }}</th>
+							<th>{{ $publicacion->fecha_cierre }}</th>
+							<th>
+								{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary'])!!}
+								<button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">
+								    ¿Borrar?
 								</button>
-				                {!!link_to_route('publicacion.destroy', $title = 'Borrar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-danger'])!!}
-				            </div>
-				        </div>
-				    </div>
-				</div>
-				</th>
-			</tbody>
-		@endforeach
-	</table>
+								<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							    <div class="modal-dialog">
+							        <div class="modal-content">
+							            <div class="modal-header">
+							                Borrar publicación
+							            </div>
+							            <div class="modal-body">
+							                <p>¿Seguro que desea eliminar la siguiente publicación?</p>
+							                <ul>
+							                	<li><h4>Nombre </h4>{{ $publicacion->nombre }}</li>
+							                </ul>
+							            </div>
+							            <div class="modal-footer">
+								            <button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">
+									    		Cancelar
+											</button>
+							                {!!link_to_route('publicacion.destroy', $title = 'Borrar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-danger'])!!}
+							            </div>
+							        </div>
+							    </div>
+							</div>
+							</th>
+						</tbody>
+					@endforeach
+			</table>
+		@else
+			<h3 class="text-center">No tiene publicaciones</h3>
+			<div class="row">
+			    <div class="col-md-2 col-md-offset-5">
+			    	<div class="form-group">
+						<a href="/publicacion/create" class="form-control btn btn-primary">Crear nueva</a>
+					</div>
+			    </div>
+			</div>			
+		@endif
+	@endif
 @stop

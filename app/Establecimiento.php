@@ -9,4 +9,8 @@ class Establecimiento extends Model
     //
     protected $table = 'establecimientos';
     protected $fillable = ['id', 'nombre'];
+
+    public function funcionario(){
+		return $this->hasMany('App\Funcionario');
+	}
 }

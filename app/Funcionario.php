@@ -13,4 +13,12 @@ class Funcionario extends Model
     public function user(){
 		return $this->belongsTo('App\User');
 	}
+
+	public function publicacion(){
+		return $this->hasMany('App\Publicacion');
+	}
+
+	public function establecimiento(){
+		return $this->belongsTo('App\Establecimiento');
+	}
 }

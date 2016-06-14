@@ -13,4 +13,8 @@ class Publicacion extends Model
     public function grupo(){
     	return $this->hasMany('App\Grupo');
     }
+
+    public function funcionario(){
+		return $this->belongsTo('App\Funcionario');
+	}
 }
