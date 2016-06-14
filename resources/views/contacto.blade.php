@@ -4,10 +4,11 @@
 	Contacto
 @stop
 
+@section('titulo-contenido')
+	<h2 class="titulo">Contacto</h2>
+@stop
+
 @section('contenido')
-	<div class="superior">
-		<h1 class="text-center">Contacto</h1>
-	</div>
 	<div class="">
 		<h3 id="contacto-info" class="text-center">Contamos con el mejor equipo para resolver todas sus dudas.</h3>
 		<div id="contacto-izquierdo">

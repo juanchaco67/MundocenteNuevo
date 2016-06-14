@@ -14,6 +14,7 @@ use Auth;
 use App\User;
 use App\Area;
 use App\Establecimiento;
+use App\Funcionario;
 
 class PublicacionController extends Controller
 {
@@ -26,8 +27,12 @@ class PublicacionController extends Controller
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
             $establecimientos = Establecimiento::all();
-            if ( $user->idrol === 2) {                
-                $publicaciones = $user->funcionario->publicacion->all();
+            if ( $user->idrol === 2) {      
+                $funcionario = Funcionario::where('user_id', $user->id)
+                    ->first();
+                $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
+                    ->orderBy('created_at', 'DESC')->get()->all();
+                
                 //return $publicaciones;
                 //return $funcionario->publicacion;
                 //$publicaciones = $funcionario->publicaciones;

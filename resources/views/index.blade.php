@@ -64,7 +64,6 @@
 
 @section('superior')
 
-    @include('alerts.errors')
     @include('alerts.request')
     @include('alerts.success')
    
@@ -87,6 +86,7 @@
             <!-- Form Name -->
             {{ csrf_field() }}
             <legend class="text-center">Ingreso</legend>
+            @include('alerts.errors')
 
             <!-- Text input-->
             <div class="form-group">
@@ -135,6 +135,9 @@
 @stop
 
 
+@section('titulo-contenido')
+  <h2 class="titulo">Servicios</h2>
+@stop
 
 @section('contenido')
 
@@ -142,11 +145,10 @@
   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> 
       <div class="principal col-xs-12 col-sm-12 col-md-9">
         <div class="">
-        -->
-          
+        -->         
           
           <div class="contenido">
-            <h1 class="titulo">Servicios</h1>
+            
             <div class="row">     
               <div class="servicios">
                 <div class="col-xs-12 col-sm-12 col-md-4">

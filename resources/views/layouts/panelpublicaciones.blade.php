@@ -1,5 +1,9 @@
 @extends('layouts.base')
 
+@section('titulo-contenido')
+	<h2 class="titulo">Mis publicaciones</h2>
+@stop
+
 @section('panel')
 	<div class="">
 	  <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">

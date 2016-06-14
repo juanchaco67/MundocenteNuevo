@@ -153,6 +153,7 @@
 <div class="row">
 
 	<div class="paneles container">
+		@yield('titulo-contenido')
 		<div class="panel-izquierdo col-xs-12 col-sm-12 col-md-3">
 
 		    @yield('panel')
@@ -160,7 +161,6 @@
 		</div>		
 	  	<div class="principal col-xs-12 col-sm-12 col-md-9">
 			<div class="">
-				
 				@yield('contenido')
 				@yield('pie')
 				
