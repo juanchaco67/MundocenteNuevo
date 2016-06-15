@@ -39,13 +39,15 @@ class PublicacionController extends Controller
                 //return $funcionario->publicacion;
                 //$publicaciones = $funcionario->publicaciones;
                 //return $publicaciones;
+               return view('publicacion.index', [
+                    'areas' => $areas,
+                    'user' => Auth::user(),
+                    'publicaciones' => $publicaciones,
+                    'establecimientos' => $establecimientos,
+                ]);
+            } else {
+                return redirect()->to('/busqueda');
             }
-            return view('publicacion.index', [
-                'areas' => $areas,
-                'user' => Auth::user(),
-                'publicaciones' => $publicaciones,
-                'establecimientos' => $establecimientos,
-            ]);
         }
         return redirect()->to('/');
 

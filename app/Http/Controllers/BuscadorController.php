@@ -13,6 +13,7 @@ use App\Grupo;
 use App\Area;
 use App\Docente;
 use App\Establecimiento;
+use App\Funcionario;
 use DB;
 
 class BuscadorController extends Controller
@@ -31,20 +32,72 @@ class BuscadorController extends Controller
                     ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
                     ->join('areas', 'areas.id', '=', 'intereses.area_id')
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
-                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
-                    ->select('publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.created_at')
+                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')                    
+                    ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
                     ->orderBy('created_at', 'DESC')
                     ->distinct()
                     ->get();
+                    //return var_dump($mezcla->"nombre");
+
+                    //return $mezcla;
+                    $mett = array();
+                    foreach ($mezcla as $me) {
+                        $mett[] = $me->id;
+                    }
+
+                    //return $mett;
+
+
+                    $publicaciones = array();
+                    foreach ($mezcla as $mez) {
+                        //echo $mez->id;
+                        //echo Publicacion::find($mez->id);
+                        $publicaciones[] = Publicacion::find($mez->id);;
+                    }
+                    //return $publicaciones;
+                    //$publicaciones = $mezcla->
+                    //$areas = Area::all();
+                    //$funcionarios = Funcionario::where('id', $mezcla->funcionario_id);
+                    /*$establecimientos = Establecimiento::where('id', $funcionarios->);
+
+                    return $this->cargar_preferencias($areas, $establecimientos, $mezcla);
+                    return $mezcla;
+                    */
+                    /*
+                    $funcionarios = array();
+                    foreach ($mezcla as $mez) {
+                        $funcionarios[] = Funcionario::find($mez->funcionario_id)->get();
+                        //$establecimiento = $funcionario->establecimiento;
+                        //echo $funcionarios;
+                    }
+                    */
+
+                    //return $funcionarios;
+                    /*
+
+                    $mezcla2 = DB::table('docentes')
+                        ->where('user_id', Auth::user()->id)
+                        ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
+                        ->orderBy('user_id', 'DESC')
+                        ->distinct()
+                        ->get();
+
+                        //echo $mezcla2;
+                    return $mezcla2;
                 $areas = Area::all();
                 $establecimientos = Establecimiento::all();
 
                 return $this->cargar_preferencias($areas, $establecimientos, $mezcla);
-                /*
-                return view('docente.index')->with([
-                    'publicaciones' => $mezcla,
-                ]);
                 */
+                $areas = Area::all();
+                $establecimientos = Establecimiento::all();
+                return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+                
+                return view('index')->with([
+                    'publicaciones' => $publicaciones,
+                    
+                ]);
+                
                 
                 /*
                 foreach ($mezcla as $mez) {

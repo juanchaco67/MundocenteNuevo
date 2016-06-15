@@ -189,7 +189,7 @@
                 <div class="lista">
                   @if($publicaciones)
                     @foreach($publicaciones as $publicacion)
-
+                        
                         <article class="publicacion">            
                           <div id="contenido-publicacion" class="">                             
                                     <h3>
