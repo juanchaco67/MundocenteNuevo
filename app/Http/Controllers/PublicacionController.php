@@ -16,6 +16,7 @@ use App\Area;
 use App\Establecimiento;
 use App\Funcionario;
 use App\Grupo;
+use App\Lugar;
 
 class PublicacionController extends Controller
 {
@@ -29,6 +30,7 @@ class PublicacionController extends Controller
             $user = User::find(Auth::user()->id);
             $areas = Area::all();
             $establecimientos = Establecimiento::all();
+            $lugares = Lugar::all();
             if ( $user->idrol === 2) {      
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
@@ -44,6 +46,7 @@ class PublicacionController extends Controller
                     'user' => Auth::user(),
                     'publicaciones' => $publicaciones,
                     'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
                 ]);
             } else {
                 return redirect()->to('/busqueda');
@@ -62,10 +65,12 @@ class PublicacionController extends Controller
     public function create(){
         //return "create";
         $areas = Area::all();
+        $lugares = Lugar::all();
         $areas_publicacion = array();
         return view('publicacion.create', [
             'areas' => $areas,
             'areas_publicacion' => $areas_publicacion,
+            'lugares' => $lugares,
         ]);
         //return "index";
     }
@@ -78,6 +83,7 @@ class PublicacionController extends Controller
             'nombre' => $request['nombre'],
             'resumen' => $request['resumen'],
             'descripcion' => $request['descripcion'],
+            'lugar_id' => $request['lugar'],
             'tipo' => $request['tipo'],
             'fecha_cierre' => $request['fecha_cierre'],
         ]);
@@ -117,16 +123,22 @@ class PublicacionController extends Controller
         }
 
 
+        $lugares = Lugar::all();
         return view('publicacion.edit', [
             'publicacion' => $publicacion,
             'areas' => $areas,
             'areas_publicacion' => $areas_publicacion,
+            'user' => Auth::user(),
+            'lugares' => $lugares,
         ]);        
     }
 
     public function update($id, PublicacionUpdateRequest $request){
         //return "update";
         $publicacion = Publicacion::find($id);
+            $publicacion->update([
+                'lugar_id' => $request['lugar'],
+            ]);
         $publicacion->fill($request->all());
         $publicacion->save();
 

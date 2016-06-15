@@ -15,6 +15,28 @@
 	{!!Form::select('tipo', array('revista' => 'Revista', 'convocatoria' => 'Convocatoria', 'evento' => 'Evento'), null, ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
+	{!!Form::label('Lugar')!!}
+	@if(isset($lugares))
+		<div class="form-group">
+			<select name="lugar" class="form-control">
+				@foreach($lugares as $lugar)
+					@if(!isset($user))
+				    	<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>
+				    @else
+				    	@if($publicacion->lugar_id === $lugar->id)
+				    		<option value="{{ $lugar->id }}" selected>{{ $lugar->nombre }}</option>
+				    	@else
+				    		<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>   		
+				    	@endif
+				    @endif
+				@endforeach
+			  </select>
+		</div>
+	@else
+		<h6>No hay lugares</h6>
+	@endif
+</div>
+<div class="form-group">
 	{!!Form::label('Fecha cierre')!!}
 	{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
 </div>

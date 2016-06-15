@@ -210,9 +210,7 @@
                                 <span class="small">{{ $publicacion->created_at }}</span>
                               </div>
                               <div>Lugar: 
-                                {{--
                                 <span class="small">{{ $publicacion->lugar->nombre }}</span>
-                                --}}
                               </div>
                               <div>Tipo publicación: 
                                 <span class="small">{{ $publicacion->tipo }}</span>
