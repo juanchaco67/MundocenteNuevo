@@ -1,9 +1,12 @@
 $('.modal').on('shown.bs.modal', function() {
-  $(this).find('[autofocus]').focus();
+  	$(this).find('[autofocus]').focus();
 });
 $('.modal').on('hidden.bs.modal', function() {
-	
-  $(this).find('[autofocus]').focus();
+	//console.log('borrar');
+  	//$(this).find('[autofocus]').focus();
+  	$(this).find('form')[0].reset(); 
+  	$(".alert").remove();
+  	//$(this).remove();
 });
 
 $(document).ready(function(){
