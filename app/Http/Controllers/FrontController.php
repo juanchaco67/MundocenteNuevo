@@ -34,6 +34,7 @@ class FrontController extends Controller
                     'user' => $user,
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
+                    'sinfiltrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -42,6 +43,7 @@ class FrontController extends Controller
                 return view('index', [
                     'user' => $user,
                     'establecimientos' => $establecimientos,
+                    'sinfiltrar' => true,
                 ]);        
             }
 
@@ -54,8 +56,9 @@ class FrontController extends Controller
             */
         } else {
             return view('index')->with([
-            'areas'=> $areas,
-            'establecimientos'=> $establecimientos,
+                'areas'=> $areas,
+                'establecimientos'=> $establecimientos,
+                'sinfiltrar' => true,
             ]);
         }
     

@@ -4,64 +4,6 @@
 	Inicio
 @stop
 
-@section('contenido2')
-	<h1>Vista Index</h1>
-
-	 @include('alerts.errors')
-   @include('alerts.request')
-   @include('alerts.success')
-
-
-	<form action="{{ route('publicacion.index') }}" method="get">
-    {{ csrf_field() }}
-    <div class="form-group">
-      <label>Buscar</label>
-      <input name="valor" class="form-control" type="text"></input>  
-    </div>		
-    <input class="btn btn-primary" type="submit" value="Buscar"></input>
-	</form>
-
-  <form action="{{ route('login.store') }}" method="post" class="form-signin">
-    {{ csrf_field() }}
-    <h2 class="form-signin-heading">Ingresar</h2>
-    <!--
-    <label for="rol">Soy</label>
-    <select name="rol" class="form-control">
-      <option>Docente</option>
-      <option>Funcionario</option>
-    </select>
-    -->
-    <label for="email" class="sr-only">Correo</label>
-    <input id="email" name="email" class="form-control" placeholder="Email address"  autofocus="">
-    <label for="password" class="sr-only">Contraseña</label>
-    <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Recordar
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
-  </form>
-
-@stop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @section('superior')
 
     {{--@include('alerts.request')--}}
@@ -183,55 +125,7 @@
           </div>
 
 
-          @if(isset($publicaciones))
-            @section('contenido')
-                <h2 class="text-center">Resultados de búsqueda</h2>
-                <div class="lista">
-                  @if($publicaciones)
-                    @foreach($publicaciones as $publicacion)
-                        
-                        <article class="publicacion">            
-                          <div id="contenido-publicacion" class="">                             
-                                    <h3>
-                                      <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}
-                                      </a>
-                                    </h3> 
-                                    <span>
-                                      <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
-                                    </span>
-                                    <p class="descripcion">{{ $publicacion->resumen }}</p>
-
-                          </div>
-                              
-                              
-                          <div id="fecha-publicacion" class="{{ $publicacion->tipo }}">                   
-                            <div class="list-group">
-                              <div>Fecha publicación: 
-                                <span class="small">{{ $publicacion->created_at }}</span>
-                              </div>
-                              <div>Lugar: 
-                                <span class="small">{{ $publicacion->lugar->nombre }}</span>
-                              </div>
-                              <div>Tipo publicación: 
-                                <span class="small">{{ $publicacion->tipo }}</span>
-                              </div>      
-                            </div>
-
-                          </div>
-                    
-                          </article>
-                          <div class="espacio">
-                          
-                          </div>
-
-                        @endforeach
-                      @else
-                        <h2 class="text-center"><span class="small">No se encontraron publicaciones</span></h2>
-                      @endif
-                    
-                  </div>
-            @overwrite
-          @endif
+          @include('reviews')
 @stop
 
 

@@ -35,9 +35,9 @@
 	              <li @yield('inicio')><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
 	              @if( Auth::check() )
 	              	@if( Auth::user()->idrol === 1 )
-	                	<li @yield('miarea')><a href="/busqueda">Mi área</a></li>
+	                	<li @yield('miarea')><a class="area" href="/busqueda">Mi área</a></li>
 	                @elseif( Auth::user()->idrol === 2)
-	                	<li @yield('publicacion')><a href="/publicacion">Mis publicaciones</a></li>
+	                	<li @yield('publicacion')><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
 	                @endif
 	              @endif
 	              <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
@@ -54,9 +54,9 @@
 	                <span class="caret"></span></button>
 	                <ul class="dropdown-menu">
 		                @if( Auth::user()->idrol === 1 )
-		                	<li><a href="/busqueda">Mi área</a></li>
+		                	<li><a class="area" href="/busqueda">Mi área</a></li>
 		                @elseif( Auth::user()->idrol === 2)
-		                	<li><a href="/publicacion">Mis publicaciones</a></li>
+		                	<li><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
 		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>
@@ -150,7 +150,7 @@
 		@yield('superior')
 	</div>
 
-<div class="row">
+<div class="cuerpo row">
 
 	<div class="paneles container">
 		@yield('titulo-contenido')
@@ -160,7 +160,7 @@
 
 		</div>		
 	  	<div class="principal col-xs-12 col-sm-12 col-md-9">
-			<div class="">
+			<div class="contenido">
 				@yield('contenido')
 				@yield('pie')
 				

@@ -23,7 +23,6 @@ class BuscadorController extends Controller
         //$publicaciones = Publicacion::all();
         //return view('publicacion.index', compact('publicaciones'));
         //$user = User::where('id', Auth::user()->id);
-        $filtrar = true;
         if(Auth::check()){
             if(Auth::user()->idrol == 1){
                 $docente = Docente::where('user_id', Auth::user()->id)->first();
@@ -93,7 +92,7 @@ class BuscadorController extends Controller
                 $establecimientos = Establecimiento::all();
                 return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
                 
-                return view('index')->with([
+                return view('reviews')->with([
                     'publicaciones' => $publicaciones,
                     
                 ]);
@@ -113,14 +112,13 @@ class BuscadorController extends Controller
                 //return $intereses;
             } else {
                 //return  "funcio";
+
                return view('index', [
-                    'filtrar' => true,
                 ]);              
             }
 
         } else {
             return redirect()->to('/')->with([
-                'filtrar' => true,
             ]);            
         }
 
@@ -138,11 +136,13 @@ class BuscadorController extends Controller
             $publicaciones = Publicacion::where('nombre', 'like', '%'.$request['campo'].'%')
             ->orwhere('resumen', 'like', '%'.$request['campo'].'%')
             ->orwhere('descripcion', 'like', '%'.$request['campo'].'%')
+            ->orwhere('tipo', 'like', '%'.$request['campo'].'%')
             ->orderBy('created_at', 'DESC')
             ->get();            
         } else {
-            $publicaciones = Publicacion::orderBy('created_at', 'DESC')
-               ->get();
+            //$publicaciones = Publicacion::orderBy('created_at', 'DESC')
+            $publicaciones = array();
+               //->get();
         }
         /*return view('index')->with([
                 'publicaciones' => $publicaciones,
@@ -165,11 +165,11 @@ class BuscadorController extends Controller
             ]);
             */
         } else {
-            return view('index')->with([
+            //return $publicaciones;
+            return view('reviews')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
                 'publicaciones' => $publicaciones,
-                'filtrar' => true,
             ]);
         }
 
@@ -203,11 +203,10 @@ class BuscadorController extends Controller
             ]);
             */
         } else {
-            return view('index')->with([
+            return view('reviews')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
                 'publicaciones' => $publicaciones,
-                'filtrar' => true,
             ]);
         }
     }
@@ -227,25 +226,23 @@ class BuscadorController extends Controller
 
                 //$user->docente->notificar = $notificar;
 
-                return view('index', [
+                return view('reviews', [
                     'areas'=> $areas,
                     'establecimientos'=> $establecimientos,
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
                     'areas_usuario' => $areas_usuario,
-                    'filtrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
                 //return "editar " .$user;
 
                 $establecimientos = Establecimiento::all();
-                return view('index', [
+                return view('reviews', [
                     'areas'=> $areas,
                     'establecimientos'=> $establecimientos,
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
-                    'filtrar' => true,
                 ]);        
             }
     }
