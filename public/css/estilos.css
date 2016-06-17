@@ -2,6 +2,12 @@
 
 }
 
+.barra-scroll {
+	width: 100%;
+	height: 115px;
+	overflow: scroll;
+}
+
 ul {
 	list-style: none;
 }

@@ -10,6 +10,7 @@ use App\Establecimiento;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Interes;
+use App\Lugar;
 
 class FrontController extends Controller
 {
@@ -19,6 +20,7 @@ class FrontController extends Controller
         $areas = Area::all();       
         $establecimientos = Establecimiento::all();
         if(Auth::check()){
+            $lugares = Lugar::where('tipo', '=', 'municipio')->get();
             $user = User::find(Auth::user()->id);
             if($user->idrol == 1){ 
                 $areas = Area::all();
@@ -34,15 +36,19 @@ class FrontController extends Controller
                     'user' => $user,
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
                     'sinfiltrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
                 //return "editar " .$user;
-                $establecimientos = Establecimiento::all();
+                //$establecimientos = Establecimiento::all();
                 return view('index', [
                     'user' => $user,
+                    'areas' => $areas,
                     'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
                     'sinfiltrar' => true,
                 ]);        
             }
@@ -70,6 +76,7 @@ class FrontController extends Controller
         $establecimientos = Establecimiento::all();
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
+            $lugares = Lugar::where('tipo', '=', 'municipio')->get();
             if($user->idrol == 1){ 
                 $areas = Area::all();
                 $intereses = Interes::where('docente_id', $user->id)->get();
@@ -84,6 +91,7 @@ class FrontController extends Controller
                     'user' => $user,
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
+                    'lugares' => $lugares,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -91,7 +99,9 @@ class FrontController extends Controller
                 $establecimientos = Establecimiento::all();
                 return view('contacto', [
                     'user' => $user,
+                    'areas' => $areas,
                     'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
                 ]);        
             }
 
@@ -104,8 +114,8 @@ class FrontController extends Controller
             */
         } else {
             return view('contacto')->with([
-            'areas'=> $areas,
-            'establecimientos'=> $establecimientos,
+                'areas'=> $areas,
+                'establecimientos'=> $establecimientos,
             ]);
         }
     }

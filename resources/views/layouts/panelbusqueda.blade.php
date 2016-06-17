@@ -35,8 +35,6 @@
 	  </div>
 	</div>  
 
-	@include('filtro')
-
 	@if(!isset($sinfiltrar))
 		    <div class="panel-group">            
 			      <div class="panel panel-heading text-center col-xs-12 col-sm-12 col-md-12" role="tablist" data-toggle="collapse" data-target="#filtros">
@@ -74,6 +72,9 @@
 	@endif
 
 	@if( Auth::check() )
+			@include('filtro')
+
+			<!--
 			  <div class="">
 			    <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
 			      <h3>Filtra la búsqueda</h3>
@@ -84,11 +85,10 @@
 			          <form action="buscar" method="post" class="" role="search">
 			            {{ csrf_field() }}
 			                <div class="form-group">
-			                  <!-- <label for="buscador">Búsqueda</label> 
+			                  	<label for="buscador">Búsqueda</label> 
 			                    <input id="buscador" name="campo" type="text" class="form-control" placeholder="Busca oportunidades...">
-			                    -->
 			                    <h4><span class="small">Ej: Docente, Inglés, Sociales, Matemáticas</span></h4>
-			                    <!-- <button type="submit" class="btn btn-primary">Buscar</button> -->
+			                    <button type="submit" class="btn btn-primary">Buscar</button>
 			                </div>
 			            </form>
 			          </div>
@@ -99,5 +99,6 @@
 			        </div>
 			    </div>
 			  </div>  
+			  -->
 	@endif
 @stop

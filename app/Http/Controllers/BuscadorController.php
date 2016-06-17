@@ -14,6 +14,7 @@ use App\Area;
 use App\Docente;
 use App\Establecimiento;
 use App\Funcionario;
+use App\Lugar;
 use DB;
 
 class BuscadorController extends Controller
@@ -59,7 +60,7 @@ class BuscadorController extends Controller
                     //$funcionarios = Funcionario::where('id', $mezcla->funcionario_id);
                     /*$establecimientos = Establecimiento::where('id', $funcionarios->);
 
-                    return $this->cargar_preferencias($areas, $establecimientos, $mezcla);
+                    return $this->cargar_preferencias($mezcla);
                     return $mezcla;
                     */
                     /*
@@ -86,16 +87,17 @@ class BuscadorController extends Controller
                 $areas = Area::all();
                 $establecimientos = Establecimiento::all();
 
-                return $this->cargar_preferencias($areas, $establecimientos, $mezcla);
+                return $this->cargar_preferencias($mezcla);
                 */
-                $areas = Area::all();
-                $establecimientos = Establecimiento::all();
-                return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+                return $this->cargar_preferencias($publicaciones);
                 
+                /*
                 return view('reviews')->with([
                     'publicaciones' => $publicaciones,
+                    'lugares' => $lugares,
                     
                 ]);
+                */
                 
                 
                 /*
@@ -149,11 +151,9 @@ class BuscadorController extends Controller
         ]);
         */        
 
-        $areas = Area::all();       
-        $establecimientos = Establecimiento::all();
         if(Auth::check()){
 //            echo "hola";
-            return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+            return $this->cargar_preferencias($publicaciones);
 
 
             /*
@@ -166,6 +166,8 @@ class BuscadorController extends Controller
             */
         } else {
             //return $publicaciones;
+            $areas = Area::all();       
+            $establecimientos = Establecimiento::all();
             return view('reviews')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
@@ -189,10 +191,10 @@ class BuscadorController extends Controller
         ]); 
         */
 
-        $areas = Area::all();       
-        $establecimientos = Establecimiento::all();
+        //$areas = Area::all();       
+        //$establecimientos = Establecimiento::all();
         if(Auth::check()){
-            return $this->cargar_preferencias($areas, $establecimientos, $publicaciones);
+            return $this->cargar_preferencias($publicaciones);
             /*
             $user = User::find(Auth::user()->id);
             return view('index')->with([
@@ -211,9 +213,19 @@ class BuscadorController extends Controller
         }
     }
 
-    public function cargar_preferencias($areas, $establecimientos, $publicaciones){
+    public function filtrar_busqueda($publicaciones, $filtros){
+
+        //$publicaciones 
+        return $publicaciones;
+    }
+
+    public function cargar_preferencias($publicaciones){
         //return "hohohoh";
             $user = User::find(Auth::user()->id);
+            $areas = Area::all();
+            $establecimientos = Establecimiento::all();
+            $lugares = Lugar::where('tipo', '=', 'municipio')->get();
+
             //return $user;
             //return $publicaciones;
             if($user->idrol === 1){ 
@@ -232,6 +244,7 @@ class BuscadorController extends Controller
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
                     'areas_usuario' => $areas_usuario,
+                    'lugares' => $lugares,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -243,7 +256,9 @@ class BuscadorController extends Controller
                     'establecimientos'=> $establecimientos,
                     'user'=>$user,
                     'publicaciones' => $publicaciones,
+                    'lugares' => $lugares,
                 ]);        
             }
     }
 }
+
