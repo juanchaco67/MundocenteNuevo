@@ -8,7 +8,7 @@
 	  <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
 	    <div class="row">
 	      <div class="col-xs-12 col-sm-12 col-md-12">
-	        <form action="{{ route('busqueda.store') }}" method="post" class="" role="search">
+	        {{-- <form action="{{ route('busqueda.store') }}" method="post" class="" role="search"> --}}
 	          <!-- {{ csrf_field() }} -->
 	              <input type="hidden" name="_token" value="{{ csrf_token() }}" id="busquedatoken"/>
 	              <div class="form-group">
@@ -22,7 +22,7 @@
 	                <button id="buscar" type="submit" class="btn btn-primary">Buscar</button>
 	              </div>
 	              -->
-	          </form>
+	          {{-- </form> --}}
 	        </div>
 	     </div>
 	     <div class="row">

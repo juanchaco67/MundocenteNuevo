@@ -6,95 +6,69 @@ $(document).ready(function() {
         	//return alert("El texto del botón es --> " + $("#convocatoria").attr("value"));
     });
 	
-	$('#revista').click(function() {
-		//return $(this);
-		/*
-		var nombre = $('#revista').attr('name');
+	$('input[type=checkbox]').click(function() {
+		var nombre = $(this).attr('value');
         if ($(this).is(':checked')) {
             //return confirm("Are you sure?");
-            return alert("Seleccionado " + nombre);
+            //return alert("Seleccionado " + nombre);
+            realizar_busqueda();
         } else {
-        	return alert("NO Seleccionado " + nombre);
+        	//return alert("NO Seleccionado " + nombre);
+        	realizar_busqueda();
         }
-        */
-
     });
 
+
 	var valor=document.getElementById('busquedatoken').value;                                           
-    $("#buscador").keyup(function(e){                              
+    $("#buscador").keyup(function(e){       
+    	event.preventDefault();                       
 	      //obtenemos el texto introducido en el campo de búsqueda
-	      consulta = $("#buscador").val();
-	      //tipo = $("input[]").val();
-
-	       //$('#enviar').click(function(){
-	       		var data = { 'consulta' : consulta, 'tipos[]' : [], 
-	       			'areas[]' : [], 'lugares[]' : [], 'establecimientos[]' : []};
-				$("input[name=tipo]:checked").each(function() {
-				  data['tipos[]'].push($(this).val());
-				});
-
-				$("input[name=areas]:checked").each(function() {
-				  data['areas[]'].push($(this).val());
-				});
-
-				$("input[name=lugares]:checked").each(function() {
-				  data['lugares[]'].push($(this).val());
-				});
-
-				$("input[name=establecimientos]:checked").each(function() {
-				  data['establecimientos[]'].push($(this).val());
-				});
-
-				console.log("consulta " + data['consulta']);
-				console.log("tipos " + data['tipos[]']);
-				console.log("areas " + data['areas[]']);
-				console.log("lugares " + data['lugares[]']);
-				console.log("establecimientos " + data['establecimientos[]']);
-
-		        /*
-		        var selected = '';    
-		        $('input[name=tipo]').each(function(){
-		            if (this.checked) {
-		                selected += $(this).val()+', ';
-		            }
-		        }); 
-
-		        if (selected != '') {
-		            alert('Has seleccionado: '+selected);  
-		        } else {
-		            alert('Debes seleccionar al menos una opción.');
-		        }
-
-		        return false;
-		        */
-		    //});         
-
-
-	      //return alert(tipo);
-	      //consulta = array();
-	       //console.log(consulta);                          ;
-	      //hace la búsqueda
-	      $.ajax({
-	            type: "POST",
-	            headers:{"X-CSRF-TOKEN":valor},
-	            url: "http://localhost:8000/busqueda",
-	            //data: "campo="+data,
-	            data: data,
-	            dataType: "html",
-	            beforeSend: function(){
-	                  //imagen de carga
-	                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
-	            },
-	            error: function(){
-	                  alert("error petición ajax");
-	            },
-	            success: function(data){        
-	            	//console.log(data); 
-	            	$('.contenido').empty();
-	            	$('.contenido').append(data);	                                                     
-	            }
-	      });
+  		realizar_busqueda();
 	});
+
+    function realizar_busqueda(){
+    	campo = $("#buscador").val();
+   		var data = { 'campo' : campo, 'tipos[]' : [], 
+   			'areas[]' : [], 'lugares[]' : [], 'establecimientos[]' : []};
+		$("input[name=tipo]:checked").each(function() {
+		  data['tipos[]'].push($(this).val());
+		});
+
+		$("input[name=areas]:checked").each(function() {
+		  data['areas[]'].push($(this).val());
+		});
+
+		$("input[name=lugares]:checked").each(function() {
+		  data['lugares[]'].push($(this).val());
+		});
+
+		$("input[name=establecimientos]:checked").each(function() {
+		  data['establecimientos[]'].push($(this).val());
+		});
+
+      $.ajax({
+            type: "POST",
+            headers:{"X-CSRF-TOKEN":valor},
+            url: "http://localhost:8000/busqueda",
+            //data: "campo="+data,
+            data: data,
+            dataType: "html",
+            beforeSend: function(){
+                  //imagen de carga
+                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+            },
+            error: function(){
+                  alert("error petición ajax");
+            },
+            success: function(data){        
+            	//console.log(data); 
+            	$('.contenido').empty();
+            	$('.contenido').append(data);	                                                     
+            }
+      });
+    }
+
+
 
 	$("#revistas").on('click', function(){                                                     ;
       //hace la búsqueda
@@ -117,6 +91,10 @@ $(document).ready(function() {
             }
       });
     });
+
+    function mostrar_resultados($contenedor, $url, $elemento){
+
+    }
 
     $("#convocatorias").on('click', function(){                                                     ;
       //hace la búsqueda

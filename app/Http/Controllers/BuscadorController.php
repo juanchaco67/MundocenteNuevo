@@ -133,43 +133,108 @@ class BuscadorController extends Controller
         //return "index";
     }
 
+
+
+    public function filtrarTipo($tipos, $publicaciones){
+        $publicaciones = $publicaciones->whereIn('tipo', $tipos);
+        return $publicaciones;
+    }
+
+    public function filtrarArea($areas, $publicaciones){
+        $grupos = Grupo::whereIn('area_id', $areas)->get();
+        $idpublicaciones = array();
+        foreach ($grupos as $grupo) {
+            $idpublicaciones[] = $grupo->publicacion_id;
+        }
+        $publicaciones = $publicaciones->whereIn('id', $idpublicaciones);
+        return $publicaciones;
+    }
+
+    public function filtrarLugar($lugares, $publicaciones){
+        $publicaciones = $publicaciones->whereIn('lugar_id', $lugares);
+        return $publicaciones;
+    }
+
+    public function filtrarEstablecimiento($establecimientos, $publicaciones){
+        $funcionarios = Funcionario::whereIn('establecimiento_id', $establecimientos)->get();
+        $idfuncionarios = array();
+        foreach ($funcionarios as $funcionario) {
+            $idfuncionarios[] = $funcionario->id;
+        }
+        $publicaciones = $publicaciones->whereIn('funcionario_id', $idfuncionarios);
+        return $publicaciones;
+    }
+
+
     public function store(Request $request){
-        //echo "Buscar ".$request['valor'];
-        //return $request[''];
+        $campo = Input::get('campo');
         $tipos = Input::get('tipos');
         $areas = Input::get('areas');
         $lugares = Input::get('lugares');
         $establecimientos = Input::get('establecimientos');
 
-        if($tipos){
-            foreach ($tipos as $tipo) {
-                if($tipo == 'evento'){
-                    //echo "Si cumple";
+        /*
+        $publicaciones = Publicacion::where(function($query) use ($campo){
+            $query->where('nombre', 'like', '%'.$campo.'%')
+            ->orwhere('resumen', 'like', '%'.$campo.'%')
+            ->orwhere('descripcion', 'like', '%'.$campo.'%')
+            ->orderBy('created_at', 'DESC');
+        })->get();
+        */
+        if(!empty($campo)){
+            $publicaciones = Publicacion::where(function($query) use ($campo){
+                $query->where('nombre', 'like', '%'.$campo.'%')
+                ->orwhere('resumen', 'like', '%'.$campo.'%')
+                ->orwhere('descripcion', 'like', '%'.$campo.'%');
+            });
+
+            if ($tipos) {
+                $publicaciones = $this->filtrarTipo($tipos, $publicaciones);
+                if ($areas) {
+                    $publicaciones = $this->filtrarArea($areas, $publicaciones);
+                }
+                if ($lugares) {
+                    $publicaciones = $this->filtrarLugar($lugares, $publicaciones);   
+                }
+                if ($establecimientos) {
+                    $publicaciones = $this->filtrarEstablecimiento($establecimientos, $publicaciones);   
                 }
             }
-        } else {
-            //echo "sin tipos";
-        }
+
+            if ($areas) {
+                $publicaciones = $this->filtrarArea($areas, $publicaciones);
+                if ($lugares) {
+                    $publicaciones = $this->filtrarLugar($lugares, $publicaciones);
+                }
+                if ($establecimientos) {
+                    $publicaciones = $this->filtrarEstablecimiento($establecimientos, $publicaciones);   
+                }
+            }
 
 
-        return $tipos;
-        return "hol" . $request['user_ids[]'];
-        if(!empty($request['campo'])){
-            $publicaciones = Publicacion::where('nombre', 'like', '%'.$request['campo'].'%')
-            ->orwhere('resumen', 'like', '%'.$request['campo'].'%')
-            ->orwhere('descripcion', 'like', '%'.$request['campo'].'%')
-            ->orwhere('tipo', 'like', '%'.$request['campo'].'%')
-            ->orderBy('created_at', 'DESC')
-            ->get();            
-        } else {
-            //$publicaciones = Publicacion::orderBy('created_at', 'DESC')
+            if ($lugares) {
+                $lugares = $this->filtrarLugar($lugares, $publicaciones);
+                if ($establecimientos) {
+                    $publicaciones = $this->filtrarEstablecimiento($establecimientos, $publicaciones);   
+                }
+            }
+
+            if ($establecimientos) {
+                $publicaciones = $this->filtrarEstablecimiento($establecimientos, $publicaciones);
+            }
+
+                $publicaciones = $publicaciones->orderBy('created_at', 'DESC')
+                    ->get();
+            //$publicaciones = $publicaciones->get();        
+            /*$publicaciones = $publicaciones->where('nombre', 'like', '%'.$campo.'%')
+                ->orwhere('resumen', 'like', '%'.$campo.'%')
+                ->orwhere('descripcion', 'like', '%'.$campo.'%')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+                */
+         } else {
             $publicaciones = array();
-               //->get();
-        }
-        /*return view('index')->with([
-                'publicaciones' => $publicaciones,
-        ]);
-        */        
+         }
 
         if(Auth::check()){
 //            echo "hola";
@@ -197,6 +262,8 @@ class BuscadorController extends Controller
 
 
     }
+
+    
 
     public function show($tipo){
         $publicaciones = Publicacion::where('tipo', '=', $tipo)

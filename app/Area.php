@@ -8,7 +8,7 @@ class Area extends Model
 {
     //
     protected $table = "areas";
-    protected $fillable = ['nombre'];
+    protected $fillable = ['id', 'nombre'];
 
     public function interes(){
     	return $this->hasMany('App\Interes');
