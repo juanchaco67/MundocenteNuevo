@@ -41,11 +41,12 @@ class BuscadorController extends Controller
                     //return var_dump($mezcla->"nombre");
 
                     //return $mezcla;
+                    /*
                     $mett = array();
                     foreach ($mezcla as $me) {
                         $mett[] = $me->id;
                     }
-
+                    */
                     //return $mett;
 
 

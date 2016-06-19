@@ -1,5 +1,5 @@
 <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
+  <!--<div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -9,7 +9,7 @@
     <div id="collapse1" class="panel-collapse collapse in">
       <div class="panel-body">Busqueda rapida</div>
     </div>
-  </div>
+  </div> -->
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -29,10 +29,11 @@
             <li>
                 <input type="checkbox" id="evento" name="tipo" value="evento"><label for="evento">Eventos</label></input>
             </li>
-          </ul>
+        </ul>
       </div>
     </div>
   </div>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -98,4 +99,5 @@
       </div>
     </div>
   </div>
+
 </div>
