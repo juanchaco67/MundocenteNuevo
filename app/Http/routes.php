@@ -39,7 +39,8 @@ Route::resource('busqueda', 'BuscadorController');
 Route::resource('publicacion', 'PublicacionController');
 Route::resource('usuario', 'UsuarioController');
 
-Route::post('recibe','Prueba@recibir');
+Route::get('recibe','Prueba@recibir');
+Route::post('filtros','Prueba@filtros');
 
 /*
 Route::get('publicaciones/{id}', function($id){

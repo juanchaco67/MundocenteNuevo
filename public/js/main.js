@@ -1,15 +1,85 @@
 $(document).ready(function() {
+
+	//alert('Seleccionado');
+
+	$("#convocatoria").click(function(){
+        	//return alert("El texto del botón es --> " + $("#convocatoria").attr("value"));
+    });
+	
+	$('#revista').click(function() {
+		//return $(this);
+		/*
+		var nombre = $('#revista').attr('name');
+        if ($(this).is(':checked')) {
+            //return confirm("Are you sure?");
+            return alert("Seleccionado " + nombre);
+        } else {
+        	return alert("NO Seleccionado " + nombre);
+        }
+        */
+
+    });
+
 	var valor=document.getElementById('busquedatoken').value;                                           
     $("#buscador").keyup(function(e){                              
 	      //obtenemos el texto introducido en el campo de búsqueda
 	      consulta = $("#buscador").val();
+	      //tipo = $("input[]").val();
+
+	       //$('#enviar').click(function(){
+	       		var data = { 'consulta' : consulta, 'tipos[]' : [], 
+	       			'areas[]' : [], 'lugares[]' : [], 'establecimientos[]' : []};
+				$("input[name=tipo]:checked").each(function() {
+				  data['tipos[]'].push($(this).val());
+				});
+
+				$("input[name=areas]:checked").each(function() {
+				  data['areas[]'].push($(this).val());
+				});
+
+				$("input[name=lugares]:checked").each(function() {
+				  data['lugares[]'].push($(this).val());
+				});
+
+				$("input[name=establecimientos]:checked").each(function() {
+				  data['establecimientos[]'].push($(this).val());
+				});
+
+				console.log("consulta " + data['consulta']);
+				console.log("tipos " + data['tipos[]']);
+				console.log("areas " + data['areas[]']);
+				console.log("lugares " + data['lugares[]']);
+				console.log("establecimientos " + data['establecimientos[]']);
+
+		        /*
+		        var selected = '';    
+		        $('input[name=tipo]').each(function(){
+		            if (this.checked) {
+		                selected += $(this).val()+', ';
+		            }
+		        }); 
+
+		        if (selected != '') {
+		            alert('Has seleccionado: '+selected);  
+		        } else {
+		            alert('Debes seleccionar al menos una opción.');
+		        }
+
+		        return false;
+		        */
+		    //});         
+
+
+	      //return alert(tipo);
+	      //consulta = array();
 	       //console.log(consulta);                          ;
 	      //hace la búsqueda
 	      $.ajax({
 	            type: "POST",
 	            headers:{"X-CSRF-TOKEN":valor},
 	            url: "http://localhost:8000/busqueda",
-	            data: "campo="+consulta,
+	            //data: "campo="+data,
+	            data: data,
 	            dataType: "html",
 	            beforeSend: function(){
 	                  //imagen de carga

@@ -46,7 +46,7 @@
           <ul>
             @foreach($areas as $area)
               <li>
-                  <input type="checkbox" id="area{{ $area->id }}" name="areas" value="{{ $area->id }}"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
+                  <input type="checkbox" id="area{{ $area->id }}" name="areas" value="area{{ $area->id }}"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
               </li>
             @endforeach
           </ul>
@@ -68,7 +68,7 @@
           <ul>
             @foreach($lugares as $lugar)
               <li>
-                  <input type="checkbox" id="lugar{{ $lugar->id }}" name="lugares" value="{{ $lugar->id }}"><label for="lugar{{ $lugar->id }}">{{ $lugar->nombre }}</label></input>
+                  <input type="checkbox" id="lugar{{ $lugar->id }}" name="lugares" value="lugar{{ $lugar->id }}"><label for="lugar{{ $lugar->id }}">{{ $lugar->nombre }}</label></input>
               </li>
             @endforeach
           </ul>
@@ -90,7 +90,7 @@
           <ul>
             @foreach($establecimientos as $establecimiento)
               <li>
-                  <input type="checkbox" id="establecimiento{{ $establecimiento->id }}" name="establecimientos" value="{{ $establecimiento->id }}"><label for="establecimiento{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</label></input>
+                  <input type="checkbox" id="establecimiento{{ $establecimiento->id }}" name="establecimientos" value="establecimiento{{ $establecimiento->id }}"><label for="establecimiento{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</label></input>
               </li>
             @endforeach
           </ul>

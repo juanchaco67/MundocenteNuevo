@@ -15,6 +15,7 @@ use App\Docente;
 use App\Establecimiento;
 use App\Funcionario;
 use App\Lugar;
+use Illuminate\Support\Facades\Input;
 use DB;
 
 class BuscadorController extends Controller
@@ -134,6 +135,25 @@ class BuscadorController extends Controller
 
     public function store(Request $request){
         //echo "Buscar ".$request['valor'];
+        //return $request[''];
+        $tipos = Input::get('tipos');
+        $areas = Input::get('areas');
+        $lugares = Input::get('lugares');
+        $establecimientos = Input::get('establecimientos');
+
+        if($tipos){
+            foreach ($tipos as $tipo) {
+                if($tipo == 'evento'){
+                    //echo "Si cumple";
+                }
+            }
+        } else {
+            //echo "sin tipos";
+        }
+
+
+        return $tipos;
+        return "hol" . $request['user_ids[]'];
         if(!empty($request['campo'])){
             $publicaciones = Publicacion::where('nombre', 'like', '%'.$request['campo'].'%')
             ->orwhere('resumen', 'like', '%'.$request['campo'].'%')
@@ -183,6 +203,9 @@ class BuscadorController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get()
             ->all();
+
+            //$areas = Area::all();       
+            //$establecimientos = Establecimiento::all(); 
         //return $publicaciones->get();
 
             /*
@@ -206,8 +229,8 @@ class BuscadorController extends Controller
             */
         } else {
             return view('reviews')->with([
-                'areas'=> $areas,
-                'establecimientos'=> $establecimientos,
+                //'areas'=> $areas,
+                //'establecimientos'=> $establecimientos,
                 'publicaciones' => $publicaciones,
             ]);
         }

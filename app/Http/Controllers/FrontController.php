@@ -92,6 +92,7 @@ class FrontController extends Controller
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
                     'lugares' => $lugares,
+                    'sinfiltrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -102,6 +103,7 @@ class FrontController extends Controller
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
+                    'sinfiltrar' => true,
                 ]);        
             }
 
