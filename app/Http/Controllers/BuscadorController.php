@@ -183,11 +183,29 @@ class BuscadorController extends Controller
         })->get();
         */
         if(!empty($campo)){
-            $publicaciones = Publicacion::where(function($query) use ($campo){
-                $query->where('nombre', 'like', '%'.$campo.'%')
+            $idpublicaciones = array();
+
+            $publicaciones = $this->buscar_por_establecimiento($campo);
+            foreach ($publicaciones as $publicacion) {
+                $idpublicaciones[] = $publicacion->id;
+            }
+            $publicaciones = $this->buscar_por_lugar($campo);
+            foreach ($publicaciones as $publicacion) {
+                $idpublicaciones[] = $publicacion->id;
+            }
+            $publicaciones = $this->buscar_por_area($campo);
+            foreach ($publicaciones as $publicacion) {
+                $idpublicaciones[] = $publicacion->id;
+            }
+
+            $publicaciones = Publicacion::where(function($query) use ($campo, $idpublicaciones) {
+                $query->whereIn('id', $idpublicaciones)
+                ->orwhere('nombre', 'like', '%'.$campo.'%')
                 ->orwhere('resumen', 'like', '%'.$campo.'%')
-                ->orwhere('descripcion', 'like', '%'.$campo.'%');
+                ->orwhere('descripcion', 'like', '%'.$campo.'%')
+                ->orwhere('tipo', 'like', '%'.$campo.'%');
             });
+
 
             if ($tipos) {
                 $publicaciones = $this->filtrarTipo($tipos, $publicaciones);
@@ -262,6 +280,48 @@ class BuscadorController extends Controller
         }
 
 
+    }
+
+
+    public function buscar_por_establecimiento($campo){
+        $establecimientos = Establecimiento::where('nombre', 'like', '%'.$campo.'%')->get();
+        $idestablecimientos = array();
+        foreach ($establecimientos as $establecimiento) {
+            $idestablecimientos[] = $establecimiento->id;
+        }
+        $funcionarios = Funcionario::whereIn('establecimiento_id', $idestablecimientos)->get();
+        $idfuncionarios = array();
+        foreach ($funcionarios as $funcionario) {
+            $idfuncionarios[] = $funcionario->id;
+        }
+        $publicaciones = Publicacion::whereIn('funcionario_id', $idfuncionarios)->get();
+        return $publicaciones;
+    }
+
+    public function buscar_por_lugar($campo){
+        $lugares = Lugar::where('nombre', 'like', '%'.$campo.'%')->get();
+        $idlugares = array();
+        foreach ($lugares as $lugar) {
+            $idlugares[] = $lugar->id;
+        }
+        //return $idlugares;
+        $publicaciones = Publicacion::whereIn('lugar_id', $idlugares)->get();
+        return $publicaciones;
+    }
+
+    public function buscar_por_area($campo){
+        $areas = Area::where('nombre', 'like', '%'.$campo.'%')->get();
+        $idareas = array();
+        foreach ($areas as $area) {
+            $idareas[] = $area->id;
+        }
+        $grupos = Grupo::whereIn('area_id', $idareas)->get();
+        $idgrupos = array();
+        foreach ($grupos as $grupo) {
+            $idgrupos[] = $grupo->publicacion_id;
+        }            
+        $publicaciones = Publicacion::whereIn('id', $idgrupos)->get();
+        return $publicaciones;
     }
 
     

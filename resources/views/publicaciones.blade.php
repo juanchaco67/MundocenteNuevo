@@ -5,7 +5,7 @@
 @stop
 
 @section('contenido')
-	<h3>Resultados</h3>
+	<h4>Resultados obtenidos</h4>
 	@if(isset($publicaciones))
 		
 		<ul>

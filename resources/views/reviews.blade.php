@@ -1,8 +1,9 @@
 @if(isset($publicaciones))
     {{-- @section('contenido') --}}
-        <h2 class="text-center">Resultados de búsqueda</h2>
-        <div class="lista">
           @if($publicaciones)
+            <h3 class="text-center">Resultados de búsqueda</h3>
+            <h3 class="text-center"><span class="small"> {{ $publicaciones->count() }} publicaciones encontradas  </span></h3>
+            <div class="lista">
             @foreach($publicaciones as $publicacion)
                 
                 <article class="publicacion">            
@@ -40,10 +41,9 @@
                   </div>
 
                 @endforeach
+                </div>
               @else
                 <h2 class="text-center"><span class="small">No se encontraron publicaciones</span></h2>
               @endif
-            
-          </div>
     {{-- @overwrite --}}
   @endif

@@ -6,7 +6,7 @@ $(document).ready(function() {
         	//return alert("El texto del botón es --> " + $("#convocatoria").attr("value"));
     });
 	
-	$('input[type=checkbox]').click(function() {
+	$('.filtros input[type=checkbox]').click(function() {
 		var nombre = $(this).attr('value');
         if ($(this).is(':checked')) {
             //return confirm("Are you sure?");
