@@ -33,7 +33,8 @@ class BuscadorController extends Controller
                     ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
                     ->join('areas', 'areas.id', '=', 'intereses.area_id')
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
-                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')                    
+                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
+                    ->where('estado', 'activo')                    
                     ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
                     ->orderBy('created_at', 'DESC')
                     ->distinct()
@@ -200,6 +201,7 @@ class BuscadorController extends Controller
 
             $publicaciones = Publicacion::where(function($query) use ($campo, $idpublicaciones) {
                 $query->whereIn('id', $idpublicaciones)
+                //->where('estado', '=', 'activa')
                 ->orwhere('nombre', 'like', '%'.$campo.'%')
                 ->orwhere('resumen', 'like', '%'.$campo.'%')
                 ->orwhere('descripcion', 'like', '%'.$campo.'%')
@@ -242,7 +244,8 @@ class BuscadorController extends Controller
                 $publicaciones = $this->filtrarEstablecimiento($establecimientos, $publicaciones);
             }
 
-                $publicaciones = $publicaciones->orderBy('created_at', 'DESC')
+                $publicaciones = $publicaciones->where('estado', '=', 'activa')
+                    ->orderBy('created_at', 'DESC')
                     ->get();
             //$publicaciones = $publicaciones->get();        
             /*$publicaciones = $publicaciones->where('nombre', 'like', '%'.$campo.'%')

@@ -21,6 +21,7 @@
 	           	<ul>
 		       		<li><a href="/publicacion/create">Nueva</a></li>
 		       		<li><a href="/publicacion/">Listar</a></li>
+		       		<li><a href="/publicacion/borradas">Borradas</a></li>
 		       	</ul>
 	        </div>
 	        <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,31 +45,4 @@
 	      </div>			
 	    </div>  
 
-	@if( Auth::check() )
-	  <div class="">
-	    <div class="titulo-panel text-center col-xs-12 col-sm-12 col-md-12">
-	      <h3>Filtra la búsqueda</h3>
-	    </div>
-	    <div class="col-xs-12 col-sm-12 col-md-12">
-	      <div class="row">
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	          <form action="buscar" method="post" class="" role="search">
-	            {{ csrf_field() }}
-	                <div class="form-group">
-	                  <!-- <label for="buscador">Búsqueda</label> 
-	                    <input id="buscador" name="campo" type="text" class="form-control" placeholder="Busca oportunidades...">
-	                    -->
-	                    <h4><span class="small">Ej: Docente, Inglés, Sociales, Matemáticas</span></h4>
-	                    <!-- <button type="submit" class="btn btn-primary">Buscar</button> -->
-	                </div>
-	            </form>
-	          </div>
-	          <div class="col-xs-12 col-sm-12 col-md-12">
-		          <div class="resultados">
-		          </div>
-	        </div>
-	        </div>
-	    </div>
-	  </div>  
-	@endif
 @stop

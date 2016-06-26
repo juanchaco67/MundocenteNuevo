@@ -31,6 +31,7 @@ class Publicaciones extends Migration
             $table->enum('tipo', ['revista', 'convocatoria', 'evento']);
             $table->date('fecha_publicacion');
             $table->date('fecha_cierre');
+            $table->enum('estado', ['activa', 'inactiva'])->default('activa');
             $table->timestamps();
         });
         

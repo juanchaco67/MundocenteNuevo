@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
 	//alert('Seleccionado');
+	$('.publicacion').click(function(){
+		//alert('publica');
+		console.log('noooooo');
+	});
 
 	$("#convocatoria").click(function(){
         	//return alert("El texto del botón es --> " + $("#convocatoria").attr("value"));

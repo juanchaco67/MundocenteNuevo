@@ -35,6 +35,7 @@ class PublicacionController extends Controller
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
                 $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
+                    ->where('estado', '=', 'activa')
                     ->orderBy('created_at', 'DESC')->get()->all();
                 
                 //return $publicaciones;
@@ -86,6 +87,7 @@ class PublicacionController extends Controller
             'lugar_id' => $request['lugar'],
             'tipo' => $request['tipo'],
             'fecha_cierre' => $request['fecha_cierre'],
+            'estado' => 'activa',
         ]);
 
         $this->crear_grupos($publicacion, $request);
@@ -107,7 +109,11 @@ class PublicacionController extends Controller
     }
 
     public function show($id){
-        return "show";
+        //return "show";
+        $publicacion = Publicacion::find($id);
+        return view('publicacion')->with([
+            'publicacion' => $publicacion,
+        ]);
         //$publicaciones = Publicacion::find($id);
         //return view('index')->with('publicaciones', $publicaciones);
     }
@@ -149,14 +155,58 @@ class PublicacionController extends Controller
         return Redirect::to('publicacion');
     }
 
+    public function borradas(){
+        $publicaciones = Publicacion::all();
+        if( Auth::check() ){
+            $user = User::find(Auth::user()->id);
+            $areas = Area::all();
+            $establecimientos = Establecimiento::all();
+            $lugares = Lugar::all();
+            if ( $user->idrol === 2) {      
+                $funcionario = Funcionario::where('user_id', $user->id)
+                    ->first();
+                $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
+                    ->where('estado', '=', 'inactiva')
+                    ->orderBy('created_at', 'DESC')->get()->all();
+
+               return view('publicacion.borradas', [
+                    'areas' => $areas,
+                    'user' => Auth::user(),
+                    'publicaciones' => $publicaciones,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                ]);
+            } else {
+                return redirect()->to('/busqueda');
+            }
+        }
+        return redirect()->to('/');
+    }
+
+    public function recover($id){
+         $publicacion = Publicacion::find($id);
+         //return $publicacion;
+            $publicacion->update([
+                'estado' => 'activa',
+            ]);
+
+        Session::flash('mensaje', 'Publicacion recuperada');
+        return Redirect::to('publicacion/borradas');
+    }
+
     public function destroy($id){
     	//return "destroy";
 
+        /*
         Publicacion::destroy($id);
-
         Grupo::where('publicacion_id', $id)->delete();
+        */
+        $publicacion = Publicacion::find($id);
+            $publicacion->update([
+                'estado' => 'inactiva',
+            ]);
 
-        Session::flash('mensaje', 'Publicacion Eliminada');
+        Session::flash('mensaje', 'Publicacion borrada');
         return Redirect::to('publicacion');
     }
 }

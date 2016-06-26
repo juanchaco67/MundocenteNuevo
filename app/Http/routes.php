@@ -36,11 +36,14 @@ Route::get('logout', 'LoginController@logout');
 //Route::get('/busqueda', 'BuscadorController@index');
 Route::resource('busqueda', 'BuscadorController');
 
+Route::get('/publicacion/borradas', 'PublicacionController@borradas');
+Route::post('publicacion/recover/{id}', 'PublicacionController@recover');
 Route::resource('publicacion', 'PublicacionController');
+
 Route::resource('usuario', 'UsuarioController');
 
-Route::get('recibe','Prueba@recibir');
-Route::post('filtros','Prueba@filtros');
+//Route::get('recibe','Prueba@recibir');
+//Route::post('filtros','Prueba@filtros');
 
 /*
 Route::get('publicaciones/{id}', function($id){
