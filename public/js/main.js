@@ -3,7 +3,7 @@ $(document).ready(function() {
 	//alert('Seleccionado');
 	$('.publicacion').click(function(){
 		//alert('publica');
-		console.log('noooooo');
+		//console.log('noooooo');
 	});
 
 	$("#convocatoria").click(function(){
@@ -76,6 +76,10 @@ $(document).ready(function() {
 
 	$("#revistas").on('click', function(){                                                     ;
       //hace la búsqueda
+      event.preventDefault();
+      //console.log("r3efvistasfa");
+      //return "hgola;";
+      //$('.filtros input[name=revistas]')..prop('checked', true);;
       event.preventDefault();
       $.ajax({
             type: "GET",

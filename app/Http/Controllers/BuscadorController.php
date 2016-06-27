@@ -34,7 +34,7 @@ class BuscadorController extends Controller
                     ->join('areas', 'areas.id', '=', 'intereses.area_id')
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
-                    ->where('estado', 'activo')                    
+//                    ->where('estado', '=', 'activa')
                     ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
                     ->orderBy('created_at', 'DESC')
                     ->distinct()
@@ -49,14 +49,16 @@ class BuscadorController extends Controller
                     }
                     */
                     //return $mett;
+                    //return $mezcla;
 
 
-                    $publicaciones = array();
+                    $idpublicaciones = array();
                     foreach ($mezcla as $mez) {
-                        //echo $mez->id;
-                        //echo Publicacion::find($mez->id);
-                        $publicaciones[] = Publicacion::find($mez->id);;
+                        //$publicaciones[] = Publicacion::find($mez->id);
+                        $idpublicaciones[] = $mez->id;
                     }
+
+                    $publicaciones = Publicacion::whereIn('id', $idpublicaciones)->get();
                     //return $publicaciones;
                     //$publicaciones = $mezcla->
                     //$areas = Area::all();
@@ -92,6 +94,7 @@ class BuscadorController extends Controller
 
                 return $this->cargar_preferencias($mezcla);
                 */
+
                 return $this->cargar_preferencias($publicaciones);
                 
                 /*
@@ -331,9 +334,10 @@ class BuscadorController extends Controller
 
     public function show($tipo){
         $publicaciones = Publicacion::where('tipo', '=', $tipo)
+            ->where('estado', '=', 'activa')
             ->orderBy('created_at', 'DESC')
-            ->get()
-            ->all();
+            ->get();
+            //->all();
 
             //$areas = Area::all();       
             //$establecimientos = Establecimiento::all(); 
@@ -415,4 +419,3 @@ class BuscadorController extends Controller
             }
     }
 }
-
