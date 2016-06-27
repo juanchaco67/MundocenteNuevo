@@ -36,6 +36,7 @@ class BuscadorController extends Controller
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
 //                    ->where('estado', '=', 'activa')
                     ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
+                    ->where('estado', '=', 'activa')
                     ->orderBy('created_at', 'DESC')
                     ->distinct()
                     ->get();

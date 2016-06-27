@@ -16,9 +16,70 @@
     <h2>Mundocente</h2>  -->
     @if( !Auth::check() )
       <div class="row">
+            
+        
+      </div>
+
+
+      <div class="row">
         <div class="banner col-xs-12 col-sm-12 col-md-8 col-lg-9">
+
+          <div class="">
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+                  <div class="item active">
+                    <img src="{{ URL::asset('img/carrusel/banner-1.jpg') }}">
+                    <div class="carousel-caption">
+                      <h3>Docentes</h3>
+                      <p>Búsqueda de publicaciones recientes para los docentes...</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img src="{{ URL::asset('img/carrusel/banner-2.jpg') }}">
+                    <div class="carousel-caption">
+                      <h3>Universidades/Entidades</h3>
+                      <p>Publicación de Revistas, Convocatorias y Eventos...</p>
+                    </div>
+                  </div>
+                
+                  <div class="item">
+                    <img src="{{ URL::asset('img/carrusel/banner-3.jpg') }}">
+                    <div class="carousel-caption">
+                      <h3>Registrate</h3>
+                      <p>Entra en mundocente y encuentra publicaciones para docentes...</p>
+                    </div>
+                  </div>
+              
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Anterior</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Siguiente</span>
+                </a>
+              </div>
+            </div>
+
+
+
+
           <!-- <div class="banner"> -->
-            <img class="img-responsive" src="{{ URL::asset('img/carrusel/banner-1.jpg') }}">
+            <!-- <img class="img-responsive" src="{{ URL::asset('img/carrusel/banner-1.jpg') }}"> -->
           <!-- </div> -->
         </div>
         <div class="banner-side col-xs-12 col-sm-12 col-md-4 col-lg-3">
