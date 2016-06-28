@@ -54,11 +54,11 @@ class UsuarioController extends Controller
                 'idrol' => 1,
                 'estado' => 'activo',
             ]);
-            Docente::create([
+            $docente = Docente::create([
                 'user_id' => $usuario->id,
                 'notificar' => $notificar,
             ]);
-            $this->crear_interes($usuario, $request);
+            $this->crear_interes($docente, $request);
         } elseif($rol == "funcionario") {
             //return "EStaba " .$request['establecimiento'];
             $establecimientos = Establecimiento::all();
