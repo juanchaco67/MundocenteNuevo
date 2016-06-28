@@ -29,7 +29,7 @@ class UsuarioController extends Controller
     }
 
     public function create(){
-        echo"entro";
+        //echo"entro";
         $areas = Area::all();
         $establecimientos = Establecimiento::all();
     	return view('usuario.create')->with([
@@ -40,7 +40,7 @@ class UsuarioController extends Controller
 
     public function store(UserCreateRequest $request){
         //return "Establecimiento " .$request['establecimiento'];
-       echo $request['email;'];
+       //echo $request['email;'];
         $rol = $request['rol'];
         if($rol === "docente"){
             $notificar = $request['notificar'];

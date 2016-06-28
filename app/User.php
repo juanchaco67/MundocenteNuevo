@@ -32,6 +32,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Funcionario');
     }
 
+    public function funcionario(){
+        return $this->hasOne('App\Administrador');
+    }
+
     public function setPasswordAttribute($valor){
         if (!empty($valor)) {
             $this->attributes['password'] = \Hash::make($valor);

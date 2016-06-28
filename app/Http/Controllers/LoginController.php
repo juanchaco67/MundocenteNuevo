@@ -23,9 +23,13 @@ class LoginController extends Controller
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
     		//return Redirect::to('/');
             if (Auth::user()->idrol === 1) {
-                return Redirect::to('/busqueda');
+//                return "mi area";
+                //return Redirect::to('/busqueda');
+                return redirect()->to('/');
             } elseif (Auth::user()->idrol === 2) {
                 return Redirect::to('/publicacion');
+            } elseif (Auth::user()->idrol === 3) {
+                return Redirecto::to('/admin');
             }
     	}
 
