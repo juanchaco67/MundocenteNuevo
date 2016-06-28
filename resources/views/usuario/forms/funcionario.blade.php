@@ -10,7 +10,7 @@
 					@if(!isset($user))
 				    	<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>
 				    @else
-				    	@if($user->funcionario->establecimiento_id === $establecimiento->id)
+				    	@if($user->funcionario->establecimiento_id == $establecimiento->id)
 				    		<option value="{{ $establecimiento->id }}" selected>{{ $establecimiento->nombre }}</option>
 				    	@else
 				    		<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>   		
@@ -25,9 +25,9 @@
 	<div class="form-group">
 		<label for="desactivar">Desactivar esta cuenta</label>
 		@if($user->estado === 'inactivo')
-			<input name="desactivar" value="desactivar" type="checkbox" checked></input>
+			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox" checked></input>
 		@else
-			<input name="desactivar" value="desactivar" type="checkbox"></input>
+			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox"></input>
 		@endif
 	</div>
 @endif

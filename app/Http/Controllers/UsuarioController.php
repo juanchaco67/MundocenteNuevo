@@ -29,6 +29,7 @@ class UsuarioController extends Controller
     }
 
     public function create(){
+        echo"entro";
         $areas = Area::all();
         $establecimientos = Establecimiento::all();
     	return view('usuario.create')->with([
@@ -39,6 +40,7 @@ class UsuarioController extends Controller
 
     public function store(UserCreateRequest $request){
         //return "Establecimiento " .$request['establecimiento'];
+       echo $request['email;'];
         $rol = $request['rol'];
         if($rol === "docente"){
             $notificar = $request['notificar'];
@@ -176,10 +178,10 @@ class UsuarioController extends Controller
         } else {
             $user->update(['estado' => 'activo']);
         }
-
+    
         Session::flash('mensaje', 'Usuario Editado');
-        return Redirect::to('/publicacion');
-        //return Redirect::to('/');
+       
+        return $user;     
     }
 
     public function destroy($id){

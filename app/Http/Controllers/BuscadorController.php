@@ -121,9 +121,8 @@ class BuscadorController extends Controller
                 //return $intereses;
             } else {
                 //return  "funcio";
-
-               return view('index', [
-                ]);              
+      $user = User::find(Auth::user()->id);
+               return view('index', ['user'=>$user,'establecimientos'=>Establecimiento::all()]);              
             }
 
         } else {

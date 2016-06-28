@@ -50,6 +50,7 @@
 	                <li>
 	                  <div class="dropdown">
 	                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="btn-correo">
+
 	                {{ Auth::user()->email }}
 	                <span class="caret"></span></button>
 	                <ul class="dropdown-menu">
@@ -119,7 +120,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="text-center modal-title">Configuración de la cuenta</h4>
+          <h4 class="text-center modal-title"> Configuración de la cuenta</h4>
         </div>
 
         
@@ -198,14 +199,12 @@
 	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
 	<script type="text/javascript">
-		
+	
 
-		window.onload=function(){
-
-
-
+		$(document).ready(function(){
 
 			formulario=function(metodo,id){
+					
 				event.preventDefault();
 				var route=$("#"+id).attr('action');
 				var valor=document.getElementById('token').value;
@@ -215,20 +214,32 @@
 					method:metodo,
 					data:$("#"+id).serialize(),
 					success:function(resp){
-						if(metodo=="POST")
-							window.location="http://localhost:8000/usuario";
-						else
+
+						if(metodo=="PUT")
 							document.getElementById('btn-correo').innerHTML=resp.email;
+						else if(id=="formularioFuncionario" && metodo=="POST"){
+						window.location="http://localhost:8000/publicacion";
+						}
+							else if(id=="formularioDocente" && metodo=="POST"){
+						window.location="http://localhost:8000";
+						}
 
 					},
 					error:function(error){
-						$("#msj").html($.parseJSON(error.responseText).email+" "+$.parseJSON(error.responseText).password);
-						$("#msj-error").fadeIn();
-					}
+					
+							var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
+							$('#error').html(html);	
+							result = $.parseJSON(error.responseText);	
+							var ul=document.getElementById('error-lista');
+							ul.innerHTML="";
+							for(var k in result)   			 
+			  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
+					}					
 				});
+				return false;
 			};
 			$('#submit-editar-docente').click(function(){
-
+			
 				formulario("PUT","formularioDocente");
 			});
 			$('#submit-editar-funcionario').click(function(){
@@ -243,7 +254,8 @@
 			});
 
 
-		}
+	});
+
 	</script>
 </body>
 </html>

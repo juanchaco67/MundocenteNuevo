@@ -1,5 +1,5 @@
 @if(count($errors) > 0)
-	<div class="alert alert-danger alert-dismissible" role="alert">
+	<div class="alert alert-danger alert-dismissible"  role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
@@ -11,6 +11,4 @@
 	</div>
 @endif
 
-<div id="msj-error" class="alert alert-danger alert-dismissible" role="alert" style="display:none;" >
-<strong id="msj"></strong>
-</div>
+<div   id="error"></div>

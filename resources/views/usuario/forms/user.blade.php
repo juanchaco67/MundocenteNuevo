@@ -1,5 +1,5 @@
 <div class="">
-    
+ 
   	<ul class="nav nav-tabs">
 	    <li class="active"><a data-toggle="tab" href="#docentes">Docentes</a></li>
     	<li><a data-toggle="tab" href="#funcionarios">Publicadores</a></li>
@@ -12,8 +12,10 @@
         {{-- @include('alerts.request') --}}
           <!--{!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
           -->
+  
           <form action="{{ route('usuario.store') }}" method="post" id="formularioDocente" name="formularioDocente">
             <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+
             @include('usuario.forms.docente')
 
             <div class="modal-footer">
@@ -22,7 +24,8 @@
               -->           
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="submit-registrar-docente" name="Registrar" class="btn btn-primary">Registrar</button>
+                <button id="submit-registrar-docente"  class="btn btn-primary">Registrar</button>
+                 
             </div>
             <!--{!!Form::close()!!} -->
           </form>
@@ -42,7 +45,7 @@
             {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
             -->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="submit-registrar-funcionario" name="Registrar" class="btn btn-primary">Registrar</button>
+                <button id="submit-registrar-funcionario" class="btn btn-primary">Registrar</button>
             <!-- {!!Form::close()!!} -->
           </div>
         </form>
