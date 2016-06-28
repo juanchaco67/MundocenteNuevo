@@ -198,117 +198,52 @@
 	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
 	<script type="text/javascript">
+		
+
 		window.onload=function(){
-			$("#formularioFuncionario").submit(function(){ 						
-						var dato=new FormData();
-						dato.append('name',document.formularioFuncionario.name.value);
-						dato.append('email',document.formularioFuncionario.email.value);
-						dato.append('password',document.formularioFuncionario.password.value);
-						dato.append('notificar',document.formularioFuncionario.notificar.value);
-						dato.append('rol',document.formularioFuncionario.rol.value);
-						dato.append('establecimiento',document.formularioFuncionario.establecimiento.value)			
-						var route=$('#formularioFuncionario').attr('action');
-		  				var valor=document.getElementById('toke').value;
-						$.ajax({
-							url:route,
-							headers:{"X-CSRF-TOKEN":valor},
-							type:'POST',	
-							dataType: "html",			
-							data:dato,
-							cache: false,
-		   					contentType: false,
-		    				processData: false,
-		    				success:function(){
-		    				 window.location="http://localhost:8000/usuario";
-		    				},
-							error:function(error){
-								$("#msj").html($.parseJSON(error.responseText).email+" "+$.parseJSON(error.responseText).password);
-								$("#msj-error").fadeIn();
-							}
-						});
-					  return false;
-		 		 });
 
-		$("#formularioDocente").submit(function(){ 	
-								
-						var dato=new FormData();
-						dato.append('name',document.formularioDocente.name.value);
-						dato.append('email',document.formularioDocente.email.value);
-						dato.append('password',document.formularioDocente.password.value);
-						dato.append('notificar',document.formularioDocente.notificar.value);
-						dato.append('rol',document.formularioDocente.rol.value);			
-						$('.areas:checked').each(
-						    function() {
-						  dato.append('areas[]',$(this).val() );
-						    }
-						);		
-						var route=$('#formularioDocente').attr('action');
-		  				var valor=document.getElementById('token').value;
-						$.ajax({
-							url:route,
-							headers:{"X-CSRF-TOKEN":valor},
-							type:'POST',	
-							dataType: "html",			
-							data:dato,
-							cache: false,
-		   					contentType: false,
-		    				processData: false,
-		    				success:function(){
-		    				 window.location="http://localhost:8000/usuario";
-		    				},
-							error:function(error){
-								$("#msj").html($.parseJSON(error.responseText).email+" "+$.parseJSON(error.responseText).password);
-								$("#msj-error").fadeIn();
-							}
-						});
-					  return false;
-		 		 });
 
-			$("#actualizarDocente").submit(function(){ 								
-						var dato={'name':document.fo.name.value,'email':document.fo.email.value,'password':document.fo.password.value,'notificar':document.fo.notificar.value,'rol':document.fo.rol.value};					
-						var route=$('#actualizarDocente').attr('action');
-						var persona={'nombre':'camilo'}			
-		  				var valor=document.getElementById('tokenn').value;
-						$.ajax({
-							url:route,
-							headers:{"X-CSRF-TOKEN":valor},
-							type:'PUT',	
-							dataType: "html",			
-							data:dato,		
-						
-		    				success:function(resp){
-		    					document.getElementById('btn-correo').innerHTML=$.parseJSON(resp).email;
-		    				 	campos[0].value=$.parseJSON(resp).name;
-		    				 	campos[0].value=$.parseJSON(resp).email;
-		    				 	campos[0].value=$.parseJSON(resp).password;
-		    				}					
-						});
-				  return false;
-		 		 });
 
-			$("#actualizarFuncionario").submit(function(){ 								
-						var dato={'name':document.fo.name.value,'email':document.fo.email.value,'password':document.fo.password.value,'notificar':document.fo.notificar.value,'rol':document.fo.rol.value};					
-						var route=$('#actualizarFuncionario').attr('action');
-						var persona={'nombre':'camilo'}			
-		  				var valor=document.getElementById('tokenn').value;
-						$.ajax({
-							url:route,
-							headers:{"X-CSRF-TOKEN":valor},
-							type:'PUT',	
-							dataType: "html",			
-							data:dato,		
-						
-		    				success:function(resp){
-		    					document.getElementById('btn-correo').innerHTML=$.parseJSON(resp).email;
-		    				 	campos[0].value=$.parseJSON(resp).name;
-		    				 	campos[0].value=$.parseJSON(resp).email;
-		    				 	campos[0].value=$.parseJSON(resp).password;
-		    				}					
-						});
-				  return false;
-		 		 });
-			}
 
+			formulario=function(metodo,id){
+				event.preventDefault();
+				var route=$("#"+id).attr('action');
+				var valor=document.getElementById('token').value;
+				$.ajax({
+					url:route,
+					headers:{"X-CSRF-TOKEN":valor},
+					method:metodo,
+					data:$("#"+id).serialize(),
+					success:function(resp){
+						if(metodo=="POST")
+							window.location="http://localhost:8000/usuario";
+						else
+							document.getElementById('btn-correo').innerHTML=resp.email;
+
+					},
+					error:function(error){
+						$("#msj").html($.parseJSON(error.responseText).email+" "+$.parseJSON(error.responseText).password);
+						$("#msj-error").fadeIn();
+					}
+				});
+			};
+			$('#submit-editar-docente').click(function(){
+
+				formulario("PUT","formularioDocente");
+			});
+			$('#submit-editar-funcionario').click(function(){
+
+				formulario("PUT","formularioFuncionario");
+			});
+			$('#submit-registrar-funcionario').click(function(){
+				formulario("POST","formularioFuncionario");
+			});
+			$('#submit-registrar-docente').click(function(){
+				formulario("POST","formularioDocente");
+			});
+
+
+		}
 	</script>
 </body>
 </html>
