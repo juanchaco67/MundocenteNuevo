@@ -20,6 +20,7 @@ class LoginController extends Controller
     public function store(LoginRequest $request){
     	//return $request['email'] . " " .$request['password'];
         //echo "ROL: " .$request['rol'];
+
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
     		//return Redirect::to('/');
             if (Auth::user()->idrol === 1) {
@@ -29,7 +30,7 @@ class LoginController extends Controller
             } elseif (Auth::user()->idrol === 2) {
                 return Redirect::to('/publicacion');
             } elseif (Auth::user()->idrol === 3) {
-                return Redirecto::to('/admin');
+                return Redirect::to('/admin');
             }
     	}
 
