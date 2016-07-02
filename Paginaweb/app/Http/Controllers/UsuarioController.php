@@ -77,18 +77,19 @@ class UsuarioController extends Controller
             ]);
         }
 
-        Session::flash('mensaje', 'Usuario creado');
-
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
             //return Redirect::to('/');
-            if (Auth::user()->idrol === 1) {
-                return Redirect::to('/busqueda');
+            //return "hola".$request['name'];        
+                Session::flash('mensaje', 'Bienvenido a Mundocente ' . $request['name']);
+           if (Auth::user()->idrol === 1) {
+                return Redirect::to('/');
             } elseif (Auth::user()->idrol === 2) {
                 return Redirect::to('/publicacion');
             }
+            
         }
-        Session::flash('mensaje-error', 'Datos incorrectos');
-        return Redirect::to('/');        
+        //Session::flash('mensaje-error', 'Datos incorrectos');
+        //return Redirect::to('/');        
         
     }
 

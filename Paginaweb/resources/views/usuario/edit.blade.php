@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('panel')
+    @include('layouts.paneladmin')
+@stop
+
 @section('titulo-pagina')
 	Editar
 @stop

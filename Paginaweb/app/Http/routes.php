@@ -34,6 +34,9 @@ Route::resource('login', 'LoginController');
 Route::get('logout', 'LoginController@logout');
 
 //Route::get('/busqueda', 'BuscadorController@index');
+Route::get('busqueda', function(){
+	return view('index');
+});
 Route::resource('busqueda', 'BuscadorController');
 
 Route::get('/publicacion/borradas', 'PublicacionController@borradas');
@@ -41,6 +44,15 @@ Route::post('publicacion/recover/{id}', 'PublicacionController@recover');
 Route::resource('publicacion', 'PublicacionController');
 
 Route::resource('usuario', 'UsuarioController');
+
+
+Route::get('/admin/docentes', 'AdminController@listar_docentes');
+Route::get('/admin/publicadores', 'AdminController@listar_publicadores');
+Route::get('/admin/publicaciones', 'AdminController@listar_publicaciones');
+Route::get('/admin/universidades', 'AdminController@listar_establecimientos');
+
+
+Route::resource('admin', 'AdminController');
 
 //Route::get('recibe','Prueba@recibir');
 //Route::post('filtros','Prueba@filtros');

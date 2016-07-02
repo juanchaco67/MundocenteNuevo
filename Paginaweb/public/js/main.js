@@ -22,54 +22,62 @@ $(document).ready(function() {
         }
     });
 
-
-	var valor=document.getElementById('busquedatoken').value;                                           
-    $("#buscador").keyup(function(e){       
-    	event.preventDefault();                       
-	      //obtenemos el texto introducido en el campo de búsqueda
-  		realizar_busqueda();
-	});
+    var valor=document.getElementById('busquedatoken');
+	if (valor != null) {
+		var valor=document.getElementById('busquedatoken').value;                                           
+	    $("#buscador").keyup(function(e){       
+	    	event.preventDefault();                       
+		      //obtenemos el texto introducido en el campo de búsqueda
+	  		realizar_busqueda();
+		});
+	}
 
     function realizar_busqueda(){
     	campo = $("#buscador").val();
-   		var data = { 'campo' : campo, 'tipos[]' : [], 
+    	//console.log(campo);
+    	if (campo != '') {
+    		//console.log("campo lleno");
+    		var data = { 'campo' : campo, 'tipos[]' : [], 
    			'areas[]' : [], 'lugares[]' : [], 'establecimientos[]' : []};
-		$("input[name=tipo]:checked").each(function() {
-		  data['tipos[]'].push($(this).val());
-		});
+			$("input[name=tipo]:checked").each(function() {
+			  data['tipos[]'].push($(this).val());
+			});
 
-		$("input[name=areas]:checked").each(function() {
-		  data['areas[]'].push($(this).val());
-		});
+			$("input[name=areas]:checked").each(function() {
+			  data['areas[]'].push($(this).val());
+			});
 
-		$("input[name=lugares]:checked").each(function() {
-		  data['lugares[]'].push($(this).val());
-		});
+			$("input[name=lugares]:checked").each(function() {
+			  data['lugares[]'].push($(this).val());
+			});
 
-		$("input[name=establecimientos]:checked").each(function() {
-		  data['establecimientos[]'].push($(this).val());
-		});
+			$("input[name=establecimientos]:checked").each(function() {
+			  data['establecimientos[]'].push($(this).val());
+			});
 
-      $.ajax({
-            type: "POST",
-            headers:{"X-CSRF-TOKEN":valor},
-            url: "http://localhost:8000/busqueda",
-            //data: "campo="+data,
-            data: data,
-            dataType: "html",
-            beforeSend: function(){
-                  //imagen de carga
-                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
-            },
-            error: function(){
-                  alert("error petición ajax");
-            },
-            success: function(data){        
-            	//console.log(data); 
-            	$('.contenido').empty();
-            	$('.contenido').append(data);	                                                     
-            }
-      });
+	      $.ajax({
+	            type: "POST",
+	            headers:{"X-CSRF-TOKEN":valor},
+	            url: "http://localhost:8000/busqueda",
+	            //data: "campo="+data,
+	            data: data,
+	            dataType: "html",
+	            beforeSend: function(){
+	                  //imagen de carga
+	                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+	            },
+	            error: function(){
+	                  alert("error petición ajax");
+	            },
+	            success: function(data){        
+	            	//console.log(data); 
+	            	$('.contenido').empty();
+	            	$('.contenido').append(data);	                                                     
+	            }
+	      });
+    	} else {
+			//console.log("campo vacio");
+    	}
     }
 
 
