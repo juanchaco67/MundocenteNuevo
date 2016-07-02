@@ -51,18 +51,22 @@
 
 <body>
 
+
+    @include('layouts.navbar')
+
+
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0"> -->
             @yield('panel')
             <!-- /.navbar-static-side -->
-        </nav>
+        <!-- </nav> -->
 
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Administración</h1>
+                    <h1 class="page-header">@yield('titulo-pagina')</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -77,7 +81,7 @@
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
+                                        Filtrar
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">

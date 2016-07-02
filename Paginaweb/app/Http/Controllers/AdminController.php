@@ -23,34 +23,6 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function listar_docentes(){
-        $docentes = User::where('idrol', '=', 1)->get();
-        return view('admin.docentes')->with([
-            'docentes' => $docentes,
-        ]);
-    }
-
-    public function listar_publicadores(){
-        $publicadores = User::where('idrol', '=', 2)->get();
-        return view('admin.publicadores')->with([
-            'publicadores' => $publicadores,
-        ]);
-    }
-
-    public function listar_publicaciones(){
-        $publicaciones = Publicacion::all();
-        return view('admin.publicaciones')->with([
-            'publicaciones' => $publicaciones,
-        ]);
-    }
-
-    public function listar_establecimientos(){
-        $establecimientos = Establecimiento::all();
-        return view('admin.universidades')->with([
-            'universidades' => $establecimientos,
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -118,5 +90,34 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function listar_docentes(){
+        $docentes = User::where('idrol', '=', 1)->get();
+        return view('admin.docentes')->with([
+            'docentes' => $docentes,
+        ]);
+    }
+
+    public function listar_publicadores(){
+        $publicadores = User::where('idrol', '=', 2)->get();
+        return view('admin.publicadores')->with([
+            'publicadores' => $publicadores,
+        ]);
+    }
+
+    public function listar_publicaciones(){
+        $publicaciones = Publicacion::all();
+        return view('admin.publicaciones')->with([
+            'publicaciones' => $publicaciones,
+        ]);
+    }
+
+    public function listar_establecimientos(){
+        $establecimientos = Establecimiento::all();
+        return view('admin.universidades')->with([
+            'universidades' => $establecimientos,
+        ]);
     }
 }

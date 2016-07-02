@@ -23,7 +23,7 @@ class FrontController extends Controller
             $lugares = Lugar::where('tipo', '=', 'municipio')->get();
             $user = User::find(Auth::user()->id);
             if($user->idrol == 1){ 
-                $areas = Area::all();
+                //$areas = Area::all();
                 $intereses = Interes::where('docente_id', $user->id)->get();
                 $areas_usuario = array();
                 foreach ($intereses as $interes) {
@@ -38,7 +38,7 @@ class FrontController extends Controller
                     'areas_usuario' => $areas_usuario,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
-                    'sinfiltrar' => true,
+                    //'sinfiltrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
@@ -49,8 +49,16 @@ class FrontController extends Controller
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
-                    'sinfiltrar' => true,
+                    //'sinfiltrar' => true,
                 ]);        
+            } elseif($user->idrol === 3){
+                return view('index', [
+                    'user' => $user,
+                    'areas' => $areas,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                    //'sinfiltrar' => true,
+                ]); 
             }
 
             /*
@@ -64,7 +72,7 @@ class FrontController extends Controller
             return view('index')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
-                'sinfiltrar' => true,
+                //'sinfiltrar' => true,
             ]);
         }
     
@@ -92,19 +100,27 @@ class FrontController extends Controller
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
                     'lugares' => $lugares,
-                    'sinfiltrar' => true,
+                    //'sinfiltrar' => true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
                 //return "editar " .$user;
-                $establecimientos = Establecimiento::all();
+                //$establecimientos = Establecimiento::all();
                 return view('contacto', [
                     'user' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
-                    'sinfiltrar' => true,
+                    //'sinfiltrar' => true,
                 ]);        
+            } elseif($user->idrol === 3){
+                return view('contacto', [
+                    'user' => $user,
+                    'areas' => $areas,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                    //'sinfiltrar' => true,
+                ]); 
             }
 
             /*

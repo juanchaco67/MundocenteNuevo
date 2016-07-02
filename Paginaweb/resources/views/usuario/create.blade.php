@@ -1,12 +1,13 @@
-@extends('layouts.admin')
+@extends('layouts.paneladmin')
 
 @section('titulo-pagina')
-	Usuario
+	Crear usuario
 @stop
 
 @section('contenido')
 <!--	@include('alerts.request') -->
 	@include('usuario.forms.user')
+	{{--
 	<!-- 
 	{!!Form::open(['route'=>'usuario.store', 'method'=>'post'])!!}
 		@include('usuario.forms.user')
@@ -33,4 +34,5 @@
 		</div>
 	</form>
 	-->
+	--}}
 @stop

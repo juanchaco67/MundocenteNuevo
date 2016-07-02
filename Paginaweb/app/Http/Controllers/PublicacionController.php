@@ -49,11 +49,20 @@ class PublicacionController extends Controller
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
                 ]);
-            } else {
+            } else if( $user->idrol === 1){
                 return redirect()->to('/busqueda');
+            } else {
+                return view('publicacion.index', [
+                    'publicaciones' => $publicaciones,
+                ]);
             }
+        } else {
+            return view('publicacion.index', [
+                    'publicaciones' => $publicaciones,
+            ]);
         }
-        return redirect()->to('/');
+
+        //return redirect()->to('/');
 
         /*
         $publicaciones = Publicacion::where('nombre', 'like', '%'.$valor.'%')
@@ -155,7 +164,7 @@ class PublicacionController extends Controller
         return Redirect::to('publicacion');
     }
 
-    public function borradas(){
+    public function borrados(){
         $publicaciones = Publicacion::all();
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
@@ -169,7 +178,7 @@ class PublicacionController extends Controller
                     ->where('estado', '=', 'inactiva')
                     ->orderBy('created_at', 'DESC')->get()->all();
 
-               return view('publicacion.borradas', [
+               return view('publicacion.borrados', [
                     'areas' => $areas,
                     'user' => Auth::user(),
                     'publicaciones' => $publicaciones,
@@ -183,7 +192,7 @@ class PublicacionController extends Controller
         return redirect()->to('/');
     }
 
-    public function recover($id){
+    public function recuperar($id){
          $publicacion = Publicacion::find($id);
          //return $publicacion;
             $publicacion->update([

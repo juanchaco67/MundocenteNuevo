@@ -79,7 +79,7 @@
 					            </div>
 				            </div>
 				            <div class="modal-footer">
-				                {!!Form::open(['action'=>['PublicacionController@recover', $publicacion->id]])!!}
+				                {!!Form::open(['action'=>['PublicacionController@recuperar', $publicacion->id]])!!}
 				                <a class="btn btn-default" data-toggle="modal" data-target="#{{ $publicacion->id }}">
 						    		Cancelar
 								</a>

@@ -1,5 +1,5 @@
 <header>
-	    <nav class="navbar navbar-default navbar-fixed-top">
+	    <nav class="navbar navbar-default navbar-fixed-top" data-target=".navbar-collapse">
 	        <div class="container">
 	          <!-- Brand and toggle get grouped for better mobile display -->
 	          <div class="navbar-header">
@@ -25,6 +25,8 @@
 	                	<li @yield('miarea')><a class="area" href="/busqueda">Mi área</a></li>
 	                @elseif( Auth::user()->idrol === 2)
 	                	<li @yield('publicacion')><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
+	                @elseif( Auth::user()->idrol === 3)
+	                	<li @yield('admin')><a class="admin" href="/admin">Panel de control</a></li>
 	                @endif
 	              @endif
 	              <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
@@ -45,6 +47,8 @@
 		                	<li><a class="area" href="/busqueda">Mi área</a></li>
 		                @elseif( Auth::user()->idrol === 2)
 		                	<li><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
+		                @elseif( Auth::user()->idrol === 3)
+		                	<li><a class="admin" href="/admin">Panel de control</a></li>
 		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>

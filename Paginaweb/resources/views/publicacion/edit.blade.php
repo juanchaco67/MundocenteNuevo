@@ -1,12 +1,12 @@
-@extends('layouts.panelpublicaciones')
+@extends('layouts.paneladmin')
 
 @section('titulo-pagina')
-	Editar
+	Editar publicación
 @stop
 
 @section('contenido')
 	@include('alerts.request')
-	<h1>Editar</h1>
+	<!-- <h1>Editar</h1> -->
 		{!!Form::model($publicacion, ['route'=>['publicacion.update', $publicacion->id], 'method'=>'put'])!!}
 			@include('publicacion.forms.formulario')
 		{!!Form::submit('Actualizar', ['class'=>'btn btn-primary'])!!}

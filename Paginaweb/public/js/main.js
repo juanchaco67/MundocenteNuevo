@@ -67,7 +67,7 @@ $(document).ready(function() {
 	                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
 	            },
 	            error: function(){
-	                  alert("error petición ajax");
+	                  //alert("error petición ajax");
 	            },
 	            success: function(data){        
 	            	//console.log(data); 
@@ -98,7 +98,7 @@ $(document).ready(function() {
                   //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
             },
             error: function(){
-                  alert("error petición ajax");
+                  //alert("error petición ajax");
             },
             success: function(data){        
             	//console.log(data); 
@@ -124,7 +124,7 @@ $(document).ready(function() {
                   //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
             },
             error: function(){
-                  alert("error petición ajax");
+                  //alert("error petición ajax");
             },
             success: function(data){        
             	//console.log(data); 
@@ -146,7 +146,7 @@ $(document).ready(function() {
                   //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
             },
             error: function(){
-                  alert("error petición ajax");
+                  //alert("error petición ajax");
             },
             success: function(data){        
             	//console.log(data); 
@@ -169,7 +169,7 @@ $(document).ready(function() {
 	                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
 	            },
 	            error: function(){
-	                  alert("error petición ajax");
+	                  //alert("error petición ajax");
 	            },
 	            success: function(data){        
 	            	//console.log(data); 
@@ -179,6 +179,7 @@ $(document).ready(function() {
 	      });
 	    });
 
+    /*
     $(".publicaciones").on('click', function(){                                                     ;
 	      //hace la búsqueda
 	      event.preventDefault();
@@ -200,6 +201,7 @@ $(document).ready(function() {
 	            }
 	      });
 	});
+	*/
 
     $("#buscar").on('click', function(){                              
 	      //obtenemos el texto introducido en el campo de búsqueda

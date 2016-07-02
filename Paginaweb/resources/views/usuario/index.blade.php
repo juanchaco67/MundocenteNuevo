@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.paneladmin')
 
 @include('alerts.success')
 
 @section('titulo-pagina')
-	Mostrar
+	Usuarios
 @stop
 
 @section('contenido')

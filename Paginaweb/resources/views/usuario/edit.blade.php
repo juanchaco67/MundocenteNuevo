@@ -1,11 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.paneladmin')
 
 @section('panel')
     @include('layouts.paneladmin')
 @stop
 
 @section('titulo-pagina')
-	Editar
+	Editar usuario
 @stop
 
 @section('contenido')

@@ -39,17 +39,18 @@ Route::get('busqueda', function(){
 });
 Route::resource('busqueda', 'BuscadorController');
 
-Route::get('/publicacion/borradas', 'PublicacionController@borradas');
-Route::post('publicacion/recover/{id}', 'PublicacionController@recover');
+Route::get('/publicacion/borrados', 'PublicacionController@borrados');
+Route::post('publicacion/recuperar/{id}', 'PublicacionController@recuperar');
 Route::resource('publicacion', 'PublicacionController');
 
 Route::resource('usuario', 'UsuarioController');
 
-
+/*
 Route::get('/admin/docentes', 'AdminController@listar_docentes');
 Route::get('/admin/publicadores', 'AdminController@listar_publicadores');
 Route::get('/admin/publicaciones', 'AdminController@listar_publicaciones');
 Route::get('/admin/universidades', 'AdminController@listar_establecimientos');
+*/
 
 
 Route::resource('admin', 'AdminController');

@@ -121,8 +121,8 @@ class BuscadorController extends Controller
                 //return $intereses;
             } else {
                 //return  "funcio";
-      $user = User::find(Auth::user()->id);
-               return view('index', ['user'=>$user,'establecimientos'=>Establecimiento::all()]);              
+      //$user = User::find(Auth::user()->id);
+               //return view('index', ['user'=>$user,'establecimientos'=>Establecimiento::all()]);              
             }
 
         } else {
@@ -406,6 +406,17 @@ class BuscadorController extends Controller
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){
+                //return "editar " .$user;
+
+                $establecimientos = Establecimiento::all();
+                return view('reviews', [
+                    'areas'=> $areas,
+                    'establecimientos'=> $establecimientos,
+                    'user'=>$user,
+                    'publicaciones' => $publicaciones,
+                    'lugares' => $lugares,
+                ]);        
+            } elseif($user->idrol === 3){
                 //return "editar " .$user;
 
                 $establecimientos = Establecimiento::all();

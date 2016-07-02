@@ -1,6 +1,6 @@
 @include('alerts.request')
 @if(isset($user))
-	<h1>Editar</h1>
+	<!-- <h1>Editar</h1>-->
 	@if($user->idrol == 1)		
 		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','id'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>

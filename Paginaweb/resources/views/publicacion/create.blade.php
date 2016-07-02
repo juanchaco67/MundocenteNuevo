@@ -1,7 +1,7 @@
-@extends('layouts.panelpublicaciones')
+@extends('layouts.paneladmin')
 
 @section('titulo-pagina')
-	Usuario
+	Crear publicacion
 @stop
 
 @section('contenido')
