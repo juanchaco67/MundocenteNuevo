@@ -28,6 +28,20 @@
 			
 		{!!Form::close()!!}
 
+	@elseif($user->idrol == 3)	
+
+		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','id'=>'formularioAdmin'])!!}
+
+		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+			@include('usuario.forms.admin')
+
+		<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				{!!Form::submit('Actualizar', ['id'=>'submit-editar-admin','class'=>'btn btn-primary'])!!}
+		</div>
+
+		{!!Form::close()!!}
+
 	<!-- 	{!!Form::open(['route'=>['usuario.destroy', $user->id], 'method'=>'delete'])!!}
 			{!!Form::submit('Eliminar', ['class'=>'btn btn-danger'])!!}
 		{!!Form::close()!!} -->

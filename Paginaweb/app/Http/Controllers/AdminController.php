@@ -28,6 +28,8 @@ class AdminController extends Controller
         $publicaciones = Publicacion::all();
         $establecimientos = Establecimiento::all();
         return view('admin.index', [
+            //'user' => Auth::user();
+            'users' => $users,
             'areas' => $areas,
             'lugares' => $lugares,
             'publicaciones' => $publicaciones,

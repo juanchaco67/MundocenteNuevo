@@ -10,11 +10,13 @@
 					@if(!isset($user))
 				    	<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>
 				    @else
-				    	@if($user->funcionario->establecimiento_id == $establecimiento->id)
-				    		<option value="{{ $establecimiento->id }}" selected>{{ $establecimiento->nombre }}</option>
-				    	@else
-				    		<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>   		
-				    	@endif
+				    	@if($user->funcionario)
+					    	@if($user->funcionario->establecimiento_id == $establecimiento->id)
+					    		<option value="{{ $establecimiento->id }}" selected>{{ $establecimiento->nombre }}</option>
+					    	@else
+					    		<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>   		
+					    	@endif
+					    @endif
 				    @endif
 				@endforeach
 			  </select>
