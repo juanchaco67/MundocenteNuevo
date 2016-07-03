@@ -23,9 +23,13 @@ class UsuarioController extends Controller
     //
     public function index(){
     	//return "index de usuario";
-    	$users = User::all();
+    	$usuarios = User::all();
+        $user = Auth::user();
         //echo "entro";
-    	return view('usuario.index', compact('users'));
+    	return view('usuario.index', [
+            'usuarios' => $usuarios,
+            'user' => $user,
+        ]);
     }
 
     public function create(){
@@ -129,7 +133,6 @@ class UsuarioController extends Controller
             //$user->docente->notificar = $notificar;
 
             return view('usuario.edit', [
-                'admin' 
                 'user' => $user,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
@@ -142,7 +145,7 @@ class UsuarioController extends Controller
                 'user' => $user,
                 'establecimientos' => $establecimientos,
             ]);        
-        } 
+        }
 
     }
 
