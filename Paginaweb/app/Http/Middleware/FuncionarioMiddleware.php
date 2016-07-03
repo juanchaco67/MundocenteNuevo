@@ -30,15 +30,17 @@ class FuncionarioMiddleware
     public function handle($request, Closure $next)
     {
         switch ($this->auth->user()->idrol) {
-            case '0':
-                return redirect()->to('admin');
+            case '3':
+                return redirect()->to('/');
                 break;
             case '1':
-                return redirect()->to('docente');
+                return redirect()->to('/');
                 break;
 
             case '2':
-                //return redirect()->to('funcionario');
+                if($this->auth->user()->estado == "inactivo"){
+                    return redirect()->to('/');
+                }
                 break;
              
              default:

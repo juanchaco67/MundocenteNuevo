@@ -113,7 +113,6 @@ class UsuarioController extends Controller
 
     public function edit($id){
     	//return "edit usuario" .$id;
-
         $user = User::find($id);
         //return $user;
       
@@ -130,6 +129,7 @@ class UsuarioController extends Controller
             //$user->docente->notificar = $notificar;
 
             return view('usuario.edit', [
+                'admin' 
                 'user' => $user,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
@@ -142,7 +142,7 @@ class UsuarioController extends Controller
                 'user' => $user,
                 'establecimientos' => $establecimientos,
             ]);        
-        }
+        } 
 
     }
 

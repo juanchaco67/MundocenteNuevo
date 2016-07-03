@@ -20,6 +20,24 @@ use App\Lugar;
 
 class PublicacionController extends Controller
 {
+
+    public function __construct(){
+        /*
+        if (Auth::check()) {
+            if (Auth::user()->estado === "inactivo") {
+                return "lhoho";
+                */
+                $this->middleware('auth');
+                $this->middleware('funcionario');
+                /*
+            } else {
+                return "activo";
+            }
+        }
+        */
+    }
+
+
     //
     public function index(){
         //return "index";
