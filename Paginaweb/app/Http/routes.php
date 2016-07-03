@@ -39,6 +39,7 @@ Route::get('busqueda', function(){
 });
 Route::resource('busqueda', 'BuscadorController');
 
+Route::group
 Route::get('/publicacion/borrados', 'PublicacionController@borrados');
 Route::post('publicacion/recuperar/{id}', 'PublicacionController@recuperar');
 Route::resource('publicacion', 'PublicacionController');

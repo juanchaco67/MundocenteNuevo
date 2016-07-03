@@ -10,6 +10,7 @@ use App\Area;
 use App\Lugar;
 use App\Publicacion;
 use App\Establecimiento;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -22,18 +23,22 @@ class AdminController extends Controller
     public function index()
     {
         //
+        /*
         $users = User::all();
         $areas = Area::all();
         $lugares = Lugar::all();
         $publicaciones = Publicacion::all();
         $establecimientos = Establecimiento::all();
+        */
         return view('admin.index', [
-            //'user' => Auth::user();
+            'user' => Auth::user(),
+            /*
             'users' => $users,
             'areas' => $areas,
             'lugares' => $lugares,
             'publicaciones' => $publicaciones,
             'establecimientos' => $establecimientos,
+            */
         ]);
     }
 

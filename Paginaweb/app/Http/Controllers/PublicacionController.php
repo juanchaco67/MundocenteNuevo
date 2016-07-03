@@ -25,36 +25,40 @@ class PublicacionController extends Controller
         //return "index";
         //return view('publicacion.index');
         //$valor = Input::get('valor');
-        $publicaciones = Publicacion::all();
         if( Auth::check() ){
-            $user = User::find(Auth::user()->id);
-            $areas = Area::all();
-            $establecimientos = Establecimiento::all();
-            $lugares = Lugar::all();
-            if ( $user->idrol === 2 ) {      
-                $funcionario = Funcionario::where('user_id', $user->id)
-                    ->first();
-                $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
-                    ->where('estado', '=', 'activa')
-                    ->orderBy('created_at', 'DESC')->get()->all();
-                
-                //return $publicaciones;
-                //return $funcionario->publicacion;
-                //$publicaciones = $funcionario->publicaciones;
-                //return $publicaciones;
-               return view('publicacion.index', [
-                    'areas' => $areas,
-                    'user' => Auth::user(),
-                    'publicaciones' => $publicaciones,
-                    'establecimientos' => $establecimientos,
-                    'lugares' => $lugares,
-                ]);
-            } else if( $user->idrol === 1){
-                return redirect()->to('/busqueda');
+            if( Auth::user()->estado == "activo" ){
+                $publicaciones = Publicacion::all();
+                $user = User::find(Auth::user()->id);
+                $areas = Area::all();
+                $establecimientos = Establecimiento::all();
+                $lugares = Lugar::all();
+                if ( $user->idrol === 2 ) {      
+                    $funcionario = Funcionario::where('user_id', $user->id)
+                        ->first();
+                    $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
+                        ->where('estado', '=', 'activa')
+                        ->orderBy('created_at', 'DESC')->get()->all();
+                    
+                    //return $publicaciones;
+                    //return $funcionario->publicacion;
+                    //$publicaciones = $funcionario->publicaciones;
+                    //return $publicaciones;
+                   return view('publicacion.index', [
+                        'areas' => $areas,
+                        'user' => Auth::user(),
+                        'publicaciones' => $publicaciones,
+                        'establecimientos' => $establecimientos,
+                        'lugares' => $lugares,
+                    ]);
+                } else if( $user->idrol === 1){
+                    return redirect()->to('/busqueda');
+                } else {
+                    return view('publicacion.index', [
+                        'publicaciones' => $publicaciones,
+                    ]);
+                }
             } else {
-                return view('publicacion.index', [
-                    'publicaciones' => $publicaciones,
-                ]);
+                return "Usuario inactivo";
             }
         } else {
             return view('publicacion.index', [
