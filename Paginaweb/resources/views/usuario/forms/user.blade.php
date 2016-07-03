@@ -24,7 +24,7 @@
               -->           
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="submit-registrar-docente"  class="btn btn-primary">Registrar</button>
+                <button  class="submit-registrar-docente btn btn-primary">Registrar</button>
                  
             </div>
             <!--{!!Form::close()!!} -->
@@ -45,7 +45,7 @@
             {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
             -->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button id="submit-registrar-funcionario" class="btn btn-primary">Registrar</button>
+                <button class="submit-registrar-funcionario btn btn-primary">Registrar</button>
             <!-- {!!Form::close()!!} -->
           </div>
         </form>

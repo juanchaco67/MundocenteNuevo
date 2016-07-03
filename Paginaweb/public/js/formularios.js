@@ -15,6 +15,7 @@ $(document).ready(function(){
 
 				if(metodo=="PUT"){
 					document.getElementById('btn-correo').innerHTML=resp.email;
+
 				}
 				else if(id=="formularioFuncionario" && metodo=="POST"){
 					window.location="http://localhost:8000/publicacion";
@@ -22,6 +23,7 @@ $(document).ready(function(){
 					else if(id=="formularioDocente" && metodo=="POST"){
 					window.location="http://localhost:8000";
 				}
+
 
 			},
 			error:function(error){
@@ -44,19 +46,24 @@ $(document).ready(function(){
 		});
 		return false;
 	};
-	$('#submit-editar-docente').click(function(){
-	
-		formularioFuncionario("PUT","formularioDocente");
+	$('.submit-editar-docente').click(function(){
+		alert("actualizar");
+		//formularioFuncionario("PUT","formularioDocente");
 	});
-	$('#submit-editar-funcionario').click(function(){
+	$('.submit-editar-funcionario').click(function(){
 
 		formularioFuncionario("PUT","formularioFuncionario");
 	});
-	$('#submit-registrar-funcionario').click(function(){
+	$('.submit-registrar-funcionario').click(function(){
 		formularioFuncionario("POST","formularioFuncionario");
 	});
-	$('#submit-registrar-docente').click(function(){
+	$('.submit-registrar-docente').click(function(){
 		formularioFuncionario("POST","formularioDocente");
+	});
+
+
+	$('.submit-editar-admin').click(function(){
+		formularioFuncionario("PUT","formularioAdmin");
 	});
 
 
