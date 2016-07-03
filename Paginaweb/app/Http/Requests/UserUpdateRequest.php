@@ -27,7 +27,7 @@ class UserUpdateRequest extends Request
         return [
             //
             'name' => 'required',
-            'password' => 'required|min:8',
+            //'password' => 'required|min:8',
             'email' => 'required|email'
         ];
     }
