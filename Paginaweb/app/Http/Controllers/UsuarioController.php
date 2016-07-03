@@ -41,6 +41,15 @@ class UsuarioController extends Controller
     public function store(UserCreateRequest $request){
         //return "Establecimiento " .$request['establecimiento'];
        //echo $request['email;'];
+
+        if($request->ajax()){
+            console.log("Es ajax");
+            return response()->json([
+                "mensaje" => "Usuario creado",
+            ]);
+        }
+
+
         $rol = $request['rol'];
         if($rol === "docente"){
             $notificar = $request['notificar'];

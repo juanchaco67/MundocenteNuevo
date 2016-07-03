@@ -36,7 +36,7 @@
 	  </div>
 
 
-
+{{--
 	@if(!isset($sinfiltrar))
 		    <div class="panel-group">            
 			      <div class="panel panel-heading text-center col-xs-12 col-sm-12 col-md-12" role="tablist" data-toggle="collapse" data-target="#filtros">
@@ -72,6 +72,8 @@
 				  </div>		
 		    </div>  			
 	@endif
+
+	--}}
 
 	@if( Auth::check() )
 			@include('filtro')

@@ -31,7 +31,7 @@ class PublicacionController extends Controller
             $areas = Area::all();
             $establecimientos = Establecimiento::all();
             $lugares = Lugar::all();
-            if ( $user->idrol === 2) {      
+            if ( $user->idrol === 2 ) {      
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
                 $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)

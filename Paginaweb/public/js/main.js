@@ -1,5 +1,36 @@
 $(document).ready(function() {
 
+	/*
+	$("#submit-registrar-docente").click(function(){
+		event.preventDefault();
+		var nombre = $("input[name=name]").val();
+		var email = $("input[name=email]").val();
+		var password = $("input[name=password]").val();
+		console.log(nombre);
+		console.log(email);
+		console.log(password);
+		var route = "http://localhost:8000/usuario";
+		var token = $("#token").val();
+
+		$.ajax({
+			url: route,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'POST',
+			dataType: 'json',
+			data: {'name': nombre, 'email': email, 'password': password},
+
+			success:function(){
+				//$(".alert").fadeIn();
+				$("#msj-success").fadeIn();
+			}
+
+		});
+		
+	});
+
+
+	*/
+
 	//alert('Seleccionado');
 	$('.publicacion').click(function(){
 		//alert('publica');

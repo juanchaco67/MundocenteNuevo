@@ -4,7 +4,8 @@
 </div>
 <div class="form-group">
 	{!!Form::label('Correo')!!}
-	{!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el correo','name'=>'email'])!!}
+	<input class="form-control" type="email" name="email" placeholder="Ingresa el correo">
+	{{-- {!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el correo','name'=>'email'])!!} --}}
 </div>
 <div class="form-group">
 	{!!Form::label('Contraseña')!!}

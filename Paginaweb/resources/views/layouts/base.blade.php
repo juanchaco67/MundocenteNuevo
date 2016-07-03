@@ -73,7 +73,6 @@
 	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
 	<script type="text/javascript">
-	/*
 
 		$(document).ready(function(){
 
@@ -82,6 +81,7 @@
 				event.preventDefault();
 				var route=$("#"+id).attr('action');
 				var valor=document.getElementById('token').value;
+
 				$.ajax({
 					url:route,
 					headers:{"X-CSRF-TOKEN":valor},
@@ -100,7 +100,8 @@
 
 					},
 					error:function(error){
-					
+							
+							console.log(error.responseText);
 							var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
 							$('#error').html(html);	
 							result = $.parseJSON(error.responseText);	
@@ -114,23 +115,22 @@
 			};
 			$('#submit-editar-docente').click(function(){
 			
-				formularioFuncionario("PUT","formularioFuncionarioDocente");
+				formularioFuncionario("PUT","formularioDocente");
 			});
 			$('#submit-editar-funcionario').click(function(){
 
-				formularioFuncionario("PUT","formularioFuncionarioFuncionario");
+				formularioFuncionario("PUT","formularioFuncionario");
 			});
 			$('#submit-registrar-funcionario').click(function(){
-				formularioFuncionario("POST","formularioFuncionarioFuncionario");
+				formularioFuncionario("POST","formularioFuncionario");
 			});
 			$('#submit-registrar-docente').click(function(){
-				formularioFuncionario("POST","formularioFuncionarioDocente");
+				formularioFuncionario("POST","formularioDocente");
 			});
 
 
 	});
 
-*/
 	</script>
 </body>
 </html>
