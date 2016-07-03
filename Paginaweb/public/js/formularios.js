@@ -3,9 +3,9 @@ $(document).ready(function(){
 	formularioFuncionario=function(metodo,id){
 			
 		event.preventDefault();
-		var route=$("#"+id).attr('action');
+		var route=$("."+id).attr('action');
 		var valor=document.getElementById('token').value;
-
+	
 		$.ajax({
 			url:route,
 			headers:{"X-CSRF-TOKEN":valor},
@@ -47,8 +47,8 @@ $(document).ready(function(){
 		return false;
 	};
 	$('.submit-editar-docente').click(function(){
-		alert("actualizar");
-		//formularioFuncionario("PUT","formularioDocente");
+	
+		formularioFuncionario("PUT","formularioDocente");
 	});
 	$('.submit-editar-funcionario').click(function(){
 

@@ -1,8 +1,9 @@
 @include('alerts.request')
 @if(isset($user))
 	<!-- <h1>Editar</h1>-->
-	@if($user->idrol == 1)		
-		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','id'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
+	@if($user->idrol == 1)
+		
+		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','class'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 			@include('usuario.forms.docente')
 
@@ -17,7 +18,7 @@
 		{!!Form::close()!!} -->
 	@elseif($user->idrol == 2)	
 
-		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioFuncionario','onsubmit'=>'return false;','id'=>'formularioFuncionario'])!!}
+		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioFuncionario','onsubmit'=>'return false;','class'=>'formularioFuncionario'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 			@include('usuario.forms.funcionario')
 
@@ -30,7 +31,7 @@
 
 	@elseif($user->idrol == 3)	
 
-		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','id'=>'formularioAdmin'])!!}
+		{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','class'=>'formularioAdmin'])!!}
 
 		<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 			@include('usuario.forms.admin')

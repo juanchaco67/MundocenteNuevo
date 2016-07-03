@@ -13,7 +13,7 @@
           <!--{!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
           -->
   
-          <form action="{{ route('usuario.store') }}" method="post" id="formularioDocente" name="formularioDocente">
+          <form action="{{ route('usuario.store') }}" method="post" class="formularioDocente" name="formularioDocente">
             <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 
             @include('usuario.forms.docente')
@@ -35,7 +35,7 @@
         <!--
        {!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioFuncionario'])!!} 
        -->
-       <form action="{{ route('usuario.store') }}" method="post" id="formularioFuncionario" name="formularioFuncionario">
+       <form action="{{ route('usuario.store') }}" method="post" class="formularioFuncionario" name="formularioFuncionario">
         <input type="hidden" name="_token" value="{{csrf_token()}}" id="toke"/>
           @include('usuario.forms.funcionario')
 
