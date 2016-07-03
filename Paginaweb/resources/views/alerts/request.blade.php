@@ -11,4 +11,4 @@
 	</div>
 @endif
 
-<div   id="error"></div>
+<div id="error"></div>

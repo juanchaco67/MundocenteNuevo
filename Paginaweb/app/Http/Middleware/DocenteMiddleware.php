@@ -30,7 +30,7 @@ class DocenteMiddleware
     public function handle($request, Closure $next)
     {
         switch ($this->auth->user()->idrol) {
-            case '0':
+            case '3':
                 return redirect()->to('admin');
                 break;
             case '1':

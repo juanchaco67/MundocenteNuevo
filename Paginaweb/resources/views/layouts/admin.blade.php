@@ -149,6 +149,8 @@
 
     <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
+    <script type="text/javascript" src="{{ URL::asset('js/formulario.js') }}"></script>
+
 </body>
 
 </html>
