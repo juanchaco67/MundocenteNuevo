@@ -28,7 +28,7 @@ class UserUpdateRequest extends Request
             //
             'name' => 'required',
             'password' => 'required|min:8',
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email'
         ];
     }
 }

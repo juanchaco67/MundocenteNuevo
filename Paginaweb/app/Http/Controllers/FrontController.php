@@ -53,7 +53,6 @@ class FrontController extends Controller
                 ]);        
             } elseif($user->idrol === 3){
                 return view('index', [
-                    'user' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
@@ -115,7 +114,6 @@ class FrontController extends Controller
                 ]);        
             } elseif($user->idrol === 3){
                 return view('contacto', [
-                    'user' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,

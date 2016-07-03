@@ -278,9 +278,11 @@ $('.modal').on('hidden.bs.modal', function() {
 
 $(document).ready(function(){
 	//alert('hola');
-	var posicion = $('.panel-izquierdo').offset().top;
-	var ancho = $('.panel-izquierdo').width();
-	$(window).scroll(function(){
+	//alert($('.panel-izquierdo').offset());
+	if ($('.panel-izquierdo').offset() != undefined) {
+		var posicion = $('.panel-izquierdo').offset().top;
+		var ancho = $('.panel-izquierdo').width();
+		$(window).scroll(function(){
 		var posScroll = $(window).scrollTop();
 		if (posScroll + 50 > posicion) {
 			//alert('menor');
@@ -296,6 +298,7 @@ $(document).ready(function(){
 
 	});
 	//alert(posicion);
+	}
 });
 var activo = true;
 $('.listarIntereses').click(function(){

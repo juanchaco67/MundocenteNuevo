@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
-use App\Establecimiento;
+use App\Area;
+use App\Lugar;
 use App\Publicacion;
+use App\Establecimiento;
 
 class AdminController extends Controller
 {
@@ -20,7 +22,17 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        $users = User::all();
+        $areas = Area::all();
+        $lugares = Lugar::all();
+        $publicaciones = Publicacion::all();
+        $establecimientos = Establecimiento::all();
+        return view('admin.index', [
+            'areas' => $areas,
+            'lugares' => $lugares,
+            'publicaciones' => $publicaciones,
+            'establecimientos' => $establecimientos,
+        ]);
     }
 
     /**
@@ -38,7 +50,7 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
     }

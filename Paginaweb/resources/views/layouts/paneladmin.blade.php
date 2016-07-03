@@ -68,7 +68,8 @@
                             <a href="/docentes"><i class="fa fa-table fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/usuario/create">Nuevo</a>
+                                    <a data-toggle="modal" data-target="#myModal" href="#">Registro</a>
+                                    <!-- <a href="/usuario/create">Nuevo</a> -->
                                 </li>
                                 <li>
                                     <a href="/usuario">Listar</a>

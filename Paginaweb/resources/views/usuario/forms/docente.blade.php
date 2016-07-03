@@ -3,10 +3,12 @@
 <div class="form-group">
 		<label>Recibir notificaciones</label>
 		@if(isset($user))
-			@if($user->docente->notificar === 0)
-				{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
-			@else
-				{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
+			@if($user->docente)
+				@if($user->docente->notificar === 0)
+					{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
+				@else
+					{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
+				@endif
 			@endif
 		@else
 			{!!Form::checkbox('notificar', '0', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
@@ -29,17 +31,19 @@
 				@endif
 			@else
 				@if(isset($areas))
-					@foreach($areas as $area)
-						@if(in_array($area->id, $areas_usuario))
-							<div class="form-group">
-								<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" checked><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
-							</div>
-						@else
-							<div class="form-group">
-								<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
-							</div>
-						@endif
-					@endforeach
+					<div class="barra-scroll">
+						@foreach($areas as $area)
+							@if(in_array($area->id, $areas_usuario))
+								<div class="form-group">
+									<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" checked><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
+								</div>
+							@else
+								<div class="form-group">
+									<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
+								</div>
+							@endif
+						@endforeach
+					</div>
 				@endif
 			@endif
 		</fieldset>

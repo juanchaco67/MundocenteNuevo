@@ -42,14 +42,6 @@ class UsuarioController extends Controller
         //return "Establecimiento " .$request['establecimiento'];
        //echo $request['email;'];
 
-        if($request->ajax()){
-            console.log("Es ajax");
-            return response()->json([
-                "mensaje" => "Usuario creado",
-            ]);
-        }
-
-
         $rol = $request['rol'];
         if($rol === "docente"){
             $notificar = $request['notificar'];
@@ -125,7 +117,7 @@ class UsuarioController extends Controller
         $user = User::find($id);
         //return $user;
       
-        if($user->idrol == 1){
+        if($user->idrol === 1){
             //return "editar " .$user;
        
             $areas = Area::all();
