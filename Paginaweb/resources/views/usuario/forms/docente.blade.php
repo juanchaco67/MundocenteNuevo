@@ -1,10 +1,10 @@
 <input name="rol" value="docente" id="rol"  hidden></input>
 @include('usuario.forms.registro')
 <div class="form-group">
-		<label>Recibir notificaciones</label>
-		@if(isset($user))
-			@if($user->docente)
-				@if($user->docente->notificar === 0)
+		<label for="notificar">Recibir notificaciones</label>
+		@if(isset($usuario))
+			@if($usuario->docente)
+				@if($usuario->docente->notificar === 0)
 					{!!Form::checkbox('notificar', '1', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
 				@else
 					{!!Form::checkbox('notificar', '1', false,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
@@ -48,13 +48,15 @@
 			@endif
 		</fieldset>
 	</div>
-@if(isset($user))
-	<div class="form-group">
-		<label for="desactivar">Desactivar esta cuenta</label>
-		@if($user->estado === 'inactivo')
-			<input name="desactivar" value="desactivar" type="checkbox" checked></input>
-		@else
-			<input name="desactivar" value="desactivar" type="checkbox"></input>
-		@endif
-	</div>
+@if(isset($usuario))
+	@if($usuario->estado === 'activo')
+		<div class="form-group">	
+			<label for="desactivar">Desactivar esta cuenta</label>
+			@if($usuario->estado === 'inactivo')
+				<input id="desactivar" name="desactivar" value="desactivar" type="checkbox" checked></input>
+			@else
+				<input id="desactivar" name="desactivar" value="desactivar" type="checkbox"></input>
+			@endif
+		</div>
+	@endif
 @endif

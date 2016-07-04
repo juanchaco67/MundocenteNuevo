@@ -15,7 +15,11 @@ $(document).ready(function(){
 				//alert(resp.usuario);
 				if(metodo=="PUT"){
 					if (id="submit-editar-docente" && metodo == "PUT") {
-						window.location="http://localhost:8000/";
+						if (resp.usuario.estado == "activo") {
+							window.location="http://localhost:8000/logout";
+						} else {
+							window.location="http://localhost:8000/";
+						}
 					}
 					//document.getElementById('btn-correo').innerHTML=resp.email;
 
