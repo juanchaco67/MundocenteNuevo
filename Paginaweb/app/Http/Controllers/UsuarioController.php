@@ -29,7 +29,7 @@ class UsuarioController extends Controller
         //$this->middleware('docente', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except', 'store']);
-        //$this->middleware('admin', ['only' => ['index']]);
+        $this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
         //$this->middleware('guest', ['only' => ['create']]);
     }
     //
