@@ -28,7 +28,6 @@
 			</div>
 			
 		{!!Form::close()!!}
-<<<<<<< HEAD
 
 	@elseif($user->idrol == 3)	
 
@@ -47,8 +46,6 @@
 	<!-- 	{!!Form::open(['route'=>['usuario.destroy', $user->id], 'method'=>'delete'])!!}
 			{!!Form::submit('Eliminar', ['class'=>'btn btn-danger'])!!}
 		{!!Form::close()!!} -->
-=======
->>>>>>> c16215791a8908b4c45d6192b9e38d0d4fec90ca
 	@endif
 
 @endif
