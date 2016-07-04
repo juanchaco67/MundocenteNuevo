@@ -11,7 +11,7 @@
 <h2>Hola  {{$user->name}}</h2>
 
 <div>
-    Su cuenta  ha  cambiado al estado: { $user->estado }
+    Su cuenta  ha  cambiado al estado: {{ $user->estado }}
 </div>	
 <div>
 <p>

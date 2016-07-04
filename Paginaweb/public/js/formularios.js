@@ -16,7 +16,9 @@ $(document).ready(function(){
 				if(metodo=="PUT"){
 					if (id="submit-editar-docente" && metodo == "PUT") {
 						if (resp.usuario.estado == "activo") {
-							window.location="http://localhost:8000/logout";
+							if(resp.usuario.idrol!=3){							
+								window.location="http://localhost:8000/logout";
+							}
 						} else {
 							window.location="http://localhost:8000/";
 						}
