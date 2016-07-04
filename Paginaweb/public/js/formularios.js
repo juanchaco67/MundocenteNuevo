@@ -10,7 +10,7 @@ $(document).ready(function(){
 			url:route,
 			headers:{"X-CSRF-TOKEN":valor},
 			method:metodo,
-			data:$("#"+id).serialize(),
+			data:$("."+id).serialize(),
 			success:function(resp){
 
 				if(metodo=="PUT"){
@@ -30,7 +30,10 @@ $(document).ready(function(){
 					
 					//console.log(error.responseText);
 					var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
-					$('#error').html(html);	
+					if(id=="formularioAdmin")
+						$('#error-admin').html(html);	
+					else
+						$('#error').html(html);	
 					result = $.parseJSON(error.responseText);	
 					var ul=document.getElementById('error-lista');
 					ul.innerHTML="";
@@ -58,11 +61,13 @@ $(document).ready(function(){
 		formularioFuncionario("POST","formularioFuncionario");
 	});
 	$('.submit-registrar-docente').click(function(){
+
 		formularioFuncionario("POST","formularioDocente");
 	});
 
 
 	$('.submit-editar-admin').click(function(){
+		
 		formularioFuncionario("PUT","formularioAdmin");
 	});
 

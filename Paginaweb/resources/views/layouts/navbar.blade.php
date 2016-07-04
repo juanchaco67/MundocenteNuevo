@@ -116,20 +116,20 @@
 
        <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
-            @include('alerts.request')
+            <div id="error-admin"></div>
 
             @if( Auth::user()->idrol == 3)
 
             	@if(isset($user))
 
-					{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','id'=>'formularioAdmin'])!!}
+					{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','class'=>'formularioAdmin'])!!}
 
 					<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 						@include('usuario.forms.admin')
 
 					<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							{!!Form::submit('Actualizar', ['id'=>'submit-editar-admin','class'=>'btn btn-primary'])!!}
+							{!!Form::submit('Actualizar', ['class'=>'submit-editar-admin btn btn-primary'])!!}
 					</div>
 
 					{!!Form::close()!!}
