@@ -17,6 +17,7 @@ use App\Establecimiento;
 use App\Docente;
 use App\Funcionario;
 use Auth;
+use App\Http\Controllers\AdminController;
 use Response;
 
 class UsuarioController extends Controller
@@ -171,7 +172,7 @@ class UsuarioController extends Controller
 
     public function update($id, UserUpdateRequest $request){
         //echo $request;
-           
+            
         $user = User::find($id);
         if ($user->idrol ==1) {
             $notificar = $request['notificar'];
@@ -196,13 +197,20 @@ class UsuarioController extends Controller
             $funcionario->update([
                 'establecimiento_id' => $request['establecimiento'],
             ]);
+
+          
         }
 
         $user->fill($request->all());
         $user->save();
-
+        
         if ($request['desactivar']) {
             $user->update(['estado' => 'inactivo']);
+            if ($user->estado == "inactivo") {
+             AdminController::enviar_correo('emails.aviso_activado',$user,'INACTIVO');
+            } else {
+                echo "no enviarnada";
+            }
         } else {
             $user->update(['estado' => 'activo']);
         }

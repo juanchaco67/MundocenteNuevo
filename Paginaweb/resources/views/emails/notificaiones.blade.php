@@ -11,7 +11,7 @@
 <h2>Hola  {{$user->name}}</h2>
 
 <div>
-    Bienvenido a {!! $name !!}!
+    Bienvenido ha Mundocente
 </div>	
 <div>
 <p>
@@ -19,7 +19,7 @@ Gracias por registrarte con nosotros. Tu nuevacuenta ha sido configurada y ahora
 
 
 </p>
-  <a href="http://grupo2.virtualtic.co/" class="myButton">Ir a tu cuenta</a>
+  <a href="http://grupo2.virtualtic.co/" class="myButton">Ir ha tu cuenta</a>
 </div>
 
 </body>

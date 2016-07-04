@@ -187,14 +187,16 @@ class AdminController extends Controller
             'universidades' => $establecimientos,
         ]);
     }
-    public function enviar_correo($vista,$correo,$msj){
+    public static function enviar_correo($vista,$user,$msj){
 
         $data = array(
-            'name' => "Mundocente",
+            'user' => $user,
         );
-        Mail::send($vista, $data, function ($message) as ($correo,$msj) {
-            $message->from('software.grupo2.uptc.colombia@gmail.com', 'Mundocente');
-            $message->to($correo)->subject(msj);
+        Mail::send($vista, $data, function ($message) use ($user,$msj) {
+            $message->from('nuevojuanchaco67@gmail.com', 'Mundocente');
+            $message->to($user->email)->subject($msj);
         });
     }
+ 
+
 }
