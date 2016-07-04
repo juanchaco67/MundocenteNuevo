@@ -5,7 +5,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		var route=$("."+id).attr('action');
 		var valor=document.getElementById('token').value;
-	
+		alert(route+" "+id);
 		$.ajax({
 			url:route,
 			headers:{"X-CSRF-TOKEN":valor},
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		return false;
 	};
 	$('.submit-editar-docente').click(function(){
-	
+		//alert("entro");
 		formularioFuncionario("PUT","formularioDocente");
 	});
 	$('.submit-editar-funcionario').click(function(){
