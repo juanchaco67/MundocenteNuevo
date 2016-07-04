@@ -64,7 +64,7 @@ Route::get('sendemail', function () {
     );
     Mail::send('emails.welcome', $data, function ($message) {
         $message->from('serestpis4@gmail.com', 'Mundocente');
-        $message->to('serestpis4@gmail.com')->subject('Bienvenido a Mundocente');
+        $message->to('nuevojuanchaco67@gmail.com')->subject('Bienvenido a Mundocente');
     });
     return "Your email has been sent successfully";
 });

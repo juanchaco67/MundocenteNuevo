@@ -13,6 +13,8 @@ class EstablecimientoController extends Controller
         $publicaciones = Publicacion::all();
         return view('publicacion.index', compact('publicaciones'));
 
+
+
         /*
         $publicaciones = Publicacion::where('nombre', 'like', '%'.$valor.'%')
           ->orwhere('descripcion', 'like', '%'.$valor.'%')->get();
