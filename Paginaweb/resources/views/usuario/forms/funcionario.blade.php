@@ -24,12 +24,23 @@
 	  	</fieldset>
 	@endif
 @if(isset($usuario))
-	<div class="form-group">
-		<label for="desactivar">Desactivar esta cuenta</label>
-		@if($usuario->estado === 'inactivo')
-			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox" checked></input>
-		@else
-			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox"></input>
-		@endif
-	</div>
+	@if($usuario->estado == "activo")
+		<div class="form-group">
+			<label for="desactivar">Desactivar esta cuenta</label>
+			@if($usuario->estado === 'inactivo')
+				<input name="desactivar" id="" value="desactivar" type="checkbox" checked></input>
+			@else
+				<input name="desactivar" id="desactivar" value="desactivar" type="checkbox"></input>
+			@endif
+		</div>
+	@else
+		<div class="form-group">
+			<label for="activar">Activar esta cuenta</label>
+			@if($usuario->estado === 'activo')
+				<input name="activar" id="" value="activar" type="checkbox" checked></input>
+			@else
+				<input name="activar" id="activar" value="activar" type="checkbox"></input>
+			@endif
+		</div>
+	@endif
 @endif
