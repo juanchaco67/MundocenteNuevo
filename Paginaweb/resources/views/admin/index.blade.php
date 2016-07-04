@@ -39,7 +39,7 @@
 				@endforeach
 			</table>
 		@else
-			<h4>No tiene activaciones pendientes</h4>
+			<h6 class="text-center">No tiene activaciones pendientes</h6>
 		@endif
 	@endif
 
