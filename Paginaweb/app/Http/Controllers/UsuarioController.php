@@ -180,6 +180,9 @@ class UsuarioController extends Controller
                 $notificar = 0;
             }
 
+            //$docente = Docente::where('user_id', '=', $user->id)->first();
+
+            //return $user;
             $areas = Interes::where('docente_id', $id)->delete();
             $this->crear_interes($user, $request); 
 

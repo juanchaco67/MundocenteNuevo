@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Session;
+use Auth;
 
 class AdminMiddleware
 {
@@ -24,23 +25,27 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        switch ($this->auth->user()->idrol) {
-            case '3':
-                //return redirect()->to('admin');
-                break;
-            case '1':
-                return redirect()->to('/');
-                break;
+        if(Auth::check()){
+            switch ($this->auth->user()->idrol) {
+                case '3':
+                    //return redirect()->to('admin');
+                    break;
+                case '1':
+                    return redirect()->to('/');
+                    break;
 
-            case '2':
-                return redirect()->to('/');
-                break;
-             
-             default:
-                 # code...
-                return redirect()->to('/');
-                 break;
-         } 
-        return $next($request);
+                case '2':
+                    return redirect()->to('/');
+                    break;
+                 
+                 default:
+                     # code...
+                    return redirect()->to('/');
+                     break;
+             } 
+            return $next($request);
+        } else {
+            return $next($request);
+        }
     }
 }

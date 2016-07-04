@@ -15,7 +15,7 @@ $(document).ready(function(){
 				//alert(resp.usuario);
 				if(metodo=="PUT"){
 					if (id="submit-editar-docente" && metodo == "PUT") {
-						window.location="http://localhost:8000/";
+						//window.location="http://localhost:8000/";
 					}
 					//document.getElementById('btn-correo').innerHTML=resp.email;
 
