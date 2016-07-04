@@ -12,12 +12,12 @@ use App\Publicacion;
 use App\Interes;
 use App\Establecimiento;
 use Auth;
-
+use Mail;
 class AdminController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
-        $this->middleware('admin');
+       // $this->middleware('auth');
+        //$this->middleware('admin');
     }
    
      /**
@@ -187,12 +187,14 @@ class AdminController extends Controller
             'universidades' => $establecimientos,
         ]);
     }
-    public function notificar($user_email,$mensaje){
-        Mail::send('emails.contact',['correo'=>'Correo enviado'],function($msg){
-            $msg->subject(mensaje);
-            $msg->to($user_email);
+    public function enviar_correo($vista,$correo,$msj){
+        
+        $data = array(
+            'name' => "Mundocente",
+        );
+        Mail::send($vista, $data, function ($message) as ($correo,$msj) {
+            $message->from('software.grupo2.uptc.colombia@gmail.com', 'Mundocente');
+            $message->to($correo)->subject(msj);
         });
-          //Session::flash('mensaje', 'Correo enviado correctamente');
-
     }
 }
