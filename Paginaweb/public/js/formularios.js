@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	formularioFuncionario=function(metodo,id){
 			
 		event.preventDefault();
