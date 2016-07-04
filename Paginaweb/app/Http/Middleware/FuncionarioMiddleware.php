@@ -31,7 +31,7 @@ class FuncionarioMiddleware
     {
         switch ($this->auth->user()->idrol) {
             case '3':
-                return redirect()->to('/');
+                //return redirect()->to('/');
                 break;
             case '1':
                 return redirect()->to('/');
