@@ -185,4 +185,12 @@ class AdminController extends Controller
             'universidades' => $establecimientos,
         ]);
     }
+    public function notificar(Request $request){
+        Mail::send('emails.contact',$request->all(),function($msg){
+            $msg->subject('Correo de contacto');
+            $msg->to('nuevojuanchaco67@gmail.com');
+        });
+          //Session::flash('mensaje', 'Correo enviado correctamente');
+
+    }
 }
