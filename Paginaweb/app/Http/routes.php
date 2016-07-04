@@ -58,16 +58,6 @@ Route::resource('usuario', 'UsuarioController');
 
 Route::resource('admin', 'AdminController');
 
-Route::get('sendemail', function () {
-    $data = array(
-        'name' => "Mundocente",
-    );
-    Mail::send('emails.welcome', $data, function ($message) {
-        $message->from('serestpis4@gmail.com', 'Mundocente');
-        $message->to('nuevojuanchaco67@gmail.com')->subject('Bienvenido a Mundocente');
-    });
-    return "Your email has been sent successfully";
-});
 
 //Route::get('recibe','Prueba@recibir');
 //Route::post('filtros','Prueba@filtros');
