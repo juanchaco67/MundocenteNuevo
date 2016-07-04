@@ -2,8 +2,8 @@
 @if(isset($usuario))
 	<!-- <h1>Editar</h1>-->
 	@if($usuario->idrol == 1)
-		
-		{!!Form::model($usuario, ['route'=>['usuario.update', $usuario->id], 'method'=>'put','class'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
+	
+		{!!Form::model($usuario, ['route'=>['usuario.update','parameters'=>$usuario->id], 'method'=>'put','class'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 			@include('usuario.forms.docente')
 
