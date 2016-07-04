@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	formularioFuncionario=function(metodo,id){
 			
 		event.preventDefault();
@@ -81,6 +81,5 @@ $(document).ready(function(){
 		
 		formularioFuncionario("PUT","formularioAdmin");
 	});
-
 
 });

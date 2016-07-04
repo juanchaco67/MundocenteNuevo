@@ -25,6 +25,25 @@
                 </div>
 -->
 
+            <div class="modal fade" id="modalpublicacion" role="dialog">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 id="titulo-principal" class="modal-title text-center"></h4>
+                    </div>
+                    <div class="modal-body text-center">
+                      <h4 id="titulo-secundario"></h4>
+                        <h5><p id="descripcion"></p>
+                        </h5>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
@@ -34,17 +53,16 @@
             @foreach($publicaciones as $publicacion)
 
                 @if($publicacion->estado == 'activa')
-                  <div class="publicacion">            
+                  <div id="{{ $publicacion->id }}" data-toggle="modal" data-target="#modalpublicacion" class="publicacion">            
                     <div id="contenido-publicacion" class="informacion">                             
-                              <h3>
-                                <a class="titulo-publicacion" href="#">{{ $publicacion->nombre }}
-                                </a>
-                              </h3> 
-                              <span>
-                                <a href="#">{{ $publicacion->funcionario->establecimiento->nombre }}</a>
-                              </span>
-                              <p class="descripcion">{{ $publicacion->resumen }}</p>
-
+                        <h3>
+                          <a class="titulo-publicacion">{{ $publicacion->nombre }}
+                          </a>
+                        </h3> 
+                        <span>
+                          <a>{{ $publicacion->funcionario->establecimiento->nombre }}</a>
+                        </span>
+                        <p class="descripcion">{{ $publicacion->resumen }}</p>
                     </div>
                         
                         

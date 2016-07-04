@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 	//alert('Seleccionado');
 	$('.publicacion').click(function(){
-		//alert('publica');
+		alert('publica');
 		//console.log('noooooo');
 	});
 
@@ -64,6 +64,9 @@ $(document).ready(function() {
 	}
 
     function realizar_busqueda(){
+
+
+
     	$('.tipos').css('display', 'block');
     	campo = $("#buscador").val();
     	//console.log(campo);
@@ -104,8 +107,33 @@ $(document).ready(function() {
 	            success: function(data){        
 	            	//console.log(data); 
 	            	$('.contenido').empty();
-	            	$('.contenido').append(data);	                                                     
+	            	$('.contenido').append(data);	 
+
+	            	//alert('asdgagdagsa');
+
+	            	$('.publicacion').click(function(){
+						//alert(this);
+						//var id ={'id':this.id};
+						//console.log('noooooo');
+					      $.ajax({
+					            type: "GET",
+					            headers:{"X-CSRF-TOKEN":valor},
+					            url: "http://localhost:8000/publicacion/" + this.id,
+					            //data: "campo="+data,
+					            //data: {'id': this.id},
+					            //dataType: "json",
+					        error: function(){
+
+					        }, 
+					        success: function(resp) {
+					        	//alert(resp.id);
+					        	$('#titulo-principal').html(resp.nombre);
+					        	//$('#modalpublicacion').html(resp.responseText);
+					        }
+						});  
+					});                                                 
 	            }
+
 	      });
     	} else {
 			//console.log("campo vacio");

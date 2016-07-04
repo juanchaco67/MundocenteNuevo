@@ -17,24 +17,15 @@ use App\Establecimiento;
 use App\Funcionario;
 use App\Grupo;
 use App\Lugar;
+use Response;
 
 class PublicacionController extends Controller
 {
 
     public function __construct(){
-        /*
-        if (Auth::check()) {
-            if (Auth::user()->estado === "inactivo") {
-                return "lhoho";
-                */
-                $this->middleware('auth');
-                $this->middleware('funcionario');
-                /*
-            } else {
-                return "activo";
-            }
-        }
-        */
+    
+        //$this->middleware('auth');
+        //$this->middleware('funcionario');
     }
 
 
@@ -144,9 +135,13 @@ class PublicacionController extends Controller
     public function show($id){
         //return "show";
         $publicacion = Publicacion::find($id);
+        /*
         return view('publicacion')->with([
             'publicacion' => $publicacion,
         ]);
+        */
+        return Response::json($publicacion);
+        //return $publicacion;
         //$publicaciones = Publicacion::find($id);
         //return view('index')->with('publicaciones', $publicaciones);
     }
