@@ -20,14 +20,22 @@ use Auth;
 
 class UsuarioController extends Controller
 {
+
+    public function __construct(){
+        //$this->middleware('auth', ['except', 'store']);
+        //$this->middleware('admin', ['except', 'store']);
+        //$this->middleware('funcionario', ['except', 'store']);
+        //$this->middleware('admin', ['only' => ['index']]);
+        //$this->middleware('guest', ['only' => ['create']]);
+    }
     //
     public function index(){
     	//return "index de usuario";
-    	$usuarios = User::all();
+    	//$users = User::all();
         $user = Auth::user();
         //echo "entro";
     	return view('usuario.index', [
-            'usuarios' => $usuarios,
+            //'users' => $users,
             'user' => $user,
         ]);
     }
@@ -115,42 +123,7 @@ class UsuarioController extends Controller
         return Redirect::to('/');
     }
 
-    public function edit($id){
-    	//return "edit usuario" .$id;
-        $usuario = User::find($id);
-        $user = Auth::user();
-        //return $user;
-      
-        if($usuario->idrol === 1){
-            //return "editar " .$usuario;
-       
-            $areas = Area::all();
-            $intereses = Interes::where('docente_id', $id)->get();
-            $areas_usuario = array();
-            foreach ($intereses as $interes) {
-                $areas_usuario[] = $interes->area_id;
-            }
-
-            //$usuario->docente->notificar = $notificar;
-
-            return view('usuario.edit', [
-                'user' => $user,
-                'usuario' => $usuario,
-                'areas' => $areas,
-                'areas_usuario' => $areas_usuario,
-            ]);   
-             //echo $user;     
-        } elseif($usuario->idrol === 2){
-            //return "editar " .$user;
-            $establecimientos = Establecimiento::all();
-            return view('usuario.edit', [
-                'user' => $user,
-                'usuario' => $usuario,
-                'establecimientos' => $establecimientos,
-            ]);        
-        }
-
-    }
+    
 
     public function update($id, UserUpdateRequest $request){
         //echo $request;

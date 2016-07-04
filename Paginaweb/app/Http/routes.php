@@ -34,9 +34,12 @@ Route::resource('login', 'LoginController');
 Route::get('logout', 'LoginController@logout');
 
 //Route::get('/busqueda', 'BuscadorController@index');
+/*
 Route::get('busqueda', function(){
 	return view('index');
 });
+*/
+
 Route::resource('busqueda', 'BuscadorController');
 
 

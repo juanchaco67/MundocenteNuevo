@@ -79,7 +79,6 @@
           <h4 class="text-center modal-title">Registrate en Mundocente</h4>
         </div>
 
-        
 
        <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
