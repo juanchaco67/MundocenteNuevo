@@ -187,10 +187,10 @@ class AdminController extends Controller
             'universidades' => $establecimientos,
         ]);
     }
-    public function notificar(Request $request){
-        Mail::send('emails.contact',$request->all(),function($msg){
-            $msg->subject('Correo de contacto');
-            $msg->to('nuevojuanchaco67@gmail.com');
+    public function notificar($user_email,$mensaje){
+        Mail::send('emails.contact',['correo'=>'Correo enviado'],function($msg){
+            $msg->subject(mensaje);
+            $msg->to($user_email);
         });
           //Session::flash('mensaje', 'Correo enviado correctamente');
 
