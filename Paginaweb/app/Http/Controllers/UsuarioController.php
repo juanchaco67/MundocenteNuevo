@@ -17,6 +17,7 @@ use App\Establecimiento;
 use App\Docente;
 use App\Funcionario;
 use Auth;
+use Response;
 
 class UsuarioController extends Controller
 {
@@ -208,10 +209,17 @@ class UsuarioController extends Controller
     
         Session::flash('mensaje', 'Usuario Editado');
        
+        $actualizar = array(
+            'user' => $user,
+            'usuario' => Auth::user(),
+        );
+        return Response::json($actualizar);
+        /*
         return [
             'user' => $user,
             'usuario' => Auth::user(),
-        ];     
+        ];
+        */
     }
 
     public function destroy($id){
