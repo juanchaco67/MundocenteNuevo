@@ -7,11 +7,11 @@
 			  <label for="sel1">Pertenezco a:</label>
 			  <select name="establecimiento" class="form-control" id="sel1">
 				@foreach($establecimientos as $establecimiento)
-					@if(!isset($user))
+					@if(!isset($usuario))
 				    	<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>
 				    @else
-				    	@if($user->funcionario)
-					    	@if($user->funcionario->establecimiento_id == $establecimiento->id)
+				    	@if($usuario->funcionario)
+					    	@if($usuario->funcionario->establecimiento_id == $establecimiento->id)
 					    		<option value="{{ $establecimiento->id }}" selected>{{ $establecimiento->nombre }}</option>
 					    	@else
 					    		<option value="{{ $establecimiento->id }}">{{ $establecimiento->nombre }}</option>   		
@@ -23,10 +23,10 @@
 			</div>
 	  	</fieldset>
 	@endif
-@if(isset($user))
+@if(isset($usuario))
 	<div class="form-group">
 		<label for="desactivar">Desactivar esta cuenta</label>
-		@if($user->estado === 'inactivo')
+		@if($usuario->estado === 'inactivo')
 			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox" checked></input>
 		@else
 			<input name="desactivar" id="desactivar" value="desactivar" type="checkbox"></input>

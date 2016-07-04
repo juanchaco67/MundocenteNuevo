@@ -33,7 +33,7 @@ class FrontController extends Controller
                 //$user->docente->notificar = $notificar;
 
                 return view('index', [
-                    'user' => $user,
+                    'usuario' => $user,
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
                     'establecimientos' => $establecimientos,
@@ -45,7 +45,7 @@ class FrontController extends Controller
                 //return "editar " .$user;
                 //$establecimientos = Establecimiento::all();
                 return view('index', [
-                    'user' => $user,
+                    'usuario' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
@@ -96,7 +96,7 @@ class FrontController extends Controller
                 //$user->docente->notificar = $notificar;
 
                 return view('contacto', [
-                    'user' => $user,
+                    'usuario' => $user,
                     'areas' => $areas,
                     'areas_usuario' => $areas_usuario,
                     'lugares' => $lugares,
@@ -107,7 +107,7 @@ class FrontController extends Controller
                 //return "editar " .$user;
                 //$establecimientos = Establecimiento::all();
                 return view('contacto', [
-                    'user' => $user,
+                    'usuario' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
@@ -115,7 +115,7 @@ class FrontController extends Controller
                 ]);        
             } elseif($user->idrol === 3){
                 return view('contacto', [
-                    'user' => $user,
+                    'usuario' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,

@@ -31,11 +31,12 @@ class UsuarioController extends Controller
     //
     public function index(){
     	//return "index de usuario";
-    	//$users = User::all();
+    	$usuarios = User::all();
         $user = Auth::user();
         //echo "entro";
     	return view('usuario.index', [
-            //'users' => $users,
+            //'usuarios' => $usuarios,
+            'usuarios' => $usuarios,
             'user' => $user,
         ]);
     }
@@ -48,6 +49,44 @@ class UsuarioController extends Controller
             'areas'=> $areas,
             'establecimientos'=> $establecimientos,
         ]);
+    }
+
+
+    public function edit($id){
+        //return "edit usuario" .$id;
+        $usuario = User::find($id);
+        //$usuario = Auth::usuario();
+        //return $usuario;
+      
+        if($usuario->idrol === 1){
+            //return "editar " .$usuario;
+       
+            $areas = Area::all();
+            $intereses = Interes::where('docente_id', $id)->get();
+            $areas_usuario = array();
+            foreach ($intereses as $interes) {
+                $areas_usuario[] = $interes->area_id;
+            }
+
+            //$usuario->docente->notificar = $notificar;
+
+            return view('usuario.edit', [
+                //'user' => $user,
+                'usuario' => $usuario,
+                'areas' => $areas,
+                'areas_usuario' => $areas_usuario,
+            ]);   
+             //echo $usuario;     
+        } elseif($usuario->idrol === 2){
+            //return "editar " .$usuario;
+            $establecimientos = Establecimiento::all();
+            return view('usuario.edit', [
+                //'usuario' => $usuario,
+                'usuario' => $usuario,
+                'establecimientos' => $establecimientos,
+            ]);        
+        }
+
     }
 
     public function store(UserCreateRequest $request){

@@ -9,6 +9,7 @@ use App\User;
 use App\Area;
 use App\Lugar;
 use App\Publicacion;
+use App\Interes;
 use App\Establecimiento;
 use Auth;
 
@@ -34,10 +35,10 @@ class AdminController extends Controller
         $publicaciones = Publicacion::all();
         $establecimientos = Establecimiento::all();
         */
-        $usuarios = User::all();
+        //$usuarios = User::all();
         return view('admin.index', [
             'user' => Auth::user(),
-            'usuarios' => $usuarios,
+            //'usuarios' => $usuarios,
             /*
             'users' => $users,
             'areas' => $areas,
@@ -91,18 +92,18 @@ class AdminController extends Controller
      * @return Response
      */
 
-    public function editar_admin($id){
-        $admin = User::find($id);
-
-        return view('usuario.edit');
-    }
-
     public function edit($id){
-        //return "edit usuario" .$id;
-        $usuario = User::find($id);
-        //$usuario = Auth::usuario();
-        //return $usuario;
-      
+        $usuario = User::find($id);    
+        /*  
+        return view('usuario.edit', [
+            'usuario' => $usuario,
+            'user' => Auth::user(),
+        ]);   
+        */
+
+        $user = Auth::user();
+
+
         if($usuario->idrol === 1){
             //return "editar " .$usuario;
        
@@ -116,7 +117,7 @@ class AdminController extends Controller
             //$usuario->docente->notificar = $notificar;
 
             return view('usuario.edit', [
-                //'usuario' => $usuario,
+                'user' => $user,
                 'usuario' => $usuario,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
@@ -127,11 +128,11 @@ class AdminController extends Controller
             $establecimientos = Establecimiento::all();
             return view('usuario.edit', [
                 //'usuario' => $usuario,
+                'user' => $user,
                 'usuario' => $usuario,
                 'establecimientos' => $establecimientos,
             ]);        
         }
-
     }
 
     /**

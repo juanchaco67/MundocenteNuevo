@@ -7,7 +7,7 @@
 @stop
 
 @section('contenido')
-	@if(isset($users))
+	@if(isset($usuarios))
 		<table class="table">
 			<thead>
 				<th>Nombre</th>
@@ -16,14 +16,14 @@
 				<th>Estado</th>
 				<th>Operación</th>
 			</thead>
-			@foreach($users as $user)
+			@foreach($usuarios as $usu)
 				<tbody>
-					<th>{{ $user->name }}</th>
-					<th>{{ $user->email }}</th>
-					<th>{{ $user->idrol }}</th>
-					<th>{{ $user->estado }}</th>
+					<th>{{ $usu->name }}</th>
+					<th>{{ $usu->email }}</th>
+					<th>{{ $usu->idrol }}</th>
+					<th>{{ $usu->estado }}</th>
 					<th>
-						{!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $user->id, $atrributes = ['class' => 'btn btn-primary'])!!}
+						{!!link_to_route('admin.edit', $title = 'Editar', $parameters = $usu->id, $atrributes = ['class' => 'btn btn-primary'])!!}
 					</th>
 				</tbody>
 			@endforeach
