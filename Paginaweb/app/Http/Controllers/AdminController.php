@@ -36,8 +36,10 @@ class AdminController extends Controller
         $establecimientos = Establecimiento::all();
         */
         //$usuarios = User::all();
+        $pendientes = User::where('estado', 'inactivo')->get()->all();
         return view('admin.index', [
             'user' => Auth::user(),
+            'pendientes' => $pendientes,
             //'usuarios' => $usuarios,
             /*
             'users' => $users,
