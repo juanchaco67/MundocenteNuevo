@@ -72,6 +72,7 @@ class FrontController extends Controller
             return view('index')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
+                'filtrar' => true,
                 //'sinfiltrar' => true,
             ]);
         }
@@ -134,6 +135,7 @@ class FrontController extends Controller
             return view('contacto')->with([
                 'areas'=> $areas,
                 'establecimientos'=> $establecimientos,
+                'filtrar' => true,
             ]);
         }
     }

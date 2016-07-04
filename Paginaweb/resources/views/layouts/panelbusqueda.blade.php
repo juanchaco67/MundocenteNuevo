@@ -35,6 +35,45 @@
 	    </div>
 	  </div>
 
+	 @if(isset($filtrar))
+			<div class="tipos panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        Buscar por tipo
+			      </h4>
+			    </div>
+				  <div id="filtros" class="panel-body">
+				     <div class="contenido-panel col-xs-12 col-sm-12 col-md-12">
+				        <div class="row">
+				          <div class="col-xs-12 col-sm-12 col-md-12">
+				          	<ul>
+					            <li>
+					            	<a class="revistas" href="/busqueda/revista">
+						            	<h4><img width="35px" src="{{ URL::asset('/img/servicios/signature.png') }}">
+						            	Revistas<h4>
+					            	</a>
+					            </li>				            
+					            <li>
+					            	<a class="convocatorias" href="/busqueda/convocatoria">
+						            	<h4><img width="35px" src="{{ URL::asset('/img/servicios/business.png') }}">
+						            	Convocatorias</h4>
+					            	</a>
+					            </li>
+					            <li>
+					            	<a class="eventos" href="/busqueda/evento">
+						            	<h4><img width="35px" src="{{ URL::asset('/img/servicios/time.png') }}">
+						            	Eventos</h4>
+					            	</a>
+					            </li>
+				            </ul>
+				            </div>
+				          </div>
+				      </div>	
+				  </div>		
+		    </div>  				 	
+
+	 @endif
+
 
 {{--
 	@if(!isset($sinfiltrar))

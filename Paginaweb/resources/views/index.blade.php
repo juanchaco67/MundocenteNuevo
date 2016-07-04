@@ -155,7 +155,7 @@
             <div class="row">     
               <div class="servicios">
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/busqueda/revista">
+                  <a href="">
                     <div class="revistas text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/signature.png') }}">
                       <h3>Revistas Científicas</h3>
@@ -164,7 +164,7 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/busqueda/convocatoria">
+                  <a href="">
                     <div class="convocatorias text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/business.png') }}">
                       <h3>Convocatorias Docentes</h3>
@@ -173,7 +173,7 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/busqueda/evento">
+                  <a href="">
                     <div class="eventos text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/time.png') }}">
                       <h3>Eventos Académicos</h3>

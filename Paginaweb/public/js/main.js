@@ -64,6 +64,7 @@ $(document).ready(function() {
 	}
 
     function realizar_busqueda(){
+    	$('.tipos').css('display', 'block');
     	campo = $("#buscador").val();
     	//console.log(campo);
     	if (campo != '') {
@@ -113,9 +114,10 @@ $(document).ready(function() {
 
 
 
-	$(".revistas").on('click', function(){                                                     ;
+	$(".revistas").on('click', function(){  
+		$('.tipos').css('display', 'block');
       //hace la búsqueda
-      event.preventDefault();
+      //event.preventDefault();
       //console.log("r3efvistasfa");
       //return "hgola;";
       //$('.filtros input[name=revistas]')..prop('checked', true);;
@@ -135,7 +137,7 @@ $(document).ready(function() {
             	//console.log(data); 
             	$('.contenido').empty();
             	$('.contenido').append(data);	                                                     
-            	console.log('revistas');
+            	//console.log('revistas');
             }
       });
     });
@@ -144,7 +146,8 @@ $(document).ready(function() {
 
     }
 
-    $(".convocatorias").on('click', function(){                                                     ;
+    $(".convocatorias").on('click', function(){ 
+    	$('.tipos').css('display', 'block');                                                    ;
       //hace la búsqueda
       event.preventDefault();
       $.ajax({
@@ -167,6 +170,8 @@ $(document).ready(function() {
     });
 
     $(".eventos").on('click', function(){                                                     ;
+    	//console.log('eveentoo');
+    	$('.tipos').css('display', 'block');
       //hace la búsqueda
       event.preventDefault();
       $.ajax({

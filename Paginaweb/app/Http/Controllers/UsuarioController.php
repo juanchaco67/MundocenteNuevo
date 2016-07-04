@@ -205,7 +205,10 @@ class UsuarioController extends Controller
     
         Session::flash('mensaje', 'Usuario Editado');
        
-        return $user;     
+        return [
+            'user' => $user,
+            'usuario' => Auth::user(),
+        ];     
     }
 
     public function destroy($id){

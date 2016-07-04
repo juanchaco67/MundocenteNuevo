@@ -12,15 +12,12 @@ $(document).ready(function(){
 			method:metodo,
 			data:$("."+id).serialize(),
 			success:function(resp){
-				alert();
+				//alert(resp.usuario);
 				if(metodo=="PUT"){
-
 					document.getElementById('btn-correo').innerHTML=resp.email;
-					$('.txtNombre').val(resp.name);
-					$('.txtEmail').val(resp.email);
-					$('.txtNombre').attr("placeholder","hola perritos");
-					$('.txtEmail').attr("placeholder","hola perritos");
 
+					//$('.txtNombre').val(resp.name);
+					//$('.txtEmail').val(resp.email);
 				}
 				else if(id=="formularioFuncionario" && metodo=="POST"){
 					window.location="http://localhost:8000/publicacion";

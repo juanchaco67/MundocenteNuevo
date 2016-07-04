@@ -1,28 +1,30 @@
 @if(isset($publicaciones))
     {{-- @section('contenido') --}}
           @if($publicaciones)
-
+<!--
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="#">
+                  <a>
                     <div class="revistas text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/signature.png') }}">
                     </div>
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/busqueda/convocatoria">
+                  <a class="convocatorias">
                     <div class="convocatorias text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/business.png') }}">
                     </div>
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
-                  <a href="/busqueda/evento">
+                  <a class="eventos">
                     <div class="eventos text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/time.png') }}">
                     </div>
                   </a>
                 </div>
+-->
+
 
 
 
