@@ -23,9 +23,13 @@ class UsuarioController extends Controller
     //
     public function index(){
     	//return "index de usuario";
-    	$users = User::all();
+    	$usuarios = User::all();
+        $user = Auth::user();
         //echo "entro";
-    	return view('usuario.index', compact('users'));
+    	return view('usuario.index', [
+            'usuarios' => $usuarios,
+            'user' => $user,
+        ]);
     }
 
     public function create(){
@@ -113,7 +117,6 @@ class UsuarioController extends Controller
 
     public function edit($id){
     	//return "edit usuario" .$id;
-
         $user = User::find($id);
         //return $user;
       
