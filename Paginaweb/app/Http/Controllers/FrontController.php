@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Interes;
 use App\Lugar;
+use App\Docente;
 
 class FrontController extends Controller
 {
@@ -24,7 +25,8 @@ class FrontController extends Controller
             $user = User::find(Auth::user()->id);
             if($user->idrol == 1){ 
                 //$areas = Area::all();
-                $intereses = Interes::where('docente_id', $user->id)->get();
+                $docente = Docente::where('user_id', $user->id)->first();
+                $intereses = Interes::where('docente_id', $docente->id)->get();
                 $areas_usuario = array();
                 foreach ($intereses as $interes) {
                     $areas_usuario[] = $interes->area_id;
