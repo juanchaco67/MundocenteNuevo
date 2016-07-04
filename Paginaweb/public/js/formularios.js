@@ -43,7 +43,9 @@ $(document).ready(function(){
 	  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
 	  			 	}
 
-	  			 	$(".modal").animate({
+
+
+	  			 	$("html, body").animate({
 				        scrollTop: 0
 				    }, 600); 
 

@@ -6,6 +6,7 @@
 
 @section('contenido')
 <!--	@include('alerts.request') -->
+	@include('alerts.request')
 	@include('usuario.forms.user')
 	{{--
 	<!-- 

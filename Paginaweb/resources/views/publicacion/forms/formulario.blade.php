@@ -51,7 +51,7 @@
 					</div>
 				@else
 					<div class="form-group">
-						<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for=area"{{ $area->id }}">{{ $area->nombre }}</label></input>
+						<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
 					</div>
 				@endif
 			@endforeach
