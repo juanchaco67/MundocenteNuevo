@@ -24,7 +24,12 @@
 	              	@if( Auth::user()->idrol === 1 )
 	                	<li @yield('miarea')><a class="area" href="/busqueda">Mi área</a></li>
 	                @elseif( Auth::user()->idrol === 2)
-	                	<li @yield('publicacion')><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
+	                	@if( Auth::user()->estado == "inactivo" )
+	                		<!-- Modal -->
+	                		<li><a data-toggle="modal" data-target="#aviso" href="#">Mis publicaciones</a></li>
+	                	@else
+	                		<li @yield('publicacion')><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
+	                	@endif
 	                @elseif( Auth::user()->idrol === 3)
 	                	<li @yield('admin')><a class="admin" href="/admin">Panel de control</a></li>
 	                @endif
@@ -44,11 +49,12 @@
 	                <span class="caret"></span></button>
 	                <ul class="dropdown-menu">
 		                @if( Auth::user()->idrol === 1 )
-		                	<li><a class="area" href="/busqueda">Mi área</a></li>
+		                	<!-- <li><a class="area" href="/busqueda">Mi área</a></li> -->
 		                @elseif( Auth::user()->idrol === 2)
-		                	<li><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li>
+		                	<!-- <li><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li> -->
+		                	<!-- <li><a data-toggle="modal" data-target="#aviso" href="#">Mis publicaciones</a></li> -->
 		                @elseif( Auth::user()->idrol === 3)
-		                	<li><a class="admin" href="/admin">Panel de control</a></li>
+		                	<!-- <li><a class="admin" href="/admin">Panel de control</a></li> -->
 		                @endif                 
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>
@@ -65,6 +71,28 @@
 	</header>
 
 
+
+@if( Auth::check() && Auth::user()->estado == "inactivo")
+	<div class="modal fade" id="aviso" role="dialog">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title text-center">Notificación</h4>
+	        </div>
+	        <div class="modal-body text-center">
+	        	<h4>Espera confirmación</h4>
+	          	<h5><p>Debes esperar la aprovación del administrador para antes de publicar, te enviaremos un correo electronico para informarte cuando puedas publicar...</p>
+	          	</h5>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+@endif
 
 
 @if( !Auth::check() || ( Auth::check() && Auth::user()->idrol === 3 ) )

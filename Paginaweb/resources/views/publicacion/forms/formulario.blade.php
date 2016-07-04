@@ -43,17 +43,19 @@
 <div class="form-group">
 	{!!Form::label('Aplica para')!!}
 	@if(isset($areas))
-		@foreach($areas as $area)
-			@if(in_array($area->id, $areas_publicacion))
-				<div class="form-group">
-					<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}" checked><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
-				</div>
-			@else
-				<div class="form-group">
-					<input id="{{ $area->nombre }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for="{{ $area->nombre }}">{{ $area->nombre }}</label></input>
-				</div>
-			@endif
-		@endforeach
+		<div class="barra-scroll">
+			@foreach($areas as $area)
+				@if(in_array($area->id, $areas_publicacion))
+					<div class="form-group">
+						<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" checked><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
+					</div>
+				@else
+					<div class="form-group">
+						<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}"><label for=area"{{ $area->id }}">{{ $area->nombre }}</label></input>
+					</div>
+				@endif
+			@endforeach
+		</div>
 	@else
 		<h1>Sin areas</h1>
 	@endif
