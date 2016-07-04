@@ -14,7 +14,10 @@ $(document).ready(function(){
 			success:function(resp){
 				//alert(resp.usuario);
 				if(metodo=="PUT"){
-					document.getElementById('btn-correo').innerHTML=resp.email;
+					if (id="submit-editar-docente" && metodo == "PUT") {
+						window.location="http://localhost:8000/";
+					}
+					//document.getElementById('btn-correo').innerHTML=resp.email;
 
 					//$('.txtNombre').val(resp.name);
 					//$('.txtEmail').val(resp.email);
