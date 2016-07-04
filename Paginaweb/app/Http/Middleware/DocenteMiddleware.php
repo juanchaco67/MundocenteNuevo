@@ -31,7 +31,7 @@ class DocenteMiddleware
     {
         switch ($this->auth->user()->idrol) {
             case '3':
-                //return redirect()->to('/usuario');
+                //  return redirect()->to('/usuario');
                 break;
             case '1':
                 //return redirect()->to('docente');

@@ -61,7 +61,7 @@ $(document).ready(function(){
 		formularioFuncionario("POST","formularioFuncionario");
 	});
 	$('.submit-registrar-docente').click(function(){
-		alert("alerta");
+		//alert("alerta");
 		formularioFuncionario("POST","formularioDocente");
 	});
 
