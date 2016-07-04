@@ -117,11 +117,12 @@ class UsuarioController extends Controller
 
     public function edit($id){
     	//return "edit usuario" .$id;
-        $user = User::find($id);
+        $usuario = User::find($id);
+        $user = Auth::user();
         //return $user;
       
-        if($user->idrol === 1){
-            //return "editar " .$user;
+        if($usuario->idrol === 1){
+            //return "editar " .$usuario;
        
             $areas = Area::all();
             $intereses = Interes::where('docente_id', $id)->get();
@@ -130,19 +131,21 @@ class UsuarioController extends Controller
                 $areas_usuario[] = $interes->area_id;
             }
 
-            //$user->docente->notificar = $notificar;
+            //$usuario->docente->notificar = $notificar;
 
             return view('usuario.edit', [
                 'user' => $user,
+                'usuario' => $usuario,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
             ]);   
              //echo $user;     
-        } elseif($user->idrol === 2){
+        } elseif($usuario->idrol === 2){
             //return "editar " .$user;
             $establecimientos = Establecimiento::all();
             return view('usuario.edit', [
                 'user' => $user,
+                'usuario' => $usuario,
                 'establecimientos' => $establecimientos,
             ]);        
         }

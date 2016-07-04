@@ -102,7 +102,6 @@
  @endif
 
  @if( Auth::check() )
-
 <!-- Modal -->
   <div id="myModalConfiguracion" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -122,17 +121,20 @@
 
             @if( Auth::user()->idrol == 3)
 
-				{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','id'=>'formularioAdmin'])!!}
+            	@if(isset($user))
 
-				<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
-					@include('usuario.forms.admin')
+					{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','id'=>'formularioAdmin'])!!}
 
-				<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						{!!Form::submit('Actualizar', ['id'=>'submit-editar-admin','class'=>'btn btn-primary'])!!}
-				</div>
+					<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+						@include('usuario.forms.admin')
 
-				{!!Form::close()!!}
+					<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							{!!Form::submit('Actualizar', ['id'=>'submit-editar-admin','class'=>'btn btn-primary'])!!}
+					</div>
+
+					{!!Form::close()!!}
+				@endif
 			@else
             	@include('usuario.forms.editar')
             @endif
