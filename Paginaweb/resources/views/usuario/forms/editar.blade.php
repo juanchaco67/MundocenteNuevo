@@ -3,7 +3,7 @@
 	<!-- <h1>Editar</h1>-->
 	@if($usuario->idrol == 1)
 	
-		{!!Form::model($usuario, ['route'=>['usuario.update','parameters'=>$usuario->id], 'method'=>'put','class'=>'formularioDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
+		{!!Form::model($usuario, ['route'=>['usuario.update', $usuario->id], 'method'=>'put','class'=>'formularioUpdateDocente','name'=>'formularioDocente','onsubmit'=>'return false;'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 			@include('usuario.forms.docente')
 
@@ -20,8 +20,9 @@
 		--}}
 	@elseif($usuario->idrol == 2)	
 
-		{!!Form::model($usuario, ['route'=>['usuario.update', $usuario->id], 'method'=>'put','name'=>'formularioFuncionario','onsubmit'=>'return false;','class'=>'formularioFuncionario'])!!}
+		{!!Form::model($usuario, ['route'=>['usuario.update', $usuario->id], 'method'=>'put','name'=>'formularioFuncionario','onsubmit'=>'return false;','class'=>'formularioUpdateFuncionario'])!!}
 		 <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+
 			@include('usuario.forms.funcionario')
 
 			<div class="modal-footer">

@@ -5,7 +5,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		var route=$("."+id).attr('action');
 		var valor=document.getElementById('token').value;
-		alert(route+" "+id);
+		
 		$.ajax({
 			url:route,
 			headers:{"X-CSRF-TOKEN":valor},
@@ -51,17 +51,17 @@ $(document).ready(function(){
 	};
 	$('.submit-editar-docente').click(function(){
 		//alert("entro");
-		formularioFuncionario("PUT","formularioDocente");
+		formularioFuncionario("PUT","formularioUpdateDocente");
 	});
 	$('.submit-editar-funcionario').click(function(){
 
-		formularioFuncionario("PUT","formularioFuncionario");
+		formularioFuncionario("PUT","formularioUpdateFuncionario");
 	});
 	$('.submit-registrar-funcionario').click(function(){
 		formularioFuncionario("POST","formularioFuncionario");
 	});
 	$('.submit-registrar-docente').click(function(){
-
+		alert("alerta");
 		formularioFuncionario("POST","formularioDocente");
 	});
 
