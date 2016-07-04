@@ -115,7 +115,7 @@ class FrontController extends Controller
                 ]);        
             } elseif($user->idrol === 3){
                 return view('contacto', [
-                    'usuario' => $user,
+                    'user' => $user,
                     'areas' => $areas,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,

@@ -44,7 +44,7 @@ class PublicacionController extends Controller
         //return view('publicacion.index');
         //$valor = Input::get('valor');
         if( Auth::check() ){
-            if( Auth::user()->estado == "activo" ){
+            //if( Auth::user()->estado == "activo" ){
                 $publicaciones = Publicacion::all();
                 $user = User::find(Auth::user()->id);
                 $areas = Area::all();
@@ -63,7 +63,7 @@ class PublicacionController extends Controller
                     //return $publicaciones;
                    return view('publicacion.index', [
                         'areas' => $areas,
-                        'user' => Auth::user(),
+                        'usuario' => Auth::user(),
                         'publicaciones' => $publicaciones,
                         'establecimientos' => $establecimientos,
                         'lugares' => $lugares,
@@ -75,9 +75,11 @@ class PublicacionController extends Controller
                         'publicaciones' => $publicaciones,
                     ]);
                 }
+            /*
             } else {
                 return "Usuario inactivo";
             }
+            */
         } else {
             return view('publicacion.index', [
                     'publicaciones' => $publicaciones,
