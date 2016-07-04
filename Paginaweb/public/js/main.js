@@ -113,7 +113,7 @@ $(document).ready(function() {
 
 
 
-	$("#revistas").on('click', function(){                                                     ;
+	$(".revistas").on('click', function(){                                                     ;
       //hace la búsqueda
       event.preventDefault();
       //console.log("r3efvistasfa");
@@ -135,6 +135,7 @@ $(document).ready(function() {
             	//console.log(data); 
             	$('.contenido').empty();
             	$('.contenido').append(data);	                                                     
+            	console.log('revistas');
             }
       });
     });
@@ -143,7 +144,7 @@ $(document).ready(function() {
 
     }
 
-    $("#convocatorias").on('click', function(){                                                     ;
+    $(".convocatorias").on('click', function(){                                                     ;
       //hace la búsqueda
       event.preventDefault();
       $.ajax({
@@ -165,7 +166,7 @@ $(document).ready(function() {
       });
     });
 
-    $("#eventos").on('click', function(){                                                     ;
+    $(".eventos").on('click', function(){                                                     ;
       //hace la búsqueda
       event.preventDefault();
       $.ajax({

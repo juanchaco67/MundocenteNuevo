@@ -224,7 +224,7 @@ class PublicacionController extends Controller
             ]);
 
         Session::flash('mensaje', 'Publicacion recuperada');
-        return Redirect::to('publicacion/borradas');
+        return Redirect::to('publicacion/borrados');
     }
 
     public function destroy($id){

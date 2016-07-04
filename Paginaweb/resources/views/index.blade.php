@@ -156,7 +156,7 @@
               <div class="servicios">
                 <div class="col-xs-12 col-sm-12 col-md-4">
                   <a href="/busqueda/revista">
-                    <div id="revistas" class="text-center">
+                    <div class="revistas text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/signature.png') }}">
                       <h3>Revistas Científicas</h3>
                       <p>Ahorra tiempo conociendo las revistas científicas que a la fecha reciben artículos de tu área de interés.</p>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
                   <a href="/busqueda/convocatoria">
-                    <div id="convocatorias" class="text-center">
+                    <div class="convocatorias text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/business.png') }}">
                       <h3>Convocatorias Docentes</h3>
                       <p>Entérate oportunamente sobre las oportunidades laborales del ámbito universitario y cumple con tus metas de crecimiento profesional.</p>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
                   <a href="/busqueda/evento">
-                    <div id="eventos" class="text-center">
+                    <div class="eventos text-center">
                       <img width="100px" src="{{ URL::asset('/img/servicios/time.png') }}">
                       <h3>Eventos Académicos</h3>
                       <p>Encuentra congresos, seminarios, conferencias y demás eventos académicos de tu interés para capacitación o presentación de tus resultados de investigación.</p>
