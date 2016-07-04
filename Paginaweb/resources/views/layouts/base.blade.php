@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    @include('layouts.linksplantilla')
 
 	<meta charset="utf-8" />
 	{!!Html::style('css/bootstrap.min.css')!!}

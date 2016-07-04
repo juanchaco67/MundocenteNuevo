@@ -41,26 +41,34 @@
 
 	              <li @yield('contacto')><a href="/contacto">Contacto</a></li>
 	              @if( Auth::check() )
+	              	<li class="dropdown">
+	                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                        <i class="fa fa-user fa-fw"></i>  {{ Auth::user()->email }} <i class="fa fa-caret-down"></i>
+	                    </a>
+	                    <ul class="dropdown-menu dropdown-user">
+	                        <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#"><i class="fa fa-gear fa-fw"></i> Configuracion</a></li>
+	                        <li class="divider"></li>
+	                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
+	                        </li>
+	                    </ul>
+	                    <!-- /.dropdown-user -->
+                	</li>
+
+                	<!--
 	                <li>
 	                  <div class="dropdown">
 	                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="btn-correo">
 
-	                {{ Auth::user()->email }}
+	                
 	                <span class="caret"></span></button>
 	                <ul class="dropdown-menu">
-		                @if( Auth::user()->idrol === 1 )
-		                	<!-- <li><a class="area" href="/busqueda">Mi área</a></li> -->
-		                @elseif( Auth::user()->idrol === 2)
-		                	<!-- <li><a class="publicaciones" href="/publicacion">Mis publicaciones</a></li> -->
-		                	<!-- <li><a data-toggle="modal" data-target="#aviso" href="#">Mis publicaciones</a></li> -->
-		                @elseif( Auth::user()->idrol === 3)
-		                	<!-- <li><a class="admin" href="/admin">Panel de control</a></li> -->
-		                @endif                 
+		                            
 	                  <li><a data-toggle="modal" data-target="#myModalConfiguracion" href="#">Configuracion</a></li>
 	                  <li><a href="/logout">Cerrar sesión</a></li>
 	                </ul>
 	              </div>
 	            </li>
+	            -->
 	                <!-- <li><a href="/salir">Salir</a></li> -->
 	              @endif
 
