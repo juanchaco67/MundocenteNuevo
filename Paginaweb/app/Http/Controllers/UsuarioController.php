@@ -135,7 +135,7 @@ class UsuarioController extends Controller
                 'user_id' => $usuario->id,
                 'establecimiento_id' => $request['establecimiento'],
             ]);
-                 AdminController::enviar_correo('emails.aviso_activado',$usuario,'Bienvenido la actualizacon de la tu cuenta esta proceso');
+                 AdminController::enviar_correo('emails.aviso_activado',$usuario,'Bienvenido la actualización de tu cuenta esta proceso');
         }
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
@@ -210,7 +210,7 @@ class UsuarioController extends Controller
         if ($request['desactivar']) {
             $user->update(['estado' => 'inactivo']);
             if ($user->estado == "inactivo") {
-             AdminController::enviar_correo('emails.aviso_activo',$user,'INACTIVO');
+             AdminController::enviar_correo('emails.aviso_activado',$user,'tu neuva cuenta esta haciendo verificada');
             } else {
                 echo "no enviarnada";
             }

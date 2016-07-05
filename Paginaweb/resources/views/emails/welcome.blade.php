@@ -13,7 +13,7 @@
 </div>	
 <div>
 <p>
-Gracias por registrarte con nosotros. Tu nuevacuenta ha sido configurada y ahora puedes acceder al área de busqueda publicaciones avanzadas.
+Gracias por registrarte con nosotros. Tu nueva cuenta ha sido configurada y ahora puedes acceder al área de busqueda publicaciones avanzadas.
 
 
 </p>
