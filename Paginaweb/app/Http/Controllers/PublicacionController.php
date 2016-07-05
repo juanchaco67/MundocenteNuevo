@@ -19,6 +19,7 @@ use App\Grupo;
 use App\Lugar;
 use Response;
 use Carbon\Carbon;
+use DB;
 
 class PublicacionController extends Controller
 {
@@ -144,6 +145,13 @@ class PublicacionController extends Controller
         $lugar = Lugar::find($publicacion->lugar_id)->first();
         $fecha = $publicacion->created_at->format('l \\of F Y h:i:s a');
 
+
+        $mezcla = DB::table('grupos')
+            ->where('publicacion_id', $publicacion->id)
+            ->join('areas', 'areas.id', '=', 'grupos.area_id')
+            ->distinct()->get();
+
+
         $mostrar = array(
             'publicacion' => $publicacion,
             'establecimiento' => $establecimiento,
@@ -152,6 +160,7 @@ class PublicacionController extends Controller
             'fecha' => $fecha,
             'lugar' => $lugar,
             'grupos' => $grupos,
+            'mezcla' => $mezcla,
         );
         return Response::json($mostrar);
         //return $publicacion;

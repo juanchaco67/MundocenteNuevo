@@ -69,7 +69,7 @@
                                 <p><strong>Universidad/Entidad </strong><div id="universidad"></div></p>
                                 <p><strong>Descripción </strong><div id="descripcion"></div></p>
 
-                                <p><strong>Areas </strong><div id="areas"></div></p>
+                                <p><strong>Areas </strong><div id="areaa"></div></p>
                               </div>
 
                             </div>
