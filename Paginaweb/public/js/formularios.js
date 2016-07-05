@@ -45,33 +45,31 @@ $(document).ready(function(){
 
 
 			},
-			error:function(error){
+			error:function(error){				
 					
+				//alert("saleerrror" + error.responseText);
 					//console.log(error.responseText);
-				if(metodo!="PUT"){
-					var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
-					if(id=="formularioAdmin")
-						$('#error-admin').html(html);	
-					else
-						$('#error').html(html);	
-					result = $.parseJSON(error.responseText);	
+				var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
+				if(id=="formularioAdmin")
+					$('#error-admin').html(html);	
+				else
+					$('#error').html(html);	
+				result = $.parseJSON(error.responseText);	
 
-					console.log(result);
+				console.log(result);
 
-					var ul=document.getElementById('error-lista');
-					ul.innerHTML="";
-					for(var k in result){
-	  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
-	  			 	}
-
+				var ul=document.getElementById('error-lista');
+				ul.innerHTML="";
+				for(var k in result){
+  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
+  			 	}
 
 
-	  			 	$("html, body").animate({
-				        scrollTop: 0
-				    }, 600); 
-				}else{
-					alert(error);
-				}
+
+  			 	$("html, body").animate({
+			        scrollTop: 0
+			    }, 600); 
+	
 			}					
 		});
 		return false;

@@ -20,19 +20,22 @@ use Auth;
 use App\Http\Controllers\AdminController;
 use Response;
 use Validator;
+use Log;
 
 class UsuarioController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth', ['except' => ['store']]);
+
+        //$this->middleware('auth', ['except' => ['store']]);
+        //$this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
+
         //$this->middleware('usuario', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except' => ['update']]);    
 
         //$this->middleware('docente', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except', 'store']);
-        $this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
         //$this->middleware('guest', ['only' => ['create']]);
     }
     //
@@ -155,12 +158,12 @@ class UsuarioController extends Controller
         
     }
 
-    public function crear_interes($usuario, Request $request){
+    public function crear_interes($docente, Request $request){
         $areas = $request['areas'];
         if(!empty($areas)){
             foreach ($areas as $area) {
                 Interes::create([
-                    'docente_id' => $usuario->id,
+                    'docente_id' => $docente->id,
                     'area_id' => $area,
                 ]);
             }            
@@ -177,31 +180,21 @@ class UsuarioController extends Controller
     public function update($id, Request $request){
         //echo $request;
             if (Auth::user()->email == $request['email']) {
-                $validator = Validator::make($request->all(), [
+                $this->validate($request, [
                     'name' => 'required',
                     //'email' => 'required|email|unique:users',
                     'email' => 'required|email',
                 ]);
 
-                if ($validator->fails()) {
-                    //echo "falla por que es igual el email";
-                    return $validator->errors()->all();
-                } else {
-                    //echo "actualizar sin el email";
-                    $this->actualizar_usuario($id, $request);
-                }
+                $this->actualizar_usuario($id, $request);
+
             } else {
-                $validator = Validator::make($request->all(), [
+                $this->validate($request, [
                     'name' => 'required',
                     'email' => 'required|email|unique:users',
                 ]);
-                if ($validator->fails()) {
-                    //echo "falla con email distinto";
-                    return $validator->errors()->all();
-                } else {
-                    //echo "actualizar con email distinto";
-                    $this->actualizar_usuario($id, $request);
-                }
+
+                $this->actualizar_usuario($id, $request);
             }
     }
 
