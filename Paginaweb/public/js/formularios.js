@@ -13,17 +13,22 @@ $(document).ready(function(){
 			data:$("."+id).serialize(),
 			success:function(resp){
 				//alert(resp.usuario);
+				//alert('sussss');
 				if(metodo=="PUT"){
 					if (id="submit-editar-docente" && metodo == "PUT") {
 						if (resp.usuario != undefined) {
 							if (resp.usuario.estado == "activo") {
 								if(resp.usuario.idrol!=3){							
 									window.location="http://localhost:8000/logout";
+								} else {
+									window.location="http://localhost:8000/";
 								}
-								window.location="http://localhost:8000/";
 							} else {
-								window.location="http://localhost:8000/";
+								//window.location="http://localhost:8000/";
 							}
+						} else {
+							//window.location="http://localhost:8000/";
+							//return resp;
 						}
 					}
 					//document.getElementById('btn-correo').innerHTML=resp.email;
@@ -43,12 +48,16 @@ $(document).ready(function(){
 			error:function(error){
 					
 					//console.log(error.responseText);
+				if(metodo!="PUT"){
 					var html=$('<div   id="error-panel" class="alert alert-danger alert-dismissible"  role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span >&times;</span></button><ul id="error-lista"></ul></div>');	
 					if(id=="formularioAdmin")
 						$('#error-admin').html(html);	
 					else
 						$('#error').html(html);	
 					result = $.parseJSON(error.responseText);	
+
+					console.log(result);
+
 					var ul=document.getElementById('error-lista');
 					ul.innerHTML="";
 					for(var k in result){
@@ -60,7 +69,9 @@ $(document).ready(function(){
 	  			 	$("html, body").animate({
 				        scrollTop: 0
 				    }, 600); 
-
+				}else{
+					alert(error);
+				}
 			}					
 		});
 		return false;

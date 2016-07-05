@@ -18,7 +18,7 @@ $(document).ready(function(){
 				} else if(id=="formularioFuncionario" && metodo=="POST"){
 					//window.location="http://localhost:8000/publicacion";
 				}else if(id=="formularioAdmin" && metodo=="PUT"){
-						console.log('archiooooo');
+						//console.log('archiooooo');
 					//window.location="http://localhost:8000";
 				}
 

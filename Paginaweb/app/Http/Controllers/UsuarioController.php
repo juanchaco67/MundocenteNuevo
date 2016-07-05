@@ -184,8 +184,10 @@ class UsuarioController extends Controller
                 ]);
 
                 if ($validator->fails()) {
-                    return $validator->messages()->toJson();
+                    //echo "falla por que es igual el email";
+                    return $validator->errors()->all();
                 } else {
+                    //echo "actualizar sin el email";
                     $this->actualizar_usuario($id, $request);
                 }
             } else {
@@ -194,8 +196,10 @@ class UsuarioController extends Controller
                     'email' => 'required|email|unique:users',
                 ]);
                 if ($validator->fails()) {
-                    return $validator->messages()->toJson();
+                    //echo "falla con email distinto";
+                    return $validator->errors()->all();
                 } else {
+                    //echo "actualizar con email distinto";
                     $this->actualizar_usuario($id, $request);
                 }
             }
