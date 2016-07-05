@@ -69,11 +69,21 @@
                                 <p><strong>Universidad/Entidad </strong><div id="universidad"></div></p>
                                 <p><strong>Descripción </strong><div id="descripcion"></div></p>
 
-                                <p><strong>Areas </strong><div id="areaa"></div></p>
+                                <!-- <p><strong>Areas </strong><div id="areaa"></div></p> -->
                               </div>
 
                             </div>
-                          </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading text-center">
+                                    Areas a las que aplica
+                                </div>
+                                  <div class="panel-body">
+                                    <p><div id="areaa"></div></p>
+                                  </div>
+
+                                </div>
+                              </div>
 
                           <div style="float: left; width:40%;">
 
@@ -105,7 +115,7 @@
 
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button id="cerrardetalle" type="button" class="btn btn-default" data-dismiss="modal" autofocus="autofocus">Cerrar</button>
                       </div>
                     </div>
                   </div>

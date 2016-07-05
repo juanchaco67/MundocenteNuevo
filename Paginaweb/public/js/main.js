@@ -133,14 +133,8 @@ $(document).ready(function() {
 					        	$('#descripcion').html(resp.publicacion.descripcion);
 
 					        	var mez = resp.mezcla;
-
-					        	//console.log(resp.mezcla[0].id);
-
 					        	var id=document.getElementById('areaa');
-
-					        	var variable;
-
-
+					        	id.innerHTML="";
 					        	for(var k in mez){
 					        		if(k < mez.length - 1){
 					        			id.innerHTML+=mez[k].nombre + ", ";
@@ -337,12 +331,15 @@ $(document).ready(function() {
 
 $('.modal').on('shown.bs.modal', function() {
   	$(this).find('[autofocus]').focus();
+  	//document.getElementById('cerrardetalle').focus();
 });
 $('.modal').on('hidden.bs.modal', function() {
 	//console.log('borrar');
   	//$(this).find('[autofocus]').focus();
-  	$(this).find('form')[0].reset(); 
-  	$(".alert").remove();
+  	if ($(this).find('form')) {
+		$(this).find('form')[0].reset(); 
+		$(".alert").remove();
+  	}
   	//$(this).remove();
 });
 
