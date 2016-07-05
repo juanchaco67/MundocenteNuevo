@@ -210,7 +210,7 @@ class UsuarioController extends Controller
         if ($request['desactivar']) {
             $user->update(['estado' => 'inactivo']);
             if ($user->estado == "inactivo") {
-             AdminController::enviar_correo('emails.aviso_activado',$user,'tu neuva cuenta esta haciendo verificada');
+             AdminController::enviar_correo('emails.aviso_activado',$user,'Tu nueva cuenta esta haciendo verificada');
             } else {
                 echo "no enviarnada";
             }
