@@ -15,6 +15,7 @@
 	{!!Form::select('tipo', array('revista' => 'Revista', 'convocatoria' => 'Convocatoria', 'evento' => 'Evento'), null, ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
+
 	{!!Form::label('Lugar')!!}
 	@if(isset($lugares))
 		<div class="form-group">
