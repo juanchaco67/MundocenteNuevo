@@ -18,12 +18,14 @@ use App\Funcionario;
 use App\Grupo;
 use App\Lugar;
 use Response;
+use Carbon\Carbon;
 
 class PublicacionController extends Controller
 {
 
     public function __construct(){
-    
+
+        Carbon::setLocale('es');    
         //$this->middleware('auth');
         //$this->middleware('funcionario');
     }
@@ -135,15 +137,24 @@ class PublicacionController extends Controller
     public function show($id){
         //return "show";
         $publicacion = Publicacion::find($id);
-        /*
-        return view('publicacion')->with([
+        $establecimiento = $publicacion->funcionario->establecimiento->nombre;
+        $grupos = Grupo::where('publicacion_id', '=', $publicacion->id)->get();
+
+
+        $lugar = Lugar::find($publicacion->lugar_id)->first();
+        $fecha = $publicacion->created_at->format('l \\of F Y h:i:s a');
+
+        $mostrar = array(
             'publicacion' => $publicacion,
-        ]);
-        */
-        return Response::json($publicacion);
+            'establecimiento' => $establecimiento,
+            //'areas' => $areas,
+
+            'fecha' => $fecha,
+            'lugar' => $lugar,
+            'grupos' => $grupos,
+        );
+        return Response::json($mostrar);
         //return $publicacion;
-        //$publicaciones = Publicacion::find($id);
-        //return view('index')->with('publicaciones', $publicaciones);
     }
 
     public function edit($id){

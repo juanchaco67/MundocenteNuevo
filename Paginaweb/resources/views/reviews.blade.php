@@ -25,6 +25,7 @@
                 </div>
 -->
 
+  <!--
             <div class="modal fade" id="modalpublicacion" role="dialog">
                 <div class="modal-dialog modal-sm">
                   <div class="modal-content">
@@ -44,6 +45,72 @@
                 </div>
               </div>
             </div>
+
+            -->
+              <!-- Modal -->
+                <div class="modal fade" id="modalpublicacion" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Detalle de publicación</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+                        <div style="width: 100%;"> 
+                          <div style="float: left; width:60%;">
+
+                            <div class="panel panel-default">
+                              <div class="panel-heading text-center">
+                                  Sobre la publicación
+                              </div>
+                              <div class="panel-body">
+                                <p><strong>Nombre </strong><div id="nombre"></div></p>
+                                <p><strong>Universidad/Entidad </strong><div id="universidad"></div></p>
+                                <p><strong>Descripción </strong><div id="descripcion"></div></p>
+
+                                <p><strong>Areas </strong><div id="areas"></div></p>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div style="float: left; width:40%;">
+
+                             <div class="panel panel-default">
+                                <div class="panel-heading text-center">
+                                    Resumen publicacion
+                                </div>
+                                
+                                <div class="panel-body">
+                                  <p><strong>Resumen </strong><div id="resumen"></div></p>
+                                  <p><strong>Fecha publicación</strong><div id="fecha"></div></p>
+                                  <p><strong>Fecha cierre </strong><div id="fechacierre"></div></p>
+                                  <p><strong>Lugar </strong><div id="lugar"></div></p>
+                                  <p><strong>Tipo </strong><div id="tipo"></div></p>
+                                </div>          
+                            </div>  
+
+                          </div>
+
+                      </div>
+
+                      <div style="clear:both;">
+                        
+                      </div>
+
+
+
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
 

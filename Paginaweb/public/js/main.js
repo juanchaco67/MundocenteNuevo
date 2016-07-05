@@ -127,7 +127,17 @@ $(document).ready(function() {
 					        }, 
 					        success: function(resp) {
 					        	//alert(resp.id);
-					        	$('#titulo-principal').html(resp.nombre);
+					        	$('#nombre').html(resp.publicacion.nombre);
+					        	$('#universidad').html(resp.establecimiento);
+					        	$('#resumen').html(resp.publicacion.resumen);
+					        	$('#descripcion').html(resp.publicacion.descripcion);
+					        	$('#areas').html(resp.grupos.area_id);
+
+
+					        	$('#fecha').html(resp.fecha);
+					        	$('#fechacierre').html(resp.publicacion.fecha_cierre);
+					        	$('#lugar').html(resp.lugar.nombre);
+					        	$('#tipo').html(resp.publicacion.tipo);
 					        	//$('#modalpublicacion').html(resp.responseText);
 					        }
 						});  
