@@ -29,6 +29,7 @@ class Publicaciones extends Migration
                 ->on('lugares')
                 ->onDelete('cascade');
             $table->enum('tipo', ['revista', 'convocatoria', 'evento']);
+            $table->string('url']);
             $table->date('fecha_publicacion');
             $table->date('fecha_cierre');
             $table->enum('estado', ['activa', 'inactiva'])->default('activa');
