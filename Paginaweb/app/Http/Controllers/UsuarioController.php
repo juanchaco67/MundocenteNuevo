@@ -118,7 +118,9 @@ class UsuarioController extends Controller
                 'user_id' => $usuario->id,
                 'notificar' => $notificar,
             ]);
+
             $this->crear_interes($docente, $request);
+             AdminController::enviar_correo('emails.welcome',$usuario,'Bienvenido');
         } elseif($rol == "funcionario") {
             //return "EStaba " .$request['establecimiento'];
             $establecimientos = Establecimiento::all();
@@ -133,6 +135,7 @@ class UsuarioController extends Controller
                 'user_id' => $usuario->id,
                 'establecimiento_id' => $request['establecimiento'],
             ]);
+                 AdminController::enviar_correo('emails.aviso_activo',$usuario,'Bienvenido la actualizacon de la tu cuenta esta proceso');
         }
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
@@ -207,7 +210,7 @@ class UsuarioController extends Controller
         if ($request['desactivar']) {
             $user->update(['estado' => 'inactivo']);
             if ($user->estado == "inactivo") {
-             AdminController::enviar_correo('emails.aviso_activado',$user,'INACTIVO');
+             AdminController::enviar_correo('emails.aviso_activo',$user,'INACTIVO');
             } else {
                 echo "no enviarnada";
             }
