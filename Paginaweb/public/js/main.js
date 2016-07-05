@@ -127,7 +127,43 @@ $(document).ready(function() {
 					        }, 
 					        success: function(resp) {
 					        	//alert(resp.id);
-					        	$('#titulo-principal').html(resp.nombre);
+					        	$('#nombre').html(resp.publicacion.nombre);
+					        	$('#universidad').html(resp.establecimiento);
+					        	$('#resumen').html(resp.publicacion.resumen);
+					        	$('#descripcion').html(resp.publicacion.descripcion);
+
+					        	var mez = resp.mezcla;
+
+					        	//console.log(resp.mezcla[0].id);
+
+					        	var id=document.getElementById('areaa');
+
+					        	var variable;
+
+
+					        	for(var k in mez){
+					        		if(k < mez.length - 1){
+					        			id.innerHTML+=mez[k].nombre + ", ";
+					        		} else {
+					        			id.innerHTML+=mez[k].nombre;
+					        		}				  			 		
+				  			 	}
+				  			 	//alert(variable);
+					        	
+
+
+
+					        	/*
+					        	for(var k in result){
+				  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
+				  			 	}
+				  			 	*/
+
+
+					        	$('#fecha').html(resp.fecha);
+					        	$('#fechacierre').html(resp.publicacion.fecha_cierre);
+					        	$('#lugar').html(resp.lugar.nombre);
+					        	$('#tipo').html(resp.publicacion.tipo);
 					        	//$('#modalpublicacion').html(resp.responseText);
 					        }
 						});  
