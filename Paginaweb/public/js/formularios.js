@@ -15,12 +15,15 @@ $(document).ready(function(){
 				//alert(resp.usuario);
 				if(metodo=="PUT"){
 					if (id="submit-editar-docente" && metodo == "PUT") {
-						if (resp.usuario.estado == "activo") {
-							if(resp.usuario.idrol!=3){							
-								window.location="http://localhost:8000/logout";
+						if (resp.usuario != undefined) {
+							if (resp.usuario.estado == "activo") {
+								if(resp.usuario.idrol!=3){							
+									window.location="http://localhost:8000/logout";
+								}
+								window.location="http://localhost:8000/";
+							} else {
+								window.location="http://localhost:8000/";
 							}
-						} else {
-							window.location="http://localhost:8000/";
 						}
 					}
 					//document.getElementById('btn-correo').innerHTML=resp.email;

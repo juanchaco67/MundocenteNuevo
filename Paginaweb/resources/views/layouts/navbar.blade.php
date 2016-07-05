@@ -119,6 +119,8 @@
        <!-- <form role="form" action="registro" method="post"> -->
           <div class="modal-body">
             @include('alerts.request')
+            @include('alerts.success')
+
             @include('usuario.forms.user')
 
           </div>
@@ -137,6 +139,7 @@
  @endif
 
  @if( Auth::check() )
+
 <!-- Modal -->
   <div id="myModalConfiguracion" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -161,6 +164,9 @@
 					{!!Form::model($user, ['route'=>['usuario.update', $user->id], 'method'=>'put','name'=>'formularioAdmin','onsubmit'=>'return false;','class'=>'formularioAdmin'])!!}
 
 					<input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
+						@include('alerts.request')
+						@include('alerts.success')
+
 						@include('usuario.forms.admin')
 
 					<div class="modal-footer">

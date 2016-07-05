@@ -19,6 +19,7 @@ use App\Funcionario;
 use Auth;
 use App\Http\Controllers\AdminController;
 use Response;
+use Validator;
 
 class UsuarioController extends Controller
 {
@@ -173,9 +174,34 @@ class UsuarioController extends Controller
 
     
 
-    public function update($id, UserUpdateRequest $request){
+    public function update($id, Request $request){
         //echo $request;
-            
+            if (Auth::user()->email == $request['email']) {
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    //'email' => 'required|email|unique:users',
+                    'email' => 'required|email',
+                ]);
+
+                if ($validator->fails()) {
+                    return $validator->messages()->toJson();
+                } else {
+                    $this->actualizar_usuario($id, $request);
+                }
+            } else {
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'email' => 'required|email|unique:users',
+                ]);
+                if ($validator->fails()) {
+                    return $validator->messages()->toJson();
+                } else {
+                    $this->actualizar_usuario($id, $request);
+                }
+            }
+    }
+
+    public function actualizar_usuario($id, Request $request){
         $user = User::find($id);
         if ($user->idrol ==1) {
             $notificar = $request['notificar'];
@@ -212,7 +238,7 @@ class UsuarioController extends Controller
             if ($user->estado == "inactivo") {
              AdminController::enviar_correo('emails.aviso_activado',$user,'Tu nueva cuenta esta haciendo verificada');
             } else {
-                echo "no enviarnada";
+                //echo "no enviarnada";
             }
         } else {
             $user->update(['estado' => 'activo']);
@@ -231,7 +257,9 @@ class UsuarioController extends Controller
             'usuario' => Auth::user(),
         ];
         */
+
     }
+
 
     public function destroy($id){
         $usuario = User::find($id);

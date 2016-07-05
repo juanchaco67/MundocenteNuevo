@@ -140,6 +140,8 @@
                           <a>{{ $publicacion->funcionario->establecimiento->nombre }}</a>
                         </span>
                         <p class="descripcion">{{ $publicacion->resumen }}</p>
+
+                        <a href="{{ $publicacion->url }}">{{ $publicacion->url }}</a>
                     </div>
                         
                         

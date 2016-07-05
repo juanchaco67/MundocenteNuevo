@@ -7,7 +7,6 @@
 @section('superior')
 
     {{--@include('alerts.request')--}}
-    @include('alerts.success')
    
   <div class="row">
     
