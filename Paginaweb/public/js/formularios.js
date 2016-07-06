@@ -48,7 +48,8 @@ $(document).ready(function(){
 					}
 
 					if (id=="formularioAdmin") {
-						alert('admin');
+						//alert('admin');
+						window.location=$ir_a;
 					} else {
 
 					}
