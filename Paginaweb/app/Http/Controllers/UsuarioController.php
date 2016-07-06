@@ -27,8 +27,8 @@ class UsuarioController extends Controller
 
     public function __construct(){
 
-        //$this->middleware('auth', ['except' => ['store']]);
-        //$this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
+        $this->middleware('auth', ['except' => ['store']]);
+        $this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
 
         //$this->middleware('usuario', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except' => ['update']]);    
@@ -179,28 +179,37 @@ class UsuarioController extends Controller
 
     public function update($id, Request $request){
         //echo $request;
-            if (Auth::user()->email == $request['email']) {
-                $this->validate($request, [
-                    'name' => 'required',
-                    //'email' => 'required|email|unique:users',
-                    'email' => 'required|email',
-                ]);
+        $usuario_editar = User::find($id);
+        /*
+        if ($usuario_editar->idrol == 3) {
+            //$usuario_editar = Auth::user();
+            return "editar admin";
+        } else {
+            return "editar otro";
+        }
+        */
+        //return "email " . $request['email'];
 
-                $this->actualizar_usuario($id, $request);
-
-            } else {
-                $this->validate($request, [
-                    'name' => 'required',
-                    'email' => 'required|email|unique:users',
-                ]);
-
-                $this->actualizar_usuario($id, $request);
-            }
+        //return $id;
+        if ($usuario_editar->email == $request['email']) {
+            $this->validate($request, [
+                'name' => 'required',
+                //'email' => 'required|email|unique:users',
+                'email' => 'required|email',
+            ]);
+            return $this->actualizar_usuario($usuario_editar, $request);
+        } else {
+            $this->validate($request, [
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+            ]);
+            return $this->actualizar_usuario($usuario_editar, $request);
+        }
     }
 
-    public function actualizar_usuario($id, Request $request){
-        $user = User::find($id);
-        if ($user->idrol ==1) {
+    public function actualizar_usuario($user, Request $request){
+        //$user = User::find($id);
+        if ($user->idrol == 1) {
             $notificar = $request['notificar'];
             if ($notificar === NULL) {
                 $notificar = 1;
@@ -211,15 +220,15 @@ class UsuarioController extends Controller
             //$docente = Docente::where('user_id', '=', $user->id)->first();
 
             //return $user;
-            $areas = Interes::where('docente_id', $id)->delete();
+            $areas = Interes::where('docente_id', $user->id)->delete();
             $this->crear_interes($user, $request); 
 
-            $docente = Docente::where('user_id', $id);
+            $docente = Docente::where('user_id', $user->id);
             $docente->update([
                 'notificar' => $notificar,
             ]);
         } elseif ($user->idrol == 2) {
-            $funcionario = Funcionario::where('user_id', $id);
+            $funcionario = Funcionario::where('user_id', $user->id);
             $funcionario->update([
                 'establecimiento_id' => $request['establecimiento'],
             ]);
@@ -242,12 +251,21 @@ class UsuarioController extends Controller
         }
     
         Session::flash('mensaje', 'Usuario Editado');
+        if (Auth::user()->idrol == 3) {
+            $actualizar = array(
+                'user' => $user,
+                'usuario' => Auth::user(),
+                );
+            return Response::json($actualizar);            
+        } else {
+            $actualizar = array(
+                'user' => $user,
+                //'usuario' => Auth::user(),
+            );
+            return Response::json($actualizar);
+        }
        
-        $actualizar = array(
-            'user' => $user,
-            'usuario' => Auth::user(),
-        );
-        return Response::json($actualizar);
+
         /*
         return [
             'user' => $user,

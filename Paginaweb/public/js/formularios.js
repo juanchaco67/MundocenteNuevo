@@ -12,24 +12,45 @@ $(document).ready(function(){
 			method:metodo,
 			data:$("."+id).serialize(),
 			success:function(resp){
-				//alert(resp.usuario);
+
+				//alert("usuario actual " + resp.usuario.name + " estado " + resp.usuario.estado	);
+				//alert("user editar " + resp.user.name + " estado " + resp.user.estado);
+
+
+				if (resp.usuario != undefined) {
+					//alert('es admin');
+					$ir_a = "http://localhost:8000/admin";
+				} else {
+					//alert('no es admin');
+					$ir_a = "http://localhost:8000/logout";
+				}
 				//alert('sussss');
 				if(metodo=="PUT"){
-					if (id="submit-editar-docente" && metodo == "PUT") {
-						if (resp.usuario != undefined) {
-							if (resp.usuario.estado == "activo") {
-								if(resp.usuario.idrol!=3){							
-									window.location="http://localhost:8000/logout";
-								} else {
-									window.location="http://localhost:8000/";
-								}
+					if ((id=="formularioUpdateDocente" || id=="formularioUpdateFuncionario") && metodo == "PUT") {
+						if (resp.user != undefined) {
+							if (resp.user.estado == "inactivo") {
+								//alert('inactivar');
+								//if(resp.usuario.idrol!=3){							
+									window.location=$ir_a;
+								//} else {
+								//	window.location="http://localhost:8000/admin";
+								//}
 							} else {
+								//alert('activar');
 								//window.location="http://localhost:8000/";
+								//window.location=$ir_a;
 							}
 						} else {
+							//alert('cerrar el modal');
 							//window.location="http://localhost:8000/";
 							//return resp;
 						}
+					}
+
+					if (id=="formularioAdmin") {
+						alert('admin');
+					} else {
+
 					}
 					//document.getElementById('btn-correo').innerHTML=resp.email;
 
@@ -91,8 +112,7 @@ $(document).ready(function(){
 	});
 
 
-	$('.submit-editar-admin').click(function(){
-		
+	$('.submit-editar-admin').click(function(){		
 		formularioFuncionario("PUT","formularioAdmin");
 	});
 
