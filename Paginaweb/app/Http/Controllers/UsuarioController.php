@@ -111,7 +111,7 @@ class UsuarioController extends Controller
             } else{
                 $notificar = 0;
             }        
-            $usuario = User::create([
+            $user = User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'password' => $request['password'],
@@ -119,16 +119,16 @@ class UsuarioController extends Controller
                 'estado' => 'activo',
             ]);
             $docente = Docente::create([
-                'user_id' => $usuario->id,
+                'user_id' => $user->id,
                 'notificar' => $notificar,
             ]);
 
             $this->crear_interes($docente, $request);
-             AdminController::enviar_correo('emails.welcome',$usuario,'Bienvenido');
+             AdminController::enviar_correo('emails.welcome',$user,'Bienvenido');
         } elseif($rol == "funcionario") {
             //return "EStaba " .$request['establecimiento'];
             $establecimientos = Establecimiento::all();
-            $usuario = User::create([
+            $user = User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'password' => $request['password'],
@@ -136,10 +136,10 @@ class UsuarioController extends Controller
                 'estado' => 'inactivo',
             ]);
             Funcionario::create([
-                'user_id' => $usuario->id,
+                'user_id' => $user->id,
                 'establecimiento_id' => $request['establecimiento'],
             ]);
-                 AdminController::enviar_correo('emails.aviso_activado',$usuario,'Bienvenido la actualización de tu cuenta esta proceso');
+                 AdminController::enviar_correo('emails.aviso_activado',$user,'Bienvenido la actualización de tu cuenta esta proceso');
         }
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
