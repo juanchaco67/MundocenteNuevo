@@ -139,7 +139,8 @@ class UsuarioController extends Controller
                 'user_id' => $user->id,
                 'establecimiento_id' => $request['establecimiento'],
             ]);
-                 AdminController::enviar_correo('emails.aviso_activado',$user,'Bienvenido la actualización de tu cuenta esta proceso');
+            //AdminController::enviar_correo('emails.welcome',$user,'Bienvenido');
+            AdminController::enviar_correo('emails.avisoactivado',$user,'Bienvenido la actualización de tu cuenta esta proceso');
         }
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
