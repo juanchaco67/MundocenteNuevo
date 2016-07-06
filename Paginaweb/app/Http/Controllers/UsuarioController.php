@@ -27,8 +27,8 @@ class UsuarioController extends Controller
 
     public function __construct(){
 
-        //$this->middleware('auth', ['except' => ['store']]);
-        //$this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
+        $this->middleware('auth', ['except' => ['store']]);
+        $this->middleware('admin', ['only' => ['create', 'index', 'edit', 'store','destroy']]);
 
         //$this->middleware('usuario', ['except' => ['update']]);
         //$this->middleware('funcionario', ['except' => ['update']]);    
