@@ -304,12 +304,20 @@ footer {
     body{
     	//background-color: black;
     }
+
+    .panel-izquierdo{
+    	//display: none;
+    }
 }
 
 @media all and (max-width: 840px) {
     #contacto-izquierdo, #contacto-derecho {
     	//width: 100%;
     	//background-color: blue;
+    }
+
+    .panel-izquierdo{
+    	display: none;
     }
 }
 
@@ -318,11 +326,22 @@ footer {
     	width: 100%;
     	//background-color: yellow;
     }
+
+    .panel-izquierdo{
+    	display: none;
+    }
 }
 
 @media all and (max-width: 520px) {
     #contacto-izquierdo, #contacto-derecho {
     	width: 100%;
     	//background-color: green;
+    }
+    body{
+    	//background-color: blue;
+    }
+    .panel-izquierdo{
+    	//background-color: blue;	
+    	display: none;
     }
 }
