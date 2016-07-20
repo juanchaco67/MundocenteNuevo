@@ -21,11 +21,11 @@
 <body>
 	@include('layouts.navbar')
 
-	<div class="row">
+	<div class="">
 			@yield('superior')
 	</div>
 
-	<div class="cuerpo row">
+	<div class="cuerpo">
 
 		<div class="paneles container">
 			@yield('titulo-contenido')

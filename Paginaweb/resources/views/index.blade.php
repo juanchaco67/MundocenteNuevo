@@ -8,7 +8,7 @@
 
     {{--@include('alerts.request')--}}
    
-  <div class="row">
+  <div class="">
     
     <div class="superior container">
     <!-- <h1>Inicio</h1>
