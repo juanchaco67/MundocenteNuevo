@@ -14,10 +14,12 @@
 	{!!Html::style('css/estilos.css')!!}
 	<!-- <script src="../js/jquery-1.12.3.min.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo-menu.css') }}"> 
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilos.css') }}">
 
 	<title>Mundocente | @yield('titulo-pagina')</title>
 </head>
+
 <body>
 	@include('layouts.navbar')
 
@@ -74,6 +76,8 @@
 	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
 	<script type="text/javascript" src="{{ URL::asset('js/formularios.js') }}"></script>
+
+	<script type="text/javascript" src="{{ URL::asset('js/menu.js') }}"></script>
 
 </body>
 </html>

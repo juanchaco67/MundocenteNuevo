@@ -1,4 +1,4 @@
-<!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}"> 
     <!-- <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 

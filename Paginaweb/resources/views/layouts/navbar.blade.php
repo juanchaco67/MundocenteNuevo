@@ -1,22 +1,37 @@
 <header>
+	<div class="menu_bar">
+		<a href="#" class="bt-menu"><span class="icon-list2">Menu</span></a>
+	</div>
+
+	<!--- <nav>
+		<ul>
+			<li><a href="#"><span class="icon-">Inicio</a></span></li>
+			<li><a href="#"><span class="icon-">Trabajos</a></span></li>
+			<li><a href="#"><span class="icon-">Proyectos</a></span></li>
+			<li><a href="#"><span class="icon-">Servicios</a></span></li>
+			<li><a href="#"><span class="icon-">Contactos</a></span></li>
+		</ul>
+	</nav> -->
+
 	    <nav class="navbar navbar-default navbar-fixed-top" data-target=".navbar-collapse">
 	        <div class="container">
 	          <!-- Brand and toggle get grouped for better mobile display -->
 	          <div class="navbar-header">
 	            <a class="navbar-brand" href="/">
-	          <img id="logo" alt="logo" src="{{ URL::asset('img/logo-imagen.png') }}">
-	          <img id="texto" alt="nombre" src="{{ URL::asset('img/logomun-texto.png') }}">
+		          <img id="logo" alt="logo" src="{{ URL::asset('img/logo-imagen.png') }}">
+		          <img id="texto" alt="nombre" src="{{ URL::asset('img/logomun-texto.png') }}">
 	            </a>
+	            <!--
 	             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 	              <span class="sr-only">Toggle navigation</span>
 	              <span class="icon-bar"></span>
 	              <span class="icon-bar"></span>
 	              <span class="icon-bar"></span>
-	            </button>
+	            </button> -->
 	          </div>
 
 	          <!-- Collect the nav links, forms, and other content for toggling -->
-	          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	          <div class="lista-navbar" id="bs-example-navbar-collapse-1">
 	            <ul class="nav navbar-nav navbar-right">
 
 	              <li @yield('inicio')><a href="/">Inicio<span class="sr-only">(current)</span></a></li>
