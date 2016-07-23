@@ -18,11 +18,15 @@ class EstablecimientoController extends Controller
     //
      public function index(){
         //$establecimientos = Establecimiento::all();
-        $establecimiento = Establecimiento::where('estado', '=', 'activo')
+        $establecimientos = Establecimiento::where('estado', '=', 'activo')
             ->get()
             ->all();
 
-        return view('establecimiento.index', compact('establecimientos'));
+        return view('establecimiento.index', [
+            'establecimientos' => $establecimientos,
+            'user' => Auth::user(),
+
+        ]);
 
 
 
@@ -36,7 +40,10 @@ class EstablecimientoController extends Controller
 
     public function create(){
         //return "create";
-        return view('establecimiento.create');
+        return view('establecimiento.create', [
+            'user' => Auth::user(),
+
+        ]);
         //return "index";
     }
 
@@ -77,7 +84,7 @@ class EstablecimientoController extends Controller
 
 
     public function borrados(){
-        $establecimiento = Establecimiento::where('estado', '=', 'inactivo')
+        $establecimientos = Establecimiento::where('estado', '=', 'inactivo')
             ->get()
             ->all();
 
@@ -112,6 +119,8 @@ class EstablecimientoController extends Controller
             //'user' => Auth::user(),
             //'establecimientos' => $establecimientos,
             'establecimientos' => $establecimientos,
+            'user' => Auth::user(),
+
             //'lugares' => $lugares,
         ]);
     }
@@ -124,7 +133,7 @@ class EstablecimientoController extends Controller
             ]);
 
         Session::flash('mensaje', 'Establecimiento recuperado');
-        return Redirect::to('publicacion/borrados');
+        return Redirect::to('establecimiento/borrados');
     }
 
     public function destroy($id){

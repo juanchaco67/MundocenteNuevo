@@ -41,7 +41,9 @@ class PublicacionController extends Controller
         //$valor = Input::get('valor');
         if( Auth::check() ){
             //if( Auth::user()->estado == "activo" ){
-                $publicaciones = Publicacion::all();
+                $publicaciones = Publicacion::where('estado', '=', 'activa')
+                    ->get()
+                    ->all();
                 $user = User::find(Auth::user()->id);
                 $areas = Area::all();
                 $establecimientos = Establecimiento::all();
@@ -69,6 +71,7 @@ class PublicacionController extends Controller
                 } else {
                     return view('publicacion.index', [
                         'publicaciones' => $publicaciones,
+                        'user' => Auth::user(),
                     ]);
                 }
             /*
@@ -104,6 +107,7 @@ class PublicacionController extends Controller
             'areas_publicacion' => $areas_publicacion,
             'departamentos' => $departamento,
             'ciudades'=>$ciudad,
+            'user' => Auth::user(),
             
         ]);
         //return "index";
@@ -250,7 +254,10 @@ class PublicacionController extends Controller
     }
 
     public function borrados(){
-        $publicaciones = Publicacion::all();
+        //$publicaciones = Publicacion::all();
+        $publicaciones = Publicacion::where('estado', '=', 'inactiva')
+            ->get()
+            ->all();
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
             $areas = Area::all();
@@ -263,7 +270,7 @@ class PublicacionController extends Controller
                     ->where('estado', '=', 'inactiva')
                     ->orderBy('created_at', 'DESC')->get()->all();
 
-               return view('publicacion.borrados', [
+                return view('publicacion.borrados', [
                     'areas' => $areas,
                     'user' => Auth::user(),
                     'publicaciones' => $publicaciones,
@@ -271,7 +278,14 @@ class PublicacionController extends Controller
                     'lugares' => $lugares,
                 ]);
             } else if($user->idrol === 3){
-                return redirect()->to('publicacion/borrados');
+                //return redirect()->to('publicacion/borrados');
+                return view('publicacion.borrados', [
+                    'areas' => $areas,
+                    'user' => Auth::user(),
+                    'publicaciones' => $publicaciones,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                ]);
             }else {
                 return redirect()->to('/busqueda');
             }

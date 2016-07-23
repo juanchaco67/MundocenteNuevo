@@ -47,12 +47,12 @@ class UsuarioController extends Controller
             ->get()
             ->all();
 
-        $user = Auth::user();
+        //$user = Auth::user();
         //echo "entro";
     	return view('usuario.index', [
             //'usuarios' => $usuarios,
             'usuarios' => $usuarios,
-            'user' => $user,
+            'user' => Auth::user(),
         ]);
     }
 
@@ -63,6 +63,7 @@ class UsuarioController extends Controller
     	return view('usuario.create')->with([
             'areas'=> $areas,
             'establecimientos'=> $establecimientos,
+            //'user' => Auth::user(),
         ]);
     }
 
