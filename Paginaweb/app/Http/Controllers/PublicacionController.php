@@ -118,7 +118,17 @@ class PublicacionController extends Controller
         ]);
 
         $this->crear_grupos($publicacion, $request);
-
+        $notificar_user=DB::table('grupos')->where('publicacion_id',$publicacion->id)
+            ->join('intereses','intereses.area_id','=','grupos.area_id')
+            ->join('docentes','docentes.id','=','intereses.docente_id')
+            ->join('users','users.id','=','docentes.user_id')
+            ->where('notificar',0)
+            ->select('email','name')
+            ->distinct()
+            ->get();
+         foreach ($notificar_user as $notificar) {
+                 echo $notificar->email;
+            }    
         Session::flash('mensaje', 'Publicacion creada');
         return Redirect::to('publicacion');        
     }
