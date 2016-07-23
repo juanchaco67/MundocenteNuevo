@@ -47,6 +47,7 @@ nav .container {
 		font-weight: bold;
 	}
 
+@media screen and (min-width: 767px){
 	.lista-navbar ul li:hover{
 		background-color: #a54586;
 	}
@@ -54,6 +55,7 @@ nav .container {
 			color: white;
 			font-weight: bold;
 		}
+}
 
 .navbar-brand {
 	//border: 2px solid blue;
@@ -205,6 +207,7 @@ body {
 		//border: 1px solid black;
 		display: table-row;
 	}
+
 		.publicacion #contenido-publicacion:hover {
 			//background-color: blue;
 			background: #f7f5f5;
