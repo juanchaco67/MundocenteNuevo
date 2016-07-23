@@ -29,8 +29,8 @@ return [
     |
     */
 
+    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
     'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -42,8 +42,8 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
-
+    //'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
     /*
     |--------------------------------------------------------------------------
     | Global "From" Address
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'nuevojuanchaco67@gmail.com', 'name' =>'Juan Camilo'],
+    'from' => ['address' => 'nuevojuanchaco67@gmail.com', 'name' => 'Mundocente: no replicar este mensaje.'],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,6 +68,7 @@ return [
     |
     */
 
+    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
@@ -108,5 +109,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    'pretend' => false,
 
 ];
