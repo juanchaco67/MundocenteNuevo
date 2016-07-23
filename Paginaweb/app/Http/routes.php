@@ -47,6 +47,11 @@ Route::get('/publicacion/borrados', 'PublicacionController@borrados');
 Route::post('publicacion/recuperar/{id}', 'PublicacionController@recuperar');
 Route::resource('publicacion', 'PublicacionController');
 
+
+Route::get('/establecimiento/borrados', 'EstablecimientoController@borrados');
+Route::post('establecimiento/recuperar/{id}', 'EstablecimientoController@recuperar');
+Route::resource('establecimiento', 'EstablecimientoController');
+
 /*
 Route::get('/admin/docentes', 'AdminController@listar_docentes');
 Route::get('/admin/publicadores', 'AdminController@listar_publicadores');

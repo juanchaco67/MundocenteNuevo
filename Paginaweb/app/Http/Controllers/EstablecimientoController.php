@@ -5,70 +5,71 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Establecimiento;
 
 class EstablecimientoController extends Controller
 {
     //
      public function index(){
-        $publicaciones = Publicacion::all();
-        return view('publicacion.index', compact('publicaciones'));
+        $establecimientos = Establecimiento::all();
+        return view('establecimiento.index', compact('establecimientos'));
 
 
 
         /*
-        $publicaciones = Publicacion::where('nombre', 'like', '%'.$valor.'%')
+        $establecimientoes = establecimiento::where('nombre', 'like', '%'.$valor.'%')
           ->orwhere('descripcion', 'like', '%'.$valor.'%')->get();
-        return view('publicacion.index')->with('publicaciones', $publicaciones);
+        return view('establecimiento.index')->with('establecimientoes', $establecimientoes);
         return $valor;
         */
     }
 
     public function create(){
         //return "create";
-        return view('publicacion.create');
+        return view('establecimiento.create');
         //return "index";
     }
 
     public function store(Request $request){
         //return "store";
-        Publicacion::create([
+        Establecimiento::create([
+            //'nombre' => $request['nombre'],
             'nombre' => $request['nombre'],
-            'descripcion' => $request['descripcion'],
         ]);
 
-        Session::flash('mensaje', 'Publicacion creada');
-        return Redirect::to('publicacion');        
+        Session::flash('mensaje', 'Establecimiento creado');
+        return Redirect::to('establecimiento');        
     }
 
     public function show($id){
         return "show";
-        //$publicaciones = Publicacion::find($id);
-        //return view('index')->with('publicaciones', $publicaciones);
+        //$establecimientoes = establecimiento::find($id);
+        //return view('index')->with('establecimientoes', $establecimientoes);
     }
 
     public function edit($id){
         //return "edit";
-        $publicacion = publicacion::find($id);
-        return view('publicacion.edit', [
-            'publicacion' => $publicacion,
+        $establecimiento = Establecimiento::find($id);
+        return view('establecimiento.edit', [
+            'establecimiento' => $establecimiento,
         ]);        
     }
 
-    public function update($id, PublicacionUpdateRequest $request){
+    public function update($id, establecimientoUpdateRequest $request){
         //return "update";
-        $publicacion = Publicacion::find($id);
-        $publicacion->fill($request->all());
-        $publicacion->save();
+        $establecimiento = Establecimiento::find($id);
+        $establecimiento->fill($request->all());
+        $establecimiento->save();
 
-        Session::flash('mensaje', 'Publicacion Editada');
-        return Redirect::to('publicacion');
+        Session::flash('mensaje', 'Establecimiento Editado');
+        return Redirect::to('establecimiento');
     }
 
     public function destroy($id){
     	//return "destroy";
-        Publicacion::destroy($id);
+        establecimiento::destroy($id);
 
-        Session::flash('mensaje', 'Publicacion Eliminada');
-        return Redirect::to('publicacion');
+        Session::flash('mensaje', 'Establecimiento Eliminado');
+        return Redirect::to('establecimiento');
     }
 }
