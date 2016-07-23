@@ -95,12 +95,16 @@ class PublicacionController extends Controller
     public function create(){
         //return "create";
         $areas = Area::all();
-        $lugares = Lugar::all();
+        //$lugares = DB::select('select d.nombre as departamento, m.nombre as ciudad, d.id as departamento_id , m.id as ciudad_id,d.tipo as tipo_departamento from lugares d,lugares m where d.id=m.ubicacion_id');
+        $departamento=DB::select("select * from lugares where tipo='departamento'");
+        $ciudad=DB::select("select * from lugares where tipo='municipio'");
         $areas_publicacion = array();
         return view('publicacion.create', [
             'areas' => $areas,
             'areas_publicacion' => $areas_publicacion,
-            'lugares' => $lugares,
+            'departamentos' => $departamento,
+            'ciudades'=>$ciudad,
+            
         ]);
         //return "index";
     }
@@ -151,13 +155,13 @@ class PublicacionController extends Controller
     public function crear_aplica($lugar_id,$publicacion,$opcion){
       
         if(!empty($lugar_id) && $opcion==1){
-            Aplica::::create([
+            Aplica::create([
                     'lugar_id' => $lugar_id,
                     'publicacion_id' => $publicacion->id,                   
                 ]);                     
         }else{
             foreach ($lugar_id as $municipio) {
-               Aplica::::create([
+               Aplica::create([
                     'lugar_id' => $municipio,
                     'publicacion_id' => $publicacion->id,                   
                 ]);  
