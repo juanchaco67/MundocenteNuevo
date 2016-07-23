@@ -139,13 +139,6 @@ $(document).ready(function(){
             	//console.log('revistas');
             }
       });
-
-
-	  @foreach($areas as $area)				
-							<div class="form-group">
-								<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
-							</div>
-					
-					@endforeach
+	 
 	});
 });
