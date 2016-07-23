@@ -179,7 +179,7 @@ $(document).ready(function() {
       //console.log("r3efvistasfa");
       //return "hgola;";
       //$('.filtros input[name=revistas]')..prop('checked', true);;
-      event.preventDefault();
+      //event.preventDefault();
       $.ajax({
             type: "GET",
             url: "http://localhost:8000/busqueda/revista",
@@ -189,7 +189,7 @@ $(document).ready(function() {
                   //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
             },
             error: function(){
-                  //alert("error petición ajax");
+                  alert("error petición ajax");
             },
             success: function(data){        
             	//console.log(data); 
@@ -198,6 +198,7 @@ $(document).ready(function() {
             	//console.log('revistas');
             }
       });
+      event.preventDefault();
     });
 
     function mostrar_resultados($contenedor, $url, $elemento){
@@ -207,7 +208,6 @@ $(document).ready(function() {
     $(".convocatorias").on('click', function(){ 
     	$('.tipos').css('display', 'block');                                                    ;
       //hace la búsqueda
-      event.preventDefault();
       $.ajax({
             type: "GET",
             url: "http://localhost:8000/busqueda/convocatoria",
@@ -225,13 +225,13 @@ $(document).ready(function() {
             	$('.contenido').append(data);	                                                     
             }
       });
+      event.preventDefault();
     });
 
     $(".eventos").on('click', function(){                                                     ;
     	//console.log('eveentoo');
     	$('.tipos').css('display', 'block');
       //hace la búsqueda
-      event.preventDefault();
       $.ajax({
             type: "GET",
             url: "http://localhost:8000/busqueda/evento",
@@ -249,6 +249,7 @@ $(document).ready(function() {
             	$('.contenido').append(data);	                                                     
             }
       });
+      event.preventDefault();
     });
 
 
