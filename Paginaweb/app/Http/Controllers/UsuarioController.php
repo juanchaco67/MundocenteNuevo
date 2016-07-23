@@ -63,7 +63,7 @@ class UsuarioController extends Controller
     	return view('usuario.create')->with([
             'areas'=> $areas,
             'establecimientos'=> $establecimientos,
-            //'user' => Auth::user(),
+            'user' => Auth::user(),
         ]);
     }
 
