@@ -151,13 +151,13 @@ class PublicacionController extends Controller
     public function crear_aplica($lugar_id,$publicacion,$opcion){
       
         if(!empty($lugar_id) && $opcion==1){
-            Aplica::::create([
+            Aplica::create([
                     'lugar_id' => $lugar_id,
                     'publicacion_id' => $publicacion->id,                   
                 ]);                     
         }else{
             foreach ($lugar_id as $municipio) {
-               Aplica::::create([
+               Aplica::create([
                     'lugar_id' => $municipio,
                     'publicacion_id' => $publicacion->id,                   
                 ]);  
