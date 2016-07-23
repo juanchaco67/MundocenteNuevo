@@ -57,7 +57,7 @@ $(document).ready(function() {
 	if (valor != null) {
 		var valor=document.getElementById('busquedatoken').value;                                           
 	    $("#buscador").keyup(function(e){       
-	    	event.preventDefault();                       
+	    	//event.preventDefault();                       
 		      //obtenemos el texto introducido en el campo de búsqueda
 	  		realizar_busqueda();
 		});
