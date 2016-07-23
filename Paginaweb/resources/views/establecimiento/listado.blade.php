@@ -3,7 +3,7 @@
 	<th>{{ $establecimiento->estado }}</th>
 	<th>
 		{!!link_to_route('establecimiento.edit', $title = 'Editar', $parameters = $establecimiento->id, $atrributes = ['class' => 'btn btn-primary'])!!}
-		@if($establecimiento->estado == 'activa')
+		@if($establecimiento->estado == 'activo')
 			<button class="borrar btn btn-default" data-toggle="modal" data-target="#{{ $establecimiento->id }}">
 			    ¿Borrar?
 			</button>
@@ -24,12 +24,8 @@
 				                			<p>{{ $establecimiento->nombre }}</p>
 				                		</li>
 				                	<li>
-				                		<h4>Resumen </h4>
-				                			<p>{{ $establecimiento->resumen }}</p></li>
-				                	<li>
-				                		<h4>Descripción </h4>
-				                		<p>{{ $establecimiento->descripcion }}</p>
-				                	</li>
+				                		<h4>Estado </h4>
+				                			<p>{{ $establecimiento->estado }}</p></li>
 				                </ul>
 				            </div>
 			            </div>

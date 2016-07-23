@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Establecimiento;
+use Session;
+use Redirect;
+use Auth;
+use App\User;
+use App\Area;
+use App\Lugar;
 
 class EstablecimientoController extends Controller
 {
@@ -65,11 +71,71 @@ class EstablecimientoController extends Controller
         return Redirect::to('establecimiento');
     }
 
+
+    public function borrados(){
+        $establecimientos = establecimiento::all();
+        /*
+        if( Auth::check() ){
+            $user = User::find(Auth::user()->id);
+            $areas = Area::all();
+            $establecimientos = Establecimiento::all();
+            $lugares = Lugar::all();
+            if ( $user->idrol === 2 || $user->idrol === 3) {      
+                $funcionario = Funcionario::where('user_id', $user->id)
+                    ->first();
+                $establecimientos = Establecimiento::where('funcionario_id', $funcionario->id)
+                    ->where('estado', '=', 'inactivo')
+                    ->orderBy('created_at', 'DESC')->get()->all();
+
+               return view('establecimiento.borrados', [
+                    'areas' => $areas,
+                    'user' => Auth::user(),
+                    'establecimientos' => $establecimientos,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                ]);
+            } else {
+                return redirect()->to('/busqueda');
+            }
+        }
+        return redirect()->to('/');
+        */
+        return view('establecimiento.borrados', [
+            //'areas' => $areas,
+            //'user' => Auth::user(),
+            //'establecimientos' => $establecimientos,
+            'establecimientos' => $establecimientos,
+            //'lugares' => $lugares,
+        ]);
+    }
+
+    public function recuperar($id){
+         $establecimiento = Establecimiento::find($id);
+         //return $establecimiento;
+            $establecimiento->update([
+                'estado' => 'activo',
+            ]);
+
+        Session::flash('mensaje', 'Establecimiento recuperado');
+        return Redirect::to('publicacion/borrados');
+    }
+
     public function destroy($id){
     	//return "destroy";
-        establecimiento::destroy($id);
+        /*
+        Establecimiento::destroy($id);
 
         Session::flash('mensaje', 'Establecimiento Eliminado');
+        return Redirect::to('establecimiento');
+        */
+         $establecimiento = Establecimiento::find($id);
+            $establecimiento->update([
+                'estado' => 'inactivo',
+            ]);
+            //$establecimiento->estado = 'inactivo';
+            //return $establecimiento;
+
+        Session::flash('mensaje', 'Establecimiento borrado');
         return Redirect::to('establecimiento');
     }
 }

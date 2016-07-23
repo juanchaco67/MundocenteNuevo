@@ -12,14 +12,11 @@
 				<table class="table">
 					<thead>
 						<th>Nombre</th>
-						<th>Resumen</th>
-						<th>Tipo</th>
-						<th>Fecha publicado</th>
-						<th>Fecha cierre</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 					</thead>
 						@foreach($establecimientos as $establecimiento)
-							@if($establecimiento->estado == 'inactiva')
+							@if($establecimiento->estado == 'inactivo')
 								@include('establecimiento.listado')
 							@endif
 						@endforeach
