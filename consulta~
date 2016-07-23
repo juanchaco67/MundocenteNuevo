@@ -1,0 +1,69 @@
+user 
+docente
+intereses
+areas
+
+
+$user=App\User;
+$user->join('docentes', 'docentes.user_id', '=', 'users.id')->join('intereses','intereses.docente_id','=','docentes.id')->get();
+
+$user->join('docentes', 'docentes.user_id', '=', 'users.id')->join('intereses','intereses.docente_id','=','docentes.id')->join('intereses','intereses.area_id','=','areas.id')->get();
+
+
+App\Grupo
+
+App\Intere
+
+DB::table('intereses')->join('grupos','grupos.area_id','=','intereses.area_id')->get()
+
+DB::table('intereses')->join('grupos','grupos.area_id','=','intereses.area_id')->join('docentes','docentes.id','=','intereses.docente_id')->get()
+
+DB::table('intereses')->join('grupos','grupos.area_id','=','intereses.area_id')->join('docentes','docentes.id','=','intereses.docente_id')->join('users','users.id','=', 'docentes.user_id' )->get()
+
+SELECT *
+FROM intereses
+INNER JOIN grupos ON grupos.area_id = intereses.area_id 
+INNER JOIN docentes ON docentes.id = intereses.docente_id 
+INNER JOIN users ON users.id = docentes.user_id 
+
+
+SELECT i.docente_id FROM grupos g,intereses i WHERE g.publicacion_id=1 AND g.area_id=i.area_id
+
+
+SELECT DISTINCT i.docente_id, u.email, notificar 
+FROM grupos g,intereses i,docentes d, users u
+WHERE g.publicacion_id=4 AND g.area_id=i.area_id AND i.docente_id=d.id AND u.id=d.user_id AND d.notificar=0
+
+
+DB::table('grupos')->join('intereses','intereses.area_id','=','grupos.areas_id')->where('publicacion_id',4)
+
+
+DB::table('grupos')->where('publicacion_id',4)->join('intereses','intereses.docente_id','=','docente.id')->join('docentes','docentes.user_id','=','users.id')->where('notificacion',0)->select('users.email','users.name')->distinct()->get();
+
+
+DB::table('grupos')->where('publicacion_id',4)->join('intereses','intereses.area_id','=','grupos.areas_id')
+
+DB::table('grupos')->where('publicacion_id',4)->join('intereses','intereses.docente_id','=','docentes.id')->join('docentes','docentes.user_id','=','users.id')->where('notificacion',0)->get()
+
+ $mezcla = DB::table('grupos')
+                    ->where('publicacion_id', 4)
+->join('intereses','intereses.')
+ 		    ->where('area_id', 'i')
+				
+                    ->join('intereses', 'intereses.docente_id', '=', 'docentes.id')
+                    ->join('areas', 'areas.id', '=', 'intereses.area_id')
+                    ->join('grupos', 'grupos.area_id', '=', 'areas.id')
+                    ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
+//                    ->where('estado', '=', 'activa')
+                    ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
+                    ->where('estado', '=', 'activa')
+                    ->orderBy('created_at', 'DESC')
+                    ->distinct()
+                    ->get();
+
+
+
+
+
+
+
