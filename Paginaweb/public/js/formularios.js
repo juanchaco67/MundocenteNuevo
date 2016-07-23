@@ -118,4 +118,8 @@ $(document).ready(function(){
 		formularioFuncionario("PUT","formularioAdmin");
 	});
 
+	$('#lugar').change(function(){ 
+	  var value = $(this).val();
+	  alert(value);
+	});
 });

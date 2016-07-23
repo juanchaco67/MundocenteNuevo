@@ -22,12 +22,7 @@ class Publicaciones extends Migration
                 ->onDelete('cascade');
             $table->string('nombre');
             $table->string('resumen');
-            $table->string('descripcion');
-            $table->integer('lugar_id')->unsigned();
-            $table->foreign('lugar_id')
-                ->references('id')
-                ->on('lugares')
-                ->onDelete('cascade');
+            $table->string('descripcion');       
             $table->enum('tipo', ['revista', 'convocatoria', 'evento']);
             $table->string('url');
             $table->date('fecha_publicacion');

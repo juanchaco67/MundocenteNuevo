@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Administradores' => $baseDir . '/database/migrations/2016_05_13_224942_administradores.php',
+    'Aplicaciones' => $baseDir . '/database/migrations/2016_07_23_161628_aplicaciones.php',
     'Areas' => $baseDir . '/database/migrations/2016_05_13_121533_areas.php',
     'CreateFailedJobsTable' => $baseDir . '/database/migrations/2016_07_23_021558_create_failed_jobs_table.php',
     'CreateJobsTable' => $baseDir . '/database/migrations/2016_07_23_021508_create_jobs_table.php',

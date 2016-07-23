@@ -16,6 +16,7 @@ use App\Area;
 use App\Establecimiento;
 use App\Funcionario;
 use App\Grupo;
+use App\Aplica;
 use App\Lugar;
 use Response;
 use Carbon\Carbon;
@@ -111,16 +112,21 @@ class PublicacionController extends Controller
             'funcionario_id' => Auth::user()->funcionario->id,
             'nombre' => $request['nombre'],
             'resumen' => $request['resumen'],
-            'descripcion' => $request['descripcion'],
-            'lugar_id' => $request['lugar'],
+            'descripcion' => $request['descripcion'],           
             'tipo' => $request['tipo'],
             'fecha_cierre' => $request['fecha_cierre'],
             'url' => $request['url'],
             'estado' => 'activa',
         ]);
-        $lugar=Lugar::find($request['lugar']);
+
+       
 
         $this->crear_grupos($publicacion, $request);
+         $ubicacion = $request['lugar'];//departamento
+         $lugar = $request['ubicacion_id'];//municipio
+         $this->crear_aplica($ubicacion,$publicacion,1);
+         $this->crear_aplica($lugar,$publicacion,2);
+          $lugar=Lugar::find($ubicacion);
 
         $notificar_user=DB::table('grupos')->where('publicacion_id',$publicacion->id)
             ->join('intereses','intereses.area_id','=','grupos.area_id')
@@ -141,6 +147,22 @@ class PublicacionController extends Controller
             } 
         Session::flash('mensaje', 'Publicacion creada');
         return Redirect::to('publicacion');        
+    }
+    public function crear_aplica($lugar_id,$publicacion,$opcion){
+      
+        if(!empty($lugar_id) && $opcion==1){
+            Aplica::::create([
+                    'lugar_id' => $lugar_id,
+                    'publicacion_id' => $publicacion->id,                   
+                ]);                     
+        }else{
+            foreach ($lugar_id as $municipio) {
+               Aplica::::create([
+                    'lugar_id' => $municipio,
+                    'publicacion_id' => $publicacion->id,                   
+                ]);  
+            }      
+        }
     }
 
     public function crear_grupos($publicacion, PublicacionUpdateRequest $request){

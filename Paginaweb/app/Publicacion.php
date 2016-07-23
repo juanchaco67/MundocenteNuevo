@@ -18,7 +18,7 @@ class Publicacion extends Model
 		return $this->belongsTo('App\Funcionario');
 	}
 
-	public function lugar(){
-		return $this->belongsTo('App\Lugar');
-	}
+    public function aplica(){
+        $this->hasMany('App\Aplica');
+    }
 }

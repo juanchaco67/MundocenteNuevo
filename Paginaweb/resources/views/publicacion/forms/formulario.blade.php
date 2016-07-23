@@ -23,7 +23,7 @@
 	{!!Form::label('Lugar')!!}
 	@if(isset($lugares))
 		<div class="form-group">
-			<select name="lugar" class="form-control">
+			<select name="lugar" id="lugar" class="form-control">
 				@foreach($lugares as $lugar)
 					@if(!isset($user))
 				    	<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>
