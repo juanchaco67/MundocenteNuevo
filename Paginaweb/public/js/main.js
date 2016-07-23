@@ -346,6 +346,7 @@ $('.modal').on('hidden.bs.modal', function() {
   	//$(this).remove();
 });
 
+/*
 $(document).ready(function(){
 	//alert('hola');
 	//alert($('.panel-izquierdo').offset());
@@ -383,3 +384,4 @@ $('.listarIntereses').click(function(){
 		activo = true;
 	}
 });
+*/
