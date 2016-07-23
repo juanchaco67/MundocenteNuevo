@@ -32,7 +32,7 @@
 					
   						@foreach($ciudades as $ciudad)
   						@if($ciudad->ubicacion_id==$departamento->id)
-  						<option value="{{ $ciudad->id }}">{{$ciudad->nombre}}</option>
+  						<option value="{{ $ciudad->id }}" name="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
 					    
 					 	@endif
 				    	@endforeach
@@ -52,7 +52,7 @@
 	@endif
 </div>
 
-<div id="municipios" style="display: none; " class="barra-scroll">
+<div id="municipios" style="display: none; width: 100%;height: 100px; " class="barra-scroll">
 
 </div>
 <div class="form-group">
