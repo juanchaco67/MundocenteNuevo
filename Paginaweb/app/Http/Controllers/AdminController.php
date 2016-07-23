@@ -192,8 +192,13 @@ class AdminController extends Controller
         $data = array(
             'user' => $user,
         );
-        Mail::send($vista, $data, function ($message) use ($user,$msj) {
+        /*Mail::send($vista, $data, function ($message) use ($user,$msj) {
             $message->from('nuevojuanchaco67@gmail.com', 'Mundocente');
+            $message->to($user->email)->subject($msj);
+        });
+        */
+        Mail::later(5, $vista, $data, function($message) use ($user, $msj) {
+            $message->from('usuariosayuda@mundocente.com', 'Mundocente');
             $message->to($user->email)->subject($msj);
         });
     }
