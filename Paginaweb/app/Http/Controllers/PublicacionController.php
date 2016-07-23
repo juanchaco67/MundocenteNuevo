@@ -137,10 +137,10 @@ class PublicacionController extends Controller
                         'publicacion'=>$publicacion,
                         'lugar'=>$lugar,
                 );
-                $this->enviar_correo('emails.nueva_publiacacion',$data,'notificar area de interes');             
+                $this->enviar_correo('emails.nueva_publicacion',$data,'notificar area de interes');             
             } 
-        //Session::flash('mensaje', 'Publicacion creada');
-        //return Redirect::to('publicacion');        
+        Session::flash('mensaje', 'Publicacion creada');
+        return Redirect::to('publicacion');        
     }
 
     public function crear_grupos($publicacion, PublicacionUpdateRequest $request){
@@ -278,12 +278,12 @@ class PublicacionController extends Controller
         return Redirect::to('publicacion');
     }
 
-        public function enviar_correo($vista,$data,$msj){
+        public static function enviar_correo($vista,$data,$msj){
 
-      
-        Mail::later(5, $vista, $data, function($message) use ($user, $msj) {
+       
+        Mail::later(5, $vista, $data, function($message) use ($data, $msj) {      
             $message->from('usuariosayuda@mundocente.com', 'Mundocente');
-            $message->to($user->email)->subject($msj);
+            $message->to($data['notificar']->email)->subject($msj);
         });
     }
 }
