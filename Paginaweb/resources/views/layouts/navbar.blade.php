@@ -105,7 +105,7 @@
 	        </div>
 	        <div class="modal-body text-center">
 	        	<h4>Espera confirmación</h4>
-	          	<h5><p>Debes esperar la aprovación del administrador para antes de publicar, te enviaremos un correo electronico para informarte cuando puedas publicar...</p>
+	          	<h5><p>Debes esperar la aprobación del administrador antes de publicar, te enviaremos un correo electronico para informarte cuando puedas publicar...</p>
 	          	</h5>
 	        </div>
 	        <div class="modal-footer">
