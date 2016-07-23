@@ -118,6 +118,7 @@ class PublicacionController extends Controller
         ]);
 
         $this->crear_grupos($publicacion, $request);
+
         $notificar_user=DB::table('grupos')->where('publicacion_id',$publicacion->id)
             ->join('intereses','intereses.area_id','=','grupos.area_id')
             ->join('docentes','docentes.id','=','intereses.docente_id')
@@ -126,11 +127,13 @@ class PublicacionController extends Controller
             ->select('email','name')
             ->distinct()
             ->get();
-         foreach ($notificar_user as $notificar) {
-                 echo $notificar->email;
-            }    
-        Session::flash('mensaje', 'Publicacion creada');
-        return Redirect::to('publicacion');        
+
+            foreach ($notificar_user as $notificar) {
+                echo $notificar->email;
+                echo $notificar->name;
+            } 
+        //Session::flash('mensaje', 'Publicacion creada');
+        //return Redirect::to('publicacion');        
     }
 
     public function crear_grupos($publicacion, PublicacionUpdateRequest $request){
