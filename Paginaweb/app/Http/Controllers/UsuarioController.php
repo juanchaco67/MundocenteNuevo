@@ -41,7 +41,12 @@ class UsuarioController extends Controller
     //
     public function index(){
     	//return "index de usuario";
-    	$usuarios = User::all();
+    	//$usuarios = User::all();
+        $usuarios = User::where('id', '!=', Auth::user()->id)
+            ->where('estado', '=', 'activo')
+            ->get()
+            ->all();
+
         $user = Auth::user();
         //echo "entro";
     	return view('usuario.index', [
@@ -95,6 +100,8 @@ class UsuarioController extends Controller
                 'usuario' => $usuario,
                 'establecimientos' => $establecimientos,
             ]);        
+        } else {
+            //return view('usuario.edit')
         }
 
     }
@@ -277,7 +284,60 @@ class UsuarioController extends Controller
     }
 
 
+    public function borrados(){
+        $usuarios = User::where('id', '!=', Auth::user()->id)
+            ->where('estado', '=', 'inactivo')
+            ->get()
+            ->all();
+
+        return view('usuario.borrados', [
+            'usuarios' => $usuarios,
+            'user' => Auth::user(),
+        ]);
+        /*
+        if( Auth::check() ){
+            $user = User::find(Auth::user()->id);
+            $areas = Area::all();
+            $establecimientos = Establecimiento::all();
+            $lugares = Lugar::all();
+            if ( $user->idrol === 2) {      
+                $funcionario = Funcionario::where('user_id', $user->id)
+                    ->first();
+                $usuarios = Publicacion::where('funcionario_id', $funcionario->id)
+                    ->where('estado', '=', 'inactiva')
+                    ->orderBy('created_at', 'DESC')->get()->all();
+
+               return view('publicacion.borrados', [
+                    'areas' => $areas,
+                    'user' => Auth::user(),
+                    'usuarios' => $usuarios,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                ]);
+            } else if($user->idrol === 3){
+                return redirect()->to('publicacion/borrados');
+            }else {
+                return redirect()->to('/busqueda');
+            }
+        }
+        return redirect()->to('/');
+        */
+    }
+
+    public function recuperar($id){
+         $usuario = User::find($id);
+         //return $usuario;
+            $usuario->update([
+                'estado' => 'activo',
+            ]);
+
+        Session::flash('mensaje', 'Usuario recuperado');
+        return Redirect::to('usuario/borrados');
+    }
+
+
     public function destroy($id){
+        /*
         $usuario = User::find($id);
         if ($usuario->rol == 1) {
             //echo "Destruir docente";
@@ -289,8 +349,15 @@ class UsuarioController extends Controller
         }
 
         User::destroy($id);
+        */
 
-        Session::flash('mensaje', 'Usuario Eliminado');
+        $usuario = User::find($id);
+        $usuario->update([
+            'estado' => 'inactivo',
+        ]);
+
+
+        Session::flash('mensaje', 'Usuario Inactivado');
         return Redirect::to('usuario');
     }
 }

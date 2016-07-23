@@ -19,7 +19,8 @@ $(document).ready(function(){
 
 				if (resp.usuario != undefined) {
 					//alert('es admin');
-					$ir_a = "http://localhost:8000/admin";
+					//$ir_a = "http://localhost:8000/admin";
+					$ir_a = "http://localhost:8000/usuario";
 				} else {
 					//alert('no es admin');
 					$ir_a = "http://localhost:8000/logout";
