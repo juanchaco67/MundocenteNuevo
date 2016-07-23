@@ -20,6 +20,7 @@ use App\Lugar;
 use Response;
 use Carbon\Carbon;
 use DB;
+use Mail;
 
 class PublicacionController extends Controller
 {
@@ -114,8 +115,10 @@ class PublicacionController extends Controller
             'lugar_id' => $request['lugar'],
             'tipo' => $request['tipo'],
             'fecha_cierre' => $request['fecha_cierre'],
+            'url' => $request['url'],
             'estado' => 'activa',
         ]);
+        $lugar=Lugar::find($request['lugar']);
 
         $this->crear_grupos($publicacion, $request);
 
@@ -129,8 +132,12 @@ class PublicacionController extends Controller
             ->get();
 
             foreach ($notificar_user as $notificar) {
-                echo $notificar->email;
-                echo $notificar->name;
+                 $data = array(
+                        'notificar' => $notificar,
+                        'publicacion'=>$publicacion,
+                        'lugar'=>$lugar,
+                );
+                $this->enviar_correo('emails.nueva_publiacacion',$data,'notificar area de interes');             
             } 
         //Session::flash('mensaje', 'Publicacion creada');
         //return Redirect::to('publicacion');        
@@ -269,5 +276,14 @@ class PublicacionController extends Controller
 
         Session::flash('mensaje', 'Publicacion borrada');
         return Redirect::to('publicacion');
+    }
+
+        public function enviar_correo($vista,$data,$msj){
+
+      
+        Mail::later(5, $vista, $data, function($message) use ($user, $msj) {
+            $message->from('usuariosayuda@mundocente.com', 'Mundocente');
+            $message->to($user->email)->subject($msj);
+        });
     }
 }
