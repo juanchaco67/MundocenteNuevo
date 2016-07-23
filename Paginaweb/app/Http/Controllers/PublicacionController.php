@@ -121,9 +121,11 @@ class PublicacionController extends Controller
             //return $funcionario->publicacion;
             //$publicaciones = $funcionario->publicaciones;
             //return $publicaciones;
-           return view('publicacion.index', [
+            $areas_publicacion = array();
+            return view('publicacion.create', [
                 'areas' => $areas,
                 'usuario' => Auth::user(),
+                'areas_publicacion' => $areas_publicacion,
                 'publicaciones' => $publicaciones,
                 'establecimientos' => $establecimientos,
                 'lugares' => $lugares,

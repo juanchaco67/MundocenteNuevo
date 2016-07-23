@@ -60,7 +60,7 @@ $(document).ready(function(){
 					//$('.txtEmail').val(resp.email);
 				}
 				else if(id=="formularioFuncionario" && metodo=="POST"){
-					alert("entor")
+					
 					window.location="http://localhost:8000/publicacion";
 				}
 					else if(id=="formularioDocente" && metodo=="POST"){
@@ -120,26 +120,25 @@ $(document).ready(function(){
 	});
 
 	$('#lugar').change(function(){ 
-	  var value = $(this).val();
-	  alert(value);
-	   $.ajax({
-            type: "POST",
-            url: "/busqueda/revista",
-            dataType: "html",
-            beforeSend: function(){
-                  //imagen de carga
-                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
-            },
-            error: function(){
-                  alert("error petición ajax");
-            },
-            success: function(data){        
-            	//console.log(data); 
-            	$('.contenido').empty();
-            	$('.contenido').append(data);	                                                     
-            	//console.log('revistas');
-            }
-      });
+
+	
+
 	 
 	});
+	$( "#lugar" ).change(function() {
+   		 var nombreCiudad = "";
+	    $( "#lugar option:selected" ).each(function() {
+	      nombreCiudad += $( this ).text() + " ";
+	    });
+      var id = $(this).val();
+	  	
+	  var municipios=document.getElementById('municipios');
+	  municipios.style.display="inline-block";
+	  var html=municipios.innerHTML;	   
+	  var input="<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong>"+nombreCiudad+"</div>"
+	  municipios.innerHTML=html+input;
+	  
+	  
+   
+  });
 });
