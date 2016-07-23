@@ -122,5 +122,31 @@ $(document).ready(function(){
 	$('#lugar').change(function(){ 
 	  var value = $(this).val();
 	  alert(value);
+	   $.ajax({
+            type: "POST",
+            url: "/busqueda/revista",
+            dataType: "html",
+            beforeSend: function(){
+                  //imagen de carga
+                  //$(".resultados").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+            },
+            error: function(){
+                  alert("error petición ajax");
+            },
+            success: function(data){        
+            	//console.log(data); 
+            	$('.contenido').empty();
+            	$('.contenido').append(data);	                                                     
+            	//console.log('revistas');
+            }
+      });
+
+
+	  @foreach($areas as $area)				
+							<div class="form-group">
+								<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
+							</div>
+					
+					@endforeach
 	});
 });

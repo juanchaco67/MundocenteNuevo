@@ -21,12 +21,21 @@
 <div class="form-group">
 
 	{!!Form::label('Lugar')!!}
-	@if(isset($lugares))
+	@if(isset($departamentos))
+	
 		<div class="form-group">
+
 			<select name="lugar" id="lugar" class="form-control">
-				@foreach($lugares as $lugar)
+				@foreach($departamentos as $departamento)
+					<optgroup label="{{$departamento->nombre}}">
 					@if(!isset($user))
-				    	<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>
+					
+  						@foreach($ciudades as $ciudad)
+  						@if($ciudad->ubicacion_id==$departamento->id)
+  						<option value="{{ $ciudad->id }}">{{$ciudad->nombre}}</option>
+					    
+					 	@endif
+				    	@endforeach
 				    @else
 				    	@if($publicacion->lugar_id === $lugar->id)
 				    		<option value="{{ $lugar->id }}" selected>{{ $lugar->nombre }}</option>
@@ -34,12 +43,17 @@
 				    		<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>   		
 				    	@endif
 				    @endif
+				     </optgroup>
 				@endforeach
 			  </select>
 		</div>
 	@else
 		<h6>No hay lugares</h6>
 	@endif
+</div>
+
+<div id="municipios" style="display: none; " class="barra-scroll">
+
 </div>
 <div class="form-group">
 	{!!Form::label('Fecha cierre')!!}

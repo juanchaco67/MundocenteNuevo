@@ -95,12 +95,16 @@ class PublicacionController extends Controller
     public function create(){
         //return "create";
         $areas = Area::all();
-        $lugares = Lugar::all();
+        //$lugares = DB::select('select d.nombre as departamento, m.nombre as ciudad, d.id as departamento_id , m.id as ciudad_id,d.tipo as tipo_departamento from lugares d,lugares m where d.id=m.ubicacion_id');
+        $departamento=DB::select("select * from lugares where tipo='departamento'");
+        $ciudad=DB::select("select * from lugares where tipo='municipio'");
         $areas_publicacion = array();
         return view('publicacion.create', [
             'areas' => $areas,
             'areas_publicacion' => $areas_publicacion,
-            'lugares' => $lugares,
+            'departamentos' => $departamento,
+            'ciudades'=>$ciudad,
+            
         ]);
         //return "index";
     }
