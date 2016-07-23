@@ -67,3 +67,10 @@ Route::get('publicaciones/{id}', function($id){
 	return view('publicaciones')->with('id', $id);
 });
 */
+
+Route::get('/mail/queued', function(){
+	Mail::later(5, 'emails.queued_mail', ['name' => 'Dato de usuario registrado'], function($message){
+		$message->to('z3pi@hotmail.com', 'Usuario registrado')->subject('Bienvenido');
+	});
+	return "Email will be sent in 5 seconds";
+});
