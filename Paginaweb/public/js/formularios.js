@@ -59,6 +59,7 @@ $(document).ready(function(){
 					//$('.txtEmail').val(resp.email);
 				}
 				else if(id=="formularioFuncionario" && metodo=="POST"){
+					alert("entor")
 					window.location="http://localhost:8000/publicacion";
 				}
 					else if(id=="formularioDocente" && metodo=="POST"){
