@@ -33,13 +33,15 @@ $(document).ready(function() {
 
 	//alert('Seleccionado');
 	$('.publicacion').click(function(){
-		alert('publica');
+		//alert('publica');
 		//console.log('noooooo');
 	});
 
 	$("#convocatoria").click(function(){
         	//return alert("El texto del botón es --> " + $("#convocatoria").attr("value"));
     });
+
+    $url_pagina = "http://localhost:8000";
 	
 	$('.filtros input[type=checkbox]').click(function() {
 		var nombre = $(this).attr('value');
@@ -93,7 +95,7 @@ $(document).ready(function() {
 	      $.ajax({
 	            type: "POST",
 	            headers:{"X-CSRF-TOKEN":valor},
-	            url: "http://localhost:8000/busqueda",
+	            url: $url_pagina + "/busqueda",
 	            //data: "campo="+data,
 	            data: data,
 	            dataType: "html",
@@ -118,7 +120,7 @@ $(document).ready(function() {
 					      $.ajax({
 					            type: "GET",
 					            headers:{"X-CSRF-TOKEN":valor},
-					            url: "http://localhost:8000/publicacion/" + this.id,
+					            url: $url_pagina + "/publicacion/" + this.id,
 					            //data: "campo="+data,
 					            //data: {'id': this.id},
 					            //dataType: "json",
@@ -182,7 +184,7 @@ $(document).ready(function() {
       //event.preventDefault();
       $.ajax({
             type: "GET",
-            url: "http://localhost:8000/busqueda/revista",
+            url: $url_pagina +"/busqueda/revista",
             dataType: "html",
             beforeSend: function(){
                   //imagen de carga
@@ -210,7 +212,7 @@ $(document).ready(function() {
       //hace la búsqueda
       $.ajax({
             type: "GET",
-            url: "http://localhost:8000/busqueda/convocatoria",
+            url: $url_pagina + "/busqueda/convocatoria",
             dataType: "html",
             beforeSend: function(){
                   //imagen de carga
@@ -234,7 +236,7 @@ $(document).ready(function() {
       //hace la búsqueda
       $.ajax({
             type: "GET",
-            url: "http://localhost:8000/busqueda/evento",
+            url: $url_pagina + "/busqueda/evento",
             dataType: "html",
             beforeSend: function(){
                   //imagen de carga
@@ -258,7 +260,7 @@ $(document).ready(function() {
 	      event.preventDefault();
 	      $.ajax({
 	            type: "GET",
-	            url: "http://localhost:8000/busqueda",
+	            url: $url_pagina + "/busqueda",
 	            dataType: "html",
 	            beforeSend: function(){
 	                  //imagen de carga
