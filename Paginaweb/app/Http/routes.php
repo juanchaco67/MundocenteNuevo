@@ -59,6 +59,8 @@ Route::get('/admin/publicaciones', 'AdminController@listar_publicaciones');
 Route::get('/admin/universidades', 'AdminController@listar_establecimientos');
 */
 
+Route::get('/usuario/borrados', 'UsuarioController@borrados');
+Route::post('usuario/recuperar/{id}', 'UsuarioController@recuperar');
 Route::resource('usuario', 'UsuarioController');
 
 Route::resource('admin', 'AdminController');

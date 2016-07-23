@@ -270,7 +270,9 @@ class PublicacionController extends Controller
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
                 ]);
-            } else {
+            } else if($user->idrol === 3){
+                return redirect()->to('publicacion/borrados');
+            }else {
                 return redirect()->to('/busqueda');
             }
         }

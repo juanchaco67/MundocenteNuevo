@@ -17,7 +17,11 @@ class EstablecimientoController extends Controller
 {
     //
      public function index(){
-        $establecimientos = Establecimiento::all();
+        //$establecimientos = Establecimiento::all();
+        $establecimiento = Establecimiento::where('estado', '=', 'activo')
+            ->get()
+            ->all();
+
         return view('establecimiento.index', compact('establecimientos'));
 
 
@@ -73,7 +77,10 @@ class EstablecimientoController extends Controller
 
 
     public function borrados(){
-        $establecimientos = establecimiento::all();
+        $establecimiento = Establecimiento::where('estado', '=', 'inactivo')
+            ->get()
+            ->all();
+
         /*
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
