@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\EstablecimientoUpdateRequest;
 use App\Establecimiento;
 use Session;
 use Redirect;
@@ -47,7 +48,7 @@ class EstablecimientoController extends Controller
         //return "index";
     }
 
-    public function store(Request $request){
+    public function store(EstablecimientoUpdateRequest $request){
         //return "store";
         Establecimiento::create([
             //'nombre' => $request['nombre'],
@@ -72,7 +73,7 @@ class EstablecimientoController extends Controller
         ]);        
     }
 
-    public function update($id, establecimientoUpdateRequest $request){
+    public function update($id, EstablecimientoUpdateRequest $request){
         //return "update";
         $establecimiento = Establecimiento::find($id);
         $establecimiento->fill($request->all());
