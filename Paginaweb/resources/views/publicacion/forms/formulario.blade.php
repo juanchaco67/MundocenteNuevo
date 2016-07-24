@@ -70,13 +70,15 @@
 	@endif
 </div>
 @if(isset($verificar))
-<div id="municipios" style="width:100%;" >
+<div class="scrollbar municipios-scroll" id="style-1" style="display:inline-block;">
+	<div id="municipios" class="force-overflow" style="display:inline-block; width:100%; height:30px;">
 	@foreach($ciudades_selecciondas as $ciudades)
 	  <div style="height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:relative;bottom:10px;">{{$ciudades->nombre}}</span><a style="position:absolute;left:90%;top:0%;" href="#" id="{{$ciudades->id}}" class="eliminar-lugar close" data-dismiss="alert" aria-label="close">&times;</a></div>
 	  <input type="hidden" name="lugar[]" class="eliminar-hidden" id="hidden{{$ciudades->id}}" value="{{$ciudades->id}}"/>
 	 
 	@endforeach
-</div>	    	
+</div>	    
+</div>	 	
  @else
 <div class="scrollbar municipios-scroll" id="style-1" style="display:none;">
 	<div id="municipios" class="force-overflow" style="display:none; width:100%; height:30px;">
@@ -110,17 +112,19 @@
 
 
 @if(isset($verificar))
-<div id="areas-aparecer" style="width:100%;" >
+<div class="scrollbar areas-aparecer-scroll" id="style-1" style="display:inline-block;">
+	<div id="areas-aparecer" class="force-overflow" style="display:inline-block; width:100%; height:30px;">
 	@foreach($areas as $area)
 
 		@if(in_array($area->id, $areas_usuario))
+
 					 <div style="height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:relative;bottom:10px;">{{$area->nombre}}</span><a style="position:absolute;left:90%;top:0%;" href="#" id="area-aparecer{{$area->id}}" class="eliminar-area close" data-dismiss="alert" aria-label="close">&times;</a></div>
 				 <input type="hidden" name="areas[]" class="areas-eliminar-hidden" id="hidden-areas-{{$area->id}}" value="{{$area->id}}"/>
 
 	
 			@endif
 	@endforeach
-
+</div>	
 </div>	    	
  @else
 <div class="scrollbar areas-aparecer-scroll" id="style-1" style="display:none;">
