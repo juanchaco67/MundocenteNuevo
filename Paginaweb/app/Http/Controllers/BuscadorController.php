@@ -36,10 +36,10 @@ class BuscadorController extends Controller
                     ->join('grupos', 'grupos.area_id', '=', 'areas.id')
                     ->join('publicaciones', 'publicaciones.id', '=', 'grupos.publicacion_id')
 //                    ->where('estado', '=', 'activa')
-                    ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
+                    ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.fecha_publicacion')
                     ->where('estado', '=', 'activa')
                     //->orderBy('created_at', 'DESC')
-                    ->orderBy('fecha_inicio', 'DESC')
+                    ->orderBy('fecha_publicacion', 'DESC')
                     ->distinct()
                     ->get();
                     //return var_dump($mezcla->"nombre");
@@ -250,7 +250,7 @@ class BuscadorController extends Controller
             }
 
                 $publicaciones = $publicaciones->where('estado', '=', 'activa')
-                    ->orderBy('created_at', 'DESC')
+                    ->orderBy('fecha_publicacion', 'DESC')
                     ->get();
             //$publicaciones = $publicaciones->get();        
             /*$publicaciones = $publicaciones->where('nombre', 'like', '%'.$campo.'%')
@@ -343,7 +343,7 @@ class BuscadorController extends Controller
     public function show($tipo){
         $publicaciones = Publicacion::where('tipo', '=', $tipo)
             ->where('estado', '=', 'activa')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('fecha_publicacion', 'DESC')
             ->get();
             //->all();
 
