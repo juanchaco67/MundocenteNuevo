@@ -159,7 +159,9 @@ class PublicacionController extends Controller
 
         $id_funcionario = 0;
         if(Auth::user()->idrol == 2){
-            $id_funcionario = Auth::user()->id;
+            $id_funcionario = Funcionario::where('user_id', '=', Auth::user()->id)
+                ->first()
+                ->id;
         } else if (Auth::user()->idrol == 3) {
             $id_funcionario = $request['publicador'];
         }
