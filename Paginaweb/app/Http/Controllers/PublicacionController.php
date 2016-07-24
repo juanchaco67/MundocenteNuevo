@@ -134,12 +134,14 @@ class PublicacionController extends Controller
                 'user' => Auth::user(),
             ]);
        } else if (Auth::user()->idrol == 3) {
+            $publicadores = Funcionario::all();
             return view('publicacion.create', [
                 'areas' => $areas,
                 'areas_publicacion' => $areas_publicacion,
                 'departamentos' => $departamento,
                 'ciudades'=>$ciudad,
-                'user' => Auth::user(),                
+                'user' => Auth::user(),        
+                'publicadores' => $publicadores,
             ]);
         }
         //return "index";
@@ -155,8 +157,15 @@ class PublicacionController extends Controller
                array_push($lugar,DB::select("select d.nombre as departamento, m.nombre as ciudad from lugares d,lugares m where d.id=m.ubicacion_id AND m.id=".$id));               
         }          
 
+        $id_funcionario = 0;
+        if(Auth::user()->idrol == 2){
+            $id_funcionario = Auth::user()->id;
+        } else if (Auth::user()->idrol == 3) {
+            $id_funcionario = $request['publicador'];
+        }
+
         $publicacion = Publicacion::create([
-            'funcionario_id' => Auth::user()->funcionario->id,
+            'funcionario_id' => $id_funcionario,
             'nombre' => $request['nombre'],
             'resumen' => $request['resumen'],
             'descripcion' => $request['descripcion'],           

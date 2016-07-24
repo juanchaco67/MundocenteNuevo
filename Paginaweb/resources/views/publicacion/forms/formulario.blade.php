@@ -1,3 +1,22 @@
+@if(Auth::check() && Auth::user()->idrol == 3)
+
+	@if(isset($publicadores))
+		@if($publicadores)
+			<div class="form-group">
+				{!!Form::label('Publicador')!!}
+				<select name="publicador" class="form-control">
+					@foreach($publicadores as $publicador)
+						{{--<h3>{{$publicador->user->name}}</h3>--}}
+						<option value="{{$publicador->id}}">{{$publicador->user->name}}</option>
+					@endforeach
+				</select>
+			</div>
+		@else
+			<h3>No existen publicadores</h3>
+		@endif
+	@endif
+@endif
+
 <div class="form-group">
 	{!!Form::label('Nombre')!!}
 	{!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de la publicación'])!!}
