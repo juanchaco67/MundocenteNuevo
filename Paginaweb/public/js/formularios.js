@@ -99,6 +99,7 @@ $(document).ready(function(){
   			 	$("html, body").animate({
 			        scrollTop: 0
 			    }, 600); 
+			    alert("alerta");
 	
 			}					
 		});
@@ -192,10 +193,11 @@ areasDocente('formularioUpdateDocente');
 	   
 	  var municipios=document.getElementById('municipios');
 	  $('.municipios-scroll').css('display','inline-block');
+
 	  municipios.style.display="inline-block";
 	  var html=municipios.innerHTML;	   
 		if($('#hidden'+id).length ==0){
-			  var input="<div style='height:1px;display:inline-block;position:relat class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
 			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
 			  municipios.innerHTML=html+input;
 			  var hidden="<input type='hidden'name='lugar[]' class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";

@@ -72,7 +72,7 @@
 @if(isset($verificar))
 <div id="municipios" style="width:100%;" >
 	@foreach($ciudades_selecciondas as $ciudades)
-	  <div style="width:15%;height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:absolute; top:10%;">{{$ciudades->nombre}}</span><a style="position:absolute;left:95%;top:0%;" href="#" id="{{$ciudades->id}}" class="eliminar-lugar close" data-dismiss="alert" aria-label="close">&times;</a></div>
+	  <div style="height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:relative;bottom:10px;">{{$ciudades->nombre}}</span><a style="position:absolute;left:90%;top:0%;" href="#" id="{{$ciudades->id}}" class="eliminar-lugar close" data-dismiss="alert" aria-label="close">&times;</a></div>
 	  <input type="hidden" name="lugar[]" class="eliminar-hidden" id="hidden{{$ciudades->id}}" value="{{$ciudades->id}}"/>
 	 
 	@endforeach
@@ -114,7 +114,7 @@
 	@foreach($areas as $area)
 
 		@if(in_array($area->id, $areas_usuario))
-					 <div style="width:15%;height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:absolute; top:10%;">{{$area->nombre}}</span><a style="position:absolute;left:95%;top:0%;" href="#" id="area-aparecer{{$area->id}}" class="eliminar-area close" data-dismiss="alert" aria-label="close">&times;</a></div>
+					 <div style="height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:relative;bottom:10px;">{{$area->nombre}}</span><a style="position:absolute;left:90%;top:0%;" href="#" id="area-aparecer{{$area->id}}" class="eliminar-area close" data-dismiss="alert" aria-label="close">&times;</a></div>
 				 <input type="hidden" name="areas[]" class="areas-eliminar-hidden" id="hidden-areas-{{$area->id}}" value="{{$area->id}}"/>
 
 	
