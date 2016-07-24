@@ -27,6 +27,8 @@ class PublicacionUpdateRequest extends Request
             //
             'nombre' => 'required|max:80',
             'resumen' => 'required|max:200',
+            'lugar' => 'required',
+            'fecha_cierre' => 'after:24/07/2016',
         ];
     }
 }
