@@ -151,17 +151,23 @@ class UsuarioController extends Controller
             AdminController::enviar_correo('emails.aviso_activado',$user,'Bienvenido la actualización de tu cuenta esta proceso');
         }
 
-        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
-            //return Redirect::to('/');
-            //return "hola".$request['name'];        
-                Session::flash('mensaje', 'Bienvenido a Mundocente ' . $request['name']);
-           if (Auth::user()->idrol === 1) {
-                return Redirect::to('/');
-            } elseif (Auth::user()->idrol === 2) {
-                return Redirect::to('/publicacion');
+        if(!Auth::check()){
+            if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
+                //return Redirect::to('/');
+                //return "hola".$request['name'];        
+                    Session::flash('mensaje', 'Bienvenido a Mundocente ' . $request['name']);
+               if (Auth::user()->idrol === 1) {
+                    return Redirect::to('/');
+                } elseif (Auth::user()->idrol === 2) {
+                    return Redirect::to('/publicacion');
+                }
+                
             }
-            
+        } else if(Auth::user()->idrol == 3){
+            //return Redirect::to('/lgjalgaljgñasjga');
+            return Redirect::to('/usuario');
         }
+
         //Session::flash('mensaje-error', 'Datos incorrectos');
         //return Redirect::to('/');        
         
