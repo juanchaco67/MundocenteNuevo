@@ -27,7 +27,7 @@
 			<div class="row">
 			    <div class="col-md-2 col-md-offset-5">
 			    	<div class="form-group">
-						<a href="/publicacion/create" class="form-control btn btn-primary">Crear nueva</a>
+						<a href="/publicacion/create" class="form-control btn btn-primary" title="Crear una nueva publicación">Crear nueva</a>
 					</div>
 			    </div>
 			</div>	
@@ -36,7 +36,7 @@
 			<div class="row">
 			    <div class="col-md-2 col-md-offset-5">
 			    	<div class="form-group">
-						<a href="/publicacion/create" class="form-control btn btn-primary">Crear nueva</a>
+						<a href="/publicacion/create" class="form-control btn btn-primary" title="Crear una nueva publicación">Crear nueva</a>
 					</div>
 			    </div>
 			</div>			
