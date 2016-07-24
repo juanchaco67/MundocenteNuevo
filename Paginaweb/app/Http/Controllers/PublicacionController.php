@@ -148,6 +148,7 @@ class PublicacionController extends Controller
     public function store(PublicacionUpdateRequest $request){
         //return "store";
         //return $request['tipo'] ." ". $request['fecha_cierre'];
+
         $ciudad_id=$request['lugar'];  
         $lugar = array();
         foreach ($ciudad_id as $id) {               
@@ -282,8 +283,10 @@ class PublicacionController extends Controller
 
     public function update($id, PublicacionUpdateRequest $request){
         //return "update";
+        
+       
         $ciudad_id=$request['lugar'];  
-     
+
         $publicacion = Publicacion::find($id);
      
         $publicacion->fill($request->all());
