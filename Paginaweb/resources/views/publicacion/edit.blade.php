@@ -10,12 +10,12 @@
 		{!!Form::model($publicacion, ['route'=>['publicacion.update', $publicacion->id], 'method'=>'put','id'=>'publicacion-store'])!!}
 			@include('publicacion.forms.formulario')
   <div class="col-md-1">
-		{!!Form::submit('Actualizar', ['class'=>'btn btn-primary'])!!}
+		{!!Form::submit('Actualizar', ['class'=>'btn btn-primary', 'title'=>'Modificar esta publicación'])!!}
 		{!!Form::close()!!}
   </div>
   <div class="col-md-2 col-md-offset-1">
 		{!!Form::open(['route'=>['publicacion.destroy', $publicacion->id], 'method'=>'delete'])!!}
-		{!!Form::submit('Borrar', ['class'=>'btn btn-danger'])!!}
+		{!!Form::submit('Borrar', ['class'=>'btn btn-danger', 'title'=>'Borrar esta publicación'])!!}
 		{!!Form::close()!!}
 	</div>
 @stop
