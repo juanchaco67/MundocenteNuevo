@@ -265,7 +265,7 @@ class PublicacionController extends Controller
             $areas_publicacion[] = $grupo->area_id;
         }
 
-
+        $ciudades_selecciondas=DB::select('select l.id, l.nombre from  aplicaciones a,lugares l where  a.publicacion_id='.$publicacion->id.' AND l.id=a.lugar_id');
         $lugares = Lugar::all();
         return view('publicacion.edit', [
             'publicacion' => $publicacion,
@@ -275,18 +275,21 @@ class PublicacionController extends Controller
             'lugares' => $lugares,
             'departamentos' => $departamento,
             'ciudades'=>$ciudad,
+            'verificar'=>true,
+            'ciudades_selecciondas'=>$ciudades_selecciondas,
         ]);        
     }
 
     public function update($id, PublicacionUpdateRequest $request){
         //return "update";
+        $ciudad_id=$request['lugar'];  
+     
         $publicacion = Publicacion::find($id);
-            $publicacion->update([
-                'lugar_id' => $request['lugar'],
-            ]);
+     
         $publicacion->fill($request->all());
         $publicacion->save();
-
+        Aplica::where('publicacion_id',$publicacion->id)->delete();
+        $this->crear_aplica($ciudad_id,$publicacion);
         Grupo::where('publicacion_id', $id)->delete();
         $this->crear_grupos($publicacion, $request);
 

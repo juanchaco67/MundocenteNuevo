@@ -150,12 +150,14 @@ var listaLugares =new Array();
   
 	$('.eliminar-lugar').click(function(){
 			 var id = $(this).attr('id');
-				
-			 buscar(id);
+			$('#hidden'+id+'').remove();
 	});     	
 
   });
-
+	$('.eliminar-lugar').click(function(){
+			 var id = $(this).attr('id');
+			$('#hidden'+id+'').remove();		
+	}); 
    	
 function buscar(id){
 	var cadena="";

@@ -30,12 +30,7 @@
 					<optgroup label="{{$departamento->nombre}}">
 					@if(!isset($user))
 					
-  						@foreach($ciudades as $ciudad)
-  						@if($ciudad->ubicacion_id==$departamento->id)
-  						<option value="{{ $ciudad->id }}" name="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
-					    
-					 	@endif
-				    	@endforeach
+  					
 				    @else
 				    	@foreach($ciudades as $ciudad)
   						@if($ciudad->ubicacion_id==$departamento->id)
@@ -43,11 +38,8 @@
 					    
 					 	@endif
 				    	@endforeach
-				    	{{--- @if($publicacion->lugar_id === $lugar->id)
-				    		<option value="{{ $lugar->id }}" selected>{{ $lugar->nombre }}</option>
-				    	@else
-				    		<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>   		
-				    	@endif
+				    
+				    	
 				    	--}}
 				    @endif
 				     </optgroup>
@@ -58,10 +50,19 @@
 		<h6>No hay lugares</h6>
 	@endif
 </div>
-
+@if(isset($verificar))
+<div id="municipios" style="width:100%;" >
+	@foreach($ciudades_selecciondas as $ciudades)
+	  <div style="width:15%;height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:absolute; top:10%;">{{$ciudades->nombre}}</span><a style="position:absolute;left:95%;top:0%;" href="#" id="{{$ciudades->id}}" class="eliminar-lugar close" data-dismiss="alert" aria-label="close">&times;</a></div>
+	  <input type="hidden" name="lugar[]" class="eliminar-hidden" id="hidden{{$ciudades->id}}" value="{{$ciudades->id}}"/>
+	 
+	@endforeach
+</div>	    	
+ @else
 <div id="municipios" style="display: none; width:100%;" >
 
 </div>
+ 	@endif
 <div class="form-group">
 	{!!Form::label('Fecha cierre')!!}
 	{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
