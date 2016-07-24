@@ -115,6 +115,7 @@ $(document).ready(function(){
 	$('.submit-registrar-docente').click(function(){
 		//alert("alerta");
 		formularioFuncionario("POST","formularioDocente");
+		$( ".areas-eliminar-hidden" ).remove();
 	});
 
 
@@ -123,9 +124,57 @@ $(document).ready(function(){
 	});
 
 
-	formularioFuncionarPublicacion=function(){
 
-	}
+	$( "#area-publicacion-docente" ).change(function() {
+		
+   		 var nombreCiudad = "";
+	    $( "#area-publicacion-docente option:selected" ).each(function() {
+	      nombreCiudad += $( this ).text() + " ";
+	    });
+      var id = $(this).val();
+	 
+	  var areas=document.getElementById('areas-aparecer-docente');
+
+	  areas.style.display="inline-block";
+	  var html=areas.innerHTML;	 
+	
+	  if ( $('#hidden-docente-'+id).length == 0 ) {
+	 
+	  
+
+			 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='area-aparecer-docente"+id+"' class='eliminar-docente close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
+			  areas.innerHTML=html+input;
+			  var hidden="<input type='hidden' name='areas[]' class='areas-eliminar-hidden' id='hidden-docente-"+id+"' value='"+id+"'/>";
+			 	
+			 $('.formularioDocente').append(hidden);
+			 
+		  	
+			$('.eliminar-docente').click(function(){	
+					 var id = $(this).attr('id');
+					 var auxId=id.substr(21, id.length);
+					$('#hidden-docente-'+auxId+'').remove();
+			}); 
+
+		}
+
+  });
+   	$('.eliminar-docente').click(function(){	
+			 var id = $(this).attr('id');
+			 var auxId=id.substr(21, id.length);
+			$('#hidden-docente-'+auxId+'').remove();
+	});  
+ 
+	$('.cancelar').click(function(){	
+			$( ".areas-eliminar-hidden" ).remove();
+	}); 
+	$('#registro-user').click(function(){	
+			$( ".areas-eliminar-hidden" ).remove();
+	});
+	
+
+
+
 	
 	$( "#lugar" ).change(function() {
    		 var nombreCiudad = "";
@@ -196,6 +245,9 @@ $(document).ready(function(){
 			 var auxId=id.substr(13, id.length);
 			$('#hidden-areas-'+auxId+'').remove();
 	});  
+
+
+
 
 
 });

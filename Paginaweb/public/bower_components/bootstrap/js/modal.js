@@ -74,6 +74,7 @@
     })
 
     this.backdrop(function () {
+
       var transition = $.support.transition && that.$element.hasClass('fade')
 
       if (!that.$element.parent().length) {
@@ -137,6 +138,7 @@
   }
 
   Modal.prototype.enforceFocus = function () {
+    
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
@@ -165,6 +167,7 @@
   }
 
   Modal.prototype.hideModal = function () {
+
     var that = this
     this.$element.hide()
     this.backdrop(function () {

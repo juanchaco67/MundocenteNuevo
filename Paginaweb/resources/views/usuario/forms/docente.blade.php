@@ -13,41 +13,24 @@
 		@else
 			{!!Form::checkbox('notificar', '0', true,array('class'=>'campo_checkbox','name'=>'notificar'))!!}
 		@endif
-	</div>
- 	<div class="form-group">
-		<legend>Areas de interés</legend>
-		<fieldset>
-			@if(!isset($areas_usuario))
-				@if(isset($areas))
-				<!--<div class="barra-scroll form-group" style="overflow-y: scroll; width:100%; height: 30%;">-->
-				<div class="barra-scroll">
-					@foreach($areas as $area)				
-							<div class="form-group">
-								<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
-							</div>
-					
-					@endforeach
-				</div>
-				@endif
+	</div>		
+			
+	<div class="form-group">
+			@if(isset($areas))
+			<legend>Areas de interés</legend>					
+			<select  id="area-publicacion-docente" class="form-control">
+				@foreach($areas as $area)
+		  		<option value="{{$area->id}}" name="{{$area->nombre}}">{{$area->nombre}}</option>
+				@endforeach
+			</select>		
 			@else
-				@if(isset($areas))
-					<div class="barra-scroll">
-						@foreach($areas as $area)
-							@if(in_array($area->id, $areas_usuario))
-								<div class="form-group">
-									<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas" checked><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
-								</div>
-							@else
-								<div class="form-group">
-									<input id="area{{ $area->id }}" type="checkbox" name="areas[]" value="{{ $area->id }}" class="areas"><label for="area{{ $area->id }}">{{ $area->nombre }}</label></input>
-								</div>
-							@endif
-						@endforeach
-					</div>
-				@endif
-			@endif
-		</fieldset>
+			<h1>Sin areas</h1>
+			@endif					
+	</div>				
+	<div id="areas-aparecer-docente" style="display:none; width:100%;" >
+
 	</div>
+	
 @if(isset($usuario))
 	@if($usuario->estado == "activo")
 		<div class="form-group">

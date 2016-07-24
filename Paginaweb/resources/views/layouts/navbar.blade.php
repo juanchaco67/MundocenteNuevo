@@ -75,7 +75,7 @@
 	              @endif
 	              <!-- <li @yield('servicios')><a href="/servicios">Servicios</a></li>  -->
 	              @if( !Auth::check() )
-	                <li @yield('registro')><a data-toggle="modal" data-target="#myModal" href="#">Registro</a></li>
+	                <li @yield('registro')><a data-toggle="modal" data-target="#myModal" id="registro-user" href="#">Registro</a></li>
 	              @endif
 
 	              <li @yield('contacto')><a href="/contacto">Contacto</a></li>
@@ -145,12 +145,12 @@
 @if( !Auth::check() )
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="modal-ocultar">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" id="close-user-form" class="close" data-dismiss="modal">&times;</button>
           <h4 class="text-center modal-title">Registrate en Mundocente</h4>
         </div>
 

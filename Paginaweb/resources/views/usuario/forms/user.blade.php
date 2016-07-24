@@ -13,7 +13,7 @@
           <!--{!!Form::open(['route'=>'usuario.store', 'method'=>'post','id'=>'formularioDocente','name'=>'formularioDocente'])!!}  
           -->
   
-          <form action="{{ route('usuario.store') }}" method="post" class="formularioDocente" name="formularioDocente">
+          <form action="{{ route('usuario.store') }}" method="post" id="formularioDocenteStore" class="formularioDocente" name="formularioDocente">
             <input type="hidden" name="_token" value="{{csrf_token()}}" id="token"/>
 
             @include('usuario.forms.docente')
@@ -23,7 +23,7 @@
               {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
               -->           
 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button  class="submit-registrar-docente btn btn-primary">Registrar</button>
                  
             </div>
@@ -44,7 +44,7 @@
             {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
             {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
             -->
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button class="submit-registrar-funcionario btn btn-primary">Registrar</button>
             <!-- {!!Form::close()!!} -->
           </div>
