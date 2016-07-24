@@ -5,7 +5,7 @@
 	<th>{{ $publicacion->created_at }}</th>
 	<th>{{ $publicacion->fecha_cierre }}</th>
 	<th>
-		{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary', 'title'=>'Editar esta publicación']])!!}
+		{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary', 'title'=>'Editar esta publicación'])!!}
 		@if($publicacion->estado == 'activa')
 			<button class="borrar btn btn-default" title="Borrar esta publicación" data-toggle="modal" data-target="#{{ $publicacion->id }}">
 			    ¿Borrar?
