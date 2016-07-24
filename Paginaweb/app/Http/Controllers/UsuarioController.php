@@ -210,9 +210,10 @@ class UsuarioController extends Controller
         //return "email " . $request['email'];
 
         //return $id;
-        if ($usuario_editar->email == $request['email']) {
+        if ($usuario_editar->email == $request['email'] && $request['password'] == '') {
             $this->validate($request, [
                 'name' => 'required',
+                //'password' => 'required|min:6',
                 //'email' => 'required|email|unique:users',
                 'email' => 'required|email',
             ]);
@@ -220,6 +221,7 @@ class UsuarioController extends Controller
         } else {
             $this->validate($request, [
                 'name' => 'required',
+                'password' => 'required|min:6',
                 'email' => 'required|email|unique:users',
             ]);
             return $this->actualizar_usuario($usuario_editar, $request);
