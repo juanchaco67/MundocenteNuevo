@@ -8,7 +8,7 @@
 	@include('alerts.request')
 	{!!Form::open(['route'=>'publicacion.store', 'method'=>'post','id'=>'publicacion-store'])!!}
 		@include('publicacion.forms.formulario')
-	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+	{!!Form::submit('Registrar', ['class'=>'btn btn-primary', 'title'=>'Registrar esta publicación'])!!}
 
 	<!--
 	<form action="{{ route('usuario.store') }}" method="post">

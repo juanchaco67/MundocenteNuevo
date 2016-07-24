@@ -24,7 +24,7 @@
 			<div class="row">
 			    <div class="col-md-2 col-md-offset-5">
 			    	<div class="form-group">
-						<a href="/establecimiento/create" class="form-control btn btn-primary">Crear nuevo</a>
+						<a href="/establecimiento/create" class="form-control btn btn-primary" title="Crear una nueva Universidad/Entidad">Crear nuevo</a>
 					</div>
 			    </div>
 			</div>	
@@ -33,7 +33,7 @@
 			<div class="row">
 			    <div class="col-md-2 col-md-offset-5">
 			    	<div class="form-group">
-						<a href="/establecimiento/create" class="form-control btn btn-primary">Crear nuevo</a>
+						<a href="/establecimiento/create" class="form-control btn btn-primary" title="Crear una nueva Universidad/Entidad">Crear nuevo</a>
 					</div>
 			    </div>
 			</div>			
