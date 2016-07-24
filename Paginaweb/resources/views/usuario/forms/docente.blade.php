@@ -27,9 +27,24 @@
 			<h1>Sin areas</h1>
 			@endif					
 	</div>				
-	<div id="areas-aparecer-docente" style="display:none; width:100%;" >
 
-	</div>
+@if(isset($verificar))
+<div id="areas-aparecer-docente" style="width:100%;" >
+	@foreach($areas as $area)
+
+		@if(in_array($area->id, $areas_publicacion))
+					<div style="height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:relative;bottom:10px;">{{$area->nombre}}</span><a style="position:absolute;left:90%;top:0%;" href="#" id="area-aparecer-docente{{$area->id}}" class="eliminar-docente close" data-dismiss="alert" aria-label="close">&times;</a></div>
+					 <input type="hidden" name="areas[]" class="areas-eliminar-hidden" id="hidden-docente-{{$area->id}}" value="{{$area->id}}"/>
+			
+				@endif
+	@endforeach
+
+</div>	    	
+ @else
+<div id="areas-aparecer-docente" style="display:none; width:100%;" >
+
+</div>
+ @endif
 	
 @if(isset($usuario))
 	@if($usuario->estado == "activo")

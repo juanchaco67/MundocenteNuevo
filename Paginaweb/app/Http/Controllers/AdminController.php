@@ -13,6 +13,9 @@ use App\Interes;
 use App\Establecimiento;
 use Auth;
 use Mail;
+use App\Grupo;
+use App\Docente;
+use DB;
 class AdminController extends Controller
 {
     public function __construct(){
@@ -110,19 +113,23 @@ class AdminController extends Controller
             //return "editar " .$usuario;
        
             $areas = Area::all();
-            $intereses = Interes::where('docente_id', $id)->get();
+            $docente=DB::table('docentes')->where('user_id','=',$id)->first();            
+            $intereses = Interes::where('docente_id',$docente->id )->get();                  
             $areas_usuario = array();
+            $areas_publicacion = array();
             foreach ($intereses as $interes) {
+                echo "".$interes->id;
                 $areas_usuario[] = $interes->area_id;
-            }
-
-            //$usuario->docente->notificar = $notificar;
+                $areas_publicacion[] =$interes->area_id;
+            }                  
 
             return view('usuario.edit', [
                 'user' => $user,
                 'usuario' => $usuario,
                 'areas' => $areas,
                 'areas_usuario' => $areas_usuario,
+                'areas_publicacion'=>$areas_publicacion,
+                'verificar'=>true,
             ]);   
              //echo $usuario;     
         } elseif($usuario->idrol === 2){

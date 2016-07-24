@@ -88,7 +88,7 @@
 <div id="areas-aparecer" style="width:100%;" >
 	@foreach($areas as $area)
 
-		@if(in_array($area->id, $areas_publicacion))
+		@if(in_array($area->id, $areas_usuario))
 					 <div style="width:15%;height:1px;display:inline-block;position:relative;" class="alert alert-success"><span style="position:absolute; top:10%;">{{$area->nombre}}</span><a style="position:absolute;left:95%;top:0%;" href="#" id="area-aparecer{{$area->id}}" class="eliminar-area close" data-dismiss="alert" aria-label="close">&times;</a></div>
 				 <input type="hidden" name="areas[]" class="areas-eliminar-hidden" id="hidden-areas-{{$area->id}}" value="{{$area->id}}"/>
 
