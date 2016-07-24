@@ -25,6 +25,7 @@
 	@endif
 @if(isset($usuario))
 	@if($usuario->estado == "activo")
+	
 		<div class="form-group">
 			<label for="desactivar">Desactivar esta cuenta</label>
 			@if($usuario->estado === 'inactivo')
@@ -34,6 +35,7 @@
 			@endif
 		</div>
 	@else
+
 		<div class="form-group">
 			<label for="activar">Activar esta cuenta</label>
 			@if($usuario->estado === 'activo')

@@ -280,10 +280,12 @@ class PublicacionController extends Controller
 
         $ciudades_selecciondas=DB::select('select l.id, l.nombre from  aplicaciones a,lugares l where  a.publicacion_id='.$publicacion->id.' AND l.id=a.lugar_id');
         $lugares = Lugar::all();
+
         return view('publicacion.edit', [
             'publicacion' => $publicacion,
             'areas' => $areas,
             'areas_publicacion' => $areas_publicacion,
+            'areas_usuario' => $areas_publicacion,
             'user' => Auth::user(),
             'lugares' => $lugares,
             'departamentos' => $departamento,
