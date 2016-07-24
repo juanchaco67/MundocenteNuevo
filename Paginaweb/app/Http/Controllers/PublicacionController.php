@@ -200,7 +200,7 @@ class PublicacionController extends Controller
                         'publicacion'=>$publicacion,
                         'lugares'=>$lugar,
                 );
-                $this->enviar_correo('emails.nueva_publicacion',$data,'notificar area de interes');             
+                $this->enviar_correo('emails.nueva_publicacion',$data,'Notificación de tu área de interés');             
             } 
         Session::flash('mensaje', 'Publicacion creada');
         return Redirect::to('publicacion');        
@@ -311,23 +311,26 @@ class PublicacionController extends Controller
 
     public function borrados(){
         //$publicaciones = Publicacion::all();
-        $publicaciones = Publicacion::where('estado', '=', 'inactiva')
+        /*$publicaciones = Publicacion::where('estado', '=', 'inactiva')
             ->get()
             ->all();
+            */
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
             $areas = Area::all();
             $establecimientos = Establecimiento::all();
             $lugares = Lugar::all();
-            $publicaciones = Publicacion::where('estado', '=', 'activa')
+            $publicaciones = Publicacion::where('estado', '=', 'inactiva')
                 ->get()
                 ->all();
             if ( $user->idrol === 2) {      
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
                 $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
-                    ->where('estado', '=', 'activa')
-                    ->orderBy('created_at', 'DESC')->get()->all();
+                    ->where('estado', '=', 'inactiva')
+                    ->orderBy('created_at', 'DESC')
+                    ->get()
+                    ->all();
                 
                 //return $publicaciones;
                 //return $funcionario->publicacion;
@@ -384,9 +387,7 @@ class PublicacionController extends Controller
         return Redirect::to('publicacion');
     }
 
-        public static function enviar_correo($vista,$data,$msj){
-
-       
+    public static function enviar_correo($vista,$data,$msj){       
         Mail::later(5, $vista, $data, function($message) use ($data, $msj) {      
             $message->from('usuariosayuda@mundocente.com', 'Mundocente');
             $message->to($data['notificar']->email)->subject($msj);
