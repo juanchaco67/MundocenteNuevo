@@ -14,8 +14,8 @@
 	{!!Html::style('css/estilos.css')!!}
 	<!-- <script src="../js/jquery-1.12.3.min.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo-menu.css') }}"> 
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilos.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo-menu.css') }}"> 
 
 	<title>Mundocente | @yield('titulo-pagina')</title>
 </head>

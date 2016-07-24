@@ -25,6 +25,8 @@
     <!-- <script src="../js/jquery-1.12.3.min.js"></script> -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}"> 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilos.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/estilo-menu.css') }}"> 
 </head>
 
 <body>
@@ -128,6 +130,8 @@
     <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 
   <script type="text/javascript" src="{{ URL::asset('js/formularios.js') }}"></script>
+
+  <script type="text/javascript" src="{{ URL::asset('js/menu.js') }}"></script>
 
 </body>
 

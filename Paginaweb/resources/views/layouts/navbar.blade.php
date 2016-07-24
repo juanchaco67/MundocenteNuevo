@@ -1,7 +1,10 @@
 <header>
+
+	<!--
 	<div class="menu_bar">
 		<a href="#" class="bt-menu"><span class="icon-list2">Menu</span></a>
 	</div>
+	-->
 
 	<!--- <nav>
 		<ul>
@@ -21,13 +24,34 @@
 		          <img id="logo" alt="logo" src="{{ URL::asset('img/logo-imagen.png') }}">
 		          <img id="texto" alt="nombre" src="{{ URL::asset('img/logomun-texto.png') }}">
 	            </a>
-	            <!--
-	             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	              <span class="sr-only">Toggle navigation</span>
-	              <span class="icon-bar"></span>
-	              <span class="icon-bar"></span>
-	              <span class="icon-bar"></span>
-	            </button> -->
+	           
+	           	<div class="menu_bar navbar-toggle collapsed">
+					<!-- <a href="#" class="bt_menu"><span class="icon-list2">Menu</span></a> -->
+					<!--
+			            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			            </button>
+			            -->
+			            <a href="#" class="bt_menu" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+			            	<span class="icon-list2">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              </span>
+			            </a>
+
+			            <!--<a href="#" class="bt_menu"><span class="icon-list2">Menu</span></a> -->
+
+	            </div>
+
+	            	<!--<div class="menu_bar">
+						<a href="#" class="bt-menu"><span class="icon-list2">Menu</span></a>
+					</div>
+					-->
 	          </div>
 
 	          <!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,7 +129,7 @@
 	        </div>
 	        <div class="modal-body text-center">
 	        	<h4>Espera confirmación</h4>
-	          	<h5><p>Debes esperar la aprovación del administrador para antes de publicar, te enviaremos un correo electronico para informarte cuando puedas publicar...</p>
+	          	<h5><p>Debes esperar la aprobación del administrador antes de publicar, te enviaremos un correo electronico para informarte cuando puedas publicar...</p>
 	          	</h5>
 	        </div>
 	        <div class="modal-footer">

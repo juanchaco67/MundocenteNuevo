@@ -41,7 +41,9 @@ class PublicacionController extends Controller
         //$valor = Input::get('valor');
         if( Auth::check() ){
             //if( Auth::user()->estado == "activo" ){
-                $publicaciones = Publicacion::all();
+                $publicaciones = Publicacion::where('estado', '=', 'activa')
+                    ->get()
+                    ->all();
                 $user = User::find(Auth::user()->id);
                 $areas = Area::all();
                 $establecimientos = Establecimiento::all();
@@ -63,12 +65,14 @@ class PublicacionController extends Controller
                         'publicaciones' => $publicaciones,
                         'establecimientos' => $establecimientos,
                         'lugares' => $lugares,
+                        'user' => Auth::user(),
                     ]);
                 } else if( $user->idrol === 1){
                     return redirect()->to('/busqueda');
                 } else {
                     return view('publicacion.index', [
                         'publicaciones' => $publicaciones,
+                        'user' => Auth::user(),
                     ]);
                 }
             /*
@@ -99,13 +103,43 @@ class PublicacionController extends Controller
         $departamento=DB::select("select * from lugares where tipo='departamento'");
         $ciudad=DB::select("select * from lugares where tipo='municipio'");
         $areas_publicacion = array();
-        return view('publicacion.create', [
-            'areas' => $areas,
-            'areas_publicacion' => $areas_publicacion,
-            'departamentos' => $departamento,
-            'ciudades'=>$ciudad,
+        $publicaciones = Publicacion::where('estado', '=', 'activa')
+            ->get()
+            ->all();
+        $user = User::find(Auth::user()->id);
+        $areas = Area::all();
+        $establecimientos = Establecimiento::all();
+        $lugares = Lugar::all();
+        if ( $user->idrol === 2 ) {      
+            $funcionario = Funcionario::where('user_id', $user->id)
+                ->first();
+            $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
+                ->where('estado', '=', 'activa')
+                ->orderBy('created_at', 'DESC')->get()->all();
             
-        ]);
+            //return $publicaciones;
+            //return $funcionario->publicacion;
+            //$publicaciones = $funcionario->publicaciones;
+            //return $publicaciones;
+            $areas_publicacion = array();
+            return view('publicacion.create', [
+                'areas' => $areas,
+                'usuario' => Auth::user(),
+                'areas_publicacion' => $areas_publicacion,
+                'publicaciones' => $publicaciones,
+                'establecimientos' => $establecimientos,
+                'lugares' => $lugares,
+                'user' => Auth::user(),
+            ]);
+       } else if (Auth::user()->idrol == 3) {
+            return view('publicacion.create', [
+                'areas' => $areas,
+                'areas_publicacion' => $areas_publicacion,
+                'departamentos' => $departamento,
+                'ciudades'=>$ciudad,
+                'user' => Auth::user(),                
+            ]);
+        }
         //return "index";
     }
 
@@ -255,28 +289,46 @@ class PublicacionController extends Controller
     }
 
     public function borrados(){
-        $publicaciones = Publicacion::all();
+        //$publicaciones = Publicacion::all();
+        $publicaciones = Publicacion::where('estado', '=', 'inactiva')
+            ->get()
+            ->all();
         if( Auth::check() ){
             $user = User::find(Auth::user()->id);
             $areas = Area::all();
             $establecimientos = Establecimiento::all();
             $lugares = Lugar::all();
+            $publicaciones = Publicacion::where('estado', '=', 'activa')
+                ->get()
+                ->all();
             if ( $user->idrol === 2) {      
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
                 $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
-                    ->where('estado', '=', 'inactiva')
+                    ->where('estado', '=', 'activa')
                     ->orderBy('created_at', 'DESC')->get()->all();
-
+                
+                //return $publicaciones;
+                //return $funcionario->publicacion;
+                //$publicaciones = $funcionario->publicaciones;
+                //return $publicaciones;
                return view('publicacion.borrados', [
+                    'areas' => $areas,
+                    'usuario' => Auth::user(),
+                    'publicaciones' => $publicaciones,
+                    'establecimientos' => $establecimientos,
+                    'lugares' => $lugares,
+                    'user' => Auth::user(),
+                ]);
+            } else if($user->idrol === 3){
+                //return redirect()->to('publicacion/borrados');
+                return view('publicacion.borrados', [
                     'areas' => $areas,
                     'user' => Auth::user(),
                     'publicaciones' => $publicaciones,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
                 ]);
-            } else if($user->idrol === 3){
-                return redirect()->to('publicacion/borrados');
             }else {
                 return redirect()->to('/busqueda');
             }
