@@ -23,7 +23,9 @@
               {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
               -->           
 
-                <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
+                @if(!Auth::check())
+                  <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
+                @endif
                 <button  class="submit-registrar-docente btn btn-primary" title="Registrar este usuario">Registrar</button>
                  
             </div>
@@ -44,7 +46,9 @@
             {!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
             {!!Form::submit('Cancelar', ['class'=>'btn btn-default'])!!}
             -->
-                <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
+                @if(!Auth::check())
+                  <button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
+                @endif
                 <button class="submit-registrar-funcionario btn btn-primary" title="Registrar este usuario">Registrar</button>
             <!-- {!!Form::close()!!} -->
           </div>
