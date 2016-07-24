@@ -8,7 +8,7 @@
 	@include('alerts.request')
 	{!!Form::open(['route'=>'establecimiento.store', 'method'=>'post'])!!}
 		@include('establecimiento.forms.formulario')
-	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+	{!!Form::submit('Registrar', ['class'=>'btn btn-primary', 'title'=>'Registrar una nueva Universidad/Entidad'])!!}
 
 	<!--
 	<form action="{{ route('usuario.store') }}" method="post">
