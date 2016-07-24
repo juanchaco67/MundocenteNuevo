@@ -38,6 +38,8 @@ $(document).ready(function(){
 								//	window.location=$url_pagina + "/admin";
 								//}
 							} else {
+								
+								window.location="/usuario";
 								//alert('activar');
 								//window.location=$url_pagina + "/";
 								//window.location=$ir_a;
@@ -46,6 +48,7 @@ $(document).ready(function(){
 							//alert('cerrar el modal');
 							//window.location=$url_pagina + "/";
 							//return resp;
+							alert("1");
 						}
 					}
 
