@@ -210,22 +210,35 @@ class UsuarioController extends Controller
         //return "email " . $request['email'];
 
         //return $id;
-        if ($usuario_editar->email == $request['email'] && $request['password'] == '') {
+        if ($usuario_editar->email != $request['email']) {
             $this->validate($request, [
                 'name' => 'required',
                 //'password' => 'required|min:6',
-                //'email' => 'required|email|unique:users',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users',
+                //'email' => 'required|email',
             ]);
-            return $this->actualizar_usuario($usuario_editar, $request);
-        } else {
+            //return $this->actualizar_usuario($usuario_editar, $request);
+        } 
+
+        if(!empty($request['password'])) {
+            $this->validate($request, [
+                'name' => 'required',
+                'password' => 'required|min:6',
+                'email' => 'required|email',
+                //'email' => 'required|email|unique:users',
+            ]);
+        }
+        /*
+
+            else {
             $this->validate($request, [
                 'name' => 'required',
                 'password' => 'required|min:6',
                 'email' => 'required|email|unique:users',
             ]);
+            */
             return $this->actualizar_usuario($usuario_editar, $request);
-        }
+        //}
     }
 
     public function actualizar_usuario($user, Request $request){
