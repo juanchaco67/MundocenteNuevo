@@ -5,7 +5,8 @@ var listaLugares =new Array();
 		event.preventDefault();
 		var route=$("."+id).attr('action');
 		var valor=document.getElementById('token').value;
-		
+		$url_pagina = "http://localhost:8000/";
+
 		$.ajax({
 			url:route,
 			headers:{"X-CSRF-TOKEN":valor},
@@ -19,11 +20,11 @@ var listaLugares =new Array();
 
 				if (resp.usuario != undefined) {
 					//alert('es admin');
-					//$ir_a = "http://localhost:8000/admin";
-					$ir_a = "http://localhost:8000/usuario";
+					//$ir_a = $url_pagina + "/admin";
+					$ir_a = $url_pagina + "/usuario";
 				} else {
 					//alert('no es admin');
-					$ir_a = "http://localhost:8000/logout";
+					$ir_a = $url_pagina + "/logout";
 				}
 				//alert('sussss');
 				if(metodo=="PUT"){
@@ -34,16 +35,16 @@ var listaLugares =new Array();
 								//if(resp.usuario.idrol!=3){							
 									window.location=$ir_a;
 								//} else {
-								//	window.location="http://localhost:8000/admin";
+								//	window.location=$url_pagina + "/admin";
 								//}
 							} else {
 								//alert('activar');
-								//window.location="http://localhost:8000/";
+								//window.location=$url_pagina + "/";
 								//window.location=$ir_a;
 							}
 						} else {
 							//alert('cerrar el modal');
-							//window.location="http://localhost:8000/";
+							//window.location=$url_pagina + "/";
 							//return resp;
 						}
 					}
@@ -61,10 +62,12 @@ var listaLugares =new Array();
 				}
 				else if(id=="formularioFuncionario" && metodo=="POST"){
 					
-					window.location="http://localhost:8000/publicacion";
+					window.location=$url_pagina + "/publicacion";
 				}
 					else if(id=="formularioDocente" && metodo=="POST"){
-					window.location="http://localhost:8000";
+					// window.location="http://localhost:8000";
+					//alert("ksuti");
+					window.location=$url_pagina + "/usuario";
 				}
 
 
