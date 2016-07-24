@@ -1,6 +1,7 @@
 @if(isset($publicaciones))
     {{-- @section('contenido') --}}
           @if($publicaciones)
+          {{--
 <!--
                 <div class="col-xs-12 col-sm-12 col-md-4">
                   <a>
@@ -47,6 +48,7 @@
             </div>
 
             -->
+            --}}
               <!-- Modal -->
                 <div class="modal fade" id="modalpublicacion" role="dialog">
                   <div class="modal-dialog modal-lg">
@@ -127,46 +129,46 @@
             <h3 class="text-center">Resultados de búsqueda</h3>
             <h3 class="text-center"><span class="small"> {{ $publicaciones->count() }} publicaciones encontradas  </span></h3>
             <div class="lista">
-            @foreach($publicaciones as $publicacion)
+              @foreach($publicaciones as $publicacion)
 
-                @if($publicacion->estado == 'activa')
-                  <div id="{{ $publicacion->id }}" data-toggle="modal" data-target="#modalpublicacion" class="publicacion">            
-                    <div id="contenido-publicacion" class="informacion">                             
-                        <h3>
-                          <a class="titulo-publicacion">{{ $publicacion->nombre }}
-                          </a>
-                        </h3> 
-                        <span>
-                          <a>{{ $publicacion->funcionario->establecimiento->nombre }}</a>
-                        </span>
-                        <p class="descripcion">{{ $publicacion->resumen }}</p>
+                  @if($publicacion->estado == 'activa')
+                    <div id="{{ $publicacion->id }}" data-toggle="modal" data-target="#modalpublicacion" class="publicacion">            
+                      <div id="contenido-publicacion" class="informacion">                             
+                          <h3>
+                            <a class="titulo-publicacion">{{ $publicacion->nombre }}
+                            </a>
+                          </h3> 
+                          <span>
+                            <a>{{ $publicacion->funcionario->establecimiento->nombre }}</a>
+                          </span>
+                          <p class="descripcion">{{ $publicacion->resumen }}</p>
 
-                        <a href="{{ $publicacion->url }}">{{ $publicacion->url }}</a>
-                    </div>
-                        
-                        
-                    <div id="fecha-publicacion" class="{{ $publicacion->tipo }}">                   
-                      <div class="list-group">
-                        <div>Fecha publicación: 
-                          <span class="small">{{ $publicacion->fecha_inicio }}</span>
+                          <a href="{{ $publicacion->url }}">{{ $publicacion->url }}</a>
+                      </div>
+                          
+                          
+                      <div id="fecha-publicacion" class="{{ $publicacion->tipo }}">                   
+                        <div class="list-group">
+                          <div>Fecha publicación: 
+                            <span class="small">{{ $publicacion->fecha_inicio }}</span>
+                          </div>
+                          <div>Lugar: 
+                            {{-- <span class="small">{{ $publicacion->lugar->nombre }}</span> --}}
+                          </div>
+                          <div>Tipo publicación: 
+                            <span class="small">{{ $publicacion->tipo }}</span>
+                          </div>      
                         </div>
-                        <div>Lugar: 
-                          {{-- <span class="small">{{ $publicacion->lugar->nombre }}</span> --}}
-                        </div>
-                        <div>Tipo publicación: 
-                          <span class="small">{{ $publicacion->tipo }}</span>
-                        </div>      
+
+                      </div>
+                
+                      </div>
+                      <div class="espacio">
                       </div>
 
-                    </div>
-              
-                    </div>
-                    <div class="espacio">
-                    </div>
+                    @endif
 
-                  @endif
-
-                @endforeach
+                  @endforeach
                 </div>
               @else
                 <h2 class="text-center"><span class="small">No se encontraron publicaciones</span></h2>
