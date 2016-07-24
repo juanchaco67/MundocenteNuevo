@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+var listaLugares =new Array();
 	formularioFuncionario=function(metodo,id){
 			
 		event.preventDefault();
@@ -119,26 +119,53 @@ $(document).ready(function(){
 		formularioFuncionario("PUT","formularioAdmin");
 	});
 
-	$('#lugar').change(function(){ 
 
+	formularioFuncionarPublicacion=function(){
+
+	}
 	
-
-	 
-	});
 	$( "#lugar" ).change(function() {
    		 var nombreCiudad = "";
 	    $( "#lugar option:selected" ).each(function() {
 	      nombreCiudad += $( this ).text() + " ";
 	    });
       var id = $(this).val();
-	  	
+	    listaLugares.push(id);
 	  var municipios=document.getElementById('municipios');
 	  municipios.style.display="inline-block";
 	  var html=municipios.innerHTML;	   
-	  var input="<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong>"+nombreCiudad+"</div>"
+
+	  var input="<div style='height:1px;display:inline-block;' class='alert alert-success'>"+nombreCiudad+"<a href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
 	  municipios.innerHTML=html+input;
-	  
-	  
-   
+	  var hidden="<input type='hidden'name='lugar[]'class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";
+	 	$('#publicacion-store').append(hidden);
+	  for (var i = 0; i < listaLugares.length; i++) {
+	  	console.log("que oso "+listaLugares[i]);
+	  }
+	$('.eliminar-lugar').click(function(){
+			 var id = $(this).attr('id');
+			 alert("eliminar "+id);
+			 buscar(id);
+	});     	
+
   });
+
+   	
+function buscar(id){
+	var cadena="";
+	 for (var i = 0; i < listaLugares.length; i++) {
+	 	if(listaLugares[i]==id){
+	 		listaLugares.splice(i,1);
+	 		cadena='#hidden'+i+'';
+	 		$('#hidden'+id+'').remove();
+	 		break;
+	 	}
+	 }
+	 
+	 for (var i = 0; i < listaLugares.length; i++) {
+	  	console.log("elimino "+listaLugares[i]);
+	  }
+	}
+
 });
+

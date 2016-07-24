@@ -25,7 +25,7 @@
 	
 		<div class="form-group">
 
-			<select name="lugar" id="lugar" class="form-control">
+			<select  id="lugar" class="form-control">
 				@foreach($departamentos as $departamento)
 					<optgroup label="{{$departamento->nombre}}">
 					@if(!isset($user))
@@ -52,7 +52,7 @@
 	@endif
 </div>
 
-<div id="municipios" style="display: none; width: 100%;height: 100px; " class="barra-scroll">
+<div id="municipios" style="display: none; width:100%;" >
 
 </div>
 <div class="form-group">

@@ -14,12 +14,22 @@
 </div>	
 
 <div style="width:100%;">
+	<div style="float:left;width:50%;">
+	 <p>{{$publicacion->nombre}} - </p>
+	</div>
+	<div style="float:left;width:50%;">
 
-	<div style="">
-	     <p>{{$publicacion->nombre}} - {{$lugar->nombre}}</p>
+	     @foreach ($lugares as $lugar) 
+            @foreach ($lugar as $ciudad_departamento)              
+             <p>{{$ciudad_departamento['departamento'] }}: {{$ciudad_departamento['ciudad'] }} </p>                           
+        	@endforeach
+       	@endforeach
+	 </div>
+	 <div>
 	     <p>{{$publicacion->resumen}}</p>
 	    <a href="{{$publicacion->url}}">Ver publicacion</a>
-	</div>	
+	 </div>
+	
 </div>	
 
 </body>

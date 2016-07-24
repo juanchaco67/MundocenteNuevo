@@ -6,7 +6,7 @@
 
 @section('contenido')
 	@include('alerts.request')
-	{!!Form::open(['route'=>'publicacion.store', 'method'=>'post'])!!}
+	{!!Form::open(['route'=>'publicacion.store', 'method'=>'post','id'=>'publicacion-store'])!!}
 		@include('publicacion.forms.formulario')
 	{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
 

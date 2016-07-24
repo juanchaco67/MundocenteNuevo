@@ -112,6 +112,12 @@ class PublicacionController extends Controller
     public function store(PublicacionUpdateRequest $request){
         //return "store";
         //return $request['tipo'] ." ". $request['fecha_cierre'];
+        $ciudad_id=$request['lugar'];  
+        $lugar = array();
+        foreach ($ciudad_id as $id) {               
+               array_push($lugar,DB::select("select d.nombre as departamento, m.nombre as ciudad from lugares d,lugares m where d.id=m.ubicacion_id AND m.id=".$id));               
+        }          
+
         $publicacion = Publicacion::create([
             'funcionario_id' => Auth::user()->funcionario->id,
             'nombre' => $request['nombre'],
@@ -126,11 +132,10 @@ class PublicacionController extends Controller
        
 
         $this->crear_grupos($publicacion, $request);
-         $ubicacion = $request['lugar'];//departamento
-         $lugar = $request['ubicacion_id'];//municipio
-         $this->crear_aplica($ubicacion,$publicacion,1);
-         $this->crear_aplica($lugar,$publicacion,2);
-          $lugar=Lugar::find($ubicacion);
+        $ciudad_id=$request['lugar'];        
+        $this->crear_aplica($ciudad_id,$publicacion);//son los municipios o ciudades
+    
+         
 
         $notificar_user=DB::table('grupos')->where('publicacion_id',$publicacion->id)
             ->join('intereses','intereses.area_id','=','grupos.area_id')
@@ -141,32 +146,32 @@ class PublicacionController extends Controller
             ->distinct()
             ->get();
 
+          
+
             foreach ($notificar_user as $notificar) {
                  $data = array(
                         'notificar' => $notificar,
                         'publicacion'=>$publicacion,
-                        'lugar'=>$lugar,
+                        'lugares'=>$lugar,
                 );
                 $this->enviar_correo('emails.nueva_publicacion',$data,'notificar area de interes');             
             } 
         Session::flash('mensaje', 'Publicacion creada');
         return Redirect::to('publicacion');        
     }
-    public function crear_aplica($lugar_id,$publicacion,$opcion){
+    public function crear_aplica($ciudad_id,$publicacion){
       
-        if(!empty($lugar_id) && $opcion==1){
-            Aplica::create([
-                    'lugar_id' => $lugar_id,
-                    'publicacion_id' => $publicacion->id,                   
-                ]);                     
-        }else{
-            foreach ($lugar_id as $municipio) {
-               Aplica::create([
-                    'lugar_id' => $municipio,
-                    'publicacion_id' => $publicacion->id,                   
-                ]);  
-            }      
-        }
+        if(!empty($ciudad_id)){
+               foreach ($ciudad_id as $id) {
+                    Aplica::create([
+                    'lugar_id' => $id,
+                    'publicacion_id' => $publicacion->id,
+                ]);
+
+                   
+            }   
+        }              
+       
     }
 
     public function crear_grupos($publicacion, PublicacionUpdateRequest $request){
