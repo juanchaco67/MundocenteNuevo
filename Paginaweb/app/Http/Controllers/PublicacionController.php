@@ -129,6 +129,8 @@ class PublicacionController extends Controller
                 'publicaciones' => $publicaciones,
                 'establecimientos' => $establecimientos,
                 'lugares' => $lugares,
+                  'departamentos' => $departamento,
+                'ciudades'=>$ciudad,
                 'user' => Auth::user(),
             ]);
        } else if (Auth::user()->idrol == 3) {
@@ -253,6 +255,8 @@ class PublicacionController extends Controller
 
     public function edit($id){
         //return "edit";
+        $departamento=DB::select("select * from lugares where tipo='departamento'");
+        $ciudad=DB::select("select * from lugares where tipo='municipio'");
         $publicacion = publicacion::find($id);
         $areas = Area::all();
         $grupos = Grupo::where('publicacion_id', $id)->get();
@@ -269,6 +273,8 @@ class PublicacionController extends Controller
             'areas_publicacion' => $areas_publicacion,
             'user' => Auth::user(),
             'lugares' => $lugares,
+            'departamentos' => $departamento,
+            'ciudades'=>$ciudad,
         ]);        
     }
 

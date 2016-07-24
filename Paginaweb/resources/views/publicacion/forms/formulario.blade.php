@@ -37,11 +37,18 @@
 					 	@endif
 				    	@endforeach
 				    @else
-				    	@if($publicacion->lugar_id === $lugar->id)
+				    	@foreach($ciudades as $ciudad)
+  						@if($ciudad->ubicacion_id==$departamento->id)
+  						<option value="{{ $ciudad->id }}" name="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
+					    
+					 	@endif
+				    	@endforeach
+				    	{{--- @if($publicacion->lugar_id === $lugar->id)
 				    		<option value="{{ $lugar->id }}" selected>{{ $lugar->nombre }}</option>
 				    	@else
 				    		<option value="{{ $lugar->id }}">{{ $lugar->nombre }}</option>   		
 				    	@endif
+				    	--}}
 				    @endif
 				     </optgroup>
 				@endforeach

@@ -135,16 +135,19 @@ var listaLugares =new Array();
 	  municipios.style.display="inline-block";
 	  var html=municipios.innerHTML;	   
 
-	  var input="<div style='height:1px;display:inline-block;' class='alert alert-success'>"+nombreCiudad+"<a href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+	  var input="<div style='width:15%;height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><a style='position:absolute;left:95%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+	  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
 	  municipios.innerHTML=html+input;
 	  var hidden="<input type='hidden'name='lugar[]'class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";
-	 	$('#publicacion-store').append(hidden);
+	 	
+	 $('#publicacion-store').append(hidden);
 	  for (var i = 0; i < listaLugares.length; i++) {
 	  	console.log("que oso "+listaLugares[i]);
 	  }
+  
 	$('.eliminar-lugar').click(function(){
 			 var id = $(this).attr('id');
-			 alert("eliminar "+id);
+				
 			 buscar(id);
 	});     	
 
