@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminController;
 use Response;
 use Validator;
 use Log;
+use DB;
 
 class UsuarioController extends Controller
 {
@@ -196,6 +197,7 @@ class UsuarioController extends Controller
 
     public function update($id, Request $request){
         //echo $request;
+
         $usuario_editar = User::find($id);
         /*
         if ($usuario_editar->idrol == 3) {
@@ -237,8 +239,10 @@ class UsuarioController extends Controller
             //$docente = Docente::where('user_id', '=', $user->id)->first();
 
             //return $user;
-            $areas = Interes::where('docente_id', $user->id)->delete();
-            $this->crear_interes($user, $request); 
+            $docente=DB::table('docentes')->where('user_id','=',$user->id)->first();            
+            $intereses = Interes::where('docente_id',$docente->id )->delete();
+            
+            $this->crear_interes($docente, $request); 
 
             $docente = Docente::where('user_id', $user->id);
             $docente->update([

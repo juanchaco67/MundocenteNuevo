@@ -124,11 +124,11 @@ $(document).ready(function(){
 	});
 
 
-
-	$( "#area-publicacion-docente" ).change(function() {
+	areasDocente=function(clase){
+	$( "."+clase+" #area-publicacion-docente" ).change(function() {
 		
    		 var nombreCiudad = "";
-	    $( "#area-publicacion-docente option:selected" ).each(function() {
+	    $( "."+clase+" #area-publicacion-docente option:selected" ).each(function() {
 	      nombreCiudad += $( this ).text() + " ";
 	    });
       var id = $(this).val();
@@ -147,7 +147,8 @@ $(document).ready(function(){
 			  areas.innerHTML=html+input;
 			  var hidden="<input type='hidden' name='areas[]' class='areas-eliminar-hidden' id='hidden-docente-"+id+"' value='"+id+"'/>";
 			 	
-			 $('.formularioDocente').append(hidden);
+			 $('.'+clase).append(hidden);
+			 
 			 
 		  	
 			$('.eliminar-docente').click(function(){	
@@ -159,6 +160,9 @@ $(document).ready(function(){
 		}
 
   });
+}
+areasDocente('formularioDocente');
+areasDocente('formularioUpdateDocente');
    	$('.eliminar-docente').click(function(){	
 			 var id = $(this).attr('id');
 			 var auxId=id.substr(21, id.length);
