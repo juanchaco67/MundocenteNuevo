@@ -64,7 +64,7 @@ Route::post('usuario/recuperar/{id}', 'UsuarioController@recuperar');
 Route::resource('usuario', 'UsuarioController');
 
 Route::resource('admin', 'AdminController');
-
+Route::resource('/usuario/imagen', 'ImagenController');
 
 //Route::get('recibe','Prueba@recibir');
 //Route::post('filtros','Prueba@filtros');

@@ -29,7 +29,10 @@
 	</div>				
 
 @if(isset($verificar))
-<div id="areas-aparecer-docente" style="width:100%;" >
+  <div class="scrollbar areas-aparecer-docente-scroll" id="style-1" style="display:inline-block;">
+  
+<div id="areas-aparecer-docente" class="force-overflow" style="display:inline-block; width:100%; height:30px;">
+
 	@foreach($areas as $area)
 
 		@if(in_array($area->id, $areas_publicacion))
@@ -38,7 +41,7 @@
 			
 				@endif
 	@endforeach
-
+</div>	 
 </div>	    	
  @else
   <div class="scrollbar areas-aparecer-docente-scroll" id="style-1" style="display:none;">
