@@ -14,6 +14,7 @@ use App\Area;
 use App\Docente;
 use App\Establecimiento;
 use App\Funcionario;
+use App\Aplica;
 use App\Lugar;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -312,7 +313,13 @@ class BuscadorController extends Controller
             $idlugares[] = $lugar->id;
         }
         //return $idlugares;
-        $publicaciones = Publicacion::whereIn('lugar_id', $idlugares)->get();
+        //$publicaciones = Publicacion::whereIn('lugar_id', $idlugares)->get();
+        $aplicaciones = Aplica::whereIn('lugar_id', $idlugares)->get();
+        $idpublicaciones = array();
+        foreach ($aplicaciones as $aplicacion) {
+            $idpublicaciones[] = $aplicacion->publicacion_id;
+        }
+        $publicaciones = Publicacion::whereIn('id', $idpublicaciones)->get();
         return $publicaciones;
     }
 

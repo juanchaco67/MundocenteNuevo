@@ -148,10 +148,10 @@
                     <div id="fecha-publicacion" class="{{ $publicacion->tipo }}">                   
                       <div class="list-group">
                         <div>Fecha publicación: 
-                          <span class="small">{{ $publicacion->created_at }}</span>
+                          <span class="small">{{ $publicacion->fecha_inicio }}</span>
                         </div>
                         <div>Lugar: 
-                          <span class="small">{{ $publicacion->lugar->nombre }}</span>
+                          {{-- <span class="small">{{ $publicacion->lugar->nombre }}</span> --}}
                         </div>
                         <div>Tipo publicación: 
                           <span class="small">{{ $publicacion->tipo }}</span>
