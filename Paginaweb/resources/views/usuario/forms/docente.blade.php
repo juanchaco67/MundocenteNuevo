@@ -41,9 +41,13 @@
 
 </div>	    	
  @else
-<div id="areas-aparecer-docente" style="display:none; width:100%;" >
+  <div class="scrollbar areas-aparecer-docente-scroll" id="style-1" style="display:none;">
+  
+<div id="areas-aparecer-docente" class="force-overflow" style="display:none; width:100%; height:30px;">
 
 </div>
+</div>
+
  @endif
 	
 @if(isset($usuario))

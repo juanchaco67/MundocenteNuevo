@@ -78,9 +78,11 @@
 	@endforeach
 </div>	    	
  @else
-<div id="municipios" style="display: none; width:100%;" >
-
-</div>
+<div class="scrollbar municipios-scroll" id="style-1" style="display:none;">
+	<div id="municipios" class="force-overflow" style="display:none; width:100%; height:30px;">
+	 
+	 </div>
+ </div>
  	@endif
 <div class="form-group">
 	{!!Form::label('Fecha cierre')!!}
@@ -117,7 +119,9 @@
 
 </div>	    	
  @else
-<div id="areas-aparecer" style="display:none; width:100%;" >
-
-</div>
+<div class="scrollbar areas-aparecer-scroll" id="style-1" style="display:none;">
+	<div id="areas-aparecer" class="force-overflow" style="display:none; width:100%; height:30px;">
+	 
+	 </div>
+ </div>
  	@endif

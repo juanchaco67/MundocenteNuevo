@@ -48,7 +48,7 @@ $(document).ready(function(){
 							//alert('cerrar el modal');
 							//window.location=$url_pagina + "/";
 							//return resp;
-							alert("1");
+						
 						}
 					}
 
@@ -137,7 +137,7 @@ $(document).ready(function(){
       var id = $(this).val();
 	 
 	  var areas=document.getElementById('areas-aparecer-docente');
-
+	$('.areas-aparecer-docente-scroll').css('display','inline-block');
 	  areas.style.display="inline-block";
 	  var html=areas.innerHTML;	 
 	
@@ -191,10 +191,11 @@ areasDocente('formularioUpdateDocente');
       var id = $(this).val();
 	   
 	  var municipios=document.getElementById('municipios');
+	  $('.municipios-scroll').css('display','inline-block');
 	  municipios.style.display="inline-block";
 	  var html=municipios.innerHTML;	   
 		if($('#hidden'+id).length ==0){
-			  var input="<div style='width:15%;height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><a style='position:absolute;left:95%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			  var input="<div style='height:1px;display:inline-block;position:relat class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
 			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
 			  municipios.innerHTML=html+input;
 			  var hidden="<input type='hidden'name='lugar[]' class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";
@@ -222,15 +223,14 @@ areasDocente('formularioUpdateDocente');
       var id = $(this).val();
 	 
 	  var areas=document.getElementById('areas-aparecer');
-
+	  $('.areas-aparecer-scroll').css('display','inline-block');
 	  areas.style.display="inline-block";
 	  var html=areas.innerHTML;	 
 	
 	  if ( $('#hidden-areas-'+id).length == 0 ) {
 	 
-	  
 
-			 var input="<div style='width:15%;height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><a style='position:absolute;left:95%;top:0%;' href='#' id='area-aparecer"+id+"' class='eliminar-area close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='area-aparecer"+id+"' class='eliminar-area close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
 			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
 			  areas.innerHTML=html+input;
 			  var hidden="<input type='hidden' name='areas[]' class='areas-eliminar-hidden' id='hidden-areas-"+id+"' value='"+id+"'/>";
