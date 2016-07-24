@@ -4,9 +4,9 @@
 	<th>{{ $usuario->idrol }}</th>
 	<th>{{ $usuario->estado }}</th>
 	<th>
-		{!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $usuario->id, $atrributes = ['class' => 'btn btn-primary'])!!}
+		{!!link_to_route('usuario.edit', $title = 'Editar', $parameters = $usuario->id, $atrributes = ['class' => 'btn btn-primary', 'title'=>'Editar datos de este usuario'])!!}
 		@if($usuario->estado == 'activa')
-			<button class="borrar btn btn-default" data-toggle="modal" data-target="#{{ $usuario->id }}">
+			<button class="borrar btn btn-default" title="Borrar este usuario" data-toggle="modal" data-target="#{{ $usuario->id }}">
 			    ¿Borrar?
 			</button>
 
