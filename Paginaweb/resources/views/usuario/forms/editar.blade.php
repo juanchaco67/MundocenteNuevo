@@ -9,7 +9,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				{!!Form::submit('Actualizar', ['class'=>'submit-editar-docente btn btn-primary'])!!}
+				{!!Form::submit('Actualizar', ['class'=>'submit-editar-docente btn btn-primary', 'title'=>'Modificar datos de la cuenta'])!!}
 			</div>
 
 		{!!Form::close()!!}
@@ -27,7 +27,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				{!!Form::submit('Actualizar', ['class'=>'submit-editar-funcionario btn btn-primary'])!!}
+				{!!Form::submit('Actualizar', ['class'=>'submit-editar-funcionario btn btn-primary', 'title'=>'Modificar datos de la cuenta'])!!}
 			</div>
 			
 		{!!Form::close()!!}

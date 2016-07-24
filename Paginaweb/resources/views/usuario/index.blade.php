@@ -24,7 +24,7 @@
 							<th>{{ $usu->idrol }}</th>
 							<th>{{ $usu->estado }}</th>
 							<th>
-								{!!link_to_route('admin.edit', $title = 'Editar', $parameters = $usu->id, $atrributes = ['class' => 'btn btn-primary'])!!}
+								{!!link_to_route('admin.edit', $title = 'Editar', $parameters = $usu->id, $atrributes = ['class' => 'btn btn-primary', 'title'=>'Editar datos de este usuario'])!!}
 							</th>
 						</tbody>
 					@endif
@@ -35,7 +35,7 @@
 			<div class="row">
 			    <div class="col-md-2 col-md-offset-5">
 			    	<div class="form-group">
-						<a href="/usuario/create" class="form-control btn btn-primary">Crear nuevo</a>
+						<a href="/usuario/create" class="form-control btn btn-primary" title="Registrar un nuevo usuario">Crear nuevo</a>
 					</div>
 			    </div>
 			</div>			
