@@ -24,6 +24,7 @@ class FrontController extends Controller
             $lugares = Lugar::where('tipo', '=', 'municipio')->get();
             $user = User::find(Auth::user()->id);
             if($user->idrol == 1){ 
+                
                 //$areas = Area::all();
                 $docente = Docente::where('user_id', $user->id)->first();
                 $intereses = Interes::where('docente_id', $docente->id)->get();
@@ -37,10 +38,10 @@ class FrontController extends Controller
                 return view('index', [
                     'usuario' => $user,
                     'areas' => $areas,
-                    'areas_usuario' => $areas_usuario,
+                    'areas_publicacion' => $areas_usuario,
                     'establecimientos' => $establecimientos,
                     'lugares' => $lugares,
-                    //'sinfiltrar' => true,
+                    'verificar'=>true,
                 ]);   
              //echo $user;     
             } elseif($user->idrol === 2){

@@ -117,8 +117,7 @@ class AdminController extends Controller
             $intereses = Interes::where('docente_id',$docente->id )->get();                  
             $areas_usuario = array();
             $areas_publicacion = array();
-            foreach ($intereses as $interes) {
-                echo "".$interes->id;
+            foreach ($intereses as $interes) {              
                 $areas_usuario[] = $interes->area_id;
                 $areas_publicacion[] =$interes->area_id;
             }                  
