@@ -170,6 +170,7 @@ class PublicacionController extends Controller
             'resumen' => $request['resumen'],
             'descripcion' => $request['descripcion'],           
             'tipo' => $request['tipo'],
+            'fecha_publicacion', $request['fecha_inicio'],
             'fecha_cierre' => $request['fecha_cierre'],
             'url' => $request['url'],
             'estado' => 'activa',
