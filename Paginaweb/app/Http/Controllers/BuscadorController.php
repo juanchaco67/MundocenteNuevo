@@ -14,6 +14,7 @@ use App\Area;
 use App\Docente;
 use App\Establecimiento;
 use App\Funcionario;
+use App\Aplica;
 use App\Lugar;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -37,7 +38,8 @@ class BuscadorController extends Controller
 //                    ->where('estado', '=', 'activa')
                     ->select('publicaciones.id', 'publicaciones.funcionario_id', 'publicaciones.nombre', 'publicaciones.resumen', 'publicaciones.descripcion', 'publicaciones.tipo', 'publicaciones.created_at')
                     ->where('estado', '=', 'activa')
-                    ->orderBy('created_at', 'DESC')
+                    //->orderBy('created_at', 'DESC')
+                    ->orderBy('fecha_inicio', 'DESC')
                     ->distinct()
                     ->get();
                     //return var_dump($mezcla->"nombre");
@@ -311,7 +313,13 @@ class BuscadorController extends Controller
             $idlugares[] = $lugar->id;
         }
         //return $idlugares;
-        $publicaciones = Publicacion::whereIn('lugar_id', $idlugares)->get();
+        //$publicaciones = Publicacion::whereIn('lugar_id', $idlugares)->get();
+        $aplicaciones = Aplica::whereIn('lugar_id', $idlugares)->get();
+        $idpublicaciones = array();
+        foreach ($aplicaciones as $aplicacion) {
+            $idpublicaciones[] = $aplicacion->publicacion_id;
+        }
+        $publicaciones = Publicacion::whereIn('id', $idpublicaciones)->get();
         return $publicaciones;
     }
 

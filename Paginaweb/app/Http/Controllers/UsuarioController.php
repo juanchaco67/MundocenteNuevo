@@ -112,8 +112,8 @@ class UsuarioController extends Controller
    public function store(Request  $request){
         //return "Establecimiento " .$request['establecimiento'];
        //echo $request['email;'];    
-       dd($request['areas']);
-       return ""; 
+       //dd($request['areas']);
+       //return ""; 
         $rol = $request['rol'];
         if($rol === "docente"){
             $notificar = $request['notificar'];

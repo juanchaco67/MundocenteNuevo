@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Carbon\Carbon;
 
 class PublicacionUpdateRequest extends Request
 {
@@ -23,12 +24,13 @@ class PublicacionUpdateRequest extends Request
      */
     public function rules()
     {
+        $today = Carbon::now();
         return [
             //
             'nombre' => 'required|max:80',
             'resumen' => 'required|max:200',
             'lugar' => 'required',
-            'fecha_cierre' => 'after:24/07/2016',
+            'fecha_cierre' => 'after:' . $today,
         ];
     }
 }

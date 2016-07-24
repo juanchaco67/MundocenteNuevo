@@ -85,6 +85,10 @@
  </div>
  	@endif
 <div class="form-group">
+	{!!Form::label('Fecha inicio')!!}
+	{!!Form::date('fecha_inicio', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+</div>
+<div class="form-group">
 	{!!Form::label('Fecha cierre')!!}
 	{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
 </div>
