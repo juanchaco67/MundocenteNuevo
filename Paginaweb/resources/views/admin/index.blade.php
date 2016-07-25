@@ -14,7 +14,7 @@
 
 @section('contenido')
 	<!-- <h3 class="text-center">Bienvenido {{ $user->name }}</h3> -->
-	<span class="small"><h4 class="text-center">Listado de activaciones pendientes</h4></span>
+	<span class="small"><h3 class="text-center">Listado de activaciones pendientes</h3></span>
 	@if(isset($pendientes))
 		@if($pendientes)
 			<table class="table">
