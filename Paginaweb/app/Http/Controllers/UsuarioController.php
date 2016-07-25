@@ -294,7 +294,8 @@ class UsuarioController extends Controller
                 'user' => $user,
                 'usuario' => Auth::user(),
                 );
-            return Response::json($actualizar);            
+            //return Response::json($actualizar);            
+            return Redirect::to('/usuario');
         } else {
             $actualizar = array(
                 'user' => $user,
