@@ -2,7 +2,7 @@
 	<th>{{ $publicacion->nombre }}</th>
 	<th>{{ $publicacion->resumen }}</th>
 	<th>{{ $publicacion->tipo }}</th>
-	<th>{{ $publicacion->created_at }}</th>
+	<th>{{ $publicacion->fecha_publicacion }}</th>
 	<th>{{ $publicacion->fecha_cierre }}</th>
 	<th>
 		{!!link_to_route('publicacion.edit', $title = 'Editar', $parameters = $publicacion->id, $atrributes = ['class' => 'btn btn-primary', 'title'=>'Editar esta publicación'])!!}

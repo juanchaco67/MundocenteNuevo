@@ -86,14 +86,30 @@
 	 </div>
  </div>
  	@endif
-<div class="form-group">
-	{!!Form::label('Fecha inicio')!!}
-	{!!Form::date('fecha_inicio', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
-</div>
-<div class="form-group">
-	{!!Form::label('Fecha cierre')!!}
-	{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
-</div>
+@if(isset($fecha_publicacion))
+	<div class="form-group">
+		{!!Form::label('Fecha inicio')!!}
+		{!!Form::date('fecha_publicacion', $fecha_publicacion, ['class' => 'form-control'])!!}
+	</div>
+@else
+	<div class="form-group">
+		{!!Form::label('Fecha inicio')!!}
+		{!!Form::date('fecha_publicacion', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+	</div>
+@endif
+
+@if(isset($fecha_cierre))
+	<div class="form-group">
+		{!!Form::label('Fecha cierre')!!}
+		{!!Form::date('fecha_cierre', $fecha_cierre, ['class' => 'form-control'])!!}
+	</div>
+@else
+	<div class="form-group">
+		{!!Form::label('Fecha cierre')!!}
+		{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+	</div>
+@endif
+
 <div class="form-group">
 	{!!Form::label('Aplica para')!!}
 	@if(isset($areas))

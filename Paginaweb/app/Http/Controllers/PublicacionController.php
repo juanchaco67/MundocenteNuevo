@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use Redirect;
 use App\Http\Requests\PublicacionUpdateRequest;
+use App\Http\Requests\PublicacionCreateRequest;
 use Auth;
 use App\User;
 use App\Area;
@@ -172,7 +173,7 @@ class PublicacionController extends Controller
             'resumen' => $request['resumen'],
             'descripcion' => $request['descripcion'],           
             'tipo' => $request['tipo'],
-            'fecha_publicacion', $request['fecha_inicio'],
+            'fecha_publicacion' => $request['fecha_publicacion'],
             'fecha_cierre' => $request['fecha_cierre'],
             'url' => $request['url'],
             'estado' => 'activa',
@@ -223,7 +224,7 @@ class PublicacionController extends Controller
        
     }
 
-    public function crear_grupos($publicacion, PublicacionUpdateRequest $request){
+    public function crear_grupos($publicacion, Request $request){
         $areas = $request['areas'];
         if(!empty($areas)){
             foreach ($areas as $area) {
@@ -242,7 +243,7 @@ class PublicacionController extends Controller
         $grupos = Grupo::where('publicacion_id', '=', $publicacion->id)->get();
 
 
-        $lugar = Lugar::find($publicacion->lugar_id)->first();
+        //$lugar = Lugar::find($publicacion->lugar_id)->first();
         $fecha = $publicacion->created_at->format('l \\of F Y h:i:s a');
 
 
@@ -258,7 +259,7 @@ class PublicacionController extends Controller
             //'areas' => $areas,
 
             'fecha' => $fecha,
-            'lugar' => $lugar,
+            //'lugar' => $lugar,
             'grupos' => $grupos,
             'mezcla' => $mezcla,
         );
@@ -281,6 +282,9 @@ class PublicacionController extends Controller
         $ciudades_selecciondas=DB::select('select l.id, l.nombre from  aplicaciones a,lugares l where  a.publicacion_id='.$publicacion->id.' AND l.id=a.lugar_id');
         $lugares = Lugar::all();
 
+        $fecha_publicacion = $publicacion->fecha_publicacion;
+        $fecha_cierre = $publicacion->fecha_cierre;
+
         return view('publicacion.edit', [
             'publicacion' => $publicacion,
             'areas' => $areas,
@@ -292,10 +296,12 @@ class PublicacionController extends Controller
             'ciudades'=>$ciudad,
             'verificar'=>true,
             'ciudades_selecciondas'=>$ciudades_selecciondas,
+            'fecha_publicacion' => $fecha_publicacion,
+            'fecha_cierre' => $fecha_cierre,
         ]);        
     }
 
-    public function update($id, PublicacionUpdateRequest $request){
+    public function update($id, Request $request){
         //return "update";
         
        
