@@ -250,7 +250,7 @@ class PublicacionController extends Controller
 
 
         //$lugar = Lugar::find($publicacion->lugar_id)->first();
-        $fecha = $publicacion->fecha_publicacion->format('l \\of F Y h:i:s a');
+        //$fecha = $publicacion->fecha_publicacion->format('l \\of F Y h:i:s a');
 
 
         $mezcla = DB::table('grupos')
@@ -264,7 +264,7 @@ class PublicacionController extends Controller
             'establecimiento' => $establecimiento,
             //'areas' => $areas,
 
-            'fecha' => $fecha,
+            //'fecha' => $fecha,
             //'lugar' => $lugar,
             'grupos' => $grupos,
             'mezcla' => $mezcla,
