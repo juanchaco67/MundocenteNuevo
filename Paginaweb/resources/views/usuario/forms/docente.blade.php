@@ -38,7 +38,7 @@
 		@if(in_array($area->id, $areas_publicacion))
 		<div class="general-bordes" id="general-bordes-{{$area->id}}" style="position:relative; display:inline-block; width:50%; margin:2px;">
 		{{$area->nombre}}
-		<a style="position:absolute;left:95%;top:0px;" class="eliminar-area" id="eliminar-area-{{$area->id}}">x</a>
+		<a class="eliminar-area" id="eliminar-area-{{$area->id}}">x</a>
 			<input type="hidden" name="areas[]" class="eliminar-hidden" id="eliminar-hidden-{{$area->id}}" value="{{$area->id}}"/>
 		</div>
 				
@@ -48,7 +48,7 @@
 </div>	 
 </div>	    	
  @else
-  <div class="scrollbar areas-aparecer-docente-scroll" id="style-1" style="display:none;">
+ <div class="scrollbar areas-aparecer-docente-scroll" id="style-1" style="display:none;">
   
 <div id="areas-aparecer-docente" class="force-overflow" style="display:none; width:100%; height:30px;">
 

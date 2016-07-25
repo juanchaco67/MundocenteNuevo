@@ -411,4 +411,8 @@ footer {
 -webkit-border-radius: 6px 6px 6px 6px;
 border: 0px solid #000000;
 background: #E1E1E1;
+
+}
+.eliminar-area{
+	position:absolute;left:95%;top:0px;
 }

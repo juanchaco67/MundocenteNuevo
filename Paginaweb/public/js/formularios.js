@@ -173,6 +173,42 @@ $(document).ready(function(){
 // 			$('#hidden-docente-'+auxId+'').remove();
 // 	});  
  	
+$('#area-publicacion-docente').change(function() {
+		
+    var nombreCiudad = "";
+ 	    $("#area-publicacion-docente option:selected" ).each(function() {
+ 	      nombreCiudad += $( this ).text() + " ";
+ 	    });
+       var id = $(this).val();
+       var areas=document.getElementById('areas-aparecer-docente');
+	$('.areas-aparecer-docente-scroll').css('display','inline-block');
+	  areas.style.display="inline-block";
+	   
+	
+	  if ( $('#hidden-docente-'+id).length == 0 ) {
+	 
+	  
+
+		
+			 var input='<div class="general-bordes" id="general-bordes-'+id+'"style="position:relative; display:inline-block; width:50%; margin:2px;">'+
+				nombreCiudad+
+				'<a  class="eliminar-area" id="eliminar-area-'+id+'">x</a>'+
+			'<input type="hidden" name="areas[]" class="eliminar-hidden" id="eliminar-hidden-'+id+'" value="'+id+'"/>'+
+			'</div>';
+			
+			 $('#areas-aparecer-docente').append(input);
+			 
+		  	
+			$('.eliminar-area').click(function(){
+		 		 var id = $(this).attr('id');
+		 		 var auxId=id.substr(14, id.length);
+				$('#general-bordes-'+auxId+'').remove();
+		 	}); 
+
+		}
+
+
+});
  	$('.eliminar-area').click(function(){
  		 var id = $(this).attr('id');
  		 var auxId=id.substr(14, id.length);
