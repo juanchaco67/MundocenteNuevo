@@ -82,8 +82,3 @@ Route::get('/mail/queued', function(){
 	return view('index');
 	//return "Email will be sent in 5 seconds";
 });
-
-
-App::missing(function($exception){
-	return Response::view('/');
-});
