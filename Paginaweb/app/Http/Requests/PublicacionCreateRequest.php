@@ -29,8 +29,10 @@ class PublicacionCreateRequest extends Request
             //
             'nombre' => 'required|max:80',
             'resumen' => 'required|max:200',
+            'url' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'lugar' => 'required',
-            'fecha_cierre' => 'after:' . $today,
+            'fecha_publicacion' => 'after:' . $today,
+            'fecha_cierre' => 'after:fecha_publicacion',
         ];
     }
 }
