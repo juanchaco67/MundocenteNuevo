@@ -252,6 +252,14 @@ class PublicacionController extends Controller
         //$lugar = Lugar::find($publicacion->lugar_id)->first();
         //$fecha = $publicacion->fecha_publicacion->format('l \\of F Y h:i:s a');
 
+        $aplicaciones = Aplica::where('publicacion_id', '=', $publicacion->id)->get()->all();
+
+        $id_lugares = array();
+        foreach ($aplicaciones as $aplicacion) {
+            $id_lugares[] += Lugar::find($aplicacion->lugar_id)->id;
+        }
+
+        $lugares = Lugar::whereIn('id', $id_lugares)->get()->all();
 
         $mezcla = DB::table('grupos')
             ->where('publicacion_id', $publicacion->id)
@@ -266,7 +274,7 @@ class PublicacionController extends Controller
 
             'fecha_publicacion' => $publicacion->fecha_publicacion,
             'fecha_cierre' => $publicacion->fecha_cierre,
-            //'lugar' => $lugar,
+            'lugares' => $lugares,
             'tipo' => $publicacion->tipo,
             'grupos' => $grupos,
             'mezcla' => $mezcla,

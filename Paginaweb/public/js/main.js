@@ -148,7 +148,17 @@ $(document).ready(function() {
 					        	$('#fechapublicacion').html(resp.fecha_publicacion);
 					        	$('#fechacierre').html(resp.publicacion.fecha_cierre);
 					        	$('#tipo').html(resp.publicacion.tipo);
-					        	$('#tipo').html(resp.publicacion.tipo);
+
+					        	var lugares = resp.lugares;
+					        	var id=document.getElementById('lugares');
+					        	id.innerHTML="";
+					        	for(var k in lugares){
+					        		if(k < lugares.length - 1){
+					        			id.innerHTML+=lugares[k].nombre + ", ";
+					        		} else {
+					        			id.innerHTML+=lugares[k].nombre;
+					        		}				  			 		
+				  			 	}
 					        	$('#lugares').html(resp.lugares.nombre);
 					        	//$('#modalpublicacion').html(resp.responseText);
 					        }
