@@ -8,7 +8,7 @@
 	@include('alerts.success')
 
 	@if(isset($publicaciones))
-			@if($publicaciones)
+			@if(count($publicaciones)>0)
 				<table class="table">
 					<thead>
 						<th>Nombre</th>
@@ -25,6 +25,7 @@
 						@endforeach
 				</table>
 
+				<h4 class="text-center">Total en esta página: {{count($publicaciones)}}</h4>
 				{!!$publicaciones->render()!!}
 			@else
 				<h3 class="text-center">No tiene publicaciones borradas</h3>

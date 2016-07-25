@@ -8,7 +8,7 @@
 	@include('alerts.success')
 
 	@if(isset($establecimientos))
-		@if($establecimientos)
+		@if(count($establecimientos)>0)
 			<table class="table">
 				<thead>
 					<th>Nombre</th>
@@ -29,6 +29,7 @@
 			    </div>
 			</div>	
 
+			<h4 class="text-center">Total en esta página: {{count($establecimientos)}}</h4>
 			{!!$establecimientos->render()!!}
 		@else
 			<h3 class="text-center">No tiene establecimientos</h3>

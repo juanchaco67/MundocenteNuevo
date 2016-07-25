@@ -319,8 +319,8 @@ class UsuarioController extends Controller
     public function borrados(){
         $usuarios = User::where('id', '!=', Auth::user()->id)
             ->where('estado', '=', 'inactivo')
-            ->get()
-            ->all();
+            ->paginate(15);
+            //->get()->all();
 
         return view('usuario.borrados', [
             'usuarios' => $usuarios,

@@ -8,7 +8,7 @@
 	@include('alerts.success')
 
 	@if(isset($usuarios))
-			@if($usuarios)
+			@if(count($usuarios)>0)
 				<table class="table">
 					<thead>
 						<th>Nombre</th>
@@ -23,6 +23,8 @@
 							@endif
 						@endforeach
 				</table>
+
+				<h4 class="text-center">Total en esta página: {{count($usuarios)}}</h4>
 				{!!$usuarios->render()!!}
 			@else
 				<h3 class="text-center">No tiene usuarios borrados</h3>
