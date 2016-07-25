@@ -119,13 +119,13 @@ $(document).ready(function() {
 						//console.log('noooooo');
 					      $.ajax({
 					            type: "GET",
-					            headers:{"X-CSRF-TOKEN":valor},
+					            //headers:{"X-CSRF-TOKEN":valor},
 					            url: $url_pagina + "/publicacion/" + this.id,
 					            //data: "campo="+data,
 					            //data: {'id': this.id},
 					            //dataType: "json",
 					        error: function(){
-
+					        	//alert('juuo')
 					        }, 
 					        success: function(resp) {
 					        	//alert(resp.id);
