@@ -185,7 +185,7 @@ $('#area-publicacion-docente').change(function() {
 	  areas.style.display="inline-block";
 	   
 	
-	  if ( $('#hidden-docente-'+id).length == 0 ) {
+	  if ( $('#eliminar-area-'+id).length == 0 ) {
 	 
 	  
 
