@@ -43,8 +43,9 @@ class PublicacionController extends Controller
         if( Auth::check() ){
             //if( Auth::user()->estado == "activo" ){
                 $publicaciones = Publicacion::where('estado', '=', 'activa')
-                    ->get()
-                    ->all();
+                    ->paginate(15);
+                    //->get()
+                    //->all();
                 $user = User::find(Auth::user()->id);
                 $areas = Area::all();
                 $establecimientos = Establecimiento::all();
@@ -54,7 +55,9 @@ class PublicacionController extends Controller
                         ->first();
                     $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
                         ->where('estado', '=', 'activa')
-                        ->orderBy('created_at', 'DESC')->get()->all();
+                        ->orderBy('fecha_publicacion', 'DESC')
+                        ->paginate(15);
+                        //->get()->all();
                     
                     //return $publicaciones;
                     //return $funcionario->publicacion;
@@ -105,8 +108,9 @@ class PublicacionController extends Controller
         $ciudad=DB::select("select * from lugares where tipo='municipio'");
         $areas_publicacion = array();
         $publicaciones = Publicacion::where('estado', '=', 'activa')
-            ->get()
-            ->all();
+            ->paginate(15);
+            //->get()
+            //->all();
         $user = User::find(Auth::user()->id);
         $areas = Area::all();
         $establecimientos = Establecimiento::all();
@@ -116,7 +120,9 @@ class PublicacionController extends Controller
                 ->first();
             $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
                 ->where('estado', '=', 'activa')
-                ->orderBy('created_at', 'DESC')->get()->all();
+                ->orderBy('fecha_publicacion', 'DESC')
+                ->paginate(15);
+                //->get()->all();
             
             //return $publicaciones;
             //return $funcionario->publicacion;
@@ -244,7 +250,7 @@ class PublicacionController extends Controller
 
 
         //$lugar = Lugar::find($publicacion->lugar_id)->first();
-        $fecha = $publicacion->created_at->format('l \\of F Y h:i:s a');
+        $fecha = $publicacion->fecha_publicacion->format('l \\of F Y h:i:s a');
 
 
         $mezcla = DB::table('grupos')
@@ -332,16 +338,18 @@ class PublicacionController extends Controller
             $establecimientos = Establecimiento::all();
             $lugares = Lugar::all();
             $publicaciones = Publicacion::where('estado', '=', 'inactiva')
-                ->get()
-                ->all();
+                ->paginate(15);
+                //->get()
+                //->all();
             if ( $user->idrol === 2) {      
                 $funcionario = Funcionario::where('user_id', $user->id)
                     ->first();
                 $publicaciones = Publicacion::where('funcionario_id', $funcionario->id)
                     ->where('estado', '=', 'inactiva')
-                    ->orderBy('created_at', 'DESC')
-                    ->get()
-                    ->all();
+                    ->orderBy('fecha_publicacion', 'DESC')
+                    ->paginate(15);
+                    //->get()
+                    //->all();
                 
                 //return $publicaciones;
                 //return $funcionario->publicacion;

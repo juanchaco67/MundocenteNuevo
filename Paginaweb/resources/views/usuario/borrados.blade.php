@@ -23,6 +23,7 @@
 							@endif
 						@endforeach
 				</table>
+				{!!$usuarios->render()!!}
 			@else
 				<h3 class="text-center">No tiene usuarios borrados</h3>
 				<!--

@@ -31,6 +31,8 @@
 					</div>
 			    </div>
 			</div>	
+
+			{!!$publicaciones->render()!!}
 		@else
 			<h3 class="text-center">No tiene publicaciones</h3>
 			<div class="row">

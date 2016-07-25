@@ -24,6 +24,8 @@
 							@endif
 						@endforeach
 				</table>
+
+				{!!$publicaciones->render()!!}
 			@else
 				<h3 class="text-center">No tiene publicaciones borradas</h3>
 				<!--

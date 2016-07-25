@@ -45,8 +45,9 @@ class UsuarioController extends Controller
     	//$usuarios = User::all();
         $usuarios = User::where('id', '!=', Auth::user()->id)
             ->where('estado', '=', 'activo')
-            ->get()
-            ->all();
+            ->paginate(15);
+            //->get()
+            //->all();
 
         //$user = Auth::user();
         //echo "entro";
