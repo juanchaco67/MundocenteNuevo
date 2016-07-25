@@ -16,6 +16,7 @@
 <div style="width:100%;">
 	<div style="float:left;width:50%;">
 	 <p>{{$publicacion->nombre}} - </p>
+	 <p>El evento es {{$publicacion->tipo}} </p>
 	</div>
 	<div style="float:left;width:50%;">
 
