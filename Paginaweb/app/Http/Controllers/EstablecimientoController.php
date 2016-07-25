@@ -13,6 +13,7 @@ use Auth;
 use App\User;
 use App\Area;
 use App\Lugar;
+use App\Funcionario;
 
 class EstablecimientoController extends Controller
 {
@@ -127,7 +128,16 @@ class EstablecimientoController extends Controller
     }
 
     public function recuperar($id){
-         $establecimiento = Establecimiento::find($id);
+        $funcionarios = Funcionario::where('establecimiento_id', $id)
+            ->get()
+            ->all();
+        foreach ($funcionarios as $funcionario) {
+            $funcionario->user->update([
+                'estado' => 'activo',
+            ]);            
+        }
+
+        $establecimiento = Establecimiento::find($id);
          //return $establecimiento;
             $establecimiento->update([
                 'estado' => 'activo',
@@ -145,7 +155,17 @@ class EstablecimientoController extends Controller
         Session::flash('mensaje', 'Establecimiento Eliminado');
         return Redirect::to('establecimiento');
         */
-         $establecimiento = Establecimiento::find($id);
+
+        $funcionarios = Funcionario::where('establecimiento_id', $id)
+            ->get()
+            ->all();
+        foreach ($funcionarios as $funcionario) {
+            $funcionario->user->update([
+                'estado' => 'inactivo',
+            ]);            
+        }
+
+        $establecimiento = Establecimiento::find($id);
             $establecimiento->update([
                 'estado' => 'inactivo',
             ]);
