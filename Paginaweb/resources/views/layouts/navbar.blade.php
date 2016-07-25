@@ -92,7 +92,7 @@
 	                    </ul>
 	                    <!-- /.dropdown-user -->
                 	</li>
-
+                
                 	<!--
 	                <li>
 	                  <div class="dropdown">
@@ -110,7 +110,11 @@
 	            -->
 	                <!-- <li><a href="/salir">Salir</a></li> -->
 	              @endif
-
+  		
+	                <li >
+	               @include('layouts.panelbusqueda2')
+	                </li>
+	              
 	            </ul>
 	          </div><!-- /.navbar-collapse -->
 	        </div><!-- /.container-fluid -->

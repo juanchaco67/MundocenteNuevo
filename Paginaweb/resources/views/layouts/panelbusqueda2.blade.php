@@ -1,9 +1,6 @@
-@extends('layouts.base')
-
-@section('panel')
 
 
-<div class="aparecer-panel-busqueda1" >
+<div class="aparecer-panel-busqueda2" >
 @include('layouts.panelbusquedahtml')
 </div>
 {{--
@@ -46,4 +43,5 @@
 	--}}
 
 	
-@stop
+	
+

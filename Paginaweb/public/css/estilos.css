@@ -416,3 +416,21 @@ background:#DFF0D8;
 .eliminar-area{
 	position:absolute;left:95%;top:0px;
 }
+ .aparecer-panel-busqueda2  {
+    	display: none;
+        
+    }
+     .aparecer-panel-busqueda1  {
+    	display: block;
+        
+    }
+@media only screen and (max-width: 500px) {
+    .aparecer-panel-busqueda2  {
+    	display: block;
+        
+    }
+       .aparecer-panel-busqueda1  {
+    	display: none;
+        
+    }
+}
