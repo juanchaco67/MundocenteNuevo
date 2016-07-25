@@ -227,76 +227,76 @@ $('#area-publicacion-docente').change(function() {
 
 
 	
-	// $( "#lugar" ).change(function() {
- //   		 var nombreCiudad = "";
-	//     $( "#lugar option:selected" ).each(function() {
-	//       nombreCiudad += $( this ).text() + " ";
-	//     });
- //      var id = $(this).val();
+	$( "#lugar" ).change(function() {
+   		 var nombreCiudad = "";
+	    $( "#lugar option:selected" ).each(function() {
+	      nombreCiudad += $( this ).text() + " ";
+	    });
+      var id = $(this).val();
 	   
-	//   var municipios=document.getElementById('municipios');
-	//   $('.municipios-scroll').css('display','inline-block');
+	  var municipios=document.getElementById('municipios');
+	  $('.municipios-scroll').css('display','inline-block');
 
-	//   municipios.style.display="inline-block";
-	//   var html=municipios.innerHTML;	   
-	// 	if($('#hidden'+id).length ==0){
-	// 		 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
-	// 		  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
-	// 		  municipios.innerHTML=html+input;
-	// 		  var hidden="<input type='hidden'name='lugar[]' class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";
+	  municipios.style.display="inline-block";
+	  var html=municipios.innerHTML;	   
+		if($('#hidden'+id).length ==0){
+			 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='"+id+"' class='eliminar-lugar close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
+			  municipios.innerHTML=html+input;
+			  var hidden="<input type='hidden'name='lugar[]' class='eliminar-hidden' id='hidden"+id+"' value='"+id+"'/>";
 			 	
-	// 		 $('#publicacion-store').append(hidden);
+			 $('#publicacion-store').append(hidden);
 			 
 		  
-	// 		$('.eliminar-lugar').click(function(){
-	// 				 var id = $(this).attr('id');
-	// 				$('#hidden'+id+'').remove();
-	// 		});     	
-	// 	}
- //  });
-	// $('.eliminar-lugar').click(function(){
-	// 		 var id = $(this).attr('id');
-	// 		$('#hidden'+id+'').remove();		
-	// }); 
+			$('.eliminar-lugar').click(function(){
+					 var id = $(this).attr('id');
+					$('#hidden'+id+'').remove();
+			});     	
+		}
+  });
+	$('.eliminar-lugar').click(function(){
+			 var id = $(this).attr('id');
+			$('#hidden'+id+'').remove();		
+	}); 
 
 
-	// $( "#area-publicacion" ).change(function() {
- //   		 var nombreCiudad = "";
-	//     $( "#area-publicacion option:selected" ).each(function() {
-	//       nombreCiudad += $( this ).text() + " ";
-	//     });
- //      var id = $(this).val();
+	$( "#area-publicacion" ).change(function() {
+   		 var nombreCiudad = "";
+	    $( "#area-publicacion option:selected" ).each(function() {
+	      nombreCiudad += $( this ).text() + " ";
+	    });
+      var id = $(this).val();
 	 
-	//   var areas=document.getElementById('areas-aparecer');
-	//   $('.areas-aparecer-scroll').css('display','inline-block');
-	//   areas.style.display="inline-block";
-	//   var html=areas.innerHTML;	 
+	  var areas=document.getElementById('areas-aparecer');
+	  $('.areas-aparecer-scroll').css('display','inline-block');
+	  areas.style.display="inline-block";
+	  var html=areas.innerHTML;	 
 	
-	//   if ( $('#hidden-areas-'+id).length == 0 ) {
+	  if ( $('#hidden-areas-'+id).length == 0 ) {
 	 
 
-	// 		 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='area-aparecer"+id+"' class='eliminar-area close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
-	// 		  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
-	// 		  areas.innerHTML=html+input;
-	// 		  var hidden="<input type='hidden' name='areas[]' class='areas-eliminar-hidden' id='hidden-areas-"+id+"' value='"+id+"'/>";
+			 var input="<div style='height:1px;display:inline-block;position:relative;' class='alert alert-success'><span style='position:relative;bottom:10px;'>"+nombreCiudad+"</span><a style='position:absolute;left:90%;top:0%;' href='#' id='area-aparecer"+id+"' class='eliminar-area close' data-dismiss='alert' aria-label='close'>&times;</a></div>"
+			  //var input="<div id='contenedor-ciudades"+id+"' class='contenedor-ciudades' style='-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;position:relative; background:#000; width:20%;'><span style='position:absolute; top:10%;'>"+nombreCiudad+"</span><span href='#' id='"+id+"' class='eliminar-lugar style=''>x</span></div>";
+			  areas.innerHTML=html+input;
+			  var hidden="<input type='hidden' name='areas[]' class='areas-eliminar-hidden' id='hidden-areas-"+id+"' value='"+id+"'/>";
 			 	
-	// 		 $('#publicacion-store').append(hidden);
+			 $('#publicacion-store').append(hidden);
 			 
 		  	
-	// 		$('.eliminar-area').click(function(){	
-	// 				 var id = $(this).attr('id');
-	// 				 var auxId=id.substr(13, id.length);
-	// 				$('#hidden-areas-'+auxId+'').remove();
-	// 		}); 
+			$('.eliminar-area').click(function(){	
+					 var id = $(this).attr('id');
+					 var auxId=id.substr(13, id.length);
+					$('#hidden-areas-'+auxId+'').remove();
+			}); 
 
-	// 	}
+		}
 
- //  });
- //   	$('.eliminar-area').click(function(){	
-	// 		 var id = $(this).attr('id');
-	// 		 var auxId=id.substr(13, id.length);
-	// 		$('#hidden-areas-'+auxId+'').remove();
-	// });  
+  });
+   	$('.eliminar-area').click(function(){	
+			 var id = $(this).attr('id');
+			 var auxId=id.substr(13, id.length);
+			$('#hidden-areas-'+auxId+'').remove();
+	});  
 
 
 
