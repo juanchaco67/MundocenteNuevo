@@ -9,19 +9,20 @@
 @stop
 
 @section('contenido')
+	@include('alerts.request')
 	<div class="">
 		<h3 id="contacto-info" class="text-center">Contamos con el mejor equipo para resolver todas sus dudas.</h3>
 		<div id="contacto-izquierdo">
-				<form role="form" action="/" method="post">
+				<form role="form" action="/mail/contacto" method="post">
 					{{ csrf_field() }}
 				  	<h4>Dejanos tu sugerencia</h4>
 				  	<div class="form-group">
-					    <label for="name">Nombre</label>
-					    <input name="name" type="text" class="form-control" id="name" placeholder="Ingresa tu nombre" autofocus="autofocus">
+					    <label for="nombre">Nombre</label>
+					    <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" autofocus="autofocus">
 					  </div>
 				  	<div class="form-group">
-					    <label for="email">Correo</label>
-					    <input name="email" type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+					    <label for="correo">Correo</label>
+					    <input name="correo" type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
 					  </div>
 				  	<div class="form-group">
 					    <label for="asunto">Asunto</label>
