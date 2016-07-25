@@ -35,73 +35,87 @@
     @include('layouts.navbar')
 
 
-    <div id="wrapper">
+    <div class="cuerpo">
 
-        <!-- Navigation -->
-        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0"> -->
-            @yield('panel')
-            <!-- /.navbar-static-side -->
-        <!-- </nav> -->
+        <div class="paneles container">   
+            <div class="principal col-xs-12 col-sm-12 col-md-12">
+                <div class="contenido">
+                    <div id="wrapper">
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">@yield('titulo-pagina')</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> @yield('titulo-pagina')
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Filtrar
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
+                        <!-- Navigation -->
+                        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0"> -->
+                            @yield('panel')
+                            <!-- /.navbar-static-side -->
+                        <!-- </nav> -->
+
+                        <div id="page-wrapper">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h1 class="page-header">@yield('titulo-pagina')</h1>
                                 </div>
+                                <!-- /.col-lg-12 -->
                             </div>
+                            <!-- /.row -->
+                            
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i> @yield('titulo-pagina')
+                                            <div class="pull-right">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                        Filtrar
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right" role="menu">
+                                                        <li><a href="#">Action</a>
+                                                        </li>
+                                                        <li><a href="#">Another action</a>
+                                                        </li>
+                                                        <li><a href="#">Something else here</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#">Separated link</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            @yield('contenido')
+                                        </div>
+                                        <!-- /.panel-body -->
+                                    </div>                   
+                                    <!-- /.panel -->
+                                </div>
+                                <!-- /.col-lg-12 -->
+
+                                <div style="visibility:hidden;position:absolute;z-index=2;height:50px;width:100px;">
+                                    <div id="morris-area-chart" style="width:100%;height:100%;"></div>
+                                    <div id="morris-bar-chart" style="width:100%;height:100%;"></div>
+                                    <div id="morris-donut-chart" style="width:100%;height:100%;"></div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.row -->
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            @yield('contenido')
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>                   
-                    <!-- /.panel -->
+                        <!-- /#page-wrapper -->
+
+                    </div>
+                    <!-- /#wrapper -->
+
+                    @yield('pie')
+                    
                 </div>
-                <!-- /.col-lg-12 -->
-
-                <div style="visibility:hidden;position:absolute;z-index=2;height:50px;width:100px;">
-                    <div id="morris-area-chart" style="width:100%;height:100%;"></div>
-                    <div id="morris-bar-chart" style="width:100%;height:100%;"></div>
-                    <div id="morris-donut-chart" style="width:100%;height:100%;"></div>
-                </div>
-
-
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+
+
 
     <!-- jQuery -->
     <script type="text/javascript" src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>    
