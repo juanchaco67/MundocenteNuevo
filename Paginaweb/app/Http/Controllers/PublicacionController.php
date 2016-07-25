@@ -264,8 +264,10 @@ class PublicacionController extends Controller
             'establecimiento' => $establecimiento,
             //'areas' => $areas,
 
-            //'fecha' => $fecha,
+            'fecha_publicacion' => $publicacion->fecha_publicacion,
+            'fecha_cierre' => $publicacion->fecha_cierre,
             //'lugar' => $lugar,
+            'tipo' => $publicacion->tipo,
             'grupos' => $grupos,
             'mezcla' => $mezcla,
         );

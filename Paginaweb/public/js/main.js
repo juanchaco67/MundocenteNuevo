@@ -144,22 +144,12 @@ $(document).ready(function() {
 					        			id.innerHTML+=mez[k].nombre;
 					        		}				  			 		
 				  			 	}
-				  			 	//alert(variable);
-					        	
-
-
-
-					        	/*
-					        	for(var k in result){
-				  			 			ul.innerHTML+='<li>'+result[k]+'</li>';
-				  			 	}
-				  			 	*/
-
-
-					        	$('#fecha').html(resp.fecha);
+				  			 	
+					        	$('#fechapublicacion').html(resp.fecha_publicacion);
 					        	$('#fechacierre').html(resp.publicacion.fecha_cierre);
-					        	$('#lugar').html(resp.lugar.nombre);
 					        	$('#tipo').html(resp.publicacion.tipo);
+					        	$('#tipo').html(resp.publicacion.tipo);
+					        	$('#lugares').html(resp.lugares.nombre);
 					        	//$('#modalpublicacion').html(resp.responseText);
 					        }
 						});  

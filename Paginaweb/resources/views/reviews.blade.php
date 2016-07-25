@@ -96,9 +96,9 @@
                                 
                                 <div class="panel-body">
                                   <p><strong>Resumen </strong><div id="resumen"></div></p>
-                                  <p><strong>Fecha publicación</strong><div id="fecha"></div></p>
+                                  <p><strong>Fecha publicación</strong><div id="fechapublicacion"></div></p>
                                   <p><strong>Fecha cierre </strong><div id="fechacierre"></div></p>
-                                  <p><strong>Lugar </strong><div id="lugar"></div></p>
+                                  <p><strong>Lugares </strong><div id="lugares"></div></p>
                                   <p><strong>Tipo </strong><div id="tipo"></div></p>
                                 </div>          
                             </div>  
