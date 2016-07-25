@@ -37,7 +37,7 @@
 	{!!Form::label('Tipo')!!}
 	{!!Form::select('tipo', array('revista' => 'Revista', 'convocatoria' => 'Convocatoria', 'evento' => 'Evento'), null, ['class'=>'form-control'])!!}
 </div>
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 
 	{!!Form::label('Lugar')!!}
 	@if(isset($departamentos))
@@ -113,7 +113,7 @@
 	@endif
 </div>
 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 	{!!Form::label('Aplica para')!!}
 	@if(isset($areas))
 	<select  id="area-publicacion" class="form-control">
