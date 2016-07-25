@@ -30,7 +30,7 @@ class PublicacionController extends Controller
     public function __construct(){
 
         Carbon::setLocale('es');    
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
         $this->middleware('funcionario', ['except' => ['show']]);
     }
 
