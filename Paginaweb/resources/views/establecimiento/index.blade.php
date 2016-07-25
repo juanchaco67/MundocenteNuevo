@@ -28,6 +28,8 @@
 					</div>
 			    </div>
 			</div>	
+
+			{!!$establecimientos->render()!!}
 		@else
 			<h3 class="text-center">No tiene establecimientos</h3>
 			<div class="row">

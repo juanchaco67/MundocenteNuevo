@@ -21,6 +21,8 @@
 							@endif
 						@endforeach
 				</table>
+
+				{!!$establecimientos->render()!!}
 			@else
 				<h3 class="text-center">No tiene establecimientos borrados</h3>
 				<!--

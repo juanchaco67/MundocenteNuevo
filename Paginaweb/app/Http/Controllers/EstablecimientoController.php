@@ -21,8 +21,8 @@ class EstablecimientoController extends Controller
      public function index(){
         //$establecimientos = Establecimiento::all();
         $establecimientos = Establecimiento::where('estado', '=', 'activo')
-            ->get()
-            ->all();
+            ->paginate(15);
+            //->get()->all();
 
         return view('establecimiento.index', [
             'establecimientos' => $establecimientos,
@@ -61,7 +61,7 @@ class EstablecimientoController extends Controller
     }
 
     public function show($id){
-        return "show";
+        //return "show";
         //$establecimientoes = establecimiento::find($id);
         //return view('index')->with('establecimientoes', $establecimientoes);
     }
@@ -87,8 +87,8 @@ class EstablecimientoController extends Controller
 
     public function borrados(){
         $establecimientos = Establecimiento::where('estado', '=', 'inactivo')
-            ->get()
-            ->all();
+            ->paginate(15);
+            //->get()->all();
 
         /*
         if( Auth::check() ){
