@@ -34,8 +34,8 @@ class PublicacionUpdateRequest extends Request
             'resumen' => 'required|max:200',
             //'url' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'lugar' => 'required',
-            'fecha_publicacion' => 'after:' . $today,
-            'fecha_cierre' => 'after:fecha_publicacion',
+            //'fecha_publicacion' => 'after:' . $today,
+            //'fecha_cierre' => 'after:fecha_publicacion',
         ];
     }
 }

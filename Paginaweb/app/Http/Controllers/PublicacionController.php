@@ -173,6 +173,11 @@ class PublicacionController extends Controller
             $id_funcionario = $request['publicador'];
         }
 
+        $this->validate($request, [
+            //'fecha_publicacion' => 'after:' . $today,
+            'fecha_cierre' => 'after:' . $request['fecha_cierre'],
+        ]);
+
         $publicacion = Publicacion::create([
             'funcionario_id' => $id_funcionario,
             'nombre' => $request['nombre'],
