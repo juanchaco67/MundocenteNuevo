@@ -147,7 +147,7 @@ class PublicacionController extends Controller
         //return "index";
     }
 
-    public function store(PublicacionUpdateRequest $request){
+    public function store(PublicacionCreateRequest $request){
         //return "store";
         //return $request['tipo'] ." ". $request['fecha_cierre'];
 

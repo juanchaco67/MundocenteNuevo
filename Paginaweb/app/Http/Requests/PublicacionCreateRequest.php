@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Carbon\Carbon;
 
-
 class PublicacionUpdateRequest extends Request
 {
     /**
@@ -26,7 +25,6 @@ class PublicacionUpdateRequest extends Request
     public function rules()
     {
         $today = Carbon::now();
-
         return [
             //
             'nombre' => 'required|max:80',
