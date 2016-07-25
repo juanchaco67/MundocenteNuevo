@@ -169,6 +169,7 @@ $(document).ready(function() {
 	      });
     	} else {
 			//console.log("campo vacio");
+			window.location=$url_pagina; 
     	}
     }
 

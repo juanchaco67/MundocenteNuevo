@@ -217,6 +217,7 @@ class BuscadorController extends Controller
                     */
          } else {
             $publicaciones = array();
+            //return Redirect::to('/');
          }
 
         if(Auth::check()){
