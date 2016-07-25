@@ -172,7 +172,13 @@ $(document).ready(function(){
 // 			 var auxId=id.substr(21, id.length);
 // 			$('#hidden-docente-'+auxId+'').remove();
 // 	});  
- 
+ 	
+ 	$('.eliminar-area').click(function(){
+ 		 var id = $(this).attr('id');
+ 		 var auxId=id.substr(14, id.length);
+		$('#general-bordes-'+auxId+'').remove();
+
+ 	});
  	$('.cancelar').click(function(){	
  		alert('cancelar');
  			$('.areas-aparecer-docente').remove();
