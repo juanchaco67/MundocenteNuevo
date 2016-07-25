@@ -2,7 +2,7 @@
 
 	@if(isset($publicadores))
 		@if($publicadores)
-			<div class="form-group">
+			<div class="form-group col-md-12">
 				{!!Form::label('Publicador')!!}
 				<select name="publicador" class="form-control">
 					@foreach($publicadores as $publicador)
@@ -17,27 +17,27 @@
 	@endif
 @endif
 
-<div class="form-group">
+<div class="form-group col-md-6">
 	{!!Form::label('Nombre')!!}
 	{!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de la publicación'])!!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-6">
 	{!!Form::label('Resumen')!!}
 	{!!Form::text('resumen', null, ['class'=>'form-control', 'placeholder'=>'Ingresa el resumen de la publicación'])!!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-6">
 	{!!Form::label('Descripcion')!!}
 	{!!Form::textarea('descripcion', null, ['class'=>'form-control', 'placeholder'=>'Ingresa la descripción de la publicación'])!!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-6">
 	{!!Form::label('Url')!!}
 	{!!Form::text('url', null, ['class'=>'form-control', 'placeholder'=>'Ingresa la descripción de la publicación'])!!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-6">
 	{!!Form::label('Tipo')!!}
 	{!!Form::select('tipo', array('revista' => 'Revista', 'convocatoria' => 'Convocatoria', 'evento' => 'Evento'), null, ['class'=>'form-control'])!!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-6">
 
 	{!!Form::label('Lugar')!!}
 	@if(isset($departamentos))
@@ -86,31 +86,34 @@
 	 </div>
  </div>
  	@endif
-@if(isset($fecha_publicacion))
-	<div class="form-group col-md-6">
-		{!!Form::label('Fecha inicio')!!}
-		{!!Form::date('fecha_publicacion', $fecha_publicacion, ['class' => 'form-control'])!!}
-	</div>
-@else
-	<div class="form-group col-md-6">
-		{!!Form::label('Fecha inicio')!!}
-		{!!Form::date('fecha_publicacion', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
-	</div>
-@endif
 
-@if(isset($fecha_cierre))
-	<div class="form-group col-md-6">
-		{!!Form::label('Fecha cierre')!!}
-		{!!Form::date('fecha_cierre', $fecha_cierre, ['class' => 'form-control'])!!}
-	</div>
-@else
-	<div class="form-group col-md-6">
-		{!!Form::label('Fecha cierre')!!}
-		{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
-	</div>
-@endif
+<div class="col-md-12">
+	@if(isset($fecha_publicacion))
+		<div class="form-group col-md-6">
+			{!!Form::label('Fecha inicio')!!}
+			{!!Form::date('fecha_publicacion', $fecha_publicacion, ['class' => 'form-control'])!!}
+		</div>
+	@else
+		<div class="form-group col-md-6">
+			{!!Form::label('Fecha inicio')!!}
+			{!!Form::date('fecha_publicacion', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+		</div>
+	@endif
 
-<div class="form-group">
+	@if(isset($fecha_cierre))
+		<div class="form-group col-md-6">
+			{!!Form::label('Fecha cierre')!!}
+			{!!Form::date('fecha_cierre', $fecha_cierre, ['class' => 'form-control'])!!}
+		</div>
+	@else
+		<div class="form-group col-md-6">
+			{!!Form::label('Fecha cierre')!!}
+			{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+		</div>
+	@endif
+</div>
+
+<div class="form-group col-md-6">
 	{!!Form::label('Aplica para')!!}
 	@if(isset($areas))
 	<select  id="area-publicacion" class="form-control">
