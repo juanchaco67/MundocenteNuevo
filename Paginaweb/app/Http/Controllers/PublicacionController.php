@@ -175,7 +175,7 @@ class PublicacionController extends Controller
 
         $this->validate($request, [
             //'fecha_publicacion' => 'after:' . $today,
-            'fecha_cierre' => 'after:' . $request['fecha_cierre'],
+            'fecha_cierre' => 'after:' . $request['fecha_publicacion'],
         ]);
 
         $publicacion = Publicacion::create([
@@ -324,7 +324,10 @@ class PublicacionController extends Controller
 
     public function update($id, Request $request){
         //return "update";
-        
+         $this->validate($request, [
+            //'fecha_publicacion' => 'after:' . $today,
+            'fecha_cierre' => 'after:' . $request['fecha_publicacion'],
+        ]);
        
         $ciudad_id=$request['lugar'];  
 

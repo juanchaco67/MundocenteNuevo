@@ -90,24 +90,24 @@
 <div class="col-md-12">
 	@if(isset($fecha_publicacion))
 		<div class="form-group col-md-6">
-			{!!Form::label('Fecha inicio')!!}
+			<label for="fecha_publicacion">Fecha publicacion</label>
 			{!!Form::date('fecha_publicacion', $fecha_publicacion, ['class' => 'form-control'])!!}
 		</div>
 	@else
 		<div class="form-group col-md-6">
-			{!!Form::label('Fecha inicio')!!}
+			<label for="fecha_publicacion">Fecha publicacion</label>
 			{!!Form::date('fecha_publicacion', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
 		</div>
 	@endif
 
 	@if(isset($fecha_cierre))
 		<div class="form-group col-md-6">
-			{!!Form::label('Fecha cierre')!!}
+			<label for="fecha_cierre">Fecha cierre</label>
 			{!!Form::date('fecha_cierre', $fecha_cierre, ['class' => 'form-control'])!!}
 		</div>
 	@else
 		<div class="form-group col-md-6">
-			{!!Form::label('Fecha cierre')!!}
+			<label for="fecha_cierre">Fecha cierre</label>
 			{!!Form::date('fecha_cierre', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
 		</div>
 	@endif
