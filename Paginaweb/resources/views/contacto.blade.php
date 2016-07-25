@@ -10,6 +10,7 @@
 
 @section('contenido')
 	@include('alerts.request')
+	@include('alerts.success')
 	<div class="">
 		<h3 id="contacto-info" class="text-center">Contamos con el mejor equipo para resolver todas sus dudas.</h3>
 		<div id="contacto-izquierdo">

@@ -22,8 +22,8 @@ class ContactoController extends Controller
         );
 
      	Mail::send('emails.mensaje_contacto', $data, function($message) use ($request){
-     		$message->from($request['correo']);
-			$message->to('z3pi@hotmail.com')->subject($request['asunto']);
+     		$message->from($request['correo'], 'Usuario Mundocente');
+			$message->to('nuevojuanchaco67@gmail.com')->subject($request['asunto']);
 		});
 
 	 	Session::flash('mensaje', 'Tu mensaje ha sido enviado correctamente');
