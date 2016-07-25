@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
 
-<style>
-
-
 </head>
 <body>
 <h2>Hola  {{$user->name}}</h2>

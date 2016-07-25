@@ -74,6 +74,7 @@ Route::get('publicaciones/{id}', function($id){
 	return view('publicaciones')->with('id', $id);
 });
 */
+Route::post('/mail/contacto', 'ContactoController@enviar_correo');
 
 Route::get('/mail/queued', function(){
 	Mail::later(20, 'emails.queued_mail', ['name' => 'Dato de usuario registrado'], function($message){
