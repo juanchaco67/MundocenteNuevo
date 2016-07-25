@@ -12,7 +12,7 @@
 			@include('usuario.forms.docente')
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="cancelar btn btn-default" data-dismiss="modal">Cancelar</button>
 				@if(Auth::check() && Auth::user()->idrol == 3)
 					{!!Form::submit('Actualizar', ['class'=>'btn btn-primary', 'title'=>'Modificar datos de la cuenta'])!!}
 				@else
