@@ -14,7 +14,7 @@
 
 @section('contenido')
 	<!-- <h3 class="text-center">Bienvenido {{ $user->name }}</h3> -->
-	<span class="small"><h3 class="text-center">Listado de activaciones pendientes</h3></span>
+	<h3 class="text-center">Listado de activaciones pendientes</h3>
 	@if(isset($pendientes))
 		@if($pendientes)
 			<table class="table">
@@ -39,7 +39,7 @@
 				@endforeach
 			</table>
 		@else
-			<h6 class="text-center">No tiene activaciones pendientes</h6>
+			<h4 class="text-center">No tiene activaciones pendientes</h4>
 		@endif
 	@endif
 
